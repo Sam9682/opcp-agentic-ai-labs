@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI OPCP Labs - SkillHub</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <a href="." class="logo" aria-label="Agentic AI OPCP Labs Home">
+            <span>Agentic AI OPCP Labs</span>
+        </a>
+
+        <div class="header-actions">
+            <div class="progress-bar-container" aria-label="Overall progress">
+                <span class="progress-label">Progress:</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-percent">0%</span>
+            </div>
+
+            <div class="locale-switcher" role="navigation" aria-label="Language selector">
+                <button class="active" data-locale="en" aria-label="English">EN</button>
+                <button data-locale="fr" aria-label="Français">FR</button>
+            </div>
+
+            <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
+        <div class="sidebar-section" data-track="morning">
+            <h2 class="sidebar-section-title">Morning — Introduction &amp; Fundamentals</h2>
+            <ul class="sidebar-nav" id="nav-morning">
+                <li><a href="assistant-vs-agent.html">From Assistant to Agent</a></li>
+                <li><a href="agent-anatomy-7-components.html">Anatomy: Seven Core Components</a></li>
+                <li><a href="agentic-loop-and-variants.html">The Agentic Loop &amp; Variants</a></li>
+                <li><a href="stopping-criteria.html">Stopping Criteria</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="afternoon">
+            <h2 class="sidebar-section-title">Design &amp; Governance</h2>
+            <ul class="sidebar-nav" id="nav-afternoon">
+                <li><a href="multi-agent-patterns.html">Multi-Agent Patterns</a></li>
+                <li><a href="when-not-multi-agent.html">When Not to Go Multi-Agent</a></li>
+                <li><a href="guardrails-5-layers.html">Guardrails: Five Layers</a></li>
+                <li><a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop &amp; OVHcloud AI Policy</a></li>
+                <li><a href="threat-modeling-workshop.html">Workshop: Threat Modeling</a></li>
+                <li><a href="agent-design-capstone.html">Capstone: Agent Design</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="sandbox">
+            <h2 class="sidebar-section-title">Sandbox — opcp-explorer Platform</h2>
+            <ul class="sidebar-nav" id="nav-sandbox">
+                <li><a href="install-bare-metal.html">Installation on Bare-Metal Ubuntu with Agentic AI</a></li>
+                <li><a href="adding-applications.html">Adding New Applications with Agentic AI</a></li>
+                <li><a href="starting-applications.html">Starting Applications with Agentic AI</a></li>
+                <li><a href="stopping-applications.html">Stopping Applications with Agentic AI</a></li>
+                <li><a href="making-backups.html">Making Backups with Agentic AI</a></li>
+                <li><a href="modifying-applications.html">Modifying Applications with Agentic AI</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content" role="main">
+        <div class="lesson-content">
+            <div class="lesson-header">
+                <h1>Agentic AI — 3-Hour Learning Session</h1>
+                <div class="lesson-meta">
+                    <span class="difficulty-badge difficulty-badge--beginner">Getting Started</span>
+                </div>
+            </div>
+            <div class="lesson-body">
+                <section class="landing-hero">
+                    <div class="landing-hero__text">
+                        <p>Welcome to the agentic-AI learning session. Over three hours you will move from understanding what an AI agent is to designing a functional, reliable, and controllable agent of your own. Throughout, the <strong>opcp-explorer</strong> platform (AI-Powered-Store) is the live environment your agent acts on through its API, CLI, and MCP interfaces.</p>
+                    </div>
+                    <div class="landing-hero__image">
+                        <img src="../assets/img/OPCP-core.png" alt="opcp-explorer AI-Powered-Store platform overview">
+                    </div>
+                </section>
+
+                <h2>Programme</h2>
+                <p>The session is organized into two tracks, plus a sandbox reference:</p>
+                <ul>
+                    <li><strong>Introduction &amp; Fundamentals (first 90 minutes)</strong> — Assistant vs agent and the autonomy spectrum, the seven core components, the Think → Act → Observe loop and its variants (ReAct, Plan-and-Execute, Reflexion), stopping criteria, and a hands-on trace-reading workshop.</li>
+                    <li><strong>Design &amp; Governance (final 90 minutes)</strong> — Multi-agent patterns and inter-agent communication, when not to go multi-agent, the five guardrail layers, human-in-the-loop governance and the OVHcloud AI Policy, plus two workshops: threat modeling and an end-to-end agent design capstone.</li>
+                    <li><strong>Sandbox — opcp-explorer</strong> — Platform operations (deploy, start, stop, modify, back up applications) that your agent orchestrates as its toolset.</li>
+                </ul>
+
+                <section class="lesson-track">
+                    <h2 class="lesson-track__title">Morning — Introduction &amp; Fundamentals</h2>
+                    <div class="lesson-card-grid">
+                        <a class="lesson-card" href="assistant-vs-agent.html"><span class="lesson-card__title">From Assistant to Agent</span></a>
+                        <a class="lesson-card" href="agent-anatomy-7-components.html"><span class="lesson-card__title">Anatomy: Seven Core Components</span></a>
+                        <a class="lesson-card" href="agentic-loop-and-variants.html"><span class="lesson-card__title">The Agentic Loop &amp; Variants</span></a>
+                        <a class="lesson-card" href="stopping-criteria.html"><span class="lesson-card__title">Stopping Criteria</span></a>
+                    </div>
+                </section>
+
+                <section class="lesson-track">
+                    <h2 class="lesson-track__title">Design &amp; Governance</h2>
+                    <div class="lesson-card-grid">
+                        <a class="lesson-card" href="multi-agent-patterns.html"><span class="lesson-card__title">Multi-Agent Patterns</span></a>
+                        <a class="lesson-card" href="when-not-multi-agent.html"><span class="lesson-card__title">When Not to Go Multi-Agent</span></a>
+                        <a class="lesson-card" href="guardrails-5-layers.html"><span class="lesson-card__title">Guardrails: Five Layers</span></a>
+                        <a class="lesson-card" href="human-in-the-loop-ovhcloud-policy.html"><span class="lesson-card__title">Human-in-the-Loop &amp; OVHcloud AI Policy</span></a>
+                        <a class="lesson-card" href="threat-modeling-workshop.html"><span class="lesson-card__title">Workshop: Threat Modeling</span></a>
+                        <a class="lesson-card" href="agent-design-capstone.html"><span class="lesson-card__title">Capstone: Agent Design</span></a>
+                    </div>
+                </section>
+
+                <section class="lesson-track">
+                    <h2 class="lesson-track__title">Sandbox — opcp-explorer Platform</h2>
+                    <div class="lesson-card-grid">
+                        <a class="lesson-card" href="install-bare-metal.html"><span class="lesson-card__title">Installation on Bare-Metal Ubuntu with Agentic AI</span></a>
+                        <a class="lesson-card" href="adding-applications.html"><span class="lesson-card__title">Adding New Applications with Agentic AI</span></a>
+                        <a class="lesson-card" href="starting-applications.html"><span class="lesson-card__title">Starting Applications with Agentic AI</span></a>
+                        <a class="lesson-card" href="stopping-applications.html"><span class="lesson-card__title">Stopping Applications with Agentic AI</span></a>
+                        <a class="lesson-card" href="making-backups.html"><span class="lesson-card__title">Making Backups with Agentic AI</span></a>
+                        <a class="lesson-card" href="modifying-applications.html"><span class="lesson-card__title">Modifying Applications with Agentic AI</span></a>
+                    </div>
+                </section>
+
+                <h2>Learning Objectives</h2>
+                <ul class="objectives-list">
+                    <li>Differentiate an AI assistant from an AI agent and choose the right level of autonomy</li>
+                    <li>Identify the core components of an AI agent and the role of each</li>
+                    <li>Analyze the agentic execution loop (Think → Act → Observe)</li>
+                    <li>Design a multi-agent system and select the appropriate architectural pattern</li>
+                    <li>Govern agent autonomy through guardrails (permissions, limits, human validation, observability, kill switch)</li>
+                    <li>Apply responsible-AI practices aligned with the OVHcloud AI Policy</li>
+                </ul>
+
+                <h2>Tracking Your Progress</h2>
+                <p>As you complete each lesson, click the "Mark as Complete" button. Your progress is saved locally and displayed in the header progress bar.</p>
+
+                <div class="alert alert-info">
+                    <strong>Tip:</strong> The morning trace-reading workshop and the opcp-explorer connectivity module are hands-on labs. Complete the reading first, then launch the lab for practical exercises.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript modules will be loaded here in later tasks -->
+</body>
+</html>

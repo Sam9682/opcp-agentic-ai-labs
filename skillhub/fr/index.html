@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI OPCP Labs - SkillHub</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <a href="." class="logo" aria-label="Accueil Agentic AI OPCP Labs">
+            <span>Agentic AI OPCP Labs</span>
+        </a>
+
+        <div class="header-actions">
+            <div class="progress-bar-container" aria-label="Progression globale">
+                <span class="progress-label">Progression :</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-percent">0%</span>
+            </div>
+
+            <div class="locale-switcher" role="navigation" aria-label="Sélecteur de langue">
+                <button data-locale="en" aria-label="English">EN</button>
+                <button class="active" data-locale="fr" aria-label="Français">FR</button>
+            </div>
+
+            <button class="hamburger-btn" aria-label="Basculer le menu de navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" role="navigation" aria-label="Navigation des leçons">
+        <div class="sidebar-section" data-track="morning">
+            <h2 class="sidebar-section-title">Matin — Introduction et fondamentaux</h2>
+            <ul class="sidebar-nav" id="nav-morning">
+                <li><a href="assistant-vs-agent.html">De l'assistant à l'agent</a></li>
+                <li><a href="agent-anatomy-7-components.html">Anatomie : les sept composants</a></li>
+                <li><a href="agentic-loop-and-variants.html">La boucle agentique et ses variantes</a></li>
+                <li><a href="stopping-criteria.html">Critères d'arrêt</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="afternoon">
+            <h2 class="sidebar-section-title">Conception et gouvernance</h2>
+            <ul class="sidebar-nav" id="nav-afternoon">
+                <li><a href="multi-agent-patterns.html">Patrons multi-agents</a></li>
+                <li><a href="when-not-multi-agent.html">Quand éviter le multi-agents</a></li>
+                <li><a href="guardrails-5-layers.html">Garde-fous : cinq couches</a></li>
+                <li><a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop et politique IA OVHcloud</a></li>
+                <li><a href="threat-modeling-workshop.html">Atelier : modélisation des menaces</a></li>
+                <li><a href="agent-design-capstone.html">Projet final : conception d'agent</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="sandbox">
+            <h2 class="sidebar-section-title">Bac à sable — plateforme opcp-explorer</h2>
+            <ul class="sidebar-nav" id="nav-sandbox">
+                <li><a href="install-bare-metal.html">Installation sur Ubuntu Bare-Metal avec l'IA agentique</a></li>
+                <li><a href="adding-applications.html">Ajout de nouvelles applications avec l'IA agentique</a></li>
+                <li><a href="starting-applications.html">Démarrage des applications avec l'IA agentique</a></li>
+                <li><a href="stopping-applications.html">Arrêt des applications avec l'IA agentique</a></li>
+                <li><a href="making-backups.html">Sauvegardes avec l'IA agentique</a></li>
+                <li><a href="modifying-applications.html">Modification d'applications avec l'IA agentique</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content" role="main">
+        <div class="lesson-content">
+            <div class="lesson-header">
+                <h1>IA agentique — session de formation de 3 heures</h1>
+                <div class="lesson-meta">
+                    <span class="difficulty-badge difficulty-badge--beginner">Premiers pas</span>
+                </div>
+            </div>
+            <div class="lesson-body">
+                <section class="landing-hero">
+                    <div class="landing-hero__text">
+                        <p>Bienvenue dans la session de formation sur l'IA agentique. En trois heures, vous passerez de la compréhension de ce qu'est un agent IA à la conception de votre propre agent fonctionnel, fiable et contrôlable. Tout au long du parcours, la plateforme <strong>opcp-explorer</strong> (AI-Powered-Store) constitue l'environnement réel sur lequel votre agent agit via ses interfaces API, CLI et MCP.</p>
+                    </div>
+                    <div class="landing-hero__image">
+                        <img src="../assets/img/OPCP-core.png" alt="Vue d'ensemble de la plateforme opcp-explorer AI-Powered-Store">
+                    </div>
+                </section>
+
+                <h2>Programme</h2>
+                <p>La session est organisée en deux parcours, plus un bac à sable de référence :</p>
+                <ul>
+                    <li><strong>Introduction et fondamentaux (90 premières minutes)</strong> — Assistant vs agent et le spectre d'autonomie, les sept composants essentiels, la boucle Penser → Agir → Observer et ses variantes (ReAct, Plan-and-Execute, Reflexion), les critères d'arrêt, et un atelier pratique de lecture de trace.</li>
+                    <li><strong>Conception et gouvernance (90 dernières minutes)</strong> — Patrons multi-agents et communication inter-agents, quand éviter le multi-agents, les cinq couches de garde-fous, la gouvernance human-in-the-loop et la politique IA OVHcloud, ainsi que deux ateliers : modélisation des menaces et projet final de conception d'agent de bout en bout.</li>
+                    <li><strong>Bac à sable — opcp-explorer</strong> — Opérations de la plateforme (déployer, démarrer, arrêter, modifier, sauvegarder des applications) que votre agent orchestre comme boîte à outils.</li>
+                </ul>
+
+                <section class="lesson-track">
+                    <h2 class="lesson-track__title">Matin — Introduction et fondamentaux</h2>
+                    <div class="lesson-card-grid">
+                        <a class="lesson-card" href="assistant-vs-agent.html"><span class="lesson-card__title">De l'assistant à l'agent</span></a>
+                        <a class="lesson-card" href="agent-anatomy-7-components.html"><span class="lesson-card__title">Anatomie : les sept composants</span></a>
+                        <a class="lesson-card" href="agentic-loop-and-variants.html"><span class="lesson-card__title">La boucle agentique et ses variantes</span></a>
+                        <a class="lesson-card" href="stopping-criteria.html"><span class="lesson-card__title">Critères d'arrêt</span></a>
+                    </div>
+                </section>
+
+                <section class="lesson-track">
+                    <h2 class="lesson-track__title">Conception et gouvernance</h2>
+                    <div class="lesson-card-grid">
+                        <a class="lesson-card" href="multi-agent-patterns.html"><span class="lesson-card__title">Patrons multi-agents</span></a>
+                        <a class="lesson-card" href="when-not-multi-agent.html"><span class="lesson-card__title">Quand éviter le multi-agents</span></a>
+                        <a class="lesson-card" href="guardrails-5-layers.html"><span class="lesson-card__title">Garde-fous : cinq couches</span></a>
+                        <a class="lesson-card" href="human-in-the-loop-ovhcloud-policy.html"><span class="lesson-card__title">Human-in-the-Loop et politique IA OVHcloud</span></a>
+                        <a class="lesson-card" href="threat-modeling-workshop.html"><span class="lesson-card__title">Atelier : modélisation des menaces</span></a>
+                        <a class="lesson-card" href="agent-design-capstone.html"><span class="lesson-card__title">Projet final : conception d'agent</span></a>
+                    </div>
+                </section>
+
+                <section class="lesson-track">
+                    <h2 class="lesson-track__title">Bac à sable — plateforme opcp-explorer</h2>
+                    <div class="lesson-card-grid">
+                        <a class="lesson-card" href="install-bare-metal.html"><span class="lesson-card__title">Installation sur Ubuntu Bare-Metal avec l'IA agentique</span></a>
+                        <a class="lesson-card" href="adding-applications.html"><span class="lesson-card__title">Ajout de nouvelles applications avec l'IA agentique</span></a>
+                        <a class="lesson-card" href="starting-applications.html"><span class="lesson-card__title">Démarrage des applications avec l'IA agentique</span></a>
+                        <a class="lesson-card" href="stopping-applications.html"><span class="lesson-card__title">Arrêt des applications avec l'IA agentique</span></a>
+                        <a class="lesson-card" href="making-backups.html"><span class="lesson-card__title">Sauvegardes avec l'IA agentique</span></a>
+                        <a class="lesson-card" href="modifying-applications.html"><span class="lesson-card__title">Modification d'applications avec l'IA agentique</span></a>
+                    </div>
+                </section>
+
+                <h2>Objectifs pédagogiques</h2>
+                <ul class="objectives-list">
+                    <li>Différencier un assistant IA d'un agent IA et choisir le bon niveau d'autonomie</li>
+                    <li>Identifier les composants essentiels d'un agent IA et le rôle de chacun</li>
+                    <li>Analyser la boucle d'exécution agentique (Penser → Agir → Observer)</li>
+                    <li>Concevoir un système multi-agents et sélectionner le patron d'architecture approprié</li>
+                    <li>Gouverner l'autonomie de l'agent via des garde-fous (permissions, limites, validation humaine, observabilité, kill switch)</li>
+                    <li>Appliquer des pratiques d'IA responsable alignées sur la politique IA OVHcloud</li>
+                </ul>
+
+                <h2>Suivi de votre progression</h2>
+                <p>À mesure que vous terminez chaque leçon, cliquez sur le bouton « Marquer comme terminé ». Votre progression est sauvegardée localement et affichée dans la barre de progression de l'en-tête.</p>
+
+                <div class="alert alert-info">
+                    <strong>Conseil :</strong> L'atelier de lecture de trace du matin et le module de connectivité opcp-explorer sont des labos pratiques. Complétez d'abord la lecture, puis lancez le labo pour les exercices pratiques.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Les modules JavaScript seront chargés ici dans les tâches suivantes -->
+</body>
+</html>
