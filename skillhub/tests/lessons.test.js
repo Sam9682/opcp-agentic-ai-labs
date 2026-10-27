@@ -25,11 +25,11 @@ const AFTERNOON_SLUGS = [
 
 const SANDBOX_SLUGS = [
   'install-bare-metal',
-  'adding-applications',
   'starting-applications',
   'stopping-applications',
   'making-backups',
   'modifying-applications',
+  'adding-applications',
 ];
 
 describe('Lesson Catalog', () => {

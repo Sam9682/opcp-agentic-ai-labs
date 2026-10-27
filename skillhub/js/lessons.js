@@ -157,18 +157,6 @@ export const lessons = [
     prerequisites: [],
   },
   {
-    id: 'adding-applications',
-    slug: 'adding-applications',
-    title: {
-      en: 'Adding New Applications with Agentic AI',
-      fr: "Ajout de nouvelles applications avec l'IA agentique",
-    },
-    track: 'sandbox',
-    difficulty: 'beginner',
-    estimatedMinutes: 30,
-    prerequisites: ['install-bare-metal'],
-  },
-  {
     id: 'starting-applications',
     slug: 'starting-applications',
     title: {
@@ -178,7 +166,7 @@ export const lessons = [
     track: 'sandbox',
     difficulty: 'beginner',
     estimatedMinutes: 25,
-    prerequisites: ['adding-applications'],
+    prerequisites: ['install-bare-metal'],
   },
   {
     id: 'stopping-applications',
@@ -215,6 +203,18 @@ export const lessons = [
     difficulty: 'intermediate',
     estimatedMinutes: 40,
     prerequisites: ['stopping-applications'],
+  },
+  {
+    id: 'adding-applications',
+    slug: 'adding-applications',
+    title: {
+      en: 'Adding New Applications with Agentic AI (Annex – optional)',
+      fr: "Ajout de nouvelles applications avec l'IA agentique (Annexe – facultatif)",
+    },
+    track: 'sandbox',
+    difficulty: 'beginner',
+    estimatedMinutes: 30,
+    prerequisites: ['modifying-applications'],
   },
 ];
 

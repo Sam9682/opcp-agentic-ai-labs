@@ -39,7 +39,6 @@
             <h2 class="sidebar-section-title">Débutant</h2>
             <ul class="sidebar-nav" id="nav-beginner">
                 <li><a href="install-bare-metal.html" class="active">Installation sur Ubuntu Bare-Metal avec l'IA agentique</a></li>
-                <li><a href="adding-applications.html">Ajout de nouvelles applications avec l'IA agentique</a></li>
             </ul>
         </div>
         <div class="sidebar-section">
@@ -49,6 +48,7 @@
                 <li><a href="stopping-applications.html">Arrêt des applications avec l'IA agentique</a></li>
                 <li><a href="making-backups.html">Sauvegardes avec l'IA agentique</a></li>
                 <li><a href="modifying-applications.html">Modification d'applications avec l'IA agentique</a></li>
+                <li><a href="adding-applications.html">Ajout de nouvelles applications avec l'IA agentique (Annexe – facultatif)</a></li>
             </ul>
         </div>
     </aside>
@@ -80,12 +80,32 @@
                 </ul>
 
                 <h2>Installation rapide</h2>
-                <p>Le moyen le plus rapide de déployer la plateforme est le script automatisé <code>init_pltf.sh</code>, qui exécute pour vous chaque étape de ce guide.</p>
+                <p>Le moyen le plus rapide de déployer la plateforme est le script automatisé <code>init_pltf.sh</code>, qui exécute pour vous chaque étape de ce guide et met en place le plan de contrôle (control plane) de la plateforme Agentic AI.</p>
                 <figure class="lesson-figure">
                     <img src="../assets/img/Screen_InstallPltf1.png" alt="Capture d'écran de l'exécution du script d'installation de la plateforme" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
                     <figcaption>Exemple d'exécution du script d'installation de la plateforme</figcaption>
                 </figure>
-                <pre><code>chmod +x init_pltf.sh
+
+                <h3>Où trouver <code>init_pltf.sh</code></h3>
+                <p>Le script <code>init_pltf.sh</code> qui installe le plan de contrôle de la plateforme Agentic AI est hébergé dans le dépôt dédié de la plateforme sur GitHub : <a href="https://github.com/Sam9682/agentic-ai-plateform" target="_blank" rel="noopener noreferrer">github.com/Sam9682/agentic-ai-plateform</a>. Il se trouve à la <strong>racine de ce dépôt</strong>, vous l'obtenez donc dès le clonage :</p>
+                <pre><code>git clone https://github.com/Sam9682/agentic-ai-plateform.git
+cd agentic-ai-plateform
+# init_pltf.sh se trouve ici, à la racine du dépôt :
+ls -l init_pltf.sh</code></pre>
+                <div class="alert alert-info">
+                    <strong>Note :</strong> Exécutez le script depuis la racine du dépôt. Il n'est pas installé au niveau du système ; invoquez-le donc toujours avec le préfixe <code>./</code> depuis le répertoire cloné.
+                </div>
+
+                <h3>Déploiement interactif (recommandé)</h3>
+                <pre><code># Initialise un serveur vierge. init_pltf.sh demande l'identité de la
+# plateforme (slug du dossier, nom affiché, URL du dépôt et URL du
+# sous-module partagé) et écrit PLTF_NAME / PLTF_FOLDER dans conf/deploy.ini.
+# Appuyez sur Entrée pour accepter les valeurs par défaut affichées, ou
+# pré-définissez les valeurs via des variables d'environnement pour une
+# exécution non interactive :
+#   PLTF_FOLDER=my-platform PLTF_NAME="My Platform" \
+#   REPO_URL=https://github.com/your-org/your-repo.git ./init_pltf.sh
+chmod +x init_pltf.sh
 ./init_pltf.sh</code></pre>
                 <p>Vous préférez comprendre chaque étape ou devez personnaliser l'installation ? Développez l'installation manuelle ci-dessous.</p>
 
@@ -184,8 +204,8 @@ export AWS_ENDPOINT_URL_S3=https://s3.gra.io.cloud.ovh.net/</code></pre>
 
                 <h2>Étape 7 : Clonage du dépôt</h2>
                 <p>Clonez le dépôt principal avec ses sous-modules :</p>
-                <pre><code>git clone https://github.com/Sam9682/opcp-ai-powered-store.git
-cd opcp-ai-powered-store
+                <pre><code>git clone https://github.com/Sam9682/opcp-agentic-ai-labs.git
+cd opcp-agentic-ai-labs
 git submodule update --init --recursive</code></pre>
 
                 <h2>Étape 8 : Configuration de l'environnement Python</h2>
@@ -206,8 +226,8 @@ mkdir -p deployments/admin</code></pre>
                     <strong>Important — À ne pas oublier :</strong>
                     <ul>
                         <li>Modifier <code>./conf/deploy.ini</code> avec vos paramètres de plateforme, notamment les valeurs <code>PLTF_NAME</code> et <code>DOMAIN</code></li>
-                        <li>Ajouter le certificat SSL dans <code>~/opcp-ai-powered-store/ssl/fullchain_domain.crt</code> pour le HTTPS nginx</li>
-                        <li>Ajouter la clé privée SSL dans <code>~/opcp-ai-powered-store/ssl/privateKey_domain.key</code> pour le HTTPS nginx</li>
+                        <li>Ajouter le certificat SSL dans <code>~/opcp-agentic-ai-labs/ssl/fullchain_domain.crt</code> pour le HTTPS nginx</li>
+                        <li>Ajouter la clé privée SSL dans <code>~/opcp-agentic-ai-labs/ssl/privateKey_domain.key</code> pour le HTTPS nginx</li>
                         <li>Renseigner <code>aws_access_key_id</code> et <code>aws_secret_access_key</code> dans <code>~/.aws/credentials</code> pour la synchronisation S3</li>
                     </ul>
                 </div>
