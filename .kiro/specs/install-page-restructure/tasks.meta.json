@@ -1,0 +1,142 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Create `skillhub/assets/img/architecture-agents.svg`": [
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793110733253
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793110741602
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793110935933
+      }
+    ],
+    "2.1 Reorder the EN lesson body in `skillhub/en/install-bare-metal.html`": [
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793110733470
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793110939738
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111038869
+      }
+    ],
+    "3.1 Reorder the FR lesson body in `skillhub/fr/install-bare-metal.html`": [
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793110733694
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111043099
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111211294
+      }
+    ],
+    "4. Checkpoint - site pages": [
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793110733995
+      }
+    ],
+    "5.1 Restructure the SCORM EN copy in `scorm/skillhub_scorm/en/install-bare-metal.html`": [
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793110734290
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111044293
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111212477
+      }
+    ],
+    "5.2 Restructure the SCORM FR copy in `scorm/skillhub_scorm/fr/install-bare-metal.html`": [
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793110734644
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111219891
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111349402
+      }
+    ],
+    "9. Final checkpoint - build and verify": [
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793110735006
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111385103
+      },
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111708897
+      }
+    ],
+    "1. Author the architecture diagram SVG asset": [
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793110936076
+      }
+    ],
+    "2. Restructure the EN site lesson page": [
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111039002
+      }
+    ],
+    "3. Restructure the FR site lesson page": [
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111211411
+      }
+    ],
+    "5. Mirror the restructure into the SCORM copies": [
+      {
+        "executionId": "84c43ee3-709c-422b-8d5d-b533bed0df8f",
+        "chatSessionId": "sess_ba5ca919-3aa7-4084-ac8f-8003b79e50a9",
+        "timestamp": 1793111349533
+      }
+    ]
+  }
+}

@@ -65,6 +65,11 @@
             <div class="lesson-body">
                 <p>Apprenez à déployer la plateforme AI-Powered-Store sur un serveur Ubuntu bare-metal vierge (22.04 ou 24.04 LTS). Ce guide couvre l'ensemble du processus d'installation, de la préparation du système au déploiement final.</p>
 
+                <figure class="lesson-figure">
+                    <img src="../assets/img/architecture-agents.svg" alt="Architecture des agents IA de la plateforme : Opérateur, Développeur et Contrôle" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                    <figcaption>Les agents IA de la plateforme et leurs responsabilités</figcaption>
+                </figure>
+
                 <h2>Prérequis</h2>
                 <ul>
                     <li>Une installation Ubuntu 22.04 ou 24.04 LTS propre</li>
@@ -73,6 +78,20 @@
                     <li>Connectivité Internet pour le téléchargement des paquets</li>
                     <li>Un GPU NVIDIA compatible (optionnel, pour le support MIG)</li>
                 </ul>
+
+                <h2>Installation rapide</h2>
+                <p>Le moyen le plus rapide de déployer la plateforme est le script automatisé <code>init_pltf.sh</code>, qui exécute pour vous chaque étape de ce guide.</p>
+                <figure class="lesson-figure">
+                    <img src="../assets/img/Screen_InstallPltf1.png" alt="Capture d'écran de l'exécution du script d'installation de la plateforme" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                    <figcaption>Exemple d'exécution du script d'installation de la plateforme</figcaption>
+                </figure>
+                <pre><code>chmod +x init_pltf.sh
+./init_pltf.sh</code></pre>
+                <p>Vous préférez comprendre chaque étape ou devez personnaliser l'installation ? Développez l'installation manuelle ci-dessous.</p>
+
+                <details class="manual-install">
+                <summary><h2 style="display:inline">Installation manuelle (optionnelle)</h2></summary>
+                <p>Voici les étapes individuelles exécutées par le script automatisé. Suivez-les uniquement si vous souhaitez une installation pas à pas ou devez personnaliser le processus.</p>
 
                 <h2>Étape 1 : Installation des dépendances système</h2>
                 <p>Commencez par mettre à jour les paquets et installer les dépendances nécessaires :</p>
@@ -192,16 +211,7 @@ mkdir -p deployments/admin</code></pre>
                         <li>Renseigner <code>aws_access_key_id</code> et <code>aws_secret_access_key</code> dans <code>~/.aws/credentials</code> pour la synchronisation S3</li>
                     </ul>
                 </div>
-
-                <h2>Script automatisé</h2>
-                <figure class="lesson-figure">
-                    <img src="../assets/img/Screen_InstallPltf1.png" alt="Capture d'écran de l'exécution du script d'installation de la plateforme" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
-                    <figcaption>Exemple d'exécution du script d'installation de la plateforme</figcaption>
-                </figure>
-
-                <p>L'ensemble de ces étapes peut être exécuté automatiquement via le script <code>init_pltf.sh</code> :</p>
-                <pre><code>chmod +x init_pltf.sh
-./init_pltf.sh</code></pre>
+                </details>
 
                 <h2>Exercices</h2>
                 <p>Cette leçon comprend des exercices pratiques en laboratoire. Complétez chaque étape et validez votre progression.</p>
@@ -217,6 +227,6 @@ mkdir -p deployments/admin</code></pre>
         </div>
     </main>
 
-    <!-- Les modules JavaScript seront chargés ici dans les tâches suivantes -->
+    <script type="module" src="../js/app.js"></script>
 </body>
 </html>

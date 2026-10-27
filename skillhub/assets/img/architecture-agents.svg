@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="100%"
+     preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="diagramTitle diagramDesc">
+  <title id="diagramTitle">Platform AI agents and their responsibilities</title>
+  <desc id="diagramDesc">The platform has three AI agents: the Operator Agent handles start, stop, ps, backup, and restore; the Developer Agent adds and modifies applications; and the Control Agent runs compliance checks and verification.</desc>
+
+  <style>
+    .band { fill: #f0f0f0; stroke: #dddddd; stroke-width: 1; }
+    .band-text { fill: #333333; font-family: sans-serif; font-size: 18px; font-weight: bold; }
+    .box { fill: #fafafa; stroke: #dddddd; stroke-width: 1.5; }
+    .agent-name { fill: #222222; font-family: sans-serif; font-size: 17px; font-weight: bold; }
+    .agent-role { fill: #555555; font-family: sans-serif; font-size: 13px; }
+  </style>
+
+  <!-- Header band -->
+  <rect class="band" x="10" y="10" width="700" height="44" rx="6" ry="6" />
+  <text class="band-text" x="360" y="38" text-anchor="middle">AI-Powered Store — Agentic AI</text>
+
+  <!-- Operator Agent -->
+  <rect class="box" x="20" y="80" width="210" height="190" rx="10" ry="10" />
+  <text class="agent-name" x="125" y="118" text-anchor="middle">Operator Agent</text>
+  <text class="agent-role" x="125" y="150" text-anchor="middle">start</text>
+  <text class="agent-role" x="125" y="174" text-anchor="middle">stop</text>
+  <text class="agent-role" x="125" y="198" text-anchor="middle">ps</text>
+  <text class="agent-role" x="125" y="222" text-anchor="middle">backup</text>
+  <text class="agent-role" x="125" y="246" text-anchor="middle">restore</text>
+
+  <!-- Developer Agent -->
+  <rect class="box" x="255" y="80" width="210" height="190" rx="10" ry="10" />
+  <text class="agent-name" x="360" y="118" text-anchor="middle">Developer Agent</text>
+  <text class="agent-role" x="360" y="162" text-anchor="middle">add applications</text>
+  <text class="agent-role" x="360" y="186" text-anchor="middle">modify applications</text>
+
+  <!-- Control Agent -->
+  <rect class="box" x="490" y="80" width="210" height="190" rx="10" ry="10" />
+  <text class="agent-name" x="595" y="118" text-anchor="middle">Control Agent</text>
+  <text class="agent-role" x="595" y="162" text-anchor="middle">compliance checks</text>
+  <text class="agent-role" x="595" y="186" text-anchor="middle">verification</text>
+</svg>
