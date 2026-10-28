@@ -29,8 +29,8 @@ const SANDBOX_SLUGS = [
   'stopping-applications',
   'making-backups',
   'modifying-applications',
-  'adding-applications',
   'agent-control',
+  'adding-applications',
 ];
 
 describe('Lesson Catalog', () => {

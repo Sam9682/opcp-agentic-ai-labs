@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
 
             <div class="locale-switcher" role="navigation" aria-label="Language selector">
                 <button class="active" data-locale="en" aria-label="English">EN</button>
-                <button data-locale="fr" aria-label="Français">FR</button>
+                <button data-locale="fr" aria-label="Fran�ais">FR</button>
             </div>
 
             <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -36,7 +36,7 @@
 
     <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
         <div class="sidebar-section" data-track="morning">
-            <h2 class="sidebar-section-title">Morning — Introduction &amp; Fundamentals</h2>
+            <h2 class="sidebar-section-title">Morning � Introduction &amp; Fundamentals</h2>
             <ul class="sidebar-nav" id="nav-morning">
                 <li><a href="assistant-vs-agent.html">From Assistant to Agent</a></li>
                 <li><a href="agent-anatomy-7-components.html">Anatomy: Seven Core Components</a></li>
@@ -56,15 +56,15 @@
             </ul>
         </div>
         <div class="sidebar-section" data-track="sandbox">
-            <h2 class="sidebar-section-title">Sandbox — opcp-explorer Platform</h2>
+            <h2 class="sidebar-section-title">Sandbox � opcp-explorer Platform</h2>
             <ul class="sidebar-nav" id="nav-sandbox">
                 <li><a href="install-bare-metal.html">Installation on Bare-Metal Ubuntu with Agentic AI</a></li>
                 <li><a href="starting-applications.html">Starting Applications with Agentic AI</a></li>
                 <li><a href="stopping-applications.html">Stopping Applications with Agentic AI</a></li>
                 <li><a href="making-backups.html">Making Backups with Agentic AI</a></li>
                 <li><a href="modifying-applications.html">Modifying Applications with Agentic AI</a></li>
-                <li><a href="adding-applications.html">Adding New Applications with Agentic AI (Annex – optional)</a></li>
                 <li><a href="agent-control.html">Controlling AI Agents</a></li>
+                <li><a href="adding-applications.html">Adding New Applications with Agentic AI (Annex � optional)</a></li>
             </ul>
         </div>
     </aside>
@@ -74,12 +74,12 @@
             <div class="lesson-header">
                 <h1>Guardrails: the Five Layers of Control</h1>
                 <div class="lesson-meta">
-                    <span class="difficulty-badge difficulty-badge--advanced">Afternoon · Design &amp; Governance</span>
-                    <span class="duration">⏱ ~5 min</span>
+                    <span class="difficulty-badge difficulty-badge--advanced">Morning � Design &amp; Governance</span>
+                    <span class="duration">? ~5 min</span>
                 </div>
             </div>
             <div class="lesson-body">
-                <p>Guardrails are the controls that bound what an agent may do. The more autonomy you grant (from the morning's spectrum), the stronger the guardrails must be. This lesson presents five complementary layers — think defense in depth, not a single switch.</p>
+                <p>Guardrails are the controls that bound what an agent may do. The more autonomy you grant (from the morning's spectrum), the stronger the guardrails must be. This lesson presents five complementary layers � think defense in depth, not a single switch.</p>
 
                 <figure class="lesson-figure">
                     <img src="../assets/img/guardrails-5-layers.png" alt="The five guardrail layers as defense in depth" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
@@ -100,19 +100,19 @@
     L4 --> L5[5. Kill switch]</code></pre>
                 <p class="caption">Each layer catches what the previous one misses. No single layer is sufficient alone.</p>
 
-                <h2>Layer 1 — Permissions</h2>
+                <h2>Layer 1 � Permissions</h2>
                 <p>What the agent is <em>allowed</em> to touch. Scoped tokens, allow-lists of tools, read-only vs read-write access, environment boundaries (staging vs production). On opcp-explorer: a token scoped to <code>apps:read</code> and <code>apps:write</code> but never <code>billing:*</code>, limited to one project.</p>
 
-                <h2>Layer 2 — Operational Limits</h2>
-                <p>How much the agent may do. Max loop iterations, retry/error ceilings, token and spend budgets, rate limits, wall-clock timeouts. These are the enforced form of the morning's stopping criteria. On opcp-explorer: "at most 5 deploy attempts, 10 minutes, €X spend."</p>
+                <h2>Layer 2 � Operational Limits</h2>
+                <p>How much the agent may do. Max loop iterations, retry/error ceilings, token and spend budgets, rate limits, wall-clock timeouts. These are the enforced form of the morning's stopping criteria. On opcp-explorer: "at most 5 deploy attempts, 10 minutes, �X spend."</p>
 
-                <h2>Layer 3 — Human Approval</h2>
+                <h2>Layer 3 � Human Approval</h2>
                 <p>Where a person must say yes. A human-in-the-loop checkpoint before high-impact or irreversible actions. On opcp-explorer: the agent may deploy to staging autonomously, but promoting to production requires operator approval.</p>
 
-                <h2>Layer 4 — Observability</h2>
-                <p>Being able to see what the agent did. Structured execution traces, logs, metrics, and alerts — the trace you annotated this morning. Without observability, the other layers are unverifiable. On opcp-explorer: every tool call and decision is logged with inputs, outputs, and the stopping reason.</p>
+                <h2>Layer 4 � Observability</h2>
+                <p>Being able to see what the agent did. Structured execution traces, logs, metrics, and alerts � the trace you annotated this morning. Without observability, the other layers are unverifiable. On opcp-explorer: every tool call and decision is logged with inputs, outputs, and the stopping reason.</p>
 
-                <h2>Layer 5 — Kill Switch</h2>
+                <h2>Layer 5 � Kill Switch</h2>
                 <p>The ability to stop the agent immediately. A single, reliable control that halts the loop and revokes access, regardless of the agent's state. On opcp-explorer: an operator command that terminates the agent's session and invalidates its token.</p>
 
                 <h2>The Five Layers at a Glance</h2>
@@ -136,7 +136,7 @@
                 <h2>Key Takeaways</h2>
                 <ul>
                     <li>Five layers: permissions, operational limits, human approval, observability, kill switch.</li>
-                    <li>They work together as defense in depth — no single layer suffices.</li>
+                    <li>They work together as defense in depth � no single layer suffices.</li>
                     <li>Scale each layer to the agent's autonomy and the action's impact.</li>
                 </ul>
 

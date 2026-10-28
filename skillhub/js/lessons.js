@@ -205,18 +205,6 @@ export const lessons = [
     prerequisites: ['stopping-applications'],
   },
   {
-    id: 'adding-applications',
-    slug: 'adding-applications',
-    title: {
-      en: 'Adding New Applications with Agentic AI (Annex – optional)',
-      fr: "Ajout de nouvelles applications avec l'IA agentique (Annexe – facultatif)",
-    },
-    track: 'sandbox',
-    difficulty: 'beginner',
-    estimatedMinutes: 30,
-    prerequisites: ['modifying-applications'],
-  },
-  {
     id: 'agent-control',
     slug: 'agent-control',
     title: {
@@ -226,7 +214,19 @@ export const lessons = [
     track: 'sandbox',
     difficulty: 'advanced',
     estimatedMinutes: 35,
-    prerequisites: ['adding-applications'],
+    prerequisites: ['modifying-applications'],
+  },
+  {
+    id: 'adding-applications',
+    slug: 'adding-applications',
+    title: {
+      en: 'Adding New Applications with Agentic AI (Annex – optional)',
+      fr: "Ajout de nouvelles applications avec l'IA agentique (Annexe – facultatif)",
+    },
+    track: 'sandbox',
+    difficulty: 'beginner',
+    estimatedMinutes: 30,
+    prerequisites: ['agent-control'],
   },
 ];
 

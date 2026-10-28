@@ -1,4 +1,4 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
 
             <div class="locale-switcher" role="navigation" aria-label="Language selector">
                 <button class="active" data-locale="en" aria-label="English">EN</button>
-                <button data-locale="fr" aria-label="Fran√ßais">FR</button>
+                <button data-locale="fr" aria-label="FranÁais">FR</button>
             </div>
 
             <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -36,7 +36,7 @@
 
     <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
         <div class="sidebar-section" data-track="morning">
-            <h2 class="sidebar-section-title">Morning ‚Äî Introduction &amp; Fundamentals</h2>
+            <h2 class="sidebar-section-title">Morning ó Introduction &amp; Fundamentals</h2>
             <ul class="sidebar-nav" id="nav-morning">
                 <li><a href="assistant-vs-agent.html">From Assistant to Agent</a></li>
                 <li><a href="agent-anatomy-7-components.html" class="active">Anatomy: Seven Core Components</a></li>
@@ -56,15 +56,15 @@
             </ul>
         </div>
         <div class="sidebar-section" data-track="sandbox">
-            <h2 class="sidebar-section-title">Sandbox ‚Äî opcp-explorer Platform</h2>
+            <h2 class="sidebar-section-title">Sandbox ó opcp-explorer Platform</h2>
             <ul class="sidebar-nav" id="nav-sandbox">
                 <li><a href="install-bare-metal.html">Installation on Bare-Metal Ubuntu with Agentic AI</a></li>
                 <li><a href="starting-applications.html">Starting Applications with Agentic AI</a></li>
                 <li><a href="stopping-applications.html">Stopping Applications with Agentic AI</a></li>
                 <li><a href="making-backups.html">Making Backups with Agentic AI</a></li>
                 <li><a href="modifying-applications.html">Modifying Applications with Agentic AI</a></li>
-                <li><a href="adding-applications.html">Adding New Applications with Agentic AI (Annex ‚Äì optional)</a></li>
                 <li><a href="agent-control.html">Controlling AI Agents</a></li>
+                <li><a href="adding-applications.html">Adding New Applications with Agentic AI (Annex ñ optional)</a></li>
             </ul>
         </div>
     </aside>
@@ -74,12 +74,12 @@
             <div class="lesson-header">
                 <h1>Anatomy of an AI Agent: the Seven Core Components</h1>
                 <div class="lesson-meta">
-                    <span class="difficulty-badge difficulty-badge--beginner">Morning ¬∑ Fundamentals</span>
-                    <span class="duration">‚è± ~5 min</span>
+                    <span class="difficulty-badge difficulty-badge--beginner">Morning ∑ Fundamentals</span>
+                    <span class="duration">? ~5 min</span>
                 </div>
             </div>
             <div class="lesson-body">
-                <p>Every AI agent, however simple or sophisticated, is built from the same seven building blocks. Understanding each component ‚Äî and how they connect ‚Äî lets you reason about any agent you meet or design, including one that operates the <strong>opcp-explorer</strong> platform.</p>
+                <p>Every AI agent, however simple or sophisticated, is built from the same seven building blocks. Understanding each component ó and how they connect ó lets you reason about any agent you meet or design, including one that operates the <strong>opcp-explorer</strong> platform.</p>
 
                 <h2>Learning Objectives</h2>
                 <ul>
@@ -94,13 +94,13 @@
                     <figcaption>Anatomy of an AI agent: the seven core components</figcaption>
                 </figure>
                 <ol>
-                    <li><strong>Brain (LLM)</strong> ‚Äî the reasoning engine. It interprets the goal, decides the next step, and chooses which tool to call. Everything else serves the brain or constrains it.</li>
-                    <li><strong>Short-term memory</strong> ‚Äî the working context of the current task: recent steps, intermediate results, and the running scratchpad. It is bounded by the context window.</li>
-                    <li><strong>Long-term memory</strong> ‚Äî persistent knowledge across sessions: past outcomes, learned facts, embeddings in a vector store. It lets the agent recall what happened yesterday.</li>
-                    <li><strong>Tools</strong> ‚Äî the agent's hands. APIs, CLIs, functions, and MCP servers that let it affect the world. On opcp-explorer, tools are the deploy, start, stop, and status operations.</li>
-                    <li><strong>Planner</strong> ‚Äî decomposes a goal into ordered steps and sequences tool calls. It may be an explicit plan or implicit in the brain's step-by-step reasoning.</li>
-                    <li><strong>Execution loop</strong> ‚Äî the engine that repeatedly runs Think ‚Üí Act ‚Üí Observe until a stopping condition is met. Covered in depth in the next lesson.</li>
-                    <li><strong>Guardrails</strong> ‚Äî the controls that bound what the agent may do: permissions, limits, approvals, observability, and a kill switch. Covered in depth this afternoon.</li>
+                    <li><strong>Brain (LLM)</strong> ó the reasoning engine. It interprets the goal, decides the next step, and chooses which tool to call. Everything else serves the brain or constrains it.</li>
+                    <li><strong>Short-term memory</strong> ó the working context of the current task: recent steps, intermediate results, and the running scratchpad. It is bounded by the context window.</li>
+                    <li><strong>Long-term memory</strong> ó persistent knowledge across sessions: past outcomes, learned facts, embeddings in a vector store. It lets the agent recall what happened yesterday.</li>
+                    <li><strong>Tools</strong> ó the agent's hands. APIs, CLIs, functions, and MCP servers that let it affect the world. On opcp-explorer, tools are the deploy, start, stop, and status operations.</li>
+                    <li><strong>Planner</strong> ó decomposes a goal into ordered steps and sequences tool calls. It may be an explicit plan or implicit in the brain's step-by-step reasoning.</li>
+                    <li><strong>Execution loop</strong> ó the engine that repeatedly runs Think ? Act ? Observe until a stopping condition is met. Covered in depth in the next lesson.</li>
+                    <li><strong>Guardrails</strong> ó the controls that bound what the agent may do: permissions, limits, approvals, observability, and a kill switch. Covered in depth this afternoon.</li>
                 </ol>
 
                 <h2>How the Components Fit Together</h2>
@@ -126,7 +126,7 @@
                         <tr><td>Short-term memory</td><td>The current deployment's status and recent logs</td></tr>
                         <tr><td>Long-term memory</td><td>Which apps failed before and why</td></tr>
                         <tr><td>Tools</td><td>REST API, CLI, and MCP operations (deploy, start, stop, logs)</td></tr>
-                        <tr><td>Planner</td><td>"Clone ‚Üí build ‚Üí start ‚Üí verify health"</td></tr>
+                        <tr><td>Planner</td><td>"Clone ? build ? start ? verify health"</td></tr>
                         <tr><td>Execution loop</td><td>Retry start until healthy or limit reached</td></tr>
                         <tr><td>Guardrails</td><td>Token scope, max retries, approval before production</td></tr>
                     </tbody>
@@ -140,7 +140,7 @@
                 </ul>
 
                 <div class="alert alert-info">
-                    <strong>Next:</strong> <a href="agentic-loop-and-variants.html">The Agentic Loop: Think ‚Üí Act ‚Üí Observe and its Variants</a>.
+                    <strong>Next:</strong> <a href="agentic-loop-and-variants.html">The Agentic Loop: Think ? Act ? Observe and its Variants</a>.
                 </div>
             </div>
 
