@@ -2,7 +2,7 @@
 
 ## Objective
 
-Learn how to protect application data on the AI-Powered-Store platform by performing PostgreSQL database backups using `pg_dump`, uploading backups to S3-compatible storage, scheduling automated backups with cron, and verifying backup integrity through restoration tests.
+Learn how to protect application data on the Agentic-AI-Platform platform by performing PostgreSQL database backups using `pg_dump`, uploading backups to S3-compatible storage, scheduling automated backups with cron, and verifying backup integrity through restoration tests.
 
 ## Prerequisites
 

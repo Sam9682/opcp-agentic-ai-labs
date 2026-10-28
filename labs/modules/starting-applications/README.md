@@ -2,7 +2,7 @@
 
 ## Objective
 
-Learn how to start deployed applications on the AI-Powered-Store platform using the CLI, REST API, and verify that applications are running correctly with health checks.
+Learn how to start deployed applications on the Agentic-AI-Platform platform using the CLI, REST API, and verify that applications are running correctly with health checks.
 
 ## Prerequisites
 

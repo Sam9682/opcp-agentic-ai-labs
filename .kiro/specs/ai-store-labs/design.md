@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Agentic AI OPCP Labs project is an interactive training platform for the OPCP AI-Powered-Store. It consists of two main subsystems:
+The Agentic AI OPCP Labs project is an interactive training platform for the OPCP Agentic-AI-Platform. It consists of two main subsystems:
 
 1. **SkillHub** — A static HTML training website with bilingual support (EN/FR), lesson navigation, progress tracking, and code highlighting.
 2. **Lab Framework** — A Python-based engine that orchestrates, validates, and tracks hands-on lab exercises within Docker containers.
@@ -59,7 +59,7 @@ graph TB
     end
 
     subgraph "External Services"
-        AIPS[AI-Powered-Store Platform<br/>CLI / REST API / MCP]
+        AIPS[Agentic-AI-Platform Platform<br/>CLI / REST API / MCP]
         PG[PostgreSQL]
         S3[S3-Compatible Storage]
         GPU[MIG GPU Resources]
@@ -96,7 +96,7 @@ sequenceDiagram
     participant R as Core Runner
     participant V as Exercise Validator
     participant C as Exercise Container
-    participant P as AI-Powered-Store
+    participant P as Agentic-AI-Platform
 
     L->>N: POST /api/lab/start
     N->>F: Forward request

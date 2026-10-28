@@ -232,7 +232,7 @@ def run_health_checks(
 def main():
     """CLI entry point for standalone health check validation."""
     parser = argparse.ArgumentParser(
-        description="Validate AI-Powered-Store service health."
+        description="Validate Agentic-AI-Platform service health."
     )
     parser.add_argument(
         "--timeout", type=int, default=DEFAULT_TIMEOUT_SECONDS,

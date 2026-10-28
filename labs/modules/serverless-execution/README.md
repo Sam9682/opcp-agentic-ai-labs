@@ -2,7 +2,7 @@
 
 ## Objective
 
-Learn how to run ephemeral serverless containers on the AI-Powered-Store platform
+Learn how to run ephemeral serverless containers on the Agentic-AI-Platform platform
 for one-off tasks. Understand the lifecycle of a Serverless_Container: task submission,
 execution monitoring, output retrieval, and automatic resource cleanup.
 

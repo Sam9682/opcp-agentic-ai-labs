@@ -24,7 +24,7 @@ PASSING_SUBMISSION = {
 # Example deploy.ini content
 DEPLOY_INI_EXAMPLE = """
 [general]
-project_name = ai-powered-store
+project_name = Agentic-AI-Platform
 admin_email = admin@example.com
 
 [database]
@@ -45,7 +45,7 @@ nginx_ssl_port = 443
 # Commands the learner should run
 CONFIG_COMMANDS = """
 # Navigate to the project root
-cd /opt/ai-powered-store
+cd /opt/Agentic-AI-Platform
 
 # Copy the example config
 cp deploy.ini.example deploy.ini

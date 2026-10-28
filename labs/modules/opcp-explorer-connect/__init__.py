@@ -1,7 +1,7 @@
 """opcp-explorer Connectivity lab module.
 
 Teaches the agent's tool interface against the opcp-explorer platform
-(AI-Powered-Store): discovering the API/CLI/MCP surface, authenticating with
+(Agentic-AI-Platform): discovering the API/CLI/MCP surface, authenticating with
 a scoped token, and performing a basic tool call (list/deploy an application).
 
 All exercises default to a self-contained SIMULATED endpoint so the lab runs

@@ -3,7 +3,7 @@
 ## Objective
 
 Learn how to launch Docker applications with shared GPU resources using Multi-Instance
-GPU (MIG) profiles on the AI-Powered-Store platform. Understand MIG profile configurations,
+GPU (MIG) profiles on the Agentic-AI-Platform platform. Understand MIG profile configurations,
 GPU resource allocation, utilization monitoring, and proper resource release.
 
 ## Prerequisites

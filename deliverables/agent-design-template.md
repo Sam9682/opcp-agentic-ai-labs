@@ -8,7 +8,7 @@
 - **Author:** _your name_
 - **Date:** _YYYY-MM-DD_
 - **Agent name:** _e.g. opcp-deploy-agent_
-- **Target platform:** opcp-explorer (AI-Powered-Store)
+- **Target platform:** opcp-explorer (Agentic-AI-Platform)
 
 ---
 

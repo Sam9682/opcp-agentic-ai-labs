@@ -1,7 +1,7 @@
 """Reference solution: Stop Application via REST API.
 
 Demonstrates the correct approach for stopping an application
-using the AI-Powered-Store REST API.
+using the Agentic-AI-Platform REST API.
 """
 
 

@@ -271,7 +271,7 @@ class StartViaAPIExercise(Exercise):
 
     def get_instructions(self) -> Optional[str]:
         return (
-            "Start an application using the AI-Powered-Store REST API.\n\n"
+            "Start an application using the Agentic-AI-Platform REST API.\n\n"
             "API endpoint:\n"
             "  POST /api/deployments\n\n"
             "Request body:\n"

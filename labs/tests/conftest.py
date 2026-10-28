@@ -4,7 +4,7 @@ Provides shared mocks and fixtures for Docker, network, and platform access
 to ensure tests run without requiring:
 - Running Docker containers
 - Network access
-- Live AI-Powered-Store platform connectivity
+- Live Agentic-AI-Platform platform connectivity
 
 Requirements: 17.4, 17.5
 """

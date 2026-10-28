@@ -31,7 +31,7 @@ class CLIRegistrationExercise(Exercise):
     @property
     def description(self) -> str:
         return (
-            "Register a new application on the AI-Powered-Store platform "
+            "Register a new application on the Agentic-AI-Platform platform "
             "using the opcp-explorer.py command-line tool. Verify that "
             "the application appears in the platform registry within 30 seconds."
         )

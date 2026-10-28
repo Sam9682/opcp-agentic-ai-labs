@@ -11,7 +11,7 @@
 #   bash provision.sh [--api-url <url>]
 #
 # Requirements:
-#   - AI-Powered-Store platform running (install-bare-metal completed)
+#   - Agentic-AI-Platform platform running (install-bare-metal completed)
 #   - Docker available with socket access
 #   - Network connectivity to the platform API
 

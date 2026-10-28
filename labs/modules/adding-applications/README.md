@@ -2,12 +2,12 @@
 
 ## Objective
 
-Learn how to register and deploy new applications on the AI-Powered-Store platform using three different methods: the CLI tool (`opcp-explorer.py`), the REST API (`POST /api/applications`), and the web interface. This module covers application metadata requirements, validation rules, and verification that registered applications appear in the platform registry.
+Learn how to register and deploy new applications on the Agentic-AI-Platform platform using three different methods: the CLI tool (`opcp-explorer.py`), the REST API (`POST /api/applications`), and the web interface. This module covers application metadata requirements, validation rules, and verification that registered applications appear in the platform registry.
 
 ## Prerequisites
 
 - Install Bare-Metal Ubuntu module completed
-- AI-Powered-Store platform running and accessible
+- Agentic-AI-Platform platform running and accessible
 - Basic familiarity with REST APIs and command-line tools
 
 ## Exercises

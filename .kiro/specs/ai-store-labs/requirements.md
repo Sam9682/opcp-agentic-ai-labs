@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document defines the requirements for the **Agentic AI OPCP Labs** training project — a SkillHub-based interactive learning platform for the OPCP AI-Powered-Store. The project provides a static HTML training website (EN/FR) with guided lessons and a Python-based lab framework for hands-on exercises. The architecture mirrors the reference project `opcp-openstack-first-steps`, adapted to the AI-Powered-Store platform's capabilities (Docker containerization, CLI/API/Web management, GPU sharing, serverless execution, billing, backups, and AI agents).
+This document defines the requirements for the **Agentic AI OPCP Labs** training project — a SkillHub-based interactive learning platform for the OPCP Agentic-AI-Platform. The project provides a static HTML training website (EN/FR) with guided lessons and a Python-based lab framework for hands-on exercises. The architecture mirrors the reference project `opcp-openstack-first-steps`, adapted to the Agentic-AI-Platform platform's capabilities (Docker containerization, CLI/API/Web management, GPU sharing, serverless execution, billing, backups, and AI agents).
 
 ## Glossary
 
@@ -25,7 +25,7 @@ This document defines the requirements for the **Agentic AI OPCP Labs** training
 
 ### Requirement 1: SkillHub Static Training Site Structure
 
-**User Story:** As a learner, I want a static HTML training site with bilingual support, so that I can access AI-Powered-Store lessons in English or French.
+**User Story:** As a learner, I want a static HTML training site with bilingual support, so that I can access Agentic-AI-Platform lessons in English or French.
 
 #### Acceptance Criteria
 
@@ -79,7 +79,7 @@ This document defines the requirements for the **Agentic AI OPCP Labs** training
 
 ### Requirement 5: Installation on Bare-Metal Ubuntu Lab Module
 
-**User Story:** As a learner, I want a guided lab on installing the AI-Powered-Store on bare-metal Ubuntu, so that I can deploy the platform from scratch.
+**User Story:** As a learner, I want a guided lab on installing the Agentic-AI-Platform on bare-metal Ubuntu, so that I can deploy the platform from scratch.
 
 #### Acceptance Criteria
 

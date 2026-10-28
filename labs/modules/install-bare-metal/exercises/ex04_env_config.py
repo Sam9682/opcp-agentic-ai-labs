@@ -85,7 +85,7 @@ class EnvConfigExercise(Exercise):
 
         # If no pre-supplied data, try to run env_setup.sh
         if result["env_setup_exit_code"] is None:
-            clone_path = submission.get("clone_path", "/opt/ai-powered-store")
+            clone_path = submission.get("clone_path", "/opt/Agentic-AI-Platform")
             exit_code, output = self._run_env_setup(clone_path)
             result["env_setup_exit_code"] = exit_code
             result["env_setup_output"] = output

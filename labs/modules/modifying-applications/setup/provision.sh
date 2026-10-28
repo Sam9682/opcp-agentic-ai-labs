@@ -2,7 +2,7 @@
 # provision.sh - Provision the environment for the modifying-applications lab.
 #
 # This script prepares the lab environment by:
-#   1. Verifying the AI-Powered-Store platform is running
+#   1. Verifying the Agentic-AI-Platform platform is running
 #   2. Ensuring a target application exists and is deployed
 #   3. Verifying the AI Developer agent endpoint is accessible
 #   4. Setting up a workspace directory for diff operations
@@ -11,7 +11,7 @@
 #   bash provision.sh
 #
 # Requirements:
-#   - AI-Powered-Store platform running (docker-compose up)
+#   - Agentic-AI-Platform platform running (docker-compose up)
 #   - At least one application registered and running
 #   - Network connectivity to the AI Developer agent endpoint
 
@@ -44,7 +44,7 @@ error() {
 }
 
 # --- Step 1: Verify platform is running ---
-log "Verifying AI-Powered-Store platform is accessible..."
+log "Verifying Agentic-AI-Platform platform is accessible..."
 ELAPSED=0
 while [ $ELAPSED -lt $TIMEOUT_SECONDS ]; do
     if curl -sf "$HEALTH_ENDPOINT" > /dev/null 2>&1; then

@@ -2,13 +2,13 @@
 # Provision script for the Adding Applications lab module.
 #
 # This script prepares the lab environment by verifying that:
-# 1. The AI-Powered-Store platform is running and accessible
+# 1. The Agentic-AI-Platform platform is running and accessible
 # 2. The CLI tool (opcp-explorer.py) is available
 # 3. The REST API endpoint is reachable
 # 4. The web interface is accessible
 #
 # Prerequisites:
-# - AI-Powered-Store platform installed and running
+# - Agentic-AI-Platform platform installed and running
 # - Network connectivity to the platform
 # - Valid API credentials configured
 
@@ -32,7 +32,7 @@ if command -v "$CLI_PATH" &> /dev/null; then
     echo "  ✓ CLI tool found: $(which "$CLI_PATH")"
 else
     echo "  ✗ CLI tool not found: $CLI_PATH"
-    echo "  → Ensure the AI-Powered-Store is installed and $CLI_PATH is in PATH"
+    echo "  → Ensure the Agentic-AI-Platform is installed and $CLI_PATH is in PATH"
     exit 1
 fi
 

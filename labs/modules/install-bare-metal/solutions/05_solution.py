@@ -6,7 +6,7 @@ the platform and verifying service health.
 
 # Expected submission for a passing platform startup
 PASSING_SUBMISSION = {
-    "clone_path": "/opt/ai-powered-store",
+    "clone_path": "/opt/Agentic-AI-Platform",
     "deploy_exit_code": 0,
     "deploy_output": "All services started successfully.",
     "flask_status": "healthy",
@@ -19,7 +19,7 @@ PASSING_SUBMISSION = {
 # Commands the learner should run
 STARTUP_COMMANDS = """
 # Navigate to the project root
-cd /opt/ai-powered-store
+cd /opt/Agentic-AI-Platform
 
 # Run the deployment control plan
 chmod +x deployControlPlan.sh

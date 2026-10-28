@@ -1,6 +1,6 @@
 """Exercise 1: Submit Serverless Task.
 
-Submit a Serverless_Container task for execution on the AI-Powered-Store platform.
+Submit a Serverless_Container task for execution on the Agentic-AI-Platform platform.
 Validates that the task is accepted and returns a task ID, and confirms that the
 container executes the specified task and returns output within 60 seconds.
 """
@@ -209,7 +209,7 @@ class SubmitServerlessTaskExercise(Exercise):
     def get_instructions(self) -> Optional[str]:
         return (
             "In this exercise, you will submit a serverless container task "
-            "to the AI-Powered-Store platform.\n\n"
+            "to the Agentic-AI-Platform platform.\n\n"
             "Steps:\n"
             "1. Define a task with a Docker image and command\n"
             "2. Submit the task via POST /api/serverless/tasks\n"

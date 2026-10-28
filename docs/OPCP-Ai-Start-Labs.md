@@ -2,12 +2,12 @@
 
 ## Introduction
 
-Bienvenue dans la plateforme de formation Agentic AI OPCP Labs (SkillHub). Ce programme interactif vous permet de découvrir et maîtriser la plateforme AI-Powered-Store (OPCP) dans un environnement structuré et pratique, avec des leçons progressives accompagnées d'exercices hands-on.
+Bienvenue dans la plateforme de formation Agentic AI OPCP Labs (SkillHub). Ce programme interactif vous permet de découvrir et maîtriser la plateforme Agentic-AI-Platform (OPCP) dans un environnement structuré et pratique, avec des leçons progressives accompagnées d'exercices hands-on.
 
 ## Objectif de l'Offre
 
 Cette formation vous permet de :
-- Installer et configurer la plateforme AI-Powered-Store sur un serveur bare-metal
+- Installer et configurer la plateforme Agentic-AI-Platform sur un serveur bare-metal
 - Gérer le cycle de vie complet des applications (ajout, démarrage, arrêt)
 - Maîtriser les sauvegardes et la restauration de données vers OVH S3
 - Utiliser l'IA pour modifier et personnaliser les applications déployées
@@ -17,7 +17,7 @@ Cette formation vous permet de :
 ## Public Cible et Profil
 
 ### Public Cible
-- Administrateurs système souhaitant déployer et gérer la plateforme AI-Powered-Store
+- Administrateurs système souhaitant déployer et gérer la plateforme Agentic-AI-Platform
 - Développeurs et ingénieurs DevOps travaillant avec Docker et l'infrastructure cloud
 - Professionnels souhaitant comprendre la gestion d'applications conteneurisées avec GPU
 
@@ -80,7 +80,7 @@ Les leçons sont organisées en trois niveaux de difficulté :
 
 ### Module 1 : Installation sur Bare-Metal Ubuntu (Débutant, ~20 min)
 
-Déploiement complet de la plateforme AI-Powered-Store sur un serveur Ubuntu :
+Déploiement complet de la plateforme Agentic-AI-Platform sur un serveur Ubuntu :
 - Installation des dépendances système (python3, pip, venv, net-tools, unzip)
 - Installation des outils CLI (OVH shai, Terraform)
 - Configuration réseau Netplan (priorisation interfaces publique/privée)
@@ -140,7 +140,7 @@ Utilisation d'outils IA pour personnaliser les applications :
 ## Résultats Attendus
 
 ### Compétences Acquises
-- Déploiement complet de la plateforme AI-Powered-Store sur bare-metal
+- Déploiement complet de la plateforme Agentic-AI-Platform sur bare-metal
 - Gestion du cycle de vie des applications (CRUD, démarrage, arrêt)
 - Maîtrise des sauvegardes et restaurations vers le stockage objet S3
 - Utilisation d'outils IA pour la modification de code
@@ -148,7 +148,7 @@ Utilisation d'outils IA pour personnaliser les applications :
 - Mise en place d'architectures serverless optimisées en coûts
 
 ### Produits Finis
-- Plateforme AI-Powered-Store opérationnelle
+- Plateforme Agentic-AI-Platform opérationnelle
 - Applications déployées et fonctionnelles
 - Sauvegardes automatisées configurées
 - Exercices validés pour chaque module

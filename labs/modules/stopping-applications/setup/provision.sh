@@ -5,7 +5,7 @@
 # application is deployed and running, ready to be stopped by the learner.
 #
 # Prerequisites:
-# - AI-Powered-Store platform is running
+# - Agentic-AI-Platform platform is running
 # - CLI tool is available at /usr/local/bin/opcp-explorer.py
 # - A test application has been registered (from adding-applications module)
 

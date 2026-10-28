@@ -2,13 +2,13 @@
 # Provision script for the Billing and Cost Tracking lab module.
 #
 # This script prepares the lab environment by verifying that:
-# 1. The AI-Powered-Store platform is running and accessible
+# 1. The Agentic-AI-Platform platform is running and accessible
 # 2. The billing API endpoint is reachable
 # 3. The alert service is operational
 # 4. Active containers exist for consumption queries
 #
 # Prerequisites:
-# - AI-Powered-Store platform installed and running
+# - Agentic-AI-Platform platform installed and running
 # - Network connectivity to the platform
 # - Valid API credentials configured
 

@@ -1,6 +1,6 @@
 """Exercise 05: Platform Startup.
 
-Guides the learner through starting the AI-Powered-Store platform
+Guides the learner through starting the Agentic-AI-Platform platform
 and validates that all services (Flask, PostgreSQL, Nginx) reach
 healthy status within 120 seconds.
 """
@@ -31,7 +31,7 @@ class PlatformStartupExercise(Exercise):
     @property
     def description(self) -> str:
         return (
-            "Execute deployControlPlan.sh to start the AI-Powered-Store platform, "
+            "Execute deployControlPlan.sh to start the Agentic-AI-Platform platform, "
             "then verify that Flask, PostgreSQL, and Nginx services all report "
             "healthy status within 120 seconds."
         )
@@ -65,7 +65,7 @@ class PlatformStartupExercise(Exercise):
         Returns:
             Dict with startup results and service health statuses.
         """
-        clone_path = submission.get("clone_path", "/opt/ai-powered-store")
+        clone_path = submission.get("clone_path", "/opt/Agentic-AI-Platform")
         result = {
             "clone_path": clone_path,
             "deploy_exit_code": submission.get("deploy_exit_code"),
@@ -194,7 +194,7 @@ class PlatformStartupExercise(Exercise):
 
     def get_instructions(self) -> Optional[str]:
         return (
-            "Start the AI-Powered-Store platform:\n\n"
+            "Start the Agentic-AI-Platform platform:\n\n"
             "1. Run the deployment script:\n"
             "   chmod +x deployControlPlan.sh && ./deployControlPlan.sh\n\n"
             "2. Wait for all services to start (up to 120 seconds).\n\n"

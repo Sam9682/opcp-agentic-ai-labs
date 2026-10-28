@@ -1,6 +1,6 @@
 """Exercise 03: Repository Cloning.
 
-Guides the learner through cloning the AI-Powered-Store platform
+Guides the learner through cloning the Agentic-AI-Platform platform
 repository and verifying the expected directory structure.
 """
 
@@ -27,11 +27,11 @@ REQUIRED_DIRS = [
 ]
 
 DEFAULT_REPO_URL = "https://forgejo.example.com/opcp/opcp-storeai.git"
-DEFAULT_CLONE_PATH = "/opt/ai-powered-store"
+DEFAULT_CLONE_PATH = "/opt/Agentic-AI-Platform"
 
 
 class RepoCloneExercise(Exercise):
-    """Clone the AI-Powered-Store platform repository."""
+    """Clone the Agentic-AI-Platform platform repository."""
 
     @property
     def exercise_id(self) -> str:
@@ -44,7 +44,7 @@ class RepoCloneExercise(Exercise):
     @property
     def description(self) -> str:
         return (
-            "Clone the AI-Powered-Store platform repository to the target "
+            "Clone the Agentic-AI-Platform platform repository to the target "
             "directory and verify that all expected files and directories are present."
         )
 
@@ -154,7 +154,7 @@ class RepoCloneExercise(Exercise):
 
     def get_instructions(self) -> Optional[str]:
         return (
-            "Clone the AI-Powered-Store platform repository:\n\n"
+            "Clone the Agentic-AI-Platform platform repository:\n\n"
             f"1. Clone the repository:\n"
             f"   git clone {DEFAULT_REPO_URL} {DEFAULT_CLONE_PATH}\n\n"
             f"2. Navigate to the cloned directory:\n"

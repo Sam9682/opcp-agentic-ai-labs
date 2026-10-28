@@ -1,6 +1,6 @@
 # Agentic AI OPCP Labs
 
-Interactive training platform for the OPCP AI-Powered-Store. Provides a bilingual (EN/FR) static training website (SkillHub) and a Python-based lab framework for hands-on exercises in Docker containers.
+Interactive training platform for the OPCP Agentic-AI-Platform. Provides a bilingual (EN/FR) static training website (SkillHub) and a Python-based lab framework for hands-on exercises in Docker containers.
 
 ## Architecture Overview
 
@@ -111,7 +111,7 @@ npx vitest --run skillhub/tests/
 
 Navigate to the root URL to access the bilingual training site. The site auto-detects your browser language (EN/FR) and provides guided lessons covering:
 
-- Installing the AI-Powered-Store on bare-metal Ubuntu
+- Installing the Agentic-AI-Platform on bare-metal Ubuntu
 - Adding, starting, and stopping applications
 - Making backups with PostgreSQL and S3
 - Modifying applications with AI Developer agent

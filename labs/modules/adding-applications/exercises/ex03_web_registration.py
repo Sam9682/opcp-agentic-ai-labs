@@ -1,6 +1,6 @@
 """Exercise 3: Web Interface Application Registration.
 
-Register a new application using the AI-Powered-Store web interface
+Register a new application using the Agentic-AI-Platform web interface
 and verify it appears in the platform's application registry.
 """
 
@@ -30,7 +30,7 @@ class WebRegistrationExercise(Exercise):
     @property
     def description(self) -> str:
         return (
-            "Register a new application on the AI-Powered-Store platform "
+            "Register a new application on the Agentic-AI-Platform platform "
             "using the web interface. Verify that the application appears "
             "in the registry within 30 seconds."
         )

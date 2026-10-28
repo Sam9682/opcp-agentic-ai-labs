@@ -2,13 +2,13 @@
 
 ## Objective
 
-Learn how to use the AI Developer agent to modify existing applications on the AI-Powered-Store platform. This module covers the full workflow: invoking the AI Developer agent with a modification prompt, reviewing the proposed code diff, approving and applying the changes, and verifying that the updated application builds successfully and passes health checks.
+Learn how to use the AI Developer agent to modify existing applications on the Agentic-AI-Platform platform. This module covers the full workflow: invoking the AI Developer agent with a modification prompt, reviewing the proposed code diff, approving and applying the changes, and verifying that the updated application builds successfully and passes health checks.
 
 ## Prerequisites
 
 - Adding New Applications module completed
 - Starting Applications module completed
-- A deployed and running application on the AI-Powered-Store platform
+- A deployed and running application on the Agentic-AI-Platform platform
 - Familiarity with code diffs and version control concepts
 
 ## Exercises

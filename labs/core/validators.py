@@ -12,7 +12,7 @@ from labs.core.models import ValidationResult, ExerciseStatus
 class PlatformClient(Protocol):
     """Protocol defining the interface for platform interactions.
 
-    Concrete implementations will query the AI-Powered-Store platform
+    Concrete implementations will query the Agentic-AI-Platform platform
     to retrieve actual state for validation purposes.
     """
 

@@ -15,7 +15,7 @@
 set -euo pipefail
 
 # --- Configuration ---
-PLATFORM_DIR="/opt/ai-powered-store"
+PLATFORM_DIR="/opt/Agentic-AI-Platform"
 REMOVE_DOCKER=false
 
 # --- Parse arguments ---

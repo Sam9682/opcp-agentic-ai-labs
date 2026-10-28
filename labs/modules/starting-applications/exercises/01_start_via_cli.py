@@ -1,7 +1,7 @@
 """Exercise 01: Start Application via CLI.
 
 Learners use the opcp-explorer.py command-line tool to start
-a registered application on the AI-Powered-Store platform.
+a registered application on the Agentic-AI-Platform platform.
 """
 
 import subprocess
@@ -213,7 +213,7 @@ class StartViaCLIExercise(Exercise):
 
     def get_instructions(self) -> Optional[str]:
         return (
-            "Use the AI-Powered-Store CLI to start a registered application.\n\n"
+            "Use the Agentic-AI-Platform CLI to start a registered application.\n\n"
             "Command format:\n"
             "  opcp-explorer.py app start <app_name>\n\n"
             "The exercise will verify that:\n"

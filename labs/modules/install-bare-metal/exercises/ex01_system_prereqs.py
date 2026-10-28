@@ -1,7 +1,7 @@
 """Exercise 01: System Prerequisites Verification.
 
 Verifies that the target system meets the minimum requirements for
-installing the AI-Powered-Store platform:
+installing the Agentic-AI-Platform platform:
 - Ubuntu 22.04 or 24.04 LTS
 - Minimum 2 CPU cores
 - Minimum 4 GB RAM
@@ -33,7 +33,7 @@ MIN_DISK_GB = 20
 
 
 class SystemPrereqsExercise(Exercise):
-    """Verify system prerequisites for AI-Powered-Store installation."""
+    """Verify system prerequisites for Agentic-AI-Platform installation."""
 
     @property
     def exercise_id(self) -> str:
@@ -47,7 +47,7 @@ class SystemPrereqsExercise(Exercise):
     def description(self) -> str:
         return (
             "Verify that the target Ubuntu system meets minimum hardware "
-            "and software requirements for the AI-Powered-Store platform."
+            "and software requirements for the Agentic-AI-Platform platform."
         )
 
     @property

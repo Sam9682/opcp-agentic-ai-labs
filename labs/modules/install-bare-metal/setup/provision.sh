@@ -19,7 +19,7 @@
 set -euo pipefail
 
 # --- Configuration ---
-PLATFORM_DIR="/opt/ai-powered-store"
+PLATFORM_DIR="/opt/Agentic-AI-Platform"
 LOG_FILE="/var/log/lab-provision.log"
 
 # --- Colors for output ---

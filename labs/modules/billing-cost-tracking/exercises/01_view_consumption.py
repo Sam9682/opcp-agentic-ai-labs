@@ -238,7 +238,7 @@ class ViewConsumptionExercise(Exercise):
 
     def get_instructions(self) -> str:
         return (
-            "Query the AI-Powered-Store billing system to view current resource consumption.\n\n"
+            "Query the Agentic-AI-Platform billing system to view current resource consumption.\n\n"
             "Submit with:\n"
             "  - api_endpoint: The platform API base URL (e.g., http://localhost:5000)\n"
             "  - auth_token: Your API authentication token\n"

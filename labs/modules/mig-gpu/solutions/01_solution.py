@@ -1,7 +1,7 @@
 """Reference solution for Exercise 1: List MIG Profiles.
 
 Demonstrates the correct approach to listing available MIG profile
-configurations on the AI-Powered-Store platform.
+configurations on the Agentic-AI-Platform platform.
 """
 
 

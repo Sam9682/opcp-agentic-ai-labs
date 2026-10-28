@@ -31,7 +31,7 @@ class APIRegistrationExercise(Exercise):
     @property
     def description(self) -> str:
         return (
-            "Register a new application on the AI-Powered-Store platform "
+            "Register a new application on the Agentic-AI-Platform platform "
             "using the REST API POST /api/applications endpoint. Verify that "
             "the application appears in the registry within 30 seconds."
         )

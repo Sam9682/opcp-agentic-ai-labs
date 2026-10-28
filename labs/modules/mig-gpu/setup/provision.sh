@@ -2,13 +2,13 @@
 # Provision script for the Docker Applications with MIG GPU lab module.
 #
 # This script prepares the lab environment by verifying that:
-# 1. The AI-Powered-Store platform is running and accessible
+# 1. The Agentic-AI-Platform platform is running and accessible
 # 2. GPU hardware and drivers are available
 # 3. MIG mode is enabled on the GPU
 # 4. The platform GPU API endpoint is reachable
 #
 # Prerequisites:
-# - AI-Powered-Store platform installed and running
+# - Agentic-AI-Platform platform installed and running
 # - NVIDIA GPU with MIG support (A30, A100, H100)
 # - NVIDIA drivers and nvidia-smi installed
 # - Network connectivity to the platform

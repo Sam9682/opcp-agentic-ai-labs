@@ -2,7 +2,7 @@
 
 ## Objective
 
-Learn how to monitor, analyze, and manage costs on the AI-Powered-Store platform by viewing current resource consumption, applying cost calculation rules to compute expected charges, configuring budget alerts for proactive cost management, and generating comprehensive usage reports.
+Learn how to monitor, analyze, and manage costs on the Agentic-AI-Platform platform by viewing current resource consumption, applying cost calculation rules to compute expected charges, configuring budget alerts for proactive cost management, and generating comprehensive usage reports.
 
 ## Prerequisites
 

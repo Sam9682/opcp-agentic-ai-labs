@@ -1,5 +1,5 @@
 """Stopping Applications lab module.
 
-Provides exercises for stopping running applications on the AI-Powered-Store
+Provides exercises for stopping running applications on the Agentic-AI-Platform
 platform via CLI, REST API, and confirming graceful shutdown behavior.
 """

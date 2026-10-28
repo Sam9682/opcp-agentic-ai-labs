@@ -46,8 +46,8 @@ All five requirements are met. No blocking correctness, security, or data findin
 
 ### 3. Landing pages
 - `en/index.html` and `fr/index.html` redesign only the inner `.lesson-body` markup: hero (welcome
-  paragraph verbatim + `OPCP-core.png` with alt text — EN "opcp-explorer AI-Powered-Store platform
-  overview", FR "Vue d'ensemble de la plateforme opcp-explorer AI-Powered-Store"), Programme block
+  paragraph verbatim + `OPCP-core.png` with alt text — EN "opcp-explorer Agentic-AI-Platform platform
+  overview", FR "Vue d'ensemble de la plateforme opcp-explorer Agentic-AI-Platform"), Programme block
   verbatim, three `.lesson-track` card grids, objectives `<ul>` given `class="objectives-list"`
   (same `<li>` text), tip and tracking sections untouched.
 - Card titles/hrefs reuse the EXACT sidebar lesson titles and filenames from the plan's mapping,

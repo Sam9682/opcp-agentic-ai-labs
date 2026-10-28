@@ -1,7 +1,7 @@
 """Reference solution for Exercise 1: Submit Serverless Task.
 
 Demonstrates the correct approach to submitting a Serverless_Container
-task to the AI-Powered-Store platform and confirming execution completes
+task to the Agentic-AI-Platform platform and confirming execution completes
 within 60 seconds.
 """
 

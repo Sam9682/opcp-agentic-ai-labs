@@ -13,7 +13,7 @@ def get_solution() -> dict:
     """
     return {
         "app_name": "my-training-app",
-        "app_directory": "/opt/ai-powered-store/apps/my-training-app",
+        "app_directory": "/opt/Agentic-AI-Platform/apps/my-training-app",
         "build_command": "docker build -t my-training-app:latest .",
         "start_command": "docker run -d -p 8080:8080 --name my-training-app my-training-app:latest",
         "health_endpoint": "http://localhost:8080/health",
@@ -29,7 +29,7 @@ def get_build_commands() -> list[str]:
     """
     return [
         # Step 1: Build the application (must exit 0 within 120s)
-        "cd /opt/ai-powered-store/apps/my-training-app && docker build -t my-training-app:latest .",
+        "cd /opt/Agentic-AI-Platform/apps/my-training-app && docker build -t my-training-app:latest .",
         # Step 2: Start the application
         "docker run -d -p 8080:8080 --name my-training-app my-training-app:latest",
         # Step 3: Health check (poll within 30s)

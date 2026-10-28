@@ -2,7 +2,7 @@
 
 ## Objective
 
-Learn how to gracefully stop running applications on the AI-Powered-Store platform using
+Learn how to gracefully stop running applications on the Agentic-AI-Platform platform using
 the CLI, REST API, and force-stop mechanisms. Understand graceful shutdown semantics,
 process termination verification, and timeout recovery strategies.
 

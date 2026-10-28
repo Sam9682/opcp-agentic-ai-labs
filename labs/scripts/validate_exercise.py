@@ -31,7 +31,7 @@ DEFAULT_CONFIG_PATH = os.path.join("labs", "config", "lab_config.yaml")
 class LocalPlatformClient:
     """A local platform client stub for offline validation.
 
-    Used when the AI-Powered-Store platform is not available.
+    Used when the Agentic-AI-Platform platform is not available.
     Returns empty responses for all queries.
     """
 

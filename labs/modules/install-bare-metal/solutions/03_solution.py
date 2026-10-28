@@ -1,12 +1,12 @@
 """Reference solution for Exercise 03: Repository Cloning.
 
 This solution demonstrates the expected learner actions for cloning
-the AI-Powered-Store repository.
+the Agentic-AI-Platform repository.
 """
 
 # Expected submission for a passing repository clone
 PASSING_SUBMISSION = {
-    "clone_path": "/opt/ai-powered-store",
+    "clone_path": "/opt/Agentic-AI-Platform",
     "repo_url": "https://forgejo.example.com/opcp/opcp-storeai.git",
     "files_present": [
         "docker-compose.yml",
@@ -28,16 +28,16 @@ PASSING_SUBMISSION = {
 # Commands the learner should run
 CLONE_COMMANDS = """
 # Create target directory
-sudo mkdir -p /opt/ai-powered-store
+sudo mkdir -p /opt/Agentic-AI-Platform
 
 # Clone the repository
-sudo git clone https://forgejo.example.com/opcp/opcp-storeai.git /opt/ai-powered-store
+sudo git clone https://forgejo.example.com/opcp/opcp-storeai.git /opt/Agentic-AI-Platform
 
 # Set ownership to current user
-sudo chown -R $USER:$USER /opt/ai-powered-store
+sudo chown -R $USER:$USER /opt/Agentic-AI-Platform
 
 # Navigate to the directory
-cd /opt/ai-powered-store
+cd /opt/Agentic-AI-Platform
 
 # Verify the clone
 ls -la

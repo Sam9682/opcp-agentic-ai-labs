@@ -111,7 +111,7 @@ Structure (EN):
 
 ```html
 <div class="lesson-body">
-    <p>Learn how to deploy the AI-Powered-Store platform ...</p>  <!-- existing intro, unchanged -->
+    <p>Learn how to deploy the Agentic-AI-Platform platform ...</p>  <!-- existing intro, unchanged -->
 
     <!-- Architecture diagram: first content element -->
     <figure class="lesson-figure">

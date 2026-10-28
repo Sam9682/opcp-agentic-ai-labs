@@ -1,7 +1,7 @@
 """Reference solution: Stop Application via CLI.
 
 Demonstrates the correct approach for stopping an application
-using the AI-Powered-Store CLI tool.
+using the Agentic-AI-Platform CLI tool.
 """
 
 

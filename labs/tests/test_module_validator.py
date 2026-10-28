@@ -18,7 +18,7 @@ VALID_README = """\
 
 ## Objective
 
-Learn how to install the AI-Powered-Store on bare-metal Ubuntu.
+Learn how to install the Agentic-AI-Platform on bare-metal Ubuntu.
 
 ## Prerequisites
 
@@ -116,7 +116,7 @@ class TestValidateModule:
         readme = valid_module / "README.md"
         content = readme.read_text(encoding="utf-8")
         # Remove objective section
-        content = content.replace("## Objective\n\nLearn how to install the AI-Powered-Store on bare-metal Ubuntu.\n", "")
+        content = content.replace("## Objective\n\nLearn how to install the Agentic-AI-Platform on bare-metal Ubuntu.\n", "")
         readme.write_text(content, encoding="utf-8")
         warnings = validate_module(valid_module)
         assert any("objective" in w for w in warnings)

@@ -222,7 +222,7 @@ class StopViaCLIExercise(Exercise):
     def get_instructions(self) -> Optional[str]:
         return (
             "In this exercise, you will stop a running application using "
-            "the AI-Powered-Store CLI tool.\n\n"
+            "the Agentic-AI-Platform CLI tool.\n\n"
             "Steps:\n"
             "1. Verify the target application is currently running\n"
             "2. Execute the stop command: "

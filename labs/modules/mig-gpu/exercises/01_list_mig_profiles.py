@@ -1,7 +1,7 @@
 """Exercise 1: List MIG Profiles.
 
 List available Multi-Instance GPU (MIG) profile configurations on the
-AI-Powered-Store platform. Each profile defines compute and memory
+Agentic-AI-Platform platform. Each profile defines compute and memory
 resources for isolated GPU instances.
 """
 
@@ -27,7 +27,7 @@ class ListMIGProfilesExercise(Exercise):
     def description(self) -> str:
         return (
             "List available MIG profile configurations on the "
-            "AI-Powered-Store platform to understand available GPU "
+            "Agentic-AI-Platform platform to understand available GPU "
             "partitioning options."
         )
 
@@ -175,7 +175,7 @@ class ListMIGProfilesExercise(Exercise):
     def get_instructions(self) -> Optional[str]:
         return (
             "In this exercise, you will list the available MIG (Multi-Instance "
-            "GPU) profile configurations on the AI-Powered-Store platform.\n\n"
+            "GPU) profile configurations on the Agentic-AI-Platform platform.\n\n"
             "Steps:\n"
             "1. Query the platform for available MIG profiles using the CLI "
             "or REST API\n"
