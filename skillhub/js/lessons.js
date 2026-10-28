@@ -2,8 +2,8 @@
  * Lesson catalog for the SkillHub bilingual (EN/FR) runtime.
  *
  * The `lessons` array is the single source of truth for the course catalog. It
- * lists all 16 lessons in programme order: 4 morning fundamentals, 6 afternoon
- * design & governance lessons, then 6 sandbox (hands-on) lessons.
+ * lists all 17 lessons in programme order: 4 morning fundamentals, 6 afternoon
+ * design & governance lessons, then 7 sandbox (hands-on) lessons.
  *
  * Invariants (enforced by skillhub/tests/lessons.test.js):
  *   - `id` and `slug` are unique across the catalog, and `id === slug`.
@@ -215,6 +215,18 @@ export const lessons = [
     difficulty: 'beginner',
     estimatedMinutes: 30,
     prerequisites: ['modifying-applications'],
+  },
+  {
+    id: 'agent-control',
+    slug: 'agent-control',
+    title: {
+      en: 'Controlling AI Agents',
+      fr: 'Contrôle des agents IA',
+    },
+    track: 'sandbox',
+    difficulty: 'advanced',
+    estimatedMinutes: 35,
+    prerequisites: ['adding-applications'],
   },
 ];
 

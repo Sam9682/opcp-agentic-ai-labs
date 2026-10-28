@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="100%"
+     preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="diagramTitle diagramDesc">
+  <title id="diagramTitle">Controlling an AI agent: autonomy levels, approval gates, guardrails, and human-in-the-loop</title>
+  <desc id="diagramDesc">Five rising autonomy levels run left to right inside concentric guardrail layers — Permissions, Validation, Limits and Timeouts, Observability — with a navy Kill switch band as the hard outer boundary; an approval gate sits between the higher-autonomy levels, and a Human-in-the-loop review node above the gates feeds arrows down into them.</desc>
+
+  <style>
+    .frame { fill: none; stroke: #1a1f71; stroke-width: 2.5; }
+    .killband { fill: #1a1f71; stroke: #1a1f71; stroke-width: 1.5; }
+    .killband-text { fill: #ffffff; font-family: sans-serif; font-size: 14px; font-weight: bold; }
+    .band { fill: #e8efff; stroke: #0050d7; stroke-width: 1; }
+    .band-text { fill: #1a1f71; font-family: sans-serif; font-size: 13px; font-weight: bold; }
+    .heading { fill: #1a1f71; font-family: sans-serif; font-size: 20px; font-weight: bold; }
+    .level { fill: #e8efff; stroke: #0050d7; stroke-width: 2; }
+    .level-num { fill: #1a1f71; font-family: sans-serif; font-size: 18px; font-weight: bold; }
+    .level-text { fill: #1c2132; font-family: sans-serif; font-size: 13px; }
+    .gate { fill: #ffffff; stroke: #0050d7; stroke-width: 2.5; }
+    .gate-text { fill: #0050d7; font-family: sans-serif; font-size: 13px; font-weight: bold; }
+    .hitl { fill: #1a1f71; stroke: #1a1f71; stroke-width: 2; }
+    .hitl-text { fill: #ffffff; font-family: sans-serif; font-size: 15px; font-weight: bold; }
+    .flow { fill: none; stroke: #1a1f71; stroke-width: 2.5; }
+    .gate-flow { fill: none; stroke: #0050d7; stroke-width: 2; stroke-dasharray: 5 4; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a1f71" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0050d7" />
+    </marker>
+  </defs>
+
+  <!-- Heading -->
+  <text class="heading" x="450" y="34" text-anchor="middle">Controlling an AI agent</text>
+
+  <!-- Guardrail layers (concentric). Kill switch is the navy outer boundary. -->
+  <!-- Kill switch band (outermost, navy) -->
+  <rect class="killband" x="20" y="48" width="860" height="412" rx="16" ry="16" />
+  <text class="killband-text" x="36" y="74">Kill switch</text>
+
+  <!-- Observability band -->
+  <rect class="band" x="44" y="88" width="812" height="348" rx="13" ry="13" />
+  <text class="band-text" x="58" y="108">Observability</text>
+
+  <!-- Limits / Timeouts band -->
+  <rect class="band" x="70" y="122" width="760" height="282" rx="11" ry="11" />
+  <text class="band-text" x="84" y="142">Limits / Timeouts</text>
+
+  <!-- Validation band -->
+  <rect class="band" x="96" y="156" width="708" height="214" rx="9" ry="9" />
+  <text class="band-text" x="110" y="176">Validation</text>
+
+  <!-- Permissions band (innermost guardrail) -->
+  <rect class="band" x="122" y="190" width="656" height="146" rx="7" ry="7" />
+  <text class="band-text" x="136" y="210">Permissions</text>
+
+  <!-- Inner working area frame -->
+  <rect class="frame" x="140" y="218" width="620" height="100" rx="6" ry="6" />
+
+  <!-- Human-in-the-loop node, above the gates -->
+  <rect class="hitl" x="360" y="92" width="180" height="48" rx="10" ry="10" />
+  <text class="hitl-text" x="450" y="113" text-anchor="middle">Human-in-the-loop</text>
+  <text class="hitl-text" x="450" y="131" text-anchor="middle">Human review</text>
+
+  <!-- Five rising autonomy-level boxes, left to right -->
+  <!-- 1 Suggest -->
+  <rect class="level" x="150" y="290" width="104" height="52" rx="8" ry="8" />
+  <text class="level-num" x="202" y="312" text-anchor="middle">1</text>
+  <text class="level-text" x="202" y="332" text-anchor="middle">Suggest</text>
+
+  <!-- 2 Confirm each step -->
+  <rect class="level" x="270" y="272" width="104" height="52" rx="8" ry="8" />
+  <text class="level-num" x="322" y="294" text-anchor="middle">2</text>
+  <text class="level-text" x="322" y="314" text-anchor="middle">Confirm each step</text>
+
+  <!-- 3 Act with checkpoints -->
+  <rect class="level" x="398" y="254" width="104" height="52" rx="8" ry="8" />
+  <text class="level-num" x="450" y="276" text-anchor="middle">3</text>
+  <text class="level-text" x="450" y="296" text-anchor="middle">Act with checkpoints</text>
+
+  <!-- 4 Act and report -->
+  <rect class="level" x="526" y="236" width="104" height="52" rx="8" ry="8" />
+  <text class="level-num" x="578" y="258" text-anchor="middle">4</text>
+  <text class="level-text" x="578" y="278" text-anchor="middle">Act and report</text>
+
+  <!-- 5 Fully autonomous -->
+  <rect class="level" x="646" y="218" width="104" height="52" rx="8" ry="8" />
+  <text class="level-num" x="698" y="240" text-anchor="middle">5</text>
+  <text class="level-text" x="698" y="260" text-anchor="middle">Fully autonomous</text>
+
+  <!-- Navy arrows showing increasing autonomy, level to level -->
+  <path class="flow" d="M 254 316 L 268 307" marker-end="url(#arrow)" />
+  <path class="flow" d="M 374 298 L 396 289" marker-end="url(#arrow)" />
+  <path class="flow" d="M 502 280 L 524 271" marker-end="url(#arrow)" />
+  <path class="flow" d="M 630 262 L 644 253" marker-end="url(#arrow)" />
+
+  <!-- Approval gate between the higher-autonomy levels -->
+  <rect class="gate" x="398" y="360" width="200" height="40" rx="8" ry="8" />
+  <text class="gate-text" x="498" y="385" text-anchor="middle">Approval gate</text>
+
+  <!-- HITL feeds down into the approval gate -->
+  <path class="gate-flow" d="M 450 140 L 450 360" marker-end="url(#arrow-blue)" />
+  <path class="gate-flow" d="M 498 140 L 498 360" marker-end="url(#arrow-blue)" />
+
+  <!-- Gate guards the higher-autonomy levels (3, 4, 5) -->
+  <path class="gate-flow" d="M 498 360 L 450 306" marker-end="url(#arrow-blue)" />
+  <path class="gate-flow" d="M 540 360 L 578 288" marker-end="url(#arrow-blue)" />
+  <path class="gate-flow" d="M 580 360 L 698 270" marker-end="url(#arrow-blue)" />
+</svg>

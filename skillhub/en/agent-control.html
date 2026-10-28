@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controlling AI Agents - Agentic AI OPCP Labs</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <a href="." class="logo" aria-label="Agentic AI OPCP Labs Home">
+            <span>Agentic AI OPCP Labs</span>
+        </a>
+
+        <div class="header-actions">
+            <div class="progress-bar-container" aria-label="Overall progress">
+                <span class="progress-label">Progress:</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-percent">0%</span>
+            </div>
+
+            <div class="locale-switcher" role="navigation" aria-label="Language selector">
+                <button class="active" data-locale="en" aria-label="English">EN</button>
+                <button data-locale="fr" aria-label="Français">FR</button>
+            </div>
+
+            <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
+        <div class="sidebar-section" data-track="morning">
+            <h2 class="sidebar-section-title">Morning — Introduction &amp; Fundamentals</h2>
+            <ul class="sidebar-nav" id="nav-morning">
+                <li><a href="assistant-vs-agent.html">From Assistant to Agent</a></li>
+                <li><a href="agent-anatomy-7-components.html">Anatomy: Seven Core Components</a></li>
+                <li><a href="agentic-loop-and-variants.html">The Agentic Loop &amp; Variants</a></li>
+                <li><a href="stopping-criteria.html">Stopping Criteria</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="afternoon">
+            <h2 class="sidebar-section-title">Design &amp; Governance</h2>
+            <ul class="sidebar-nav" id="nav-afternoon">
+                <li><a href="multi-agent-patterns.html">Multi-Agent Patterns</a></li>
+                <li><a href="when-not-multi-agent.html">When Not to Go Multi-Agent</a></li>
+                <li><a href="guardrails-5-layers.html">Guardrails: Five Layers</a></li>
+                <li><a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop &amp; OVHcloud AI Policy</a></li>
+                <li><a href="threat-modeling-workshop.html">Workshop: Threat Modeling</a></li>
+                <li><a href="agent-design-capstone.html">Capstone: Agent Design</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="sandbox">
+            <h2 class="sidebar-section-title">Sandbox — opcp-explorer Platform</h2>
+            <ul class="sidebar-nav" id="nav-sandbox">
+                <li><a href="install-bare-metal.html">Installation on Bare-Metal Ubuntu with Agentic AI</a></li>
+                <li><a href="starting-applications.html">Starting Applications with Agentic AI</a></li>
+                <li><a href="stopping-applications.html">Stopping Applications with Agentic AI</a></li>
+                <li><a href="making-backups.html">Making Backups with Agentic AI</a></li>
+                <li><a href="modifying-applications.html">Modifying Applications with Agentic AI</a></li>
+                <li><a href="adding-applications.html">Adding New Applications with Agentic AI (Annex – optional)</a></li>
+                <li><a href="agent-control.html" class="active">Controlling AI Agents</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content" role="main">
+        <div class="lesson-content">
+            <div class="lesson-header">
+                <h1>Controlling AI Agents</h1>
+                <div class="lesson-meta">
+                    <span class="difficulty-badge difficulty-badge--advanced">Sandbox · Governance</span>
+                    <span class="duration">⏱ ~35 min</span>
+                </div>
+            </div>
+            <div class="lesson-body">
+                <p>Granting an agent autonomy is a governance decision, not a technical one. This lesson shows how to keep an agent useful without letting it act beyond its mandate. You will place operations on the <strong>autonomy spectrum</strong>, decide where <strong>approval gates</strong> belong, name the <strong>guardrail layers</strong> that wrap every action, and judge what must stay <strong>human-in-the-loop</strong>. The examples come from the <strong>opcp-explorer</strong> platform, whose two virtual agents — a Developer agent that modifies code and an Operations agent that runs START, STOP, RESTART, PS, and LOGS — act on real deployments.</p>
+
+                <h2>Learning Objectives</h2>
+                <ul>
+                    <li>Place an agent operation on the autonomy spectrum, from supervised to fully autonomous.</li>
+                    <li>Decide where an approval gate belongs before an action is allowed to run.</li>
+                    <li>Name the five guardrail layers and what each one constrains.</li>
+                    <li>Judge which actions must escalate to a human reviewer.</li>
+                </ul>
+
+                <h2>The Autonomy Spectrum</h2>
+                <p>Autonomy is a spectrum, not a switch. Each step to the right grants the agent more freedom and removes a point of human control, so each step must be earned by lower risk or stronger guardrails. On opcp-explorer the same operation can sit at different points depending on its blast radius.</p>
+                <ol>
+                    <li><strong>Suggest</strong> — the agent proposes; a human performs every action.</li>
+                    <li><strong>Confirm each step</strong> — the agent acts, but a human approves before each action. Billing-affecting START/STOP fits here.</li>
+                    <li><strong>Act with checkpoints</strong> — the agent runs several steps, pausing at defined checkpoints. Deploying to staging automatically but pausing before production promotion.</li>
+                    <li><strong>Act and report</strong> — the agent completes the task and reports afterward; a human can intervene or revert. Restarting a crashed application and logging what it did.</li>
+                    <li><strong>Fully autonomous</strong> — the agent acts without review inside its granted scope.</li>
+                </ol>
+
+                <figure class="lesson-figure">
+                    <img src="../assets/img/agent-control.svg"
+                         alt="Control model for an AI agent: five autonomy levels rise left to right from Suggest to Fully autonomous, each wrapped in concentric guardrail layers — Permissions, Validation, Limits and Timeouts, Observability — with a navy Kill switch band as the hard outer boundary. An approval gate sits between the higher-autonomy levels, and a Human-in-the-loop review node above the gates feeds arrows down into them.">
+                    <figcaption>Controlling an agent: rising autonomy levels pass through an approval gate, operate inside five guardrail layers, and escalate to a human-in-the-loop reviewer, with the kill switch as the hard outer boundary.</figcaption>
+                </figure>
+
+                <div class="alert alert-info">
+                    <strong>Rule of thumb:</strong> grant the least autonomy that still lets the agent accomplish the task. Every step up the spectrum must be paid for with a tighter guardrail or a human sign-off.
+                </div>
+
+                <h2>Approval Gates</h2>
+                <p>An approval gate is a point where an action pauses until a human signs off before it runs. Gates are where you convert "the agent could do this" into "a person decided it should." Place a gate wherever an action is hard to reverse, costs money, or widens access.</p>
+                <ul>
+                    <li><strong>Admin-only destructive actions</strong> — deleting an application or destroying GPU (MIG) instances. On opcp-explorer these endpoints enforce admin authentication, so the gate is built into the access control.</li>
+                    <li><strong>Billing-affecting operations</strong> — START and STOP record billing activity and change what the account pays, so they belong behind a confirm-each-step gate.</li>
+                    <li><strong>Production promotion</strong> — the agent may deploy freely to staging but must stop at a checkpoint before anything reaches production.</li>
+                </ul>
+                <div class="alert alert-info">
+                    <strong>Design the gate, not just the prompt:</strong> a gate that merely asks "are you sure?" trains people to click yes. A good gate shows exactly what will change, who is affected, and how to undo it.
+                </div>
+
+                <h2>Guardrail Layers</h2>
+                <p>Approval gates stop individual actions; guardrails constrain <em>every</em> action the agent takes, whether or not a human is watching. Picture them as concentric layers wrapping the agent's working area — an action has to pass through all of them. These map directly onto opcp-explorer's security features.</p>
+                <table>
+                    <thead>
+                        <tr><th>Layer</th><th>What it constrains</th><th>On opcp-explorer</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Permissions</td><td>Which actions the agent is even allowed to attempt</td><td>User isolation with separate deployment directories; admin-only destructive endpoints</td></tr>
+                        <tr><td>Validation</td><td>The shape and safety of inputs before they are acted on</td><td>Input validation, SQL-injection prevention, path-traversal protection</td></tr>
+                        <tr><td>Limits / Timeouts</td><td>How long and how far an action can run</td><td>30-minute operation timeout with process-group termination; read-only, no-network, dropped-capability serverless jobs</td></tr>
+                        <tr><td>Observability</td><td>That every action is visible and auditable afterward</td><td>Prompt logs (dev_prompt_generated.txt, ope_prompts_generated.log) and billing_activities.log</td></tr>
+                        <tr><td>Kill switch</td><td>The ability to stop everything at once</td><td>Process-group termination and graceful degradation keep critical features running when a component fails</td></tr>
+                    </tbody>
+                </table>
+                <p>The kill switch is the hard outer boundary: whatever autonomy level an agent runs at, a human can always cut power. Graceful degradation reinforces this — if an optional component such as the orchestrator or replication fails to start, the platform keeps user management, deployments, and billing working rather than taking everything down.</p>
+                <div class="alert alert-info">
+                    <strong>Cross-link:</strong> these five layers are the subject of the afternoon lesson <a href="guardrails-5-layers.html">Guardrails: Five Layers</a>, which goes deeper on each one.
+                </div>
+
+                <h2>Human-in-the-Loop</h2>
+                <p>Human-in-the-loop (HITL) is the policy that some actions must not proceed without a person in the decision. It is the escalation target behind every approval gate: when a gate fires, a human reviews and decides. Reserve mandatory HITL for actions that are irreversible, security-sensitive, or costly.</p>
+                <ul>
+                    <li><strong>Mandatory review</strong> — destructive or admin-only operations never run unattended, regardless of the agent's autonomy level.</li>
+                    <li><strong>Graceful degradation as a safety posture</strong> — when the agent is unsure or a component is unavailable, falling back to a safe reduced mode (or a Q&amp;A answer for an invalid action) is safer than guessing.</li>
+                    <li><strong>Policy stance</strong> — the OVHcloud AI approach keeps a human accountable for high-impact decisions rather than delegating them wholesale to the agent.</li>
+                </ul>
+                <div class="alert alert-info">
+                    <strong>Cross-link:</strong> <a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop &amp; OVHcloud AI Policy</a> covers the policy and review workflow in detail.
+                </div>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>Autonomy is a spectrum; grant the least that gets the job done and justify every step up.</li>
+                    <li>Approval gates convert "the agent could" into "a person decided" — place them where actions are irreversible, costly, or widen access.</li>
+                    <li>Five guardrail layers — permissions, validation, limits/timeouts, observability, and the kill switch — constrain every action regardless of autonomy level.</li>
+                    <li>Keep a human in the loop for irreversible, admin-only, and security-sensitive actions, and treat graceful degradation as a safety default.</li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <strong>Next:</strong> revisit <a href="guardrails-5-layers.html">Guardrails: Five Layers</a> to study each guardrail in depth, or <a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop &amp; OVHcloud AI Policy</a> for the review workflow.
+                </div>
+            </div>
+
+            <button class="btn btn-success btn-mark-complete" data-lesson-id="agent-control">
+                Mark as Complete
+            </button>
+        </div>
+    </main>
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" defer src="../assets/js/diagrams.js"></script>
+</body>
+</html>

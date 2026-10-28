@@ -59,8 +59,8 @@ describe('Navigation Module', () => {
       expect(navLists[0].querySelectorAll('li').length).toBe(4);
       // afternoon: 6 lessons
       expect(navLists[1].querySelectorAll('li').length).toBe(6);
-      // sandbox: 6 lessons
-      expect(navLists[2].querySelectorAll('li').length).toBe(6);
+      // sandbox: 7 lessons
+      expect(navLists[2].querySelectorAll('li').length).toBe(7);
     });
 
     it('marks completed lessons with "completed" CSS class', () => {

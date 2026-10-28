@@ -129,3 +129,33 @@ export function switchLocale(target) {
     window.location.href = destination;
   }
 }
+/**
+ * Wire the header locale switcher.
+ *
+ * Queries every `.locale-switcher button[data-locale]` element and attaches a
+ * `click` listener that reads the button's `data-locale` value and delegates to
+ * {@link switchLocale}, which owns all normalization, persistence, and
+ * navigation. When `document` is undefined or no switcher buttons are present,
+ * this returns without side effects so pages and tests that omit the switcher
+ * initialize unchanged.
+ *
+ * @returns {void}
+ */
+export function initLocaleSwitcher() {
+  if (typeof document === 'undefined') {
+    return;
+  }
+
+  const buttons = document.querySelectorAll('.locale-switcher button[data-locale]');
+  if (!buttons || buttons.length === 0) {
+    return;
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const locale =
+        (button.dataset && button.dataset.locale) || button.getAttribute('data-locale');
+      switchLocale(locale);
+    });
+  });
+}

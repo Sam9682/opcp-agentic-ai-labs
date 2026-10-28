@@ -19,6 +19,7 @@ import { getCompletionPercentage } from './progress.js';
 import { lessons } from './lessons.js';
 import { initNavigation } from './navigation.js';
 import { initGuardrailChecklist } from './self-assessment.js';
+import { initLocaleSwitcher } from './i18n.js';
 
 /**
  * Selectors for the two progress-bar families. The test DOM uses
@@ -47,6 +48,7 @@ export function initApp() {
   runStep(updateProgressBar);
   runStep(wireNavigation);
   runStep(wireSelfAssessment);
+  runStep(wireLocaleSwitcher);
 }
 
 /**
@@ -140,4 +142,20 @@ function wireSelfAssessment() {
       : undefined;
 
   initGuardrailChecklist({ container, resultEl, completeBtn, locale });
+}
+
+/**
+ * Wire the header language toggle so clicking an EN/FR
+ * `.locale-switcher button[data-locale]` switches locale.
+ *
+ * Delegates to {@link initLocaleSwitcher}, which itself no-ops when no switcher
+ * buttons are present, so pages without a `.locale-switcher` initialize
+ * unchanged (Requirement 3.3). The `document` guard keeps bootstrap safe in
+ * non-DOM contexts, mirroring the other wiring steps.
+ *
+ * @returns {void}
+ */
+function wireLocaleSwitcher() {
+  if (typeof document === 'undefined') return;
+  initLocaleSwitcher();
 }

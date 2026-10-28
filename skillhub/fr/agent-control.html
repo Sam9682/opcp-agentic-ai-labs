@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrôle des agents IA - Agentic AI OPCP Labs</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <a href="." class="logo" aria-label="Accueil Agentic AI OPCP Labs">
+            <span>Agentic AI OPCP Labs</span>
+        </a>
+
+        <div class="header-actions">
+            <div class="progress-bar-container" aria-label="Progression globale">
+                <span class="progress-label">Progression :</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-percent">0%</span>
+            </div>
+
+            <div class="locale-switcher" role="navigation" aria-label="Sélecteur de langue">
+                <button data-locale="en" aria-label="English">EN</button>
+                <button class="active" data-locale="fr" aria-label="Français">FR</button>
+            </div>
+
+            <button class="hamburger-btn" aria-label="Basculer le menu de navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" role="navigation" aria-label="Navigation des leçons">
+        <div class="sidebar-section" data-track="morning">
+            <h2 class="sidebar-section-title">Matin — Introduction et fondamentaux</h2>
+            <ul class="sidebar-nav" id="nav-morning">
+                <li><a href="assistant-vs-agent.html">De l'assistant à l'agent</a></li>
+                <li><a href="agent-anatomy-7-components.html">Anatomie : les sept composants</a></li>
+                <li><a href="agentic-loop-and-variants.html">La boucle agentique et ses variantes</a></li>
+                <li><a href="stopping-criteria.html">Critères d'arrêt</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="afternoon">
+            <h2 class="sidebar-section-title">Conception et gouvernance</h2>
+            <ul class="sidebar-nav" id="nav-afternoon">
+                <li><a href="multi-agent-patterns.html">Patrons multi-agents</a></li>
+                <li><a href="when-not-multi-agent.html">Quand éviter le multi-agents</a></li>
+                <li><a href="guardrails-5-layers.html">Garde-fous : cinq couches</a></li>
+                <li><a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop et politique IA OVHcloud</a></li>
+                <li><a href="threat-modeling-workshop.html">Atelier : modélisation des menaces</a></li>
+                <li><a href="agent-design-capstone.html">Projet final : conception d'agent</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="sandbox">
+            <h2 class="sidebar-section-title">Bac à sable — plateforme opcp-explorer</h2>
+            <ul class="sidebar-nav" id="nav-sandbox">
+                <li><a href="install-bare-metal.html">Installation sur Ubuntu Bare-Metal avec l'IA agentique</a></li>
+                <li><a href="starting-applications.html">Démarrage des applications avec l'IA agentique</a></li>
+                <li><a href="stopping-applications.html">Arrêt des applications avec l'IA agentique</a></li>
+                <li><a href="making-backups.html">Sauvegardes avec l'IA agentique</a></li>
+                <li><a href="modifying-applications.html">Modification d'applications avec l'IA agentique</a></li>
+                <li><a href="adding-applications.html">Ajout de nouvelles applications avec l'IA agentique (Annexe – facultatif)</a></li>
+                <li><a href="agent-control.html" class="active">Contrôle des agents IA</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content" role="main">
+        <div class="lesson-content">
+            <div class="lesson-header">
+                <h1>Contrôle des agents IA</h1>
+                <div class="lesson-meta">
+                    <span class="difficulty-badge difficulty-badge--advanced">Bac à sable · Gouvernance</span>
+                    <span class="duration">⏱ ~35 min</span>
+                </div>
+            </div>
+            <div class="lesson-body">
+                <p>Accorder de l'autonomie à un agent IA n'est pas un interrupteur binaire mais un choix gradué, assorti de garde-fous. Cette leçon rassemble le <strong>spectre d'autonomie</strong>, les <strong>points d'approbation</strong>, les <strong>couches de garde-fous</strong> et le <strong>Human-in-the-Loop</strong> en un seul modèle de contrôle. Tout au long, la plateforme <strong>opcp-explorer</strong> sert d'environnement sur lequel un agent agit — déployer, démarrer, sauvegarder et gérer des applications via ses interfaces API, CLI et MCP.</p>
+
+                <h2>Objectifs pédagogiques</h2>
+                <ul>
+                    <li>Situer une tâche sur le spectre d'autonomie et choisir le niveau adapté à son risque</li>
+                    <li>Placer des points d'approbation aux transitions à fort enjeu</li>
+                    <li>Combiner les cinq couches de garde-fous pour contenir le périmètre d'action d'un agent</li>
+                    <li>Concevoir une boucle Human-in-the-Loop effective, avec un coupe-circuit fiable</li>
+                </ul>
+
+                <h2>Le spectre d'autonomie</h2>
+                <p>L'autonomie s'étend sur un spectre, du entièrement supervisé au entièrement autonome. Chaque palier accorde plus de liberté au système et supprime un point de contrôle humain ; chaque palier doit donc se justifier par un risque moindre ou des garde-fous plus solides.</p>
+                <ol>
+                    <li><strong>Suggérer</strong> — le système propose ; un humain effectue chaque action.</li>
+                    <li><strong>Confirmer chaque étape</strong> — le système agit, mais un humain approuve avant chaque action.</li>
+                    <li><strong>Agir avec points de contrôle</strong> — le système enchaîne plusieurs étapes, en s'arrêtant à des points définis pour approbation.</li>
+                    <li><strong>Agir et rendre compte</strong> — le système accomplit la tâche de façon autonome puis rend compte ; un humain peut intervenir ou revenir en arrière.</li>
+                    <li><strong>Entièrement autonome</strong> — le système agit sans revue humaine dans le périmètre accordé.</li>
+                </ol>
+
+                <figure class="lesson-figure">
+                    <img src="../assets/img/agent-control.svg" alt="Diagramme de contrôle d'un agent IA : cinq niveaux d'autonomie croissante alignés de gauche à droite, un point d'approbation entre les niveaux élevés, cinq couches de garde-fous imbriquées (Permissions, Validation, Limites et délais, Observabilité, et une bande Coupe-circuit en bleu marine comme frontière extérieure), et un nœud Human-in-the-Loop au-dessus des points d'approbation relié par des flèches descendantes.">
+                    <figcaption>Un modèle de contrôle unifié : les niveaux d'autonomie montent vers la droite, les points d'approbation jalonnent les transitions à fort enjeu, les couches de garde-fous enveloppent la zone d'action et la revue humaine alimente les points d'approbation. Le coupe-circuit forme la limite extérieure.</figcaption>
+                </figure>
+
+                <div class="alert alert-info">
+                    <strong>Règle empirique :</strong> accordez le moins d'autonomie possible permettant encore à l'agent d'accomplir la tâche. Une autonomie plus élevée exige des garde-fous plus solides.
+                </div>
+
+                <h2>Points d'approbation</h2>
+                <p>Un <strong>point d'approbation</strong> est une pause explicite dans la boucle de l'agent, où une action ne se poursuit que si un humain (ou une politique automatisée) la valide. Les points d'approbation transforment une autonomie « agir avec points de contrôle » en contrôle concret : l'agent avance librement sur les étapes à faible risque et s'arrête aux transitions à fort enjeu.</p>
+                <ul>
+                    <li><strong>Où les placer</strong> — aux frontières irréversibles ou coûteuses : mise en production, suppression de données, dépense, modification d'accès.</li>
+                    <li><strong>Ce qu'ils présentent</strong> — l'action proposée, sa justification et son impact estimé, pour qu'un relecteur décide vite et en connaissance de cause.</li>
+                    <li><strong>Comment ils échouent proprement</strong> — un refus ou un délai dépassé doit arrêter l'agent sans laisser d'état partiel dangereux.</li>
+                </ul>
+                <p>Sur opcp-explorer, un agent peut déployer en préproduction automatiquement, puis s'arrêter à un point d'approbation avant la mise en production.</p>
+
+                <h2>Les couches de garde-fous</h2>
+                <p>Les garde-fous contiennent ce qu'un agent peut faire, indépendamment de son niveau d'autonomie. Ils se superposent en cinq couches, de la plus interne à la frontière extérieure :</p>
+                <ol>
+                    <li><strong>Permissions</strong> — l'agent n'accède qu'aux ressources et aux outils strictement nécessaires (moindre privilège).</li>
+                    <li><strong>Validation</strong> — les entrées et les actions proposées sont vérifiées avant exécution (schémas, listes d'autorisation, contrôles de politique).</li>
+                    <li><strong>Limites et délais</strong> — plafonds sur le nombre d'étapes, le budget, le débit et la durée, pour borner les boucles et les dérives.</li>
+                    <li><strong>Observabilité</strong> — journalisation, traçage et alertes rendent le comportement de l'agent visible et auditable.</li>
+                    <li><strong>Coupe-circuit</strong> — un arrêt d'urgence fiable qui stoppe immédiatement l'agent ; c'est la frontière extérieure dure.</li>
+                </ol>
+
+                <div class="alert alert-info">
+                    <strong>À retenir :</strong> les couches sont cumulatives. Une permission mal réglée ne doit pas suffire à causer un dommage si la validation, les limites et le coupe-circuit tiennent encore.
+                </div>
+
+                <h2>Human-in-the-Loop</h2>
+                <p>Le <strong>Human-in-the-Loop</strong> (HITL) maintient une personne dans la boucle de décision aux moments qui comptent. Ce n'est pas une surveillance permanente : c'est une revue ciblée là où le jugement humain réduit le plus le risque. Une boucle HITL efficace relie la revue humaine aux points d'approbation et au coupe-circuit.</p>
+                <ul>
+                    <li><strong>Revue aux points d'approbation</strong> — un humain valide, refuse ou modifie l'action proposée avant qu'elle ne s'exécute.</li>
+                    <li><strong>Intervention en cours</strong> — un opérateur peut mettre en pause, rediriger ou arrêter un agent en cours d'exécution.</li>
+                    <li><strong>Reprise après incident</strong> — après un arrêt, un humain analyse les journaux, corrige et réautorise si besoin.</li>
+                </ul>
+                <p>Le HITL n'est effectif que si le coupe-circuit l'est aussi : la personne doit pouvoir réellement arrêter l'agent, pas seulement protester.</p>
+
+                <h2>Points clés à retenir</h2>
+                <ul>
+                    <li>Le contrôle d'un agent combine quatre leviers : niveau d'autonomie, points d'approbation, garde-fous et Human-in-the-Loop.</li>
+                    <li>Choisissez la plus faible autonomie qui fait le travail, puis ajoutez des garde-fous à hauteur du risque.</li>
+                    <li>Placez les points d'approbation aux frontières irréversibles ou coûteuses.</li>
+                    <li>Les cinq couches de garde-fous sont cumulatives, le coupe-circuit étant la limite extérieure dure.</li>
+                    <li>Le Human-in-the-Loop n'a de valeur que si l'humain peut réellement arrêter l'agent.</li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <strong>Suite :</strong> appliquez ce modèle sur le bac à sable — <a href="install-bare-metal.html">Installation sur Ubuntu Bare-Metal avec l'IA agentique</a> — pour voir l'autonomie, les approbations et les garde-fous à l'œuvre sur opcp-explorer.
+                </div>
+            </div>
+
+            <button class="btn btn-success btn-mark-complete" data-lesson-id="agent-control">
+                Marquer comme terminé
+            </button>
+        </div>
+    </main>
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" defer src="../assets/js/diagrams.js"></script>
+</body>
+</html>

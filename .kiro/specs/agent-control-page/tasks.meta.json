@@ -1,0 +1,271 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Author the agent-control SVG diagram": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172140592
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172148896
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172590902
+      }
+    ],
+    "2.1 Append the Catalog_Entry to `skillhub/js/lessons.js`": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172140726
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172150804
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172592613
+      }
+    ],
+    "2.2 Extend `SANDBOX_SLUGS` in `skillhub/tests/lessons.test.js`": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172140848
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172151771
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172593816
+      }
+    ],
+    "3. Checkpoint — catalog and tests consistent": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172140964
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173493451
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173497956
+      }
+    ],
+    "4. Create the English Lesson_Page": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172141083
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172602039
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173475316
+      }
+    ],
+    "5. Create the French Lesson_Page": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172141180
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172602869
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173476455
+      }
+    ],
+    "6. Checkpoint — new pages render and toggle": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172141302
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173498831
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173501808
+      }
+    ],
+    "7.1 Append the sandbox link to the three-track EN lesson pages": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172141447
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173513901
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173607719
+      }
+    ],
+    "7.2 Update `en/index.html` sidebar and sandbox card grid": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172141567
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173515202
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173604844
+      }
+    ],
+    "8.1 Append the sandbox link to the three-track FR lesson pages": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172141688
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173516664
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173610028
+      }
+    ],
+    "8.2 Update `fr/index.html` sidebar and sandbox card grid": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172141816
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173518044
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173609092
+      }
+    ],
+    "9.1 Append the sandbox link to the difficulty-grouped EN sandbox pages": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172142101
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173519322
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173606288
+      }
+    ],
+    "9.2 Append the sandbox link to the difficulty-grouped FR sandbox pages": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172142262
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173613944
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173677122
+      }
+    ],
+    "10. Final checkpoint — run the full test suite": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172142469
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173680824
+      },
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173735474
+      }
+    ],
+    "2. Register the agent-control Catalog_Entry and update tests": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793172594348
+      }
+    ],
+    "7. Wire the agent-control link into three-track EN sidebars and index": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173607891
+      }
+    ],
+    "8. Wire the agent-control link into three-track FR sidebars and index": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173610152
+      }
+    ],
+    "9. Wire the agent-control link into difficulty-grouped sandbox pages": [
+      {
+        "executionId": "5f63f3f2-753a-4647-bf3d-69b4c6f01b85",
+        "chatSessionId": "sess_05a442fd-2c3a-49ec-9548-22beb4afe44e",
+        "timestamp": 1793173677250
+      }
+    ]
+  }
+}
