@@ -158,8 +158,7 @@
                     <p>Les exemples de gouvernance de cette page s'appuient sur le skill agent <code>AGENTS_CONTROL</code>. Le prompt ci-dessous est la configuration exacte que l'agent suit pour découvrir, classer, inspecter et gérer (arrêter/redémarrer/démarrer) les conteneurs d'agents exécutés sur les serveurs gérés de la plateforme.</p>
                     <details class="skill-prompt">
                         <summary>Afficher le prompt du skill AGENTS_CONTROL (SKILL.md)</summary>
-                        <pre><code>
----
+                        <pre><code>---
 name: AGENTS_CONTROL
 description: Control the AI agents run by the agentic-ai-plateform control plane — discover, classify, inspect, and manage (stop/restart) the agent containers running across the platform's managed servers.
 ---
@@ -353,8 +352,7 @@ curl -s -b cookies.txt "${PLATFORM_URL}/api/agent-control/containers?live=1" \
                     </div>
                     <details class="skill-prompt">
                         <summary>Afficher le prompt du skill STATUS_APP (SKILL.md)</summary>
-                        <pre><code>
----
+                        <pre><code>---
 name: START_APP
 description: START a docker container application that is hosted by the control plane agentic-ai-plateform
 ---

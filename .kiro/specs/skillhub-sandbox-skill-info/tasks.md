@@ -36,21 +36,21 @@ Each page-edit task follows the same procedure: read the mapped `SKILL.md` sourc
     - Read `shai/skills/STOP_APP/SKILL.md`, apply the escape procedure, insert one `START_APP`-shaped section for `STOP_APP` using the same insertion point and locale rules
     - _Requirements: 1.2, 2.1, 2.2, 2.3, 3.4, 4.1, 4.2, 4.4, 5.1, 5.2, 5.3, 6.1, 6.2, 6.3, 6.4, 7.1, 7.3, 7.4_
 
-- [~] 3. Checkpoint - Verify single-skill pages
+- [x] 3. Checkpoint - Verify single-skill pages
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 4. Edit multi-skill pages (EN + FR)
+- [x] 4. Edit multi-skill pages (EN + FR)
   - [x] 4.1 Add the `making-backups.html` Skill_Sections (en + fr)
     - Read `shai/skills/BACKUP_DATABASE/SKILL.md`, `RESTORE_DATABASE/SKILL.md`, `CLEAN_DATABASE/SKILL.md`; apply the escape procedure to each
     - Emit three sibling `<section class="skill-section">` blocks in map order (`BACKUP_DATABASE`, `RESTORE_DATABASE`, `CLEAN_DATABASE`), each with intro `<p>`, runtime note, and collapsed `<details>`; same insertion point and locale rules in `en/` and `fr/`
     - _Requirements: 1.3, 1.8, 2.1, 2.2, 2.3, 3.4, 4.1, 4.2, 4.4, 5.1, 5.2, 5.3, 6.1, 6.2, 6.3, 6.4, 7.1, 7.3, 7.4_
 
-  - [~] 4.2 Add the `modifying-applications.html` Skill_Sections (en + fr)
+  - [x] 4.2 Add the `modifying-applications.html` Skill_Sections (en + fr)
     - Read `shai/skills/MODIFY_CODE/SKILL.md`, `VERIFY_APP_COMPLIANCE/SKILL.md`, `MAKE_APP_COMPLIANT/SKILL.md`; apply the escape procedure
     - Emit three sibling sections in map order (`MODIFY_CODE`, `VERIFY_APP_COMPLIANCE`, `MAKE_APP_COMPLIANT`); the `MODIFY_CODE` embedded prompt must be byte-identical to its appearance on `adding-applications.html` and across both locales
     - _Requirements: 1.4, 1.8, 2.1, 2.2, 2.3, 3.4, 4.1, 4.2, 4.4, 5.1, 5.2, 5.3, 6.1, 6.2, 6.3, 6.4, 6.5, 7.1, 7.3, 7.4_
 
-  - [~] 4.3 Add the `adding-applications.html` Skill_Sections (en + fr)
+  - [x] 4.3 Add the `adding-applications.html` Skill_Sections (en + fr)
     - Read `shai/skills/SPECIFY_FEATURE/SKILL.md` and `MODIFY_CODE/SKILL.md`; apply the escape procedure
     - Emit two sibling sections in map order (`SPECIFY_FEATURE`, `MODIFY_CODE`); reuse the same escaped `MODIFY_CODE` block used on `modifying-applications.html` so it is byte-identical; same insertion point and locale rules
     - _Requirements: 1.5, 1.8, 2.1, 2.2, 2.3, 3.4, 4.1, 4.2, 4.4, 5.1, 5.2, 5.3, 6.1, 6.2, 6.3, 6.4, 6.5, 7.1, 7.3, 7.4_
@@ -64,11 +64,11 @@ Each page-edit task follows the same procedure: read the mapped `SKILL.md` sourc
   - Verify `skillhub/en/install-bare-metal.html` and `skillhub/fr/install-bare-metal.html` contain zero `skill-section` blocks and are otherwise unchanged by this feature
   - _Requirements: 1.7_
 
-- [~] 6. Checkpoint - Verify all pages authored
+- [x] 6. Checkpoint - Verify all pages authored
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 7. Author the structure, mapping, and parity tests
-  - [~] 7.1 Write `skillhub/tests/skill-sections.test.js`
+- [x] 7. Author the structure, mapping, and parity tests
+  - [x] 7.1 Write `skillhub/tests/skill-sections.test.js`
     - Using Vitest + jsdom, parse every page in `PAGE_SKILL_MAP` under both locales and assert structure, mapping, collapsed-by-default, summary labels, runtime notes, and parity
     - Cover: per-page section count including zero for `install-bare-metal.html`; section structure (one intro `<p>` before a single `<details>` containing `<summary>` then `<pre><code>`); no `open` attribute; `<summary>` contains the skill id; runtime note present when placeholders exist; EN/FR ordered skill-id parity; FR embed equals English source; per-skill byte-identical embed across pages/locales; heading-outline preservation; concrete EN/FR wrapper strings
     - Tag each property with `Feature: skillhub-sandbox-skill-info, Property N: ...`
@@ -83,7 +83,7 @@ Each page-edit task follows the same procedure: read the mapped `SKILL.md` sourc
     - **Property 12: Heading structure and outline preservation** — Validates Requirements 7.4
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 2.3, 3.4, 4.1, 4.2, 4.4, 5.2, 6.1, 6.2, 6.3, 6.4, 6.5, 7.1, 7.3, 7.4_
 
-  - [~] 7.2 Write `skillhub/tests/skill-embed.property.test.js`
+  - [x] 7.2 Write `skillhub/tests/skill-embed.property.test.js`
     - Using Vitest, drive embed-fidelity and escaping properties over all mapped (page, locale, skill) tuples, plus randomized synthetic strings for the round-trip
     - Assert verbatim/contiguous containment of `escapeHtml(sourceOf(skill))`; unescape recovers the source byte-for-byte with no raw `<`/`>`/`&` and no double-escaped entity (`&amp;lt;`); every `{{…}}` placeholder preserved verbatim with equal token counts
     - Use a minimum of 100 iterations for the randomized round-trip generator; enumerate the full map × locales for the fidelity/placeholder checks
@@ -93,7 +93,7 @@ Each page-edit task follows the same procedure: read the mapped `SKILL.md` sourc
     - **Property 7: Placeholder preservation** — Validates Requirements 5.1, 5.3
     - _Requirements: 2.1, 2.2, 3.1, 3.2, 3.3, 3.5, 5.1, 5.3_
 
-- [~] 8. Run the full Vitest suite and fix failures
+- [x] 8. Run the full Vitest suite and fix failures
   - Run the complete Vitest suite (`npx vitest --run`) and fix any failures surfaced by the new or existing tests until the suite is green
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 2.1, 2.2, 2.3, 3.1, 3.2, 3.3, 3.4, 3.5, 4.1, 4.2, 4.4, 5.1, 5.2, 5.3, 6.1, 6.2, 6.3, 6.4, 6.5, 7.1, 7.3, 7.4_
 

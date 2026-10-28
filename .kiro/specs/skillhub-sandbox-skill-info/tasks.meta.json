@@ -91,6 +91,11 @@
         "executionId": "d4d0f9ed-d8c8-435b-9241-c6097c6cc9ad",
         "chatSessionId": "sess_ada444a7-b2d6-4072-a5e3-a5115e17a147",
         "timestamp": 1793176807785
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793183432924
       }
     ],
     "4.1 Add the `making-backups.html` Skill_Sections (en + fr)": [
@@ -115,6 +120,16 @@
         "executionId": "d4d0f9ed-d8c8-435b-9241-c6097c6cc9ad",
         "chatSessionId": "sess_ada444a7-b2d6-4072-a5e3-a5115e17a147",
         "timestamp": 1793176808037
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793181446533
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793182664292
       }
     ],
     "4.3 Add the `adding-applications.html` Skill_Sections (en + fr)": [
@@ -122,6 +137,16 @@
         "executionId": "d4d0f9ed-d8c8-435b-9241-c6097c6cc9ad",
         "chatSessionId": "sess_ada444a7-b2d6-4072-a5e3-a5115e17a147",
         "timestamp": 1793176808147
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793182668244
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793182923292
       }
     ],
     "4.4 Add the `agent-control.html` Skill_Sections (en + fr)": [
@@ -163,6 +188,11 @@
         "executionId": "d4d0f9ed-d8c8-435b-9241-c6097c6cc9ad",
         "chatSessionId": "sess_ada444a7-b2d6-4072-a5e3-a5115e17a147",
         "timestamp": 1793176808524
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793183436173
       }
     ],
     "7.1 Write `skillhub/tests/skill-sections.test.js`": [
@@ -170,6 +200,16 @@
         "executionId": "d4d0f9ed-d8c8-435b-9241-c6097c6cc9ad",
         "chatSessionId": "sess_ada444a7-b2d6-4072-a5e3-a5115e17a147",
         "timestamp": 1793176808663
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793182927390
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793183293864
       }
     ],
     "7.2 Write `skillhub/tests/skill-embed.property.test.js`": [
@@ -177,6 +217,16 @@
         "executionId": "d4d0f9ed-d8c8-435b-9241-c6097c6cc9ad",
         "chatSessionId": "sess_ada444a7-b2d6-4072-a5e3-a5115e17a147",
         "timestamp": 1793176808795
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793182928537
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793183294841
       }
     ],
     "8. Run the full Vitest suite and fix failures": [
@@ -184,6 +234,16 @@
         "executionId": "d4d0f9ed-d8c8-435b-9241-c6097c6cc9ad",
         "chatSessionId": "sess_ada444a7-b2d6-4072-a5e3-a5115e17a147",
         "timestamp": 1793176808941
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793183299515
+      },
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793183424597
       }
     ],
     "1. Set up shared test helpers and CSS foundation": [
@@ -198,6 +258,20 @@
         "executionId": "d4d0f9ed-d8c8-435b-9241-c6097c6cc9ad",
         "chatSessionId": "sess_ada444a7-b2d6-4072-a5e3-a5115e17a147",
         "timestamp": 1793177625635
+      }
+    ],
+    "4. Edit multi-skill pages (EN + FR)": [
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793182923444
+      }
+    ],
+    "7. Author the structure, mapping, and parity tests": [
+      {
+        "executionId": "1ac49952-86ba-4caf-928f-4b6e2ce3d6ab",
+        "chatSessionId": "sess_f7e05766-ab14-4905-9e40-d8a9e182b6b6",
+        "timestamp": 1793183294977
       }
     ]
   }
