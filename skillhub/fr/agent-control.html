@@ -152,6 +152,372 @@
                 <div class="alert alert-info">
                     <strong>Suite :</strong> appliquez ce modèle sur le bac à sable — <a href="install-bare-metal.html">Installation sur Ubuntu Bare-Metal avec l'IA agentique</a> — pour voir l'autonomie, les approbations et les garde-fous à l'œuvre sur opcp-explorer.
                 </div>
+
+                <section class="skill-section" data-skill="AGENTS_CONTROL">
+                    <h2>Configuration du skill : AGENTS_CONTROL</h2>
+                    <p>Les exemples de gouvernance de cette page s'appuient sur le skill agent <code>AGENTS_CONTROL</code>. Le prompt ci-dessous est la configuration exacte que l'agent suit pour découvrir, classer, inspecter et gérer (arrêter/redémarrer/démarrer) les conteneurs d'agents exécutés sur les serveurs gérés de la plateforme.</p>
+                    <details class="skill-prompt">
+                        <summary>Afficher le prompt du skill AGENTS_CONTROL (SKILL.md)</summary>
+                        <pre><code>
+---
+name: AGENTS_CONTROL
+description: Control the AI agents run by the agentic-ai-plateform control plane — discover, classify, inspect, and manage (stop/restart) the agent containers running across the platform's managed servers.
+---
+
+# AGENTS_CONTROL Skill
+
+## Purpose
+You are an autonomous IT Operator agent with access to execute shell commands on a Linux server and to call the agentic-ai-plateform control-plane API.
+
+The agentic-ai-plateform is a Flask control plane (`src/ControlPlanFlaskApp_postgres.py`) that deploys and supervises Dockerized applications across one or more managed servers. Its **Control of Agents** feature (the `Agent_Control_API`, blueprint `agent_control_bp`, backed by `src/runtime_monitor/`) discovers every Docker container on each managed server, classifies each one as `probable_agent` or `unclassified` using an explainable heuristic classifier, and reports its runtime state.
+
+This skill lets you **control the agents run by the platform**:
+- List and classify the agent containers currently running across all managed servers.
+- Inspect a specific agent (image, state, confidence score, and the evidence that justified its classification).
+- Manage an agent's runtime lifecycle (stop / restart / start the underlying container).
+
+IMPORTANT:
+- Discovery and classification are read-only and safe. **Stop/restart/start actions mutate running agents** — always confirm the target with the operator before executing a lifecycle action, and only act on containers classified as agents unless explicitly told otherwise.
+- The platform base URL defaults to `https://agentic-ai-plateform.com`. Override it by exporting `PLATFORM_URL` before running.
+- Authentication uses the control plane's session mechanism (login → session cookie). The `Agent_Control_API` returns `401` for unauthenticated requests.
+
+## Procedure
+
+### 1. Resolve configuration and authenticate to the control plane
+
+Resolve the platform URL and operator credentials, then log in to obtain a session cookie. The `Agent_Control_API` (`GET /api/agent-control/containers`) requires an authenticated session.
+
+```bash
+# Base URL of the agentic-ai-plateform control plane
+export PLATFORM_URL="${PLATFORM_URL:-https://agentic-ai-plateform.com}"
+
+# Operator credentials (prompt the user if not already set in the environment)
+export PLATFORM_USER="${PLATFORM_USER:-admin}"
+export PLATFORM_PASSWORD="${PLATFORM_PASSWORD:-password}"
+
+# Log in and persist the session cookie
+curl -s -c cookies.txt -X POST "${PLATFORM_URL}/login" \
+  -H "Content-Type: application/json" \
+  -d "{\"username\":\"${PLATFORM_USER}\",\"password\":\"${PLATFORM_PASSWORD}\"}" \
+  &gt;/dev/null
+```
+
+### 2. List and classify the agents running on the platform
+
+Call the `Agent_Control_API`. The default path returns the stored inventory from the `runtime_containers` table (fast, no SSH). Append `?live=1` to force an on-demand scan across every managed server (slower; adds a per-server `error` indicator for any unreachable host).
+
+```bash
+# Set MODE to "live" to trigger a fresh scan across all managed servers,
+# otherwise the fast stored inventory is returned.
+export MODE="${MODE:-stored}"
+if [[ "$MODE" == "live" ]]; then
+    QUERY="?live=1"
+else
+    QUERY=""
+fi
+
+curl -s -b cookies.txt "${PLATFORM_URL}/api/agent-control/containers${QUERY}" \
+  | tee agents_raw.json \
+  | jq '.'
+```
+
+The response envelope is stable:
+
+```json
+{
+  "success": true,
+  "containers": [
+    {
+      "server_id": 1,
+      "server_name": "worker-01",
+      "container_id": "…",
+      "name": "…",
+      "image": "…",
+      "state": "running | exited | …",
+      "classification": "probable_agent | unclassified",
+      "confidence_score": 0.0,
+      "classification_evidence": ["…", "…"]
+    }
+  ],
+  "errors": [ { "server_id": 2, "error": "…" } ]
+}
+```
+
+Now filter to the containers the platform classifies as **agents** (`classification == "probable_agent"`) and present a concise control view:
+
+```bash
+jq -r '
+  "AGENTS DETECTED: \([.containers[] | select(.classification=="probable_agent")] | length)",
+  (.containers[]
+    | select(.classification=="probable_agent")
+    | "- [\(.state)] \(.name)  (server=\(.server_name), id=\(.container_id[0:12]), score=\(.confidence_score))"),
+  (if (.errors|length) &gt; 0
+     then "UNREACHABLE SERVERS: " + ( [.errors[] | "server_id \(.server_id): \(.error)"] | join("; ") )
+     else "All managed servers reachable." end)
+' agents_raw.json
+```
+
+Report:
+- the total number of probable agents,
+- for each agent: its runtime state, name, hosting server, short container id, and confidence score,
+- any managed servers that could not be scanned (from `errors`), when `?live=1` was used.
+
+### 3. Inspect a specific agent
+
+When the operator wants details on one agent, show the full record including the human-readable evidence that justified the classification (why the platform flagged it as an agent).
+
+```bash
+# TARGET can be a container name or the short/full container id
+export TARGET="&lt;agent-name-or-id&gt;"
+
+jq --arg t "$TARGET" '
+  .containers[]
+  | select(.name==$t or (.container_id|startswith($t)))
+' agents_raw.json
+```
+
+Summarize for the operator:
+- identity: `name`, `container_id`, `image`, `server_name`/`server_id`;
+- runtime `state`;
+- `classification` and `confidence_score`;
+- each line of `classification_evidence` (e.g. "image contains agent token 'langchain'", "outbound connections to LLM API hosts: api.openai.com").
+
+### 4. Manage an agent's runtime lifecycle (stop / restart / start)
+
+Lifecycle control acts directly on the Docker container on the server that hosts the agent. The `Agent_Control_API` is read-only, so these actions run `docker` on the target server over SSH.
+
+IMPORTANT — confirm before mutating:
+- Confirm the exact `TARGET` agent and `ACTION` with the operator.
+- Resolve the hosting `server_ip` from the server record the agent reported.
+- Only operate on containers you have identified from step 2/3.
+
+```bash
+# Inputs
+export TARGET="&lt;agent-name-or-id&gt;"       # container name or id reported in step 2
+export ACTION="${ACTION:-restart}"        # one of: stop | restart | start
+export TARGET_SERVER_IP="&lt;server-ip&gt;"     # IP of the server hosting the agent
+
+# Resolve the hosting server's IP from the platform if not provided.
+# (Requires an authenticated session from step 1.)
+if [[ -z "$TARGET_SERVER_IP" ]]; then
+    SERVER_ID=$(jq -r --arg t "$TARGET" \
+      '.containers[] | select(.name==$t or (.container_id|startswith($t))) | .server_id' \
+      agents_raw.json | head -n1)
+    TARGET_SERVER_IP=$(curl -s -b cookies.txt "${PLATFORM_URL}/api/servers" \
+      | jq -r --argjson id "${SERVER_ID:-null}" '.[] | select(.id==$id) | .server_ip')
+fi
+
+# Validate the action.
+case "$ACTION" in
+    stop|restart|start) ;;
+    *) echo "Unsupported ACTION '$ACTION' (use stop|restart|start)"; exit 1 ;;
+esac
+
+# Execute the lifecycle action on the hosting server over SSH.
+echo "Applying '${ACTION}' to agent '${TARGET}' on ${TARGET_SERVER_IP}..."
+ssh "$TARGET_SERVER_IP" "docker ${ACTION} ${TARGET}"
+```
+
+### 5. Verify and report the result
+
+After any lifecycle action, re-read the inventory (prefer a live scan) and confirm the agent's new state, then report the outcome.
+
+```bash
+curl -s -b cookies.txt "${PLATFORM_URL}/api/agent-control/containers?live=1" \
+  | jq -r --arg t "$TARGET" '
+      .containers[]
+      | select(.name==$t or (.container_id|startswith($t)))
+      | "\(.name): state=\(.state), classification=\(.classification), score=\(.confidence_score)"
+  '
+```
+
+**Summary to produce for the operator:**
+- what was requested (list / inspect / stop / restart / start) and the target agent,
+- the agent's state before and after the action,
+- the classification and the evidence that identified it as an agent,
+- any managed servers that were unreachable during the scan.
+
+## Notes
+- Classification labels and the agent threshold (`score &gt;= 0.5 → probable_agent`) come from `src/runtime_monitor/agent_classifier.py`. The classifier is a pure, explainable heuristic — every point in the score has a named reason in `classification_evidence`.
+- Discovery is label-agnostic: the platform surfaces every container it finds, not only ones it launched, so this skill can control third-party agents running on the managed fleet too.
+- Keep `cookies.txt` and any credentials out of version control; remove `cookies.txt` and `agents_raw.json` when finished.
+</code></pre>
+                    </details>
+                </section>
+
+                <section class="skill-section" data-skill="STATUS_APP">
+                    <h2>Configuration du skill : STATUS_APP</h2>
+                    <p>Les vérifications d'état de cette page s'appuient sur le skill agent <code>STATUS_APP</code>. Le prompt ci-dessous est la configuration exacte que l'agent suit pour inspecter l'état d'exécution d'une application, résoudre ses ports et rapporter son statut au format JSON.</p>
+                    <div class="alert alert-info">
+                        <strong>Variables d'exécution :</strong> les jetons tels que <code>{{APPLICATION_FOLDER}}</code> et <code>{{USER_ID}}</code> sont remplacés par des valeurs concrètes au moment de l'exécution.
+                    </div>
+                    <details class="skill-prompt">
+                        <summary>Afficher le prompt du skill STATUS_APP (SKILL.md)</summary>
+                        <pre><code>
+---
+name: START_APP
+description: START a docker container application that is hosted by the control plane agentic-ai-plateform
+---
+
+# My Skill
+
+## Purpose
+You are an autonomous IT Operater agent with access to execute shell commands on a Linux server.
+Please check the status of the application by executing the following steps in sequence and return detailed information in JSON format.
+IMPORTANT : 
+- all commands have to be executed in the application located {{APPLICATION_FOLDER}}.
+- Execute all steps to deploy with the environment variable USER_ID={{USER_ID}}
+
+
+## Procedure
+
+### 1. Resolve default values for {{APPLICATION_FOLDER}}, {{USER_NAME}}, {{NAME_OF_APPLICATION}} and {{USER_ID}}.
+
+If {{APPLICATION_FOLDER}} and/or {{USER_ID}} are not explicitly provided, derive them from the current local folder from where shai is executed.
+
+The deployment folder structure follows the logic `~/deployments/&lt;USER_NAME&gt;/&lt;NAME_OF_APPLICATION&gt;`.
+For example, if the current folder is `~/deployments/admin/opcp-openstack-automation`, then:
+- NAME_OF_APPLICATION = `opcp-openstack-automation` (the current folder name)
+- USER_NAME = `admin` (the parent folder name)
+
+Use the following commands to resolve these values:
+
+# Default the application folder to the current working directory
+export APPLICATION_FOLDER="${APPLICATION_FOLDER:-$(pwd)}"
+
+# Derive the application name from the current folder name
+export NAME_OF_APPLICATION="$(basename "$APPLICATION_FOLDER")"
+
+# Derive the user name from the parent folder name
+export USER_NAME="$(basename "$(dirname "$APPLICATION_FOLDER")")"
+
+Then, if USER_ID is not already set, retrieve it via the agentic-ai-plateform API using USER_NAME:
+
+if [[ -z "$USER_ID" ]]; then
+    # 1. Log in and save the session cookie
+    curl -s -c cookies.txt -X POST https://agentic-ai-plateform.com/login \
+      -H "Content-Type: application/json" \
+      -d "{\"username\":\"${USER_NAME}\",\"password\":\"password\"}"
+
+    # 2. Fetch users and extract the user's id matching USER_NAME
+    export USER_ID=$(curl -s -b cookies.txt https://agentic-ai-plateform.com/api/users \
+      | jq ".[] | select(.username==\"${USER_NAME}\") | .id")
+fi
+
+### 2. Calculate HTTP Ports, which are the ports used by the docker containers of the application. Use the following command:
+
+source {{APPLICATION_FOLDER}}/conf/deploy.ini
+RANGE_START=${RANGE_START:-6000}
+RANGE_RESERVED=${RANGE_RESERVED:-100}
+RANGE_PORTS_PER_APPLICATION=${RANGE_PORTS_PER_APPLICATION:-12}
+if ! [[ "$USER_ID" =~ ^[0-9]+$ ]]; then
+    USER_ID=0
+fi
+PORT_NAMES=(
+    HTTPS_PORT HTTP_PORT
+    HTTPS_PORT1 HTTP_PORT1
+    HTTPS_PORT2 HTTP_PORT2
+    HTTPS_PORT3 HTTP_PORT3
+    HTTPS_PORT4 HTTP_PORT4
+    HTTPS_PORT5 HTTP_PORT5
+)
+PORT_RANGE_BEGIN=$((RANGE_START + USER_ID * RANGE_RESERVED))
+base=$((PORT_RANGE_BEGIN + APPLICATION_IDENTITY_NUMBER * RANGE_PORTS_PER_APPLICATION))
+offset=0
+for name in "${PORT_NAMES[@]}"; do
+    printf -v "$name" '%s' "$((base + offset))"
+    export "$name"
+    offset=$((offset + 1))
+done
+
+### 3. Check the Status of the application using docker-compose command. If the containers is not started, do not ask to start or do something else. Use the following commands to get the status of the application:
+
+export docker_status="IS_NOT_RUNNING"
+export docker_ports="[]"
+
+if docker container ls --filter "status=running" --format "{{.Names}}" | grep "^${NAME_OF_APPLICATION}-.*-${USER_ID}-.*$"; then
+    export docker_status="IS_RUNNING"
+    export all_ports=$(docker container ls --filter "status=running" --format "{{.Names}} {{.Ports}}" | grep "^${NAME_OF_APPLICATION}-.*-${USER_ID}-.*$" | grep -o '0.0.0.0:[0-9]*' | cut -d: -f2 | sort -n | uniq)
+    if [[ -n "$all_ports" ]]; then
+        export docker_ports=$(echo "$all_ports" | jq -R . | jq -s .)
+    fi
+fi
+
+### 4. Get Git Remote  for the application. Use the following commands to list the git remote reporsitories: 
+
+export git_remotes=$(git remote -v 2&gt;/dev/null | awk '{print $2}' | sort -u | jq -R . | jq -s . 2&gt;/dev/null || echo '[]')
+
+### 5. Output the results as a JSON format. Once all informations are gathered using previous steps 3 and 4, then display the results using the following command:
+
+jq -n --arg user_id "$USER_ID" \
+      --arg user_name "$USER_NAME" \
+      --arg user_email "$USER_EMAIL" \
+      --arg https_port "$HTTPS_PORT" \
+      --arg http_port "$HTTP_PORT" \
+      --arg https_port1 "$HTTPS_PORT1" \
+      --arg http_port1 "$HTTP_PORT1" \
+      --arg https_port2 "$HTTPS_PORT2" \
+      --arg http_port2 "$HTTP_PORT2" \
+      --arg https_port3 "$HTTPS_PORT3" \
+      --arg http_port3 "$HTTP_PORT3" \
+      --arg https_port4 "$HTTPS_PORT4" \
+      --arg http_port4 "$HTTP_PORT4" \
+      --arg https_port5 "$HTTPS_PORT5" \
+      --arg http_port5 "$HTTP_PORT5" \
+      --arg docker_status "$docker_status" \
+      --argjson docker_ports "$docker_ports" \
+      --argjson git_remotes "$git_remotes" \
+      '{
+        "environment_vars": {
+          "USER_ID": $user_id,
+          "USER_NAME": $user_name,
+          "USER_EMAIL": $user_email,
+          "HTTPS_PORT": $https_port,
+          "HTTP_PORT": $http_port,
+          "HTTPS_PORT1": $https_port1,
+          "HTTP_PORT1": $http_port1,
+          "HTTPS_PORT2": $https_port2,
+          "HTTP_PORT2": $http_port2,
+          "HTTPS_PORT3": $https_port3,
+          "HTTP_PORT3": $http_port3,
+          "HTTPS_PORT4": $https_port4,
+          "HTTP_PORT4": $http_port4,
+          "HTTPS_PORT5": $https_port5,
+          "HTTP_PORT5": $http_port5
+        },
+        "docker_compose_ps": $docker_status,
+        "docker_ports": $docker_ports,
+        "git_remote": $git_remotes
+      }'
+
+Finaly, display the link to the web site so the user can click on it to open the application: https://${DOMAIN}:$HTTPS_PORT
+
+As an example, this is and example of the expected JSON Output Format:
+{
+  "environment_vars": {
+    "USER_ID": "...",
+    "USER_NAME": "...",
+    "USER_EMAIL": "...",
+    "HTTPS_PORT": "...",
+    "HTTP_PORT": "...",
+    "HTTPS_PORT1": "...",
+    "HTTP_PORT1": "...",
+    "HTTPS_PORT2": "...",
+    "HTTP_PORT2": "...",
+    "HTTPS_PORT3": "...",
+    "HTTP_PORT3": "...",
+    "HTTPS_PORT4": "...",
+    "HTTP_PORT4": "...",
+    "HTTPS_PORT5": "...",
+    "HTTP_PORT5": "..."
+  },
+  "docker_compose_ps": "IS_RUNNING or IS_NOT_RUNNING",
+  "docker_ports": [...],
+  "git_remote": [...]
+}
+</code></pre>
+                    </details>
+                </section>
             </div>
 
             <button class="btn btn-success btn-mark-complete" data-lesson-id="agent-control">
