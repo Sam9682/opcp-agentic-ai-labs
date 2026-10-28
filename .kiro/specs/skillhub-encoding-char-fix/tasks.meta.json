@@ -1,0 +1,169 @@
+{
+  "pbtResults": {
+    "1. Write bug condition exploration test (detection/enumeration)": {
+      "status": "passed",
+      "failingExample": "Exploration test FAILED on unfixed code as expected (this is the success case - it proves the bug exists).\n\nfast-check counterexample (corpus \"zero U+FFFD\" property): [\"fr/guardrails-5-layers.html\"] (all 8 affected files fail the zero-U+FFFD assertion).\n\nPer-file U+FFFD counts (exactly 8 files corrupted, 28 clean):\n  fr/assistant-vs-agent.html: 146\n  fr/install-bare-metal.html: 137\n  fr/agent-anatomy-7-components.html: 115\n  fr/guardrails-5-layers.html: 114\n  en/assistant-vs-agent.html: 16\n  en/agent-anatomy-7-components.html: 14\n  en/guardrails-5-layers.html: 14\n  en/install-bare-metal.html: 3\n\nSample counterexamples:\n  fr/assistant-vs-agent.html L6:C27  <title>De l'assistant � l'agent ...   (à)\n  fr/*.html L24  aria-label=\"S�lecteur de langue\"   (é)\n  fr+en/*.html L26  aria-label=\"Fran�ais\"   (ç)\n  fr/*.html L37  aria-label=\"Navigation des le�ons\"   (ç)\n  fr/*.html L39  \"Matin � Introduction et fondamentaux\"   (— em-dash)\n  fr/assistant-vs-agent.html L44  Crit�res d'arr�t   (è, ê)\n  en/assistant-vs-agent.html L116  <strong>Suggest</strong> � the system proposes   (— em-dash)\n  en/*.html L39/L59/L67  \"Morning � Introduction\", \"Sandbox � opcp-explorer\", \"Annex � optional\"   (— em-dash)\n\nSet of files with >=1 U+FFFD equals EXACTLY the 8 expected affected files (agent-anatomy-7-components.html, assistant-vs-agent.html, install-bare-metal.html, guardrails-5-layers.html under both fr/ and en/). Counts within design-measured ranges (fr ~114-146, en ~3-16).",
+      "lastRunTimestamp": 1793199442293
+    },
+    "2. Write preservation property tests (BEFORE implementing fix)": {
+      "status": "passed",
+      "lastRunTimestamp": 1793199637359
+    },
+    "3.3 Verify bug condition exploration test now passes": {
+      "status": "passed",
+      "lastRunTimestamp": 1793204258386
+    },
+    "3.4 Verify preservation tests still pass": {
+      "status": "passed",
+      "lastRunTimestamp": 1793204328386
+    }
+  },
+  "executionHistory": {
+    "1. Write bug condition exploration test (detection/enumeration)": [
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199216263
+      },
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199224665
+      },
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199464394
+      }
+    ],
+    "2. Write preservation property tests (BEFORE implementing fix)": [
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199216429
+      },
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199468669
+      },
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199662377
+      }
+    ],
+    "3.1 Repair the English pages (fewest occurrences first)": [
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199216552
+      },
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199666437
+      },
+      {
+        "executionId": "4b98ef47-3bb1-4fce-a2b6-23bbb46756ee",
+        "chatSessionId": "sess_c3ce2d1d-4f19-4797-9961-8027d0b8c005",
+        "timestamp": 1793202155373
+      },
+      {
+        "executionId": "4b98ef47-3bb1-4fce-a2b6-23bbb46756ee",
+        "chatSessionId": "sess_c3ce2d1d-4f19-4797-9961-8027d0b8c005",
+        "timestamp": 1793202162332
+      },
+      {
+        "executionId": "4b98ef47-3bb1-4fce-a2b6-23bbb46756ee",
+        "chatSessionId": "sess_c3ce2d1d-4f19-4797-9961-8027d0b8c005",
+        "timestamp": 1793202566493
+      }
+    ],
+    "3.2 Repair the French pages (most occurrences)": [
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199216678
+      },
+      {
+        "executionId": "4b98ef47-3bb1-4fce-a2b6-23bbb46756ee",
+        "chatSessionId": "sess_c3ce2d1d-4f19-4797-9961-8027d0b8c005",
+        "timestamp": 1793202583369
+      },
+      {
+        "executionId": "41cbec4e-8b8c-4d0b-afa5-b6b3fc7a20ce",
+        "chatSessionId": "sess_d5f19656-5055-423e-a48e-814b721a082b",
+        "timestamp": 1793203340400
+      },
+      {
+        "executionId": "41cbec4e-8b8c-4d0b-afa5-b6b3fc7a20ce",
+        "chatSessionId": "sess_d5f19656-5055-423e-a48e-814b721a082b",
+        "timestamp": 1793203346249
+      },
+      {
+        "executionId": "41cbec4e-8b8c-4d0b-afa5-b6b3fc7a20ce",
+        "chatSessionId": "sess_d5f19656-5055-423e-a48e-814b721a082b",
+        "timestamp": 1793203723058
+      }
+    ],
+    "3.3 Verify bug condition exploration test now passes": [
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199216850
+      },
+      {
+        "executionId": "41cbec4e-8b8c-4d0b-afa5-b6b3fc7a20ce",
+        "chatSessionId": "sess_d5f19656-5055-423e-a48e-814b721a082b",
+        "timestamp": 1793203730204
+      },
+      {
+        "executionId": "41cbec4e-8b8c-4d0b-afa5-b6b3fc7a20ce",
+        "chatSessionId": "sess_d5f19656-5055-423e-a48e-814b721a082b",
+        "timestamp": 1793204272708
+      }
+    ],
+    "3.4 Verify preservation tests still pass": [
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199217182
+      },
+      {
+        "executionId": "41cbec4e-8b8c-4d0b-afa5-b6b3fc7a20ce",
+        "chatSessionId": "sess_d5f19656-5055-423e-a48e-814b721a082b",
+        "timestamp": 1793204275991
+      },
+      {
+        "executionId": "41cbec4e-8b8c-4d0b-afa5-b6b3fc7a20ce",
+        "chatSessionId": "sess_d5f19656-5055-423e-a48e-814b721a082b",
+        "timestamp": 1793204345167
+      }
+    ],
+    "4. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "3354c573-9e14-4228-b41c-b602aca3b0c7",
+        "chatSessionId": "sess_72336b50-f3c1-48d1-9e3c-bc6c91dbdfb8",
+        "timestamp": 1793199217296
+      },
+      {
+        "executionId": "41cbec4e-8b8c-4d0b-afa5-b6b3fc7a20ce",
+        "chatSessionId": "sess_d5f19656-5055-423e-a48e-814b721a082b",
+        "timestamp": 1793204348705
+      },
+      {
+        "executionId": "41cbec4e-8b8c-4d0b-afa5-b6b3fc7a20ce",
+        "chatSessionId": "sess_d5f19656-5055-423e-a48e-814b721a082b",
+        "timestamp": 1793204393955
+      }
+    ],
+    "3. Fix the U+FFFD byte-level corruption in the 8 affected pages": [
+      {
+        "executionId": "41cbec4e-8b8c-4d0b-afa5-b6b3fc7a20ce",
+        "chatSessionId": "sess_d5f19656-5055-423e-a48e-814b721a082b",
+        "timestamp": 1793204345284
+      }
+    ]
+  }
+}

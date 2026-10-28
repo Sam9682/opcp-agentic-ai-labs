@@ -21,9 +21,9 @@
                 <span class="progress-percent">0%</span>
             </div>
 
-            <div class="locale-switcher" role="navigation" aria-label="S�lecteur de langue">
+            <div class="locale-switcher" role="navigation" aria-label="Sélecteur de langue">
                 <button data-locale="en" aria-label="English">EN</button>
-                <button class="active" data-locale="fr" aria-label="Fran�ais">FR</button>
+                <button class="active" data-locale="fr" aria-label="Français">FR</button>
             </div>
 
             <button class="hamburger-btn" aria-label="Basculer le menu de navigation" aria-expanded="false">
@@ -34,22 +34,22 @@
         </div>
     </header>
 
-    <aside class="sidebar" role="navigation" aria-label="Navigation des le�ons">
+    <aside class="sidebar" role="navigation" aria-label="Navigation des leçons">
         <div class="sidebar-section">
-            <h2 class="sidebar-section-title">D�butant</h2>
+            <h2 class="sidebar-section-title">Débutant</h2>
             <ul class="sidebar-nav" id="nav-beginner">
                 <li><a href="install-bare-metal.html" class="active">Installation de Agentic-AI-Platform sur Bare-metal</a></li>
             </ul>
         </div>
         <div class="sidebar-section">
-            <h2 class="sidebar-section-title">Interm�diaire</h2>
+            <h2 class="sidebar-section-title">Intermédiaire</h2>
             <ul class="sidebar-nav" id="nav-intermediate">
-                <li><a href="starting-applications.html">D�marrage des applications avec l'IA agentique</a></li>
-                <li><a href="stopping-applications.html">Arr�t des applications avec l'IA agentique</a></li>
+                <li><a href="starting-applications.html">Démarrage des applications avec l'IA agentique</a></li>
+                <li><a href="stopping-applications.html">Arrêt des applications avec l'IA agentique</a></li>
                 <li><a href="making-backups.html">Sauvegardes avec l'IA agentique</a></li>
                 <li><a href="modifying-applications.html">Modification d'applications avec l'IA agentique</a></li>
-                <li><a href="agent-control.html">Contr�le des agents IA</a></li>
-                <li><a href="adding-applications.html">Ajout de nouvelles applications avec l'IA agentique (Annexe � facultatif)</a></li>
+                <li><a href="agent-control.html">Contrôle des agents IA</a></li>
+                <li><a href="adding-applications.html">Ajout de nouvelles applications avec l'IA agentique (Annexe — facultatif)</a></li>
             </ul>
         </div>
     </aside>
@@ -59,16 +59,16 @@
             <div class="lesson-header">
                 <h1>Installation sur Ubuntu Bare-Metal avec l'IA agentique</h1>
                 <div class="lesson-meta">
-                    <span class="difficulty-badge difficulty-badge--beginner">Sandbox · D�butant</span>
+                    <span class="difficulty-badge difficulty-badge--beginner">Sandbox · Débutant</span>
                     <span class="duration">? ~20 min</span>
                 </div>
             </div>
             <div class="lesson-body">
-                <p>Apprenez � d�ployer la plateforme Agentic-AI-Platform sur un serveur Ubuntu bare-metal vierge (22.04 ou 24.04 LTS). Ce guide couvre l'ensemble du processus d'installation, de la pr�paration du syst�me au d�ploiement final.</p>
+                <p>Apprenez à déployer la plateforme Agentic-AI-Platform sur un serveur Ubuntu bare-metal vierge (22.04 ou 24.04 LTS). Ce guide couvre l'ensemble du processus d'installation, de la préparation du système au déploiement final.</p>
 
                 <figure class="lesson-figure">
-                    <img src="../assets/img/architecture-agents.svg" alt="Architecture des agents IA de la plateforme : Op�rateur, D�veloppeur et Contr�le" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
-                    <figcaption>Les agents IA de la plateforme et leurs responsabilit�s</figcaption>
+                    <img src="../assets/img/architecture-agents.svg" alt="Architecture des agents IA de la plateforme : Opérateur, Développeur et Contrôle" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                    <figcaption>Les agents IA de la plateforme et leurs responsabilités</figcaption>
                 </figure>
 
                 <figure class="lesson-figure">
@@ -76,57 +76,57 @@
                     <figcaption>Architecture de la plateforme Agentic AI</figcaption>
                 </figure>
 
-                <h2>Pr�requis</h2>
+                <h2>Prérequis</h2>
                 <ul>
                     <li>Une installation Ubuntu 22.04 ou 24.04 LTS propre</li>
-                    <li>Acc�s root ou sudo</li>
+                    <li>Accès root ou sudo</li>
                     <li>Au moins 4 Go de RAM et 20 Go d'espace disque</li>
-                    <li>Connectivit� Internet pour le t�l�chargement des paquets</li>
+                    <li>Connectivité Internet pour le téléchargement des paquets</li>
                     <li>Un GPU NVIDIA compatible (optionnel, pour le support MIG)</li>
                 </ul>
 
                 <h2>Installation rapide</h2>
-                <p>Le moyen le plus rapide de d�ployer la plateforme est le script automatis� <code>init_pltf.sh</code>, qui ex�cute pour vous chaque �tape de ce guide et met en place le plan de contr�le (control plane) de la plateforme Agentic AI.</p>
+                <p>Le moyen le plus rapide de déployer la plateforme est le script automatisé <code>init_pltf.sh</code>, qui exécute pour vous chaque étape de ce guide et met en place le plan de contrôle (control plane) de la plateforme Agentic AI.</p>
                 <figure class="lesson-figure">
-                    <img src="../assets/img/Screen_InstallPltf1.png" alt="Capture d'�cran de l'ex�cution du script d'installation de la plateforme" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
-                    <figcaption>Exemple d'ex�cution du script d'installation de la plateforme</figcaption>
+                    <img src="../assets/img/Screen_InstallPltf1.png" alt="Capture d'écran de l'exécution du script d'installation de la plateforme" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                    <figcaption>Exemple d'exécution du script d'installation de la plateforme</figcaption>
                 </figure>
 
-                <h3>O� trouver <code>init_pltf.sh</code></h3>
-                <p>Le script <code>init_pltf.sh</code> qui installe le plan de contr�le de la plateforme Agentic AI est h�berg� dans le d�p�t d�di� de la plateforme sur GitHub : <a href="https://github.com/Sam9682/agentic-ai-plateform" target="_blank" rel="noopener noreferrer">github.com/Sam9682/agentic-ai-plateform</a>. Il se trouve � la <strong>racine de ce d�p�t</strong>, vous l'obtenez donc d�s le clonage :</p>
+                <h3>Où trouver <code>init_pltf.sh</code></h3>
+                <p>Le script <code>init_pltf.sh</code> qui installe le plan de contrôle de la plateforme Agentic AI est hébergé dans le dépôt dédié de la plateforme sur GitHub : <a href="https://github.com/Sam9682/agentic-ai-plateform" target="_blank" rel="noopener noreferrer">github.com/Sam9682/agentic-ai-plateform</a>. Il se trouve à la <strong>racine de ce dépôt</strong>, vous l'obtenez donc dès le clonage :</p>
                 <pre><code>git clone https://github.com/Sam9682/agentic-ai-plateform.git
 cd agentic-ai-plateform
-# init_pltf.sh se trouve ici, � la racine du d�p�t :
+# init_pltf.sh se trouve ici, à la racine du dépôt :
 ls -l init_pltf.sh</code></pre>
                 <div class="alert alert-info">
-                    <strong>Note :</strong> Ex�cutez le script depuis la racine du d�p�t. Il n'est pas install� au niveau du syst�me ; invoquez-le donc toujours avec le pr�fixe <code>./</code> depuis le r�pertoire clon�.
+                    <strong>Note :</strong> Exécutez le script depuis la racine du dépôt. Il n'est pas installé au niveau du système ; invoquez-le donc toujours avec le préfixe <code>./</code> depuis le répertoire cloné.
                 </div>
 
-                <h3>D�ploiement interactif (recommand�)</h3>
-                <pre><code># Initialise un serveur vierge. init_pltf.sh demande l'identit� de la
-# plateforme (slug du dossier, nom affich�, URL du d�p�t et URL du
-# sous-module partag�) et �crit PLTF_NAME / PLTF_FOLDER dans conf/deploy.ini.
-# Appuyez sur Entr�e pour accepter les valeurs par d�faut affich�es, ou
-# pr�-d�finissez les valeurs via des variables d'environnement pour une
-# ex�cution non interactive :
+                <h3>Déploiement interactif (recommandé)</h3>
+                <pre><code># Initialise un serveur vierge. init_pltf.sh demande l'identité de la
+# plateforme (slug du dossier, nom affiché, URL du dépôt et URL du
+# sous-module partagé) et écrit PLTF_NAME / PLTF_FOLDER dans conf/deploy.ini.
+# Appuyez sur Entrée pour accepter les valeurs par défaut affichées, ou
+# pré-définissez les valeurs via des variables d'environnement pour une
+# exécution non interactive :
 #   PLTF_FOLDER=my-platform PLTF_NAME="My Platform" \
 #   REPO_URL=https://github.com/your-org/your-repo.git ./init_pltf.sh
 chmod +x init_pltf.sh
 ./init_pltf.sh</code></pre>
-                <p>Vous pr�f�rez comprendre chaque �tape ou devez personnaliser l'installation ? D�veloppez l'installation manuelle ci-dessous.</p>
+                <p>Vous préférez comprendre chaque étape ou devez personnaliser l'installation ? Développez l'installation manuelle ci-dessous.</p>
 
                 <details class="manual-install">
                 <summary><h2 style="display:inline">Installation manuelle (optionnelle)</h2></summary>
-                <p>Voici les �tapes individuelles ex�cut�es par le script automatis�. Suivez-les uniquement si vous souhaitez une installation pas � pas ou devez personnaliser le processus.</p>
+                <p>Voici les étapes individuelles exécutées par le script automatisé. Suivez-les uniquement si vous souhaitez une installation pas à pas ou devez personnaliser le processus.</p>
 
-                <h2>�tape 1 : Installation des d�pendances syst�me</h2>
-                <p>Commencez par mettre � jour les paquets et installer les d�pendances n�cessaires :</p>
+                <h2>Étape 1 : Installation des dépendances système</h2>
+                <p>Commencez par mettre à jour les paquets et installer les dépendances nécessaires :</p>
                 <pre><code>sudo apt update
 sudo apt --fix-broken install -y
 sudo apt install -y python3 python3-pip python3-venv net-tools unzip</code></pre>
 
-                <h2>�tape 2 : Installation des outils CLI</h2>
-                <p>Installez les outils en ligne de commande n�cessaires � la gestion de la plateforme :</p>
+                <h2>Étape 2 : Installation des outils CLI</h2>
+                <p>Installez les outils en ligne de commande nécessaires à la gestion de la plateforme :</p>
 
                 <h3>OVH CLI (shai)</h3>
                 <pre><code>curl -fsSL https://raw.githubusercontent.com/ovh/shai/main/install.sh | sh
@@ -144,19 +144,19 @@ unzip -q terraform.zip
 sudo mv terraform /usr/local/bin/
 rm -f terraform.zip</code></pre>
 
-                <h2>�tape 3 : Configuration r�seau (Netplan)</h2>
-                <p>Le script configure automatiquement les priorit�s des interfaces r�seau pour assurer que l'interface publique est pr�f�r�e pour le routage par d�faut :</p>
+                <h2>Étape 3 : Configuration réseau (Netplan)</h2>
+                <p>Le script configure automatiquement les priorités des interfaces réseau pour assurer que l'interface publique est préférée pour le routage par défaut :</p>
                 <ul>
-                    <li><strong>Interface publique</strong> : m�trique de route <code>50</code> (priorit� haute)</li>
-                    <li><strong>Interface priv�e</strong> : m�trique de route <code>200</code> (priorit� basse)</li>
+                    <li><strong>Interface publique</strong> : métrique de route <code>50</code> (priorité haute)</li>
+                    <li><strong>Interface privée</strong> : métrique de route <code>200</code> (priorité basse)</li>
                 </ul>
-                <p>La d�tection des interfaces se fait automatiquement en analysant les adresses IP (plages priv�es : <code>10.x</code>, <code>172.16-31.x</code>, <code>192.168.x</code>).</p>
+                <p>La détection des interfaces se fait automatiquement en analysant les adresses IP (plages privées : <code>10.x</code>, <code>172.16-31.x</code>, <code>192.168.x</code>).</p>
                 <div class="alert alert-warning">
-                    <strong>Attention :</strong> Une sauvegarde du fichier netplan existant est cr��e automatiquement avant toute modification.
+                    <strong>Attention :</strong> Une sauvegarde du fichier netplan existant est créée automatiquement avant toute modification.
                 </div>
 
-                <h2>�tape 4 : Installation de Docker</h2>
-                <p>Docker est install� via le script officiel, avec docker-compose en compl�ment :</p>
+                <h2>Étape 4 : Installation de Docker</h2>
+                <p>Docker est installé via le script officiel, avec docker-compose en complément :</p>
                 <pre><code>curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
@@ -164,10 +164,10 @@ sudo curl -sL "https://github.com/docker/compose/releases/latest/download/docker
 sudo chmod +x /usr/local/bin/docker-compose
 rm -f get-docker.sh</code></pre>
                 <div class="alert alert-info">
-                    <strong>Note :</strong> Vous devrez vous d�connecter et reconnecter pour que l'ajout au groupe <code>docker</code> prenne effet.
+                    <strong>Note :</strong> Vous devrez vous déconnecter et reconnecter pour que l'ajout au groupe <code>docker</code> prenne effet.
                 </div>
 
-                <h2>�tape 5 : Installation des pilotes NVIDIA et support GPU (optionnel)</h2>
+                <h2>Étape 5 : Installation des pilotes NVIDIA et support GPU (optionnel)</h2>
                 <p>Si votre serveur dispose d'un GPU NVIDIA compatible :</p>
                 <pre><code># Installation des pilotes NVIDIA
 sudo apt install -y nvidia-driver-550 nvidia-utils-550
@@ -178,13 +178,13 @@ sudo nvidia-smi -mig 1
 # Installation du NVIDIA Container Toolkit
 sudo apt install -y nvidia-container-toolkit
 
-# V�rification de l'acc�s Docker au GPU
+# Vérification de l'accès Docker au GPU
 docker run --rm --gpus '"device=0"' nvidia/cuda:12.3.0-base-ubuntu22.04 nvidia-smi</code></pre>
                 <div class="alert alert-warning">
-                    <strong>Note :</strong> Le mode MIG n'est disponible que sur les GPU NVIDIA A100, A30, H100, et similaires. Cette �tape sera ignor�e si le mat�riel n'est pas compatible.
+                    <strong>Note :</strong> Le mode MIG n'est disponible que sur les GPU NVIDIA A100, A30, H100, et similaires. Cette étape sera ignorée si le matériel n'est pas compatible.
                 </div>
 
-                <h2>�tape 6 : Configuration AWS (stockage S3 OVH)</h2>
+                <h2>Étape 6 : Configuration AWS (stockage S3 OVH)</h2>
                 <p>Configurez les identifiants AWS pour la synchronisation S3 avec OVH Object Storage :</p>
                 <pre><code>mkdir -p ~/.aws
 
@@ -208,20 +208,20 @@ EOF
 export AWS_DEFAULT_PROFILE=OVH-SWAUTOMORPH
 export AWS_ENDPOINT_URL_S3=https://s3.gra.io.cloud.ovh.net/</code></pre>
 
-                <h2>�tape 7 : Clonage du d�p�t</h2>
-                <p>Clonez le d�p�t principal avec ses sous-modules :</p>
+                <h2>Étape 7 : Clonage du dépôt</h2>
+                <p>Clonez le dépôt principal avec ses sous-modules :</p>
                 <pre><code>git clone https://github.com/Sam9682/opcp-agentic-ai-labs.git
 cd opcp-agentic-ai-labs
 git submodule update --init --recursive</code></pre>
 
-                <h2>�tape 8 : Configuration de l'environnement Python</h2>
-                <p>Cr�ez un environnement virtuel et installez les d�pendances :</p>
+                <h2>Étape 8 : Configuration de l'environnement Python</h2>
+                <p>Créez un environnement virtuel et installez les dépendances :</p>
                 <pre><code>python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt</code></pre>
 
-                <h2>�tape 9 : Configuration finale</h2>
-                <p>Pr�parez l'arborescence de d�ploiement :</p>
+                <h2>Étape 9 : Configuration finale</h2>
+                <p>Préparez l'arborescence de déploiement :</p>
                 <pre><code>mkdir -p logs
 chmod +x setup_modsecurity_config.sh
 cd ~
@@ -229,26 +229,26 @@ mkdir -p deployments/admin</code></pre>
 
                 <h2>Actions post-installation</h2>
                 <div class="alert alert-warning">
-                    <strong>Important � � ne pas oublier :</strong>
+                    <strong>Important — à ne pas oublier :</strong>
                     <ul>
-                        <li>Modifier <code>./conf/deploy.ini</code> avec vos param�tres de plateforme, notamment les valeurs <code>PLTF_NAME</code> et <code>DOMAIN</code></li>
+                        <li>Modifier <code>./conf/deploy.ini</code> avec vos paramètres de plateforme, notamment les valeurs <code>PLTF_NAME</code> et <code>DOMAIN</code></li>
                         <li>Ajouter le certificat SSL dans <code>~/opcp-agentic-ai-labs/ssl/fullchain_domain.crt</code> pour le HTTPS nginx</li>
-                        <li>Ajouter la cl� priv�e SSL dans <code>~/opcp-agentic-ai-labs/ssl/privateKey_domain.key</code> pour le HTTPS nginx</li>
+                        <li>Ajouter la clé privée SSL dans <code>~/opcp-agentic-ai-labs/ssl/privateKey_domain.key</code> pour le HTTPS nginx</li>
                         <li>Renseigner <code>aws_access_key_id</code> et <code>aws_secret_access_key</code> dans <code>~/.aws/credentials</code> pour la synchronisation S3</li>
                     </ul>
                 </div>
                 </details>
 
                 <h2>Exercices</h2>
-                <p>Cette le�on comprend des exercices pratiques en laboratoire. Compl�tez chaque �tape et validez votre progression.</p>
+                <p>Cette leçon comprend des exercices pratiques en laboratoire. Complétez chaque étape et validez votre progression.</p>
 
                 <div class="alert alert-info">
-                    <strong>Labo disponible :</strong> Un module de laboratoire pratique accompagne cette le�on. Lancez le labo pour vous exercer dans un environnement isol�.
+                    <strong>Labo disponible :</strong> Un module de laboratoire pratique accompagne cette leçon. Lancez le labo pour vous exercer dans un environnement isolé.
                 </div>
             </div>
 
             <button class="btn btn-success btn-mark-complete" data-lesson-id="install-bare-metal">
-                Marquer comme termin�
+                Marquer comme terminé
             </button>
         </div>
     </main>
