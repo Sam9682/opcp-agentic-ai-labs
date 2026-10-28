@@ -34,7 +34,7 @@ Reorder the `install-bare-metal.html` lesson body across all four pages (EN site
     - Preserve all FR chrome unchanged
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7_
 
-- [~] 4. Checkpoint - site pages
+- [x] 4. Checkpoint - site pages
   - Ensure all tests pass, ask the user if questions arise.
 
 - [x] 5. Mirror the restructure into the SCORM copies
