@@ -21,6 +21,7 @@ const AFTERNOON_SLUGS = [
   'human-in-the-loop-ovhcloud-policy',
   'threat-modeling-workshop',
   'agent-design-capstone',
+  'configuring-shai-mcp-opcp-explorer',
 ];
 
 const SANDBOX_SLUGS = [

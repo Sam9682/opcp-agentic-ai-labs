@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuring a SHAI Agent with MCP to OPCP-EXPLORER - Agentic AI OPCP Labs</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <a href="." class="logo" aria-label="Agentic AI OPCP Labs Home">
+            <span>Agentic AI OPCP Labs</span>
+        </a>
+
+        <div class="header-actions">
+            <div class="progress-bar-container" aria-label="Overall progress">
+                <span class="progress-label">Progress:</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-percent">0%</span>
+            </div>
+
+            <div class="locale-switcher" role="navigation" aria-label="Language selector">
+                <button class="active" data-locale="en" aria-label="English">EN</button>
+                <button data-locale="fr" aria-label="Français">FR</button>
+            </div>
+
+            <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
+        <div class="sidebar-section" data-track="morning">
+            <h2 class="sidebar-section-title">Morning — Introduction &amp; Fundamentals</h2>
+            <ul class="sidebar-nav" id="nav-morning">
+                <li><a href="assistant-vs-agent.html">From Assistant to Agent</a></li>
+                <li><a href="agent-anatomy-7-components.html">Anatomy: Seven Core Components</a></li>
+                <li><a href="agentic-loop-and-variants.html">The Agentic Loop &amp; Variants</a></li>
+                <li><a href="stopping-criteria.html">Stopping Criteria</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="afternoon">
+            <h2 class="sidebar-section-title">Design &amp; Governance</h2>
+            <ul class="sidebar-nav" id="nav-afternoon">
+                <li><a href="multi-agent-patterns.html">Multi-Agent Patterns</a></li>
+                <li><a href="when-not-multi-agent.html">When Not to Go Multi-Agent</a></li>
+                <li><a href="guardrails-5-layers.html">Guardrails: Five Layers</a></li>
+                <li><a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop &amp; OVHcloud AI Policy</a></li>
+                <li><a href="threat-modeling-workshop.html">Workshop: Threat Modeling</a></li>
+                <li><a href="agent-design-capstone.html">Capstone: Agent Design</a></li>
+                <li><a href="configuring-shai-mcp-opcp-explorer.html" class="active">Configuring a SHAI Agent with MCP to OPCP-EXPLORER</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="sandbox">
+            <h2 class="sidebar-section-title">Sandbox — opcp-explorer Platform</h2>
+            <ul class="sidebar-nav" id="nav-sandbox">
+                <li><a href="install-bare-metal.html">Installation on Bare-Metal Ubuntu with Agentic AI</a></li>
+                <li><a href="starting-applications.html">Starting Applications with Agentic AI</a></li>
+                <li><a href="stopping-applications.html">Stopping Applications with Agentic AI</a></li>
+                <li><a href="making-backups.html">Making Backups with Agentic AI</a></li>
+                <li><a href="modifying-applications.html">Modifying Applications with Agentic AI</a></li>
+                <li><a href="agent-control.html">Controlling AI Agents</a></li>
+                <li><a href="adding-applications.html">Adding New Applications with Agentic AI (Annex – optional)</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content" role="main">
+        <div class="lesson-content">
+            <div class="lesson-header">
+                <h1>Configuring a SHAI Agent with MCP to OPCP-EXPLORER</h1>
+                <div class="lesson-meta">
+                    <span class="difficulty-badge difficulty-badge--advanced">Afternoon · Governance</span>
+                    <span class="duration">⏱ ~45 min</span>
+                </div>
+            </div>
+            <div class="lesson-body">
+                <p>This lesson walks you through configuring a <strong>SHAI</strong> agent whose single stdio <strong>MCP</strong> (Model Context Protocol) connection reaches the <strong>opcp-explorer</strong> agentic-ai-platform. You will open the <code>AGENTS_CONTROL_AGENT_NO_SKILL.config.json</code> file field by field, wire the MCP server block that points at the platform, run one container-discovery prompt, and read the live <strong>Container Discovery Results</strong> report the agent returns. The goal is to leave you able to reproduce the MCP connection yourself and to interpret — and govern — what the discovery report tells you.</p>
+
+                <h2>Learning Objectives</h2>
+                <ul>
+                    <li>Configure a SHAI agent from the <code>AGENTS_CONTROL_AGENT_NO_SKILL.config.json</code> file, field by field.</li>
+                    <li>Wire the stdio MCP server block that connects the agent to the opcp-explorer agentic-ai-platform.</li>
+                    <li>Run the single discovery prompt that triggers a live container scan.</li>
+                    <li>Interpret the classification report the agent returns.</li>
+                    <li>Apply governance to every autonomy-granting choice in the configuration.</li>
+                </ul>
+
+                <h2>The <code>AGENTS_CONTROL_AGENT_NO_SKILL.config.json</code> file</h2>
+                <p>The agent is defined entirely by one JSON file. It names the agent, picks the model that reasons for it, lists the built-in tools it may use, sets the one-line task it runs on launch, caps its generation, and wires its single MCP connection. Here is the full file, which we then open field by field.</p>
+                <pre><code>{
+  "name": "AGENTS_CONTROL_AGENT_NO_SKILL",
+  "description": "SHAI agent that discovers and classifies the containers running on the opcp-explorer platform over a single MCP connection.",
+  "llm_provider": {
+    "provider": "ovhcloud",
+    "model": "Qwen3.5-397B-A17B",
+    "mode": "FunctionCall"
+  },
+  "tools": ["read", "write", "bash"],
+  "system_prompt": "Call agent_control_containers with live=true and list the containers",
+  "max_tokens": 8192,
+  "temperature": 0.3,
+  "compaction": {
+    "enabled": true,
+    "trigger_tokens": 6144,
+    "keep_last_messages": 6
+  },
+  "verification": {
+    "enabled": false
+  },
+  "mcp_servers": {
+    "opcp-explorer": {
+      "command": "/home/ubuntu/agentic-ai-plateform/.venv/bin/python",
+      "args": ["/home/ubuntu/agentic-ai-plateform/src/mcp_interface.py"],
+      "enabled_tools": ["*"],
+      "required": false
+    }
+  }
+}</code></pre>
+
+                <h3>Identity: <code>name</code> and <code>description</code></h3>
+                <p>The <code>name</code> field labels the agent in logs, dashboards, and audit trails; <code>description</code> states what it is for in one human-readable sentence. Naming is not cosmetic — when an agent acts on real deployments, a clear, stable name is what lets a reviewer trace an action back to the configuration that authorized it.</p>
+
+                <h3><code>llm_provider</code></h3>
+                <p>The <code>llm_provider</code> block picks the model that reasons for the agent: provider <code>ovhcloud</code>, model <code>Qwen3.5-397B-A17B</code>, and mode <code>FunctionCall</code>. <code>FunctionCall</code> mode lets the model invoke tools and MCP functions directly rather than only emitting text, which is what makes the discovery call possible.</p>
+                <div class="alert alert-info">
+                    <strong>Governance:</strong> choosing a model and provider is a policy decision, not just a technical one. Pinning inference to OVHcloud-hosted <code>Qwen3.5-397B-A17B</code> keeps reasoning on a known, accountable platform — part of the configuration you sign off on, not an afterthought.
+                </div>
+
+                <h3>Built-in tools: <code>read</code>, <code>write</code>, and <code>bash</code></h3>
+                <p>The <code>tools</code> array grants the agent three built-in capabilities: <code>read</code> inspects files, <code>write</code> creates or edits them, and <code>bash</code> runs shell commands on the host. Together they let the agent do real work rather than only talk about it.</p>
+                <div class="alert alert-info">
+                    <strong>Governance:</strong> <code>write</code> and <code>bash</code> are the two powerful grants here — one changes files, the other executes commands. Grant them only when the task needs them, scope what they can touch, and keep their activity observable so every change has a trail.
+                </div>
+
+                <h3><code>system_prompt</code></h3>
+                <p>The <code>system_prompt</code> is the single standing instruction the agent runs on launch: <code>Call agent_control_containers with live=true and list the containers</code>. The <code>live=true</code> argument forces an on-demand scan of the platform rather than returning a cached result, so the report reflects the fleet as it is right now.</p>
+
+                <h3>Generation limits: <code>max_tokens</code> (<code>8192</code>) and <code>temperature</code> (<code>0.3</code>)</h3>
+                <p><code>max_tokens</code> caps a single generation at <code>8192</code> tokens, bounding how much the agent can produce in one turn. <code>temperature</code> at <code>0.3</code> keeps output focused and repeatable — a low temperature suits an operations agent, where you want the same input to yield the same, predictable action rather than creative variation.</p>
+
+                <h3>Compaction block</h3>
+                <p>The <code>compaction</code> block keeps long sessions within the model's context window: once the conversation grows past <code>trigger_tokens</code>, older turns are summarized while the most recent messages (<code>keep_last_messages</code>) are kept verbatim. This lets the agent run multi-step work without losing the thread or overflowing the window.</p>
+
+                <h3>Disabled verification</h3>
+                <p>The <code>verification</code> block is set to <code>enabled: false</code>, so the agent's output is not run through an extra verification pass before it is returned.</p>
+                <div class="alert alert-info">
+                    <strong>Governance:</strong> turning verification off removes a safety check. It is a deliberate, accountable trade-off — acceptable for a read-only discovery task where speed matters, but something you record and revisit before the same agent is allowed to perform mutating operations.
+                </div>
+
+                <h2>Connecting to OPCP-EXPLORER over MCP</h2>
+                <p>A single stdio MCP server connects the agent to the opcp-explorer platform. The platform runs as a local Python process that the agent launches and talks to over standard input/output — no network port, no separate service to manage. The block below is the entire connection.</p>
+                <pre><code>"mcp_servers": {
+  "opcp-explorer": {
+    "command": "/home/ubuntu/agentic-ai-plateform/.venv/bin/python",
+    "args": ["/home/ubuntu/agentic-ai-plateform/src/mcp_interface.py"],
+    "enabled_tools": ["*"],
+    "required": false
+  }
+}</code></pre>
+                <p>The <code>command</code> points at the platform's virtual-environment Python interpreter, and <code>args</code> hands it the <code>mcp_interface.py</code> entry point; together they start the OPCP-EXPLORER MCP server as a child process. <code>enabled_tools</code> is <code>["*"]</code> and <code>required</code> is <code>false</code>.</p>
+                <div class="alert alert-info">
+                    <strong>Governance:</strong> <code>enabled_tools: ["*"]</code> grants the agent <em>every</em> tool the server exposes, present and future — convenient, but the opposite of least privilege, so confirm the full tool surface is one you accept. <code>required: false</code> lets the agent start even when the server is down: handy for resilience, but it means a missing connection fails quietly rather than stopping the agent, so you must detect that case yourself.
+                </div>
+
+                <h2>Reading the Discovery Report</h2>
+                <p>Once the agent launches, its <code>system_prompt</code> fires a single <code>agent_control_containers</code> call with <code>live=true</code>, and the OPCP-EXPLORER MCP server answers with a <strong>Container Discovery Results (Live Scan)</strong> report. The report walks the managed fleet, classifies every container it finds, and tells you which ones look like running agents. The rest of this lesson reads that report section by section.</p>
+
+                <h3>Scan summary</h3>
+                <p>The live scan reached <strong>48 containers</strong> on <code>opcp-psmc-platform</code> (<code>server_id</code> 4) and reported them in full. It also recorded <strong>1 scan error</strong> on <code>server_id</code> 5: the server could not be inspected because of an <strong>SSH authentication failure</strong>, so none of its containers appear in the results.</p>
+                <div class="alert alert-info">
+                    <strong>Governance:</strong> an unreachable server is a blind spot, not an empty one. The report is complete only for the servers that answered — <code>server_id</code> 5 returned nothing because the scan never authenticated, so treat its containers as <em>unknown</em> rather than absent until the SSH credential is fixed and the scan re-run.
+                </div>
+
+                <h3>Classification breakdown</h3>
+                <p>Across the 48 scanned containers the classifier returned <strong>4</strong> as <code>probable_agent</code> (confidence <strong>0.60–1.00</strong>) and <strong>44</strong> as <code>unclassified</code> (confidence <strong>0.00–0.40</strong>). The classifier is a pure, explainable heuristic — a container scores <code>probable_agent</code> once its evidence crosses the threshold (<code>score &gt;= 0.5</code>), and every point in the score has a named reason you can audit.</p>
+
+                <h3>Probable agents</h3>
+                <p>These are the four containers the scan flagged as probable agents, from the strongest signal to the weakest. The names and confidence scores come straight from the report; the evidence column summarizes why each one crossed the threshold.</p>
+                <table>
+                    <thead>
+                        <tr><th>Container</th><th>Confidence</th><th>Key evidence</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>ai-shai-web-interface-app-25-8529</code></td><td>1.00</td><td>SHAI web interface image + agent tokens / LLM egress</td></tr>
+                        <tr><td><code>opcp-agentic-ai-labs-app-1-6209</code></td><td>0.75</td><td>agentic-ai-labs app image, agent-related tokens</td></tr>
+                        <tr><td><code>ai-shai-web-interface-postgres-25-5432</code></td><td>0.65</td><td>part of the SHAI stack (supporting datastore)</td></tr>
+                        <tr><td><code>opcp-agentic-ai-labs-base-1-6213</code></td><td>0.60</td><td>agentic-ai-labs base image, weaker signal</td></tr>
+                    </tbody>
+                </table>
+                <p>The top row is a textbook agent: a SHAI web-interface image whose runtime shows agent tokens and outbound LLM traffic scores a perfect 1.00. The datastore row (0.65) is interesting — it is not an agent itself, but the classifier flags it because it is part of the SHAI stack, a supporting service rather than a standalone agent. The two <code>opcp-agentic-ai-labs</code> rows (0.75 and 0.60) sit lower: the app container carries agent-related tokens, while the base image is a weaker, more ambiguous signal just over the line.</p>
+
+                <h3>Notable findings and recommendations</h3>
+                <p>Reading the report as a whole, a few things stand out:</p>
+                <ul>
+                    <li>The highest-confidence agent is the <strong>SHAI web interface</strong> (<code>ai-shai-web-interface-app-25-8529</code>, 1.00) — the expected centerpiece of the stack.</li>
+                    <li>The remaining <strong>44 containers are <code>unclassified</code></strong>, consistent with ordinary infrastructure (databases, proxies, workers) rather than agents.</li>
+                    <li><code>server_id</code> 5 <strong>could not be scanned at all</strong>, so its agent posture is unknown.</li>
+                </ul>
+                <p>From those findings, the recommended follow-up is:</p>
+                <ul>
+                    <li>Investigate and repair the <strong>SSH credential for <code>server_id</code> 5</strong>, then re-run the scan with <code>live=true</code> so the fleet view is complete.</li>
+                    <li>Confirm the four probable agents are <strong>expected</strong>, and that the 0.65 datastore flag is understood as a supporting service rather than a rogue agent.</li>
+                    <li>Spot-check a sample of the <code>unclassified</code> containers to make sure none is a low-signal agent sitting just under the threshold.</li>
+                </ul>
+                <div class="alert alert-info">
+                    <strong>Governance:</strong> discovery and classification are <strong>read-only</strong> — the agent inspects and reports, so running it is safe. The follow-up is where risk enters: any <strong>stop</strong>, <strong>restart</strong>, or <strong>start</strong> acts on live containers and can take an agent — or a service — down. Keep a human in the loop for every such action, in line with the afternoon lessons on <a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop &amp; OVHcloud AI Policy</a> and <a href="guardrails-5-layers.html">Guardrails: Five Layers</a>.
+                </div>
+            </div>
+
+            <button class="btn btn-success btn-mark-complete" data-lesson-id="configuring-shai-mcp-opcp-explorer">
+                Mark as Complete
+            </button>
+        </div>
+    </main>
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" defer src="../assets/js/diagrams.js"></script>
+</body>
+</html>

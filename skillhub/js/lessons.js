@@ -2,7 +2,7 @@
  * Lesson catalog for the SkillHub bilingual (EN/FR) runtime.
  *
  * The `lessons` array is the single source of truth for the course catalog. It
- * lists all 17 lessons in programme order: 4 morning fundamentals, 6 afternoon
+ * lists all 18 lessons in programme order: 4 morning fundamentals, 7 afternoon
  * design & governance lessons, then 7 sandbox (hands-on) lessons.
  *
  * Invariants (enforced by skillhub/tests/lessons.test.js):
@@ -141,6 +141,18 @@ export const lessons = [
     difficulty: 'advanced',
     estimatedMinutes: 90,
     prerequisites: ['threat-modeling-workshop'],
+  },
+  {
+    id: 'configuring-shai-mcp-opcp-explorer',
+    slug: 'configuring-shai-mcp-opcp-explorer',
+    title: {
+      en: 'Configuring a SHAI Agent with MCP to OPCP-EXPLORER',
+      fr: 'Configurer un agent SHAI avec MCP vers OPCP-EXPLORER',
+    },
+    track: 'afternoon',
+    difficulty: 'advanced',
+    estimatedMinutes: 45,
+    prerequisites: ['agent-design-capstone'],
   },
 
   // ── Sandbox — hands-on OPCP Explorer labs ─────────────────────────────────

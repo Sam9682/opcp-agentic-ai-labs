@@ -57,8 +57,8 @@ describe('Navigation Module', () => {
       const navLists = container.querySelectorAll('.sidebar-nav');
       // morning: 4 lessons
       expect(navLists[0].querySelectorAll('li').length).toBe(4);
-      // afternoon: 6 lessons
-      expect(navLists[1].querySelectorAll('li').length).toBe(6);
+      // afternoon: 7 lessons
+      expect(navLists[1].querySelectorAll('li').length).toBe(7);
       // sandbox: 7 lessons
       expect(navLists[2].querySelectorAll('li').length).toBe(7);
     });

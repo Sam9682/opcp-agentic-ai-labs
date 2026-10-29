@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurer un agent SHAI avec MCP vers OPCP-EXPLORER - Agentic AI OPCP Labs</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <a href="." class="logo" aria-label="Accueil Agentic AI OPCP Labs">
+            <span>Agentic AI OPCP Labs</span>
+        </a>
+
+        <div class="header-actions">
+            <div class="progress-bar-container" aria-label="Progression globale">
+                <span class="progress-label">Progression :</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-percent">0%</span>
+            </div>
+
+            <div class="locale-switcher" role="navigation" aria-label="Sélecteur de langue">
+                <button data-locale="en" aria-label="English">EN</button>
+                <button class="active" data-locale="fr" aria-label="Français">FR</button>
+            </div>
+
+            <button class="hamburger-btn" aria-label="Basculer le menu de navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" role="navigation" aria-label="Navigation des leçons">
+        <div class="sidebar-section" data-track="morning">
+            <h2 class="sidebar-section-title">Matin — Introduction et fondamentaux</h2>
+            <ul class="sidebar-nav" id="nav-morning">
+                <li><a href="assistant-vs-agent.html">De l'assistant à l'agent</a></li>
+                <li><a href="agent-anatomy-7-components.html">Anatomie : les sept composants</a></li>
+                <li><a href="agentic-loop-and-variants.html">La boucle agentique et ses variantes</a></li>
+                <li><a href="stopping-criteria.html">Critères d'arrêt</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="afternoon">
+            <h2 class="sidebar-section-title">Conception et gouvernance</h2>
+            <ul class="sidebar-nav" id="nav-afternoon">
+                <li><a href="multi-agent-patterns.html">Patrons multi-agents</a></li>
+                <li><a href="when-not-multi-agent.html">Quand éviter le multi-agents</a></li>
+                <li><a href="guardrails-5-layers.html">Garde-fous : cinq couches</a></li>
+                <li><a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop et politique IA OVHcloud</a></li>
+                <li><a href="threat-modeling-workshop.html">Atelier : modélisation des menaces</a></li>
+                <li><a href="agent-design-capstone.html">Projet final : conception d'agent</a></li>
+                <li><a href="configuring-shai-mcp-opcp-explorer.html" class="active">Configurer un agent SHAI avec MCP vers OPCP-EXPLORER</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-track="sandbox">
+            <h2 class="sidebar-section-title">Bac à sable — plateforme opcp-explorer</h2>
+            <ul class="sidebar-nav" id="nav-sandbox">
+                <li><a href="install-bare-metal.html">Installation sur Ubuntu Bare-Metal avec l'IA agentique</a></li>
+                <li><a href="starting-applications.html">Démarrage des applications avec l'IA agentique</a></li>
+                <li><a href="stopping-applications.html">Arrêt des applications avec l'IA agentique</a></li>
+                <li><a href="making-backups.html">Sauvegardes avec l'IA agentique</a></li>
+                <li><a href="modifying-applications.html">Modification d'applications avec l'IA agentique</a></li>
+                <li><a href="agent-control.html">Contrôle des agents IA</a></li>
+                <li><a href="adding-applications.html">Ajout de nouvelles applications avec l'IA agentique (Annexe – facultatif)</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content" role="main">
+        <div class="lesson-content">
+            <div class="lesson-header">
+                <h1>Configurer un agent SHAI avec MCP vers OPCP-EXPLORER</h1>
+                <div class="lesson-meta">
+                    <span class="difficulty-badge difficulty-badge--advanced">Après-midi · Gouvernance</span>
+                    <span class="duration">⏱ ~45 min</span>
+                </div>
+            </div>
+            <div class="lesson-body">
+                <p>Cette leçon vous guide dans la configuration d'un agent <strong>SHAI</strong> dont l'unique connexion <strong>MCP</strong> (Model Context Protocol) en stdio atteint la plateforme agentic-ai <strong>opcp-explorer</strong>. Vous ouvrirez le fichier <code>AGENTS_CONTROL_AGENT_NO_SKILL.config.json</code> champ par champ, câblerez le bloc serveur MCP qui pointe vers la plateforme, lancerez une seule invite de découverte des conteneurs, puis lirez le rapport <strong>Container Discovery Results</strong> en direct que l'agent renvoie. L'objectif est de vous rendre capable de reproduire vous-même la connexion MCP et d'interpréter — et de gouverner — ce que le rapport de découverte vous apprend.</p>
+
+                <h2>Objectifs pédagogiques</h2>
+                <ul>
+                    <li>Configurer un agent SHAI à partir du fichier <code>AGENTS_CONTROL_AGENT_NO_SKILL.config.json</code>, champ par champ.</li>
+                    <li>Câbler le bloc serveur MCP en stdio qui relie l'agent à la plateforme agentic-ai opcp-explorer.</li>
+                    <li>Lancer l'unique invite de découverte qui déclenche un scan de conteneurs en direct.</li>
+                    <li>Interpréter le rapport de classification que l'agent renvoie.</li>
+                    <li>Appliquer la gouvernance à chaque choix de configuration qui accorde de l'autonomie.</li>
+                </ul>
+
+                <h2>Le fichier <code>AGENTS_CONTROL_AGENT_NO_SKILL.config.json</code></h2>
+                <p>L'agent est entièrement défini par un seul fichier JSON. Il nomme l'agent, choisit le modèle qui raisonne pour lui, liste les outils intégrés qu'il peut utiliser, fixe la tâche en une ligne qu'il exécute au lancement, plafonne sa génération et câble son unique connexion MCP. Voici le fichier complet, que nous ouvrons ensuite champ par champ.</p>
+                <pre><code>{
+  "name": "AGENTS_CONTROL_AGENT_NO_SKILL",
+  "description": "SHAI agent that discovers and classifies the containers running on the opcp-explorer platform over a single MCP connection.",
+  "llm_provider": {
+    "provider": "ovhcloud",
+    "model": "Qwen3.5-397B-A17B",
+    "mode": "FunctionCall"
+  },
+  "tools": ["read", "write", "bash"],
+  "system_prompt": "Call agent_control_containers with live=true and list the containers",
+  "max_tokens": 8192,
+  "temperature": 0.3,
+  "compaction": {
+    "enabled": true,
+    "trigger_tokens": 6144,
+    "keep_last_messages": 6
+  },
+  "verification": {
+    "enabled": false
+  },
+  "mcp_servers": {
+    "opcp-explorer": {
+      "command": "/home/ubuntu/agentic-ai-plateform/.venv/bin/python",
+      "args": ["/home/ubuntu/agentic-ai-plateform/src/mcp_interface.py"],
+      "enabled_tools": ["*"],
+      "required": false
+    }
+  }
+}</code></pre>
+
+                <h3>Identité : <code>name</code> et <code>description</code></h3>
+                <p>Le champ <code>name</code> étiquette l'agent dans les journaux, les tableaux de bord et les pistes d'audit ; <code>description</code> énonce sa raison d'être en une phrase lisible. Le nommage n'est pas cosmétique — lorsqu'un agent agit sur des déploiements réels, un nom clair et stable est ce qui permet à un relecteur de remonter d'une action à la configuration qui l'a autorisée.</p>
+
+                <h3><code>llm_provider</code></h3>
+                <p>Le bloc <code>llm_provider</code> choisit le modèle qui raisonne pour l'agent : fournisseur <code>ovhcloud</code>, modèle <code>Qwen3.5-397B-A17B</code> et mode <code>FunctionCall</code>. Le mode <code>FunctionCall</code> permet au modèle d'invoquer directement les outils et les fonctions MCP plutôt que de seulement produire du texte, ce qui rend l'appel de découverte possible.</p>
+                <div class="alert alert-info">
+                    <strong>Gouvernance :</strong> choisir un modèle et un fournisseur est une décision de politique, pas seulement technique. Épingler l'inférence sur le modèle <code>Qwen3.5-397B-A17B</code> hébergé par OVHcloud maintient le raisonnement sur une plateforme connue et responsable — un élément de la configuration que vous validez, pas une pensée après coup.
+                </div>
+
+                <h3>Outils intégrés : <code>read</code>, <code>write</code> et <code>bash</code></h3>
+                <p>Le tableau <code>tools</code> accorde à l'agent trois capacités intégrées : <code>read</code> inspecte les fichiers, <code>write</code> les crée ou les modifie, et <code>bash</code> exécute des commandes shell sur l'hôte. Ensemble, ils permettent à l'agent d'accomplir un travail réel plutôt que d'en parler seulement.</p>
+                <div class="alert alert-info">
+                    <strong>Gouvernance :</strong> <code>write</code> et <code>bash</code> sont ici les deux attributions puissantes — l'une modifie des fichiers, l'autre exécute des commandes. Ne les accordez que lorsque la tâche l'exige, restreignez leur périmètre d'action et gardez leur activité observable pour que chaque changement laisse une trace.
+                </div>
+
+                <h3><code>system_prompt</code></h3>
+                <p>Le <code>system_prompt</code> est l'unique instruction permanente que l'agent exécute au lancement : <code>Call agent_control_containers with live=true and list the containers</code>. L'argument <code>live=true</code> force un scan à la demande de la plateforme plutôt que de renvoyer un résultat en cache, de sorte que le rapport reflète la flotte telle qu'elle est maintenant.</p>
+
+                <h3>Limites de génération : <code>max_tokens</code> (<code>8192</code>) et <code>temperature</code> (<code>0.3</code>)</h3>
+                <p><code>max_tokens</code> plafonne une génération unique à <code>8192</code> jetons, bornant ce que l'agent peut produire en un tour. <code>temperature</code> à <code>0.3</code> garde la sortie concentrée et reproductible — une température basse convient à un agent d'exploitation, où l'on veut que la même entrée produise la même action prévisible plutôt qu'une variation créative.</p>
+
+                <h3>Bloc de compaction</h3>
+                <p>Le bloc <code>compaction</code> maintient les longues sessions dans la fenêtre de contexte du modèle : une fois que la conversation dépasse <code>trigger_tokens</code>, les tours plus anciens sont résumés tandis que les messages les plus récents (<code>keep_last_messages</code>) sont conservés tels quels. Cela permet à l'agent de mener un travail en plusieurs étapes sans perdre le fil ni déborder la fenêtre.</p>
+
+                <h3>Vérification désactivée</h3>
+                <p>Le bloc <code>verification</code> est réglé sur <code>enabled: false</code>, de sorte que la sortie de l'agent n'est pas soumise à une passe de vérification supplémentaire avant d'être renvoyée.</p>
+                <div class="alert alert-info">
+                    <strong>Gouvernance :</strong> désactiver la vérification supprime un garde-fou. C'est un compromis délibéré et assumé — acceptable pour une tâche de découverte en lecture seule où la vitesse compte, mais à consigner et à réexaminer avant que le même agent ne soit autorisé à effectuer des opérations qui modifient l'état.
+                </div>
+
+                <h2>Se connecter à OPCP-EXPLORER via MCP</h2>
+                <p>Un seul serveur MCP en stdio relie l'agent à la plateforme opcp-explorer. La plateforme s'exécute comme un processus Python local que l'agent lance et avec lequel il dialogue via l'entrée/sortie standard — aucun port réseau, aucun service séparé à gérer. Le bloc ci-dessous constitue l'intégralité de la connexion.</p>
+                <pre><code>"mcp_servers": {
+  "opcp-explorer": {
+    "command": "/home/ubuntu/agentic-ai-plateform/.venv/bin/python",
+    "args": ["/home/ubuntu/agentic-ai-plateform/src/mcp_interface.py"],
+    "enabled_tools": ["*"],
+    "required": false
+  }
+}</code></pre>
+                <p>Le champ <code>command</code> pointe vers l'interpréteur Python de l'environnement virtuel de la plateforme, et <code>args</code> lui transmet le point d'entrée <code>mcp_interface.py</code> ; ensemble, ils démarrent le serveur MCP OPCP-EXPLORER comme un processus enfant. <code>enabled_tools</code> vaut <code>["*"]</code> et <code>required</code> vaut <code>false</code>.</p>
+                <div class="alert alert-info">
+                    <strong>Gouvernance :</strong> <code>enabled_tools: ["*"]</code> accorde à l'agent <em>tous</em> les outils que le serveur expose, présents et futurs — pratique, mais c'est l'opposé du moindre privilège, alors confirmez que la surface d'outils complète est bien celle que vous acceptez. <code>required: false</code> permet à l'agent de démarrer même quand le serveur est hors service : commode pour la résilience, mais une connexion manquante échoue silencieusement au lieu d'arrêter l'agent, et c'est donc à vous de détecter ce cas.
+                </div>
+
+                <h2>Lire le rapport de découverte</h2>
+                <p>Une fois l'agent lancé, son <code>system_prompt</code> déclenche un unique appel <code>agent_control_containers</code> avec <code>live=true</code>, et le serveur MCP OPCP-EXPLORER répond par un rapport <strong>Container Discovery Results (Live Scan)</strong>. Le rapport parcourt la flotte gérée, classe chaque conteneur qu'il trouve et vous indique ceux qui ressemblent à des agents en cours d'exécution. Le reste de cette leçon lit ce rapport section par section.</p>
+
+                <h3>Résumé du scan</h3>
+                <p>Le scan en direct a atteint <strong>48 conteneurs</strong> sur <code>opcp-psmc-platform</code> (<code>server_id</code> 4) et les a rapportés en totalité. Il a aussi enregistré <strong>1 erreur de scan</strong> sur <code>server_id</code> 5 : le serveur n'a pas pu être inspecté à cause d'un <strong>échec d'authentification SSH</strong>, de sorte qu'aucun de ses conteneurs n'apparaît dans les résultats.</p>
+                <div class="alert alert-info">
+                    <strong>Gouvernance :</strong> un serveur injoignable est un angle mort, pas un serveur vide. Le rapport n'est complet que pour les serveurs qui ont répondu — <code>server_id</code> 5 n'a rien renvoyé parce que le scan ne s'est jamais authentifié, alors traitez ses conteneurs comme <em>inconnus</em> plutôt qu'absents jusqu'à ce que l'identifiant SSH soit corrigé et le scan relancé.
+                </div>
+
+                <h3>Répartition des classifications</h3>
+                <p>Sur les 48 conteneurs scannés, le classifieur a renvoyé <strong>4</strong> conteneurs <code>probable_agent</code> (confiance <strong>0.60–1.00</strong>) et <strong>44</strong> conteneurs <code>unclassified</code> (confiance <strong>0.00–0.40</strong>). Le classifieur est une heuristique pure et explicable — un conteneur obtient le score <code>probable_agent</code> dès que ses indices franchissent le seuil (<code>score &gt;= 0.5</code>), et chaque point du score a une raison nommée que vous pouvez auditer.</p>
+
+                <h3>Agents probables</h3>
+                <p>Voici les quatre conteneurs que le scan a signalés comme agents probables, du signal le plus fort au plus faible. Les noms et les scores de confiance proviennent directement du rapport ; la colonne des indices résume pourquoi chacun a franchi le seuil.</p>
+                <table>
+                    <thead>
+                        <tr><th>Conteneur</th><th>Confiance</th><th>Indices clés</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>ai-shai-web-interface-app-25-8529</code></td><td>1.00</td><td>image de l'interface web SHAI + jetons d'agent / trafic sortant LLM</td></tr>
+                        <tr><td><code>opcp-agentic-ai-labs-app-1-6209</code></td><td>0.75</td><td>image de l'application agentic-ai-labs, jetons liés aux agents</td></tr>
+                        <tr><td><code>ai-shai-web-interface-postgres-25-5432</code></td><td>0.65</td><td>fait partie de la pile SHAI (datastore de support)</td></tr>
+                        <tr><td><code>opcp-agentic-ai-labs-base-1-6213</code></td><td>0.60</td><td>image de base agentic-ai-labs, signal plus faible</td></tr>
+                    </tbody>
+                </table>
+                <p>La première ligne est un agent manuel : une image d'interface web SHAI dont l'exécution montre des jetons d'agent et un trafic LLM sortant obtient un parfait 1.00. La ligne du datastore (0.65) est intéressante — ce n'est pas un agent en soi, mais le classifieur le signale parce qu'il fait partie de la pile SHAI, un service de support plutôt qu'un agent autonome. Les deux lignes <code>opcp-agentic-ai-labs</code> (0.75 et 0.60) sont plus basses : le conteneur applicatif porte des jetons liés aux agents, tandis que l'image de base est un signal plus faible et plus ambigu, juste au-dessus de la ligne.</p>
+
+                <h3>Constats notables et recommandations</h3>
+                <p>En lisant le rapport dans son ensemble, quelques éléments se détachent :</p>
+                <ul>
+                    <li>L'agent au plus haut niveau de confiance est l'<strong>interface web SHAI</strong> (<code>ai-shai-web-interface-app-25-8529</code>, 1.00) — la pièce maîtresse attendue de la pile.</li>
+                    <li>Les <strong>44 conteneurs restants sont <code>unclassified</code></strong>, ce qui est cohérent avec une infrastructure ordinaire (bases de données, proxies, workers) plutôt qu'avec des agents.</li>
+                    <li><code>server_id</code> 5 <strong>n'a pas pu être scanné du tout</strong>, de sorte que sa posture en matière d'agents est inconnue.</li>
+                </ul>
+                <p>À partir de ces constats, le suivi recommandé est :</p>
+                <ul>
+                    <li>Enquêter sur l'<strong>identifiant SSH de <code>server_id</code> 5</strong> et le réparer, puis relancer le scan avec <code>live=true</code> afin que la vue de la flotte soit complète.</li>
+                    <li>Confirmer que les quatre agents probables sont <strong>attendus</strong>, et que le signalement du datastore à 0.65 est compris comme un service de support plutôt qu'un agent intrus.</li>
+                    <li>Contrôler par échantillonnage une partie des conteneurs <code>unclassified</code> pour s'assurer qu'aucun n'est un agent à faible signal juste sous le seuil.</li>
+                </ul>
+                <div class="alert alert-info">
+                    <strong>Gouvernance :</strong> la découverte et la classification sont en <strong>lecture seule</strong> — l'agent inspecte et rapporte, donc l'exécuter est sans danger. Le risque apparaît au suivi : tout <strong>stop</strong>, <strong>restart</strong> ou <strong>start</strong> agit sur des conteneurs en direct et peut mettre hors service un agent — ou un service. Gardez un humain dans la boucle pour chacune de ces actions, conformément aux leçons de l'après-midi sur le <a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop et politique IA OVHcloud</a> et les <a href="guardrails-5-layers.html">Garde-fous : cinq couches</a>.
+                </div>
+            </div>
+
+            <button class="btn btn-success btn-mark-complete" data-lesson-id="configuring-shai-mcp-opcp-explorer">
+                Marquer comme terminé
+            </button>
+        </div>
+    </main>
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" defer src="../assets/js/diagrams.js"></script>
+</body>
+</html>

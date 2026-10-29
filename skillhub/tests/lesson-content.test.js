@@ -26,6 +26,7 @@ export const AUTHORED_SLUGS = [
   'human-in-the-loop-ovhcloud-policy',
   'threat-modeling-workshop',
   'agent-design-capstone',
+  'configuring-shai-mcp-opcp-explorer',
 ];
 
 function lessonPath(locale, slug) {
