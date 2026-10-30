@@ -19,7 +19,7 @@ const COMPLETE_PREFIX = 'skillhub_lesson_complete_';
 const SUPPORTED_LOCALES = ['en', 'fr'];
 
 /** Fixed top-level section ordering used to group and emit sidebar sections. */
-const SECTION_ORDER = ['section-1', 'section-2', 'section-3'];
+const SECTION_ORDER = ['section-2', 'section-3', 'section-1'];
 
 /**
  * Verbatim bilingual section titles, asserted by the tests.

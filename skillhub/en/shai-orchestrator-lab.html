@@ -71,7 +71,7 @@
                     <li><strong>Python 3.11+</strong> — CAO runs on Python 3.11 or later.</li>
                     <li><strong>tmux 3.3+</strong> — CAO starts each provider CLI in an isolated tmux terminal session, so you need tmux 3.3 or later.</li>
                     <li><strong>uv</strong> — the Python package and tool installer used to install the <code>cao</code> command line tool.</li>
-                    <li><strong>At least one authenticated provider CLI</strong> — each agent is backed by a provider CLI with its own native authentication. The default provider is the <strong>Kiro CLI</strong>; make sure it is installed and signed in before you launch an agent.</li>
+                    <li><strong>At least one authenticated provider CLI</strong> — each agent is backed by a provider CLI with its own native authentication. The default provider is the <strong>SHAI CLI</strong>; make sure it is installed and signed in before you launch an agent.</li>
                 </ul>
 
                 <h2>CAO Architecture</h2>
@@ -173,7 +173,7 @@ cao shutdown --all</code></pre>
 name: code_supervisor
 description: Coding Supervisor Agent in a multi-agent system
 role: supervisor
-provider: kiro_cli
+provider: shai_cli
 delegateTools: ["*"]
 ---
 
@@ -186,7 +186,7 @@ through the reviewer, and decide when the job is done.</code></pre>
 name: developer
 description: Developer Agent in a multi-agent system
 role: developer
-provider: kiro_cli
+provider: shai_cli
 allowedTools: ["fs_read", "fs_write", "execute_bash", "@cao-mcp-server"]
 ---
 
@@ -200,7 +200,7 @@ you and return a structured result.</code></pre>
                 <p><strong>Governance decision:</strong> the <code>role</code> is a named permission preset — allowed values are <code>supervisor</code>, <code>developer</code>, and <code>reviewer</code>. Choosing a role is choosing a default <code>allowedTools</code> bundle: a supervisor coordinates and delegates, a developer gets read/write/execute to do scoped work, and a reviewer is read-only by design. The role is the coarse-grained governance control you set before you tune anything else.</p>
 
                 <h3><code>provider</code></h3>
-                <p><strong>Governance decision:</strong> <code>provider</code> picks which authenticated provider CLI backs the agent — here <code>kiro_cli</code>, the default Kiro CLI. Because agents remain full CLI processes with native authentication, the provider you name is the identity and credentials the agent's actions run under, so it belongs in the audit story alongside the tool grants.</p>
+                <p><strong>Governance decision:</strong> <code>provider</code> picks which authenticated provider CLI backs the agent — here <code>shai_cli</code>, the default Kiro CLI. Because agents remain full CLI processes with native authentication, the provider you name is the identity and credentials the agent's actions run under, so it belongs in the audit story alongside the tool grants.</p>
 
                 <h3><code>allowedTools</code></h3>
                 <p><strong>Governance decision:</strong> <code>allowedTools</code> is the explicit tool allowlist for the agent itself, and it overrides the role's defaults. It is the concrete expression of least privilege: the developer above is granted exactly <code>fs_read</code>, <code>fs_write</code>, <code>execute_bash</code>, and the <code>@cao-mcp-server</code> tools — nothing more. If a sub-task does not need to write files or run commands, do not list those tools in the profile that runs it.</p>

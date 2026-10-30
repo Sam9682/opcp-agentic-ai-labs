@@ -71,7 +71,7 @@
                     <li><strong>Python 3.11+</strong> — CAO fonctionne sous Python 3.11 ou version ultérieure.</li>
                     <li><strong>tmux 3.3+</strong> — CAO démarre chaque CLI de fournisseur dans une session de terminal tmux isolée ; vous avez donc besoin de tmux 3.3 ou version ultérieure.</li>
                     <li><strong>uv</strong> — l'installateur de paquets et d'outils Python utilisé pour installer l'outil en ligne de commande <code>cao</code>.</li>
-                    <li><strong>Au moins un CLI de fournisseur authentifié</strong> — chaque agent est adossé à un CLI de fournisseur doté de sa propre authentification native. Le fournisseur par défaut est le <strong>Kiro CLI</strong> ; assurez-vous qu'il est installé et connecté avant de lancer un agent.</li>
+                    <li><strong>Au moins un CLI de fournisseur authentifié</strong> — chaque agent est adossé à un CLI de fournisseur doté de sa propre authentification native. Le fournisseur par défaut est le <strong>SHAI CLI</strong> ; assurez-vous qu'il est installé et connecté avant de lancer un agent.</li>
                 </ul>
 
                 <h2>L'architecture de CAO</h2>
@@ -173,7 +173,7 @@ cao shutdown --all</code></pre>
 name: code_supervisor
 description: Coding Supervisor Agent in a multi-agent system
 role: supervisor
-provider: kiro_cli
+provider: shai_cli
 delegateTools: ["*"]
 ---
 
@@ -186,7 +186,7 @@ through the reviewer, and decide when the job is done.</code></pre>
 name: developer
 description: Developer Agent in a multi-agent system
 role: developer
-provider: kiro_cli
+provider: shai_cli
 allowedTools: ["fs_read", "fs_write", "execute_bash", "@cao-mcp-server"]
 ---
 
@@ -200,7 +200,7 @@ you and return a structured result.</code></pre>
                 <p><strong>Décision de gouvernance :</strong> le <code>role</code> est un préréglage de permissions nommé — les valeurs autorisées sont <code>supervisor</code>, <code>developer</code> et <code>reviewer</code>. Choisir un rôle, c'est choisir un ensemble <code>allowedTools</code> par défaut : un superviseur coordonne et délègue, un developer obtient lecture/écriture/exécution pour faire un travail délimité, et un reviewer est en lecture seule par conception. Le rôle est le contrôle de gouvernance à gros grain que vous fixez avant tout autre réglage.</p>
 
                 <h3><code>provider</code></h3>
-                <p><strong>Décision de gouvernance :</strong> <code>provider</code> choisit quel CLI de fournisseur authentifié adosse l'agent — ici <code>kiro_cli</code>, le Kiro CLI par défaut. Comme les agents restent des processus CLI à part entière avec authentification native, le fournisseur que vous nommez est l'identité et les identifiants sous lesquels s'exécutent les actions de l'agent ; il a donc sa place dans le récit d'audit aux côtés des attributions d'outils.</p>
+                <p><strong>Décision de gouvernance :</strong> <code>provider</code> choisit quel CLI de fournisseur authentifié adosse l'agent — ici <code>shai_cli</code>, le SHAI CLI par défaut. Comme les agents restent des processus CLI à part entière avec authentification native, le fournisseur que vous nommez est l'identité et les identifiants sous lesquels s'exécutent les actions de l'agent ; il a donc sa place dans le récit d'audit aux côtés des attributions d'outils.</p>
 
                 <h3><code>allowedTools</code></h3>
                 <p><strong>Décision de gouvernance :</strong> <code>allowedTools</code> est la liste d'autorisation d'outils explicite pour l'agent lui-même, et elle remplace les valeurs par défaut du rôle. C'est l'expression concrète du moindre privilège : le developer ci-dessus se voit accorder exactement <code>fs_read</code>, <code>fs_write</code>, <code>execute_bash</code> et les outils <code>@cao-mcp-server</code> — rien de plus. Si une sous-tâche n'a pas besoin d'écrire des fichiers ou d'exécuter des commandes, ne listez pas ces outils dans le profil qui l'exécute.</p>

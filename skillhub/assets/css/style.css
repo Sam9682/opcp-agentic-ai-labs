@@ -1021,3 +1021,40 @@ pre code {
     content: "\2717\00a0";
     color: #9b2d3d;
 }
+
+/* Quiz — fail feedback panel (shown only when the quiz was not passed) */
+.quiz-fail-feedback {
+    display: none;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: 2px solid var(--ovh-red);
+    border-radius: var(--border-radius);
+    background-color: rgba(228, 66, 88, 0.08);
+}
+.quiz-fail-feedback[data-quiz-passed="false"] {
+    display: block;
+}
+.quiz-fail-feedback__heading {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin: 0 0 var(--spacing-sm);
+    font-weight: 700;
+    color: var(--ovh-red);
+}
+.quiz-fail-feedback__cross {
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--ovh-red);
+}
+.quiz-fail-feedback__cross::before {
+    content: "\2716";
+}
+.quiz-fail-feedback__message {
+    margin: 0 0 var(--spacing-sm);
+    font-weight: 700;
+    color: var(--ovh-red);
+}
+.quiz-fail-feedback__link a {
+    font-weight: 700;
+}

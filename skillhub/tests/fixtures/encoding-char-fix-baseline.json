@@ -6152,7 +6152,7 @@
       "rel": "fr/index.html",
       "affected": false,
       "byteLength": 11274,
-      "sha256": "0873288b1718e6023d0dca90cfd8f709f6af81ef111dffe5ef75192bd09a7b7d",
+      "sha256": "9c1eca8b3a0e2c562be4227db5e4fa841784be61a4765e6d05586913e0413479",
       "charsetLine": "    <meta charset=\"UTF-8\">\r",
       "lineCount": 158,
       "lines": [
@@ -6343,157 +6343,157 @@
         },
         {
           "n": 38,
-          "text": "        <div class=\"sidebar-section\" data-section=\"section-1\">\r",
-          "clean": true
-        },
-        {
-          "n": 39,
-          "text": "            <h2 class=\"sidebar-section-title\">Fondamentaux et gouvernance</h2>\r",
-          "clean": true
-        },
-        {
-          "n": 40,
-          "text": "            <h3 class=\"sidebar-subsection-title\">Introduction et fondamentaux</h3>\r",
-          "clean": true
-        },
-        {
-          "n": 41,
-          "text": "            <ul class=\"sidebar-nav\">\r",
-          "clean": true
-        },
-        {
-          "n": 42,
-          "text": "                <li><a href=\"assistant-vs-agent.html\">De l'assistant à l'agent</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 43,
-          "text": "                <li><a href=\"agent-anatomy-7-components.html\">Anatomie : les sept composants clés</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 44,
-          "text": "                <li><a href=\"agentic-loop-and-variants.html\">La boucle agentique et ses variantes</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 45,
-          "text": "                <li><a href=\"stopping-criteria.html\">Critères d'arrêt</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 46,
-          "text": "            </ul>\r",
-          "clean": true
-        },
-        {
-          "n": 47,
-          "text": "            <h3 class=\"sidebar-subsection-title\">Conception et gouvernance</h3>\r",
-          "clean": true
-        },
-        {
-          "n": 48,
-          "text": "            <ul class=\"sidebar-nav\" id=\"nav-afternoon\">\r",
-          "clean": true
-        },
-        {
-          "n": 49,
-          "text": "                <li><a href=\"multi-agent-patterns.html\">Patrons multi-agents</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 50,
-          "text": "                <li><a href=\"when-not-multi-agent.html\">Quand ne pas passer au multi-agents</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 51,
-          "text": "                <li><a href=\"guardrails-5-layers.html\">Garde-fous : les cinq couches</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 52,
-          "text": "                <li><a href=\"human-in-the-loop-ovhcloud-policy.html\">Supervision humaine et politique IA OVHcloud</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 53,
-          "text": "                <li><a href=\"threat-modeling-workshop.html\">Atelier : modélisation des menaces</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 54,
-          "text": "                <li><a href=\"agent-design-capstone.html\">Projet de synthèse : conception d'agent</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 55,
-          "text": "                <li><a href=\"configuring-shai-mcp-opcp-explorer.html\">Configurer un agent SHAI avec MCP vers OPCP-EXPLORER</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 56,
-          "text": "            </ul>\r",
-          "clean": true
-        },
-        {
-          "n": 57,
-          "text": "        </div>\r",
-          "clean": true
-        },
-        {
-          "n": 58,
           "text": "        <div class=\"sidebar-section\" data-section=\"section-2\">\r",
           "clean": true
         },
         {
-          "n": 59,
+          "n": 39,
           "text": "            <h2 class=\"sidebar-section-title\">Quiz</h2>\r",
           "clean": true
         },
         {
-          "n": 60,
+          "n": 40,
           "text": "            <ul class=\"sidebar-nav\">\r",
           "clean": true
         },
         {
-          "n": 61,
+          "n": 41,
           "text": "                <li><a href=\"quiz-fundamentals.html\">Quiz fondamentaux et gouvernance</a></li>\r",
           "clean": true
         },
         {
-          "n": 62,
+          "n": 42,
           "text": "            </ul>\r",
           "clean": true
         },
         {
-          "n": 63,
+          "n": 43,
           "text": "        </div>\r",
           "clean": true
         },
         {
-          "n": 64,
+          "n": 44,
           "text": "        <div class=\"sidebar-section\" data-section=\"section-3\">\r",
           "clean": true
         },
         {
-          "n": 65,
+          "n": 45,
           "text": "            <h2 class=\"sidebar-section-title\">Bac à sable — travaux pratiques</h2>\r",
           "clean": true
         },
         {
-          "n": 66,
+          "n": 46,
           "text": "            <ul class=\"sidebar-nav\">\r",
           "clean": true
         },
         {
-          "n": 67,
+          "n": 47,
           "text": "                <li><a href=\"shai-orchestrator-lab.html\">Atelier : l'orchestrateur multi-agents shai</a></li>\r",
           "clean": true
         },
         {
-          "n": 68,
+          "n": 48,
           "text": "                <li><a href=\"running-applications-lab.html\">Atelier : exploitation des applications OPCP-EXPLORER</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 49,
+          "text": "            </ul>\r",
+          "clean": true
+        },
+        {
+          "n": 50,
+          "text": "        </div>\r",
+          "clean": true
+        },
+        {
+          "n": 51,
+          "text": "        <div class=\"sidebar-section\" data-section=\"section-1\">\r",
+          "clean": true
+        },
+        {
+          "n": 52,
+          "text": "            <h2 class=\"sidebar-section-title\">Fondamentaux et gouvernance</h2>\r",
+          "clean": true
+        },
+        {
+          "n": 53,
+          "text": "            <h3 class=\"sidebar-subsection-title\">Introduction et fondamentaux</h3>\r",
+          "clean": true
+        },
+        {
+          "n": 54,
+          "text": "            <ul class=\"sidebar-nav\">\r",
+          "clean": true
+        },
+        {
+          "n": 55,
+          "text": "                <li><a href=\"assistant-vs-agent.html\">De l'assistant à l'agent</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 56,
+          "text": "                <li><a href=\"agent-anatomy-7-components.html\">Anatomie : les sept composants clés</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 57,
+          "text": "                <li><a href=\"agentic-loop-and-variants.html\">La boucle agentique et ses variantes</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 58,
+          "text": "                <li><a href=\"stopping-criteria.html\">Critères d'arrêt</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 59,
+          "text": "            </ul>\r",
+          "clean": true
+        },
+        {
+          "n": 60,
+          "text": "            <h3 class=\"sidebar-subsection-title\">Conception et gouvernance</h3>\r",
+          "clean": true
+        },
+        {
+          "n": 61,
+          "text": "            <ul class=\"sidebar-nav\" id=\"nav-afternoon\">\r",
+          "clean": true
+        },
+        {
+          "n": 62,
+          "text": "                <li><a href=\"multi-agent-patterns.html\">Patrons multi-agents</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 63,
+          "text": "                <li><a href=\"when-not-multi-agent.html\">Quand ne pas passer au multi-agents</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 64,
+          "text": "                <li><a href=\"guardrails-5-layers.html\">Garde-fous : les cinq couches</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 65,
+          "text": "                <li><a href=\"human-in-the-loop-ovhcloud-policy.html\">Supervision humaine et politique IA OVHcloud</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 66,
+          "text": "                <li><a href=\"threat-modeling-workshop.html\">Atelier : modélisation des menaces</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 67,
+          "text": "                <li><a href=\"agent-design-capstone.html\">Projet de synthèse : conception d'agent</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 68,
+          "text": "                <li><a href=\"configuring-shai-mcp-opcp-explorer.html\">Configurer un agent SHAI avec MCP vers OPCP-EXPLORER</a></li>\r",
           "clean": true
         },
         {
@@ -7801,10 +7801,10 @@
     "fr/quiz-fundamentals.html": {
       "rel": "fr/quiz-fundamentals.html",
       "affected": false,
-      "byteLength": 16782,
-      "sha256": "6c6745697f24d8f373f5275cbba884ec1d96bdbb879d23ae7b9322434b933c07",
+      "byteLength": 17695,
+      "sha256": "60a00477e9b83d0afd4e592d409f59ff46fe0460b27b277df04d67c63ce65abf",
       "charsetLine": "    <meta charset=\"UTF-8\">",
-      "lineCount": 208,
+      "lineCount": 219,
       "lines": [
         {
           "n": 1,
@@ -8098,7 +8098,7 @@
         },
         {
           "n": 59,
-          "text": "                                <legend>1. Quelle est la différence fondamentale entre un assistant IA et un agent IA ?</legend>",
+          "text": "                                <legend>1. <strong>Quelle est la différence fondamentale entre un assistant IA et un agent IA ?</strong></legend>",
           "clean": true
         },
         {
@@ -8143,7 +8143,7 @@
         },
         {
           "n": 68,
-          "text": "                                <legend>2. Selon le spectre d'autonomie, quel niveau d'autonomie faut-il accorder à un agent ?</legend>",
+          "text": "                                <legend>2. <strong>Selon le spectre d'autonomie, quel niveau d'autonomie faut-il accorder à un agent ?</strong></legend>",
           "clean": true
         },
         {
@@ -8188,7 +8188,7 @@
         },
         {
           "n": 77,
-          "text": "                                <legend>3. Quel ensemble énumère les sept composants de base d'un agent IA ?</legend>",
+          "text": "                                <legend>3. <strong>Quel ensemble énumère les sept composants de base d'un agent IA ?</strong></legend>",
           "clean": true
         },
         {
@@ -8233,7 +8233,7 @@
         },
         {
           "n": 86,
-          "text": "                                <legend>4. Dans l'anatomie d'un agent, quel rôle jouent les outils ?</legend>",
+          "text": "                                <legend>4. <strong>Dans l'anatomie d'un agent, quel rôle jouent les outils ?</strong></legend>",
           "clean": true
         },
         {
@@ -8278,7 +8278,7 @@
         },
         {
           "n": 95,
-          "text": "                                <legend>5. Quelle est la boucle agentique de base ?</legend>",
+          "text": "                                <legend>5. <strong>Quelle est la boucle agentique de base ?</strong></legend>",
           "clean": true
         },
         {
@@ -8323,7 +8323,7 @@
         },
         {
           "n": 104,
-          "text": "                                <legend>6. Quelle variante de la boucle agentique ajoute une étape d'autocritique, consignant une leçon en mémoire après un échec puis réessayant avec cet apprentissage ?</legend>",
+          "text": "                                <legend>6. <strong>Quelle variante de la boucle agentique ajoute une étape d'autocritique, consignant une leçon en mémoire après un échec puis réessayant avec cet apprentissage ?</strong></legend>",
           "clean": true
         },
         {
@@ -8368,7 +8368,7 @@
         },
         {
           "n": 113,
-          "text": "                                <legend>7. Quelle est la bonne pratique pour définir les critères d'arrêt d'un agent ?</legend>",
+          "text": "                                <legend>7. <strong>Quelle est la bonne pratique pour définir les critères d'arrêt d'un agent ?</strong></legend>",
           "clean": true
         },
         {
@@ -8413,7 +8413,7 @@
         },
         {
           "n": 122,
-          "text": "                                <legend>8. Quelle option énumère les quatre patrons architecturaux multi-agents ?</legend>",
+          "text": "                                <legend>8. <strong>Quelle option énumère les quatre patrons architecturaux multi-agents ?</strong></legend>",
           "clean": true
         },
         {
@@ -8458,7 +8458,7 @@
         },
         {
           "n": 131,
-          "text": "                                <legend>9. Quelle est la règle empirique pour choisir entre un agent unique et une conception multi-agents ?</legend>",
+          "text": "                                <legend>9. <strong>Quelle est la règle empirique pour choisir entre un agent unique et une conception multi-agents ?</strong></legend>",
           "clean": true
         },
         {
@@ -8503,7 +8503,7 @@
         },
         {
           "n": 140,
-          "text": "                                <legend>10. Lequel de ces éléments est un coût caché introduit par une conception multi-agents ?</legend>",
+          "text": "                                <legend>10. <strong>Lequel de ces éléments est un coût caché introduit par une conception multi-agents ?</strong></legend>",
           "clean": true
         },
         {
@@ -8548,7 +8548,7 @@
         },
         {
           "n": 149,
-          "text": "                                <legend>11. Quelle option énumère les cinq couches de garde-fous en défense en profondeur ?</legend>",
+          "text": "                                <legend>11. <strong>Quelle option énumère les cinq couches de garde-fous en défense en profondeur ?</strong></legend>",
           "clean": true
         },
         {
@@ -8593,7 +8593,7 @@
         },
         {
           "n": 158,
-          "text": "                                <legend>12. La couche de garde-fou « permissions » répond à quelle question ?</legend>",
+          "text": "                                <legend>12. <strong>La couche de garde-fou « permissions » répond à quelle question ?</strong></legend>",
           "clean": true
         },
         {
@@ -8638,7 +8638,7 @@
         },
         {
           "n": 167,
-          "text": "                                <legend>13. Quelle option nomme correctement les trois degrés de supervision humaine ?</legend>",
+          "text": "                                <legend>13. <strong>Quelle option nomme correctement les trois degrés de supervision humaine ?</strong></legend>",
           "clean": true
         },
         {
@@ -8683,7 +8683,7 @@
         },
         {
           "n": 176,
-          "text": "                                <legend>14. Dans l'atelier de modélisation des menaces, quelles trois menaces propres aux agents le modèle doit-il couvrir ?</legend>",
+          "text": "                                <legend>14. <strong>Dans l'atelier de modélisation des menaces, quelles trois menaces propres aux agents le modèle doit-il couvrir ?</strong></legend>",
           "clean": true
         },
         {
@@ -8728,7 +8728,7 @@
         },
         {
           "n": 185,
-          "text": "                                <legend>15. Dans la configuration MCP de SHAI, que signifie, du point de vue de la gouvernance, le fait de régler <code>enabled_tools</code> sur <code>[\"*\"]</code> ?</legend>",
+          "text": "                                <legend>15. <strong>Dans la configuration MCP de SHAI, que signifie, du point de vue de la gouvernance, le fait de régler <code>enabled_tools</code> sur <code>[\"*\"]</code> ?</strong></legend>",
           "clean": true
         },
         {
@@ -8788,61 +8788,116 @@
         },
         {
           "n": 197,
-          "text": "            </div>",
+          "text": "",
           "clean": true
         },
         {
           "n": 198,
-          "text": "",
+          "text": "                <div class=\"quiz-fail-feedback\" role=\"alert\">",
           "clean": true
         },
         {
           "n": 199,
-          "text": "            <button class=\"btn btn-success btn-mark-complete\" data-lesson-id=\"quiz-fundamentals\">",
+          "text": "                    <p class=\"quiz-fail-feedback__heading\">",
           "clean": true
         },
         {
           "n": 200,
-          "text": "                Marquer comme terminé",
+          "text": "                        <span class=\"quiz-fail-feedback__cross\" aria-hidden=\"true\"></span>",
           "clean": true
         },
         {
           "n": 201,
-          "text": "            </button>",
+          "text": "                        <span>Quiz non réussi</span>",
           "clean": true
         },
         {
           "n": 202,
-          "text": "        </div>",
+          "text": "                    </p>",
           "clean": true
         },
         {
           "n": 203,
-          "text": "    </main>",
+          "text": "                    <p class=\"quiz-fail-feedback__message\">Vous n'avez pas atteint la note de réussite. Revoyez le contenu, puis réessayez.</p>",
           "clean": true
         },
         {
           "n": 204,
-          "text": "",
+          "text": "                    <p class=\"quiz-fail-feedback__link\">",
           "clean": true
         },
         {
           "n": 205,
-          "text": "    <script type=\"module\" src=\"../js/app.js\"></script>",
+          "text": "                        <a href=\"assistant-vs-agent.html\">&#8592; Revenir à III) Fondamentaux et gouvernance</a>",
           "clean": true
         },
         {
           "n": 206,
-          "text": "</body>",
+          "text": "                    </p>",
           "clean": true
         },
         {
           "n": 207,
-          "text": "</html>",
+          "text": "                </div>",
           "clean": true
         },
         {
           "n": 208,
+          "text": "            </div>",
+          "clean": true
+        },
+        {
+          "n": 209,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 210,
+          "text": "            <button class=\"btn btn-success btn-mark-complete\" data-lesson-id=\"quiz-fundamentals\">",
+          "clean": true
+        },
+        {
+          "n": 211,
+          "text": "                Marquer comme terminé",
+          "clean": true
+        },
+        {
+          "n": 212,
+          "text": "            </button>",
+          "clean": true
+        },
+        {
+          "n": 213,
+          "text": "        </div>",
+          "clean": true
+        },
+        {
+          "n": 214,
+          "text": "    </main>",
+          "clean": true
+        },
+        {
+          "n": 215,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 216,
+          "text": "    <script type=\"module\" src=\"../js/app.js\"></script>",
+          "clean": true
+        },
+        {
+          "n": 217,
+          "text": "</body>",
+          "clean": true
+        },
+        {
+          "n": 218,
+          "text": "</html>",
+          "clean": true
+        },
+        {
+          "n": 219,
           "text": "",
           "clean": true
         }
@@ -8852,7 +8907,7 @@
       "rel": "fr/running-applications-lab.html",
       "affected": false,
       "byteLength": 46391,
-      "sha256": "7edc86bea1c33956bcd43b741b06e97d67bf02d5b51c0477c46db50ba3e30d4c",
+      "sha256": "06b74d6a8e4b77253d7a630c935445b49cdb77df726ae3f90fba0f9d71f03e80",
       "charsetLine": "    <meta charset=\"UTF-8\">",
       "lineCount": 681,
       "lines": [
@@ -9043,157 +9098,157 @@
         },
         {
           "n": 38,
-          "text": "        <div class=\"sidebar-section\" data-section=\"section-1\">",
-          "clean": true
-        },
-        {
-          "n": 39,
-          "text": "            <h2 class=\"sidebar-section-title\">Fondamentaux et gouvernance</h2>",
-          "clean": true
-        },
-        {
-          "n": 40,
-          "text": "            <h3 class=\"sidebar-subsection-title\">Introduction et fondamentaux</h3>",
-          "clean": true
-        },
-        {
-          "n": 41,
-          "text": "            <ul class=\"sidebar-nav\">",
-          "clean": true
-        },
-        {
-          "n": 42,
-          "text": "                <li><a href=\"assistant-vs-agent.html\">De l'assistant à l'agent</a></li>",
-          "clean": true
-        },
-        {
-          "n": 43,
-          "text": "                <li><a href=\"agent-anatomy-7-components.html\">Anatomie : les sept composants clés</a></li>",
-          "clean": true
-        },
-        {
-          "n": 44,
-          "text": "                <li><a href=\"agentic-loop-and-variants.html\">La boucle agentique et ses variantes</a></li>",
-          "clean": true
-        },
-        {
-          "n": 45,
-          "text": "                <li><a href=\"stopping-criteria.html\">Critères d'arrêt</a></li>",
-          "clean": true
-        },
-        {
-          "n": 46,
-          "text": "            </ul>",
-          "clean": true
-        },
-        {
-          "n": 47,
-          "text": "            <h3 class=\"sidebar-subsection-title\">Conception et gouvernance</h3>",
-          "clean": true
-        },
-        {
-          "n": 48,
-          "text": "            <ul class=\"sidebar-nav\" id=\"nav-afternoon\">",
-          "clean": true
-        },
-        {
-          "n": 49,
-          "text": "                <li><a href=\"multi-agent-patterns.html\">Patrons multi-agents</a></li>",
-          "clean": true
-        },
-        {
-          "n": 50,
-          "text": "                <li><a href=\"when-not-multi-agent.html\">Quand ne pas passer au multi-agents</a></li>",
-          "clean": true
-        },
-        {
-          "n": 51,
-          "text": "                <li><a href=\"guardrails-5-layers.html\">Garde-fous : les cinq couches</a></li>",
-          "clean": true
-        },
-        {
-          "n": 52,
-          "text": "                <li><a href=\"human-in-the-loop-ovhcloud-policy.html\">Supervision humaine et politique IA OVHcloud</a></li>",
-          "clean": true
-        },
-        {
-          "n": 53,
-          "text": "                <li><a href=\"threat-modeling-workshop.html\">Atelier : modélisation des menaces</a></li>",
-          "clean": true
-        },
-        {
-          "n": 54,
-          "text": "                <li><a href=\"agent-design-capstone.html\">Projet de synthèse : conception d'agent</a></li>",
-          "clean": true
-        },
-        {
-          "n": 55,
-          "text": "                <li><a href=\"configuring-shai-mcp-opcp-explorer.html\">Configurer un agent SHAI avec MCP vers OPCP-EXPLORER</a></li>",
-          "clean": true
-        },
-        {
-          "n": 56,
-          "text": "            </ul>",
-          "clean": true
-        },
-        {
-          "n": 57,
-          "text": "        </div>",
-          "clean": true
-        },
-        {
-          "n": 58,
           "text": "        <div class=\"sidebar-section\" data-section=\"section-2\">",
           "clean": true
         },
         {
-          "n": 59,
+          "n": 39,
           "text": "            <h2 class=\"sidebar-section-title\">Quiz</h2>",
           "clean": true
         },
         {
-          "n": 60,
+          "n": 40,
           "text": "            <ul class=\"sidebar-nav\">",
           "clean": true
         },
         {
-          "n": 61,
+          "n": 41,
           "text": "                <li><a href=\"quiz-fundamentals.html\">Quiz fondamentaux et gouvernance</a></li>",
           "clean": true
         },
         {
-          "n": 62,
+          "n": 42,
           "text": "            </ul>",
           "clean": true
         },
         {
-          "n": 63,
+          "n": 43,
           "text": "        </div>",
           "clean": true
         },
         {
-          "n": 64,
+          "n": 44,
           "text": "        <div class=\"sidebar-section\" data-section=\"section-3\">",
           "clean": true
         },
         {
-          "n": 65,
+          "n": 45,
           "text": "            <h2 class=\"sidebar-section-title\">Bac à sable — travaux pratiques</h2>",
           "clean": true
         },
         {
-          "n": 66,
+          "n": 46,
           "text": "            <ul class=\"sidebar-nav\">",
           "clean": true
         },
         {
-          "n": 67,
+          "n": 47,
           "text": "                <li><a href=\"shai-orchestrator-lab.html\">Atelier : l'orchestrateur multi-agents shai</a></li>",
           "clean": true
         },
         {
-          "n": 68,
+          "n": 48,
           "text": "                <li><a href=\"running-applications-lab.html\" class=\"active\">Atelier : exploitation des applications OPCP-EXPLORER</a></li>",
+          "clean": true
+        },
+        {
+          "n": 49,
+          "text": "            </ul>",
+          "clean": true
+        },
+        {
+          "n": 50,
+          "text": "        </div>",
+          "clean": true
+        },
+        {
+          "n": 51,
+          "text": "        <div class=\"sidebar-section\" data-section=\"section-1\">",
+          "clean": true
+        },
+        {
+          "n": 52,
+          "text": "            <h2 class=\"sidebar-section-title\">Fondamentaux et gouvernance</h2>",
+          "clean": true
+        },
+        {
+          "n": 53,
+          "text": "            <h3 class=\"sidebar-subsection-title\">Introduction et fondamentaux</h3>",
+          "clean": true
+        },
+        {
+          "n": 54,
+          "text": "            <ul class=\"sidebar-nav\">",
+          "clean": true
+        },
+        {
+          "n": 55,
+          "text": "                <li><a href=\"assistant-vs-agent.html\">De l'assistant à l'agent</a></li>",
+          "clean": true
+        },
+        {
+          "n": 56,
+          "text": "                <li><a href=\"agent-anatomy-7-components.html\">Anatomie : les sept composants clés</a></li>",
+          "clean": true
+        },
+        {
+          "n": 57,
+          "text": "                <li><a href=\"agentic-loop-and-variants.html\">La boucle agentique et ses variantes</a></li>",
+          "clean": true
+        },
+        {
+          "n": 58,
+          "text": "                <li><a href=\"stopping-criteria.html\">Critères d'arrêt</a></li>",
+          "clean": true
+        },
+        {
+          "n": 59,
+          "text": "            </ul>",
+          "clean": true
+        },
+        {
+          "n": 60,
+          "text": "            <h3 class=\"sidebar-subsection-title\">Conception et gouvernance</h3>",
+          "clean": true
+        },
+        {
+          "n": 61,
+          "text": "            <ul class=\"sidebar-nav\" id=\"nav-afternoon\">",
+          "clean": true
+        },
+        {
+          "n": 62,
+          "text": "                <li><a href=\"multi-agent-patterns.html\">Patrons multi-agents</a></li>",
+          "clean": true
+        },
+        {
+          "n": 63,
+          "text": "                <li><a href=\"when-not-multi-agent.html\">Quand ne pas passer au multi-agents</a></li>",
+          "clean": true
+        },
+        {
+          "n": 64,
+          "text": "                <li><a href=\"guardrails-5-layers.html\">Garde-fous : les cinq couches</a></li>",
+          "clean": true
+        },
+        {
+          "n": 65,
+          "text": "                <li><a href=\"human-in-the-loop-ovhcloud-policy.html\">Supervision humaine et politique IA OVHcloud</a></li>",
+          "clean": true
+        },
+        {
+          "n": 66,
+          "text": "                <li><a href=\"threat-modeling-workshop.html\">Atelier : modélisation des menaces</a></li>",
+          "clean": true
+        },
+        {
+          "n": 67,
+          "text": "                <li><a href=\"agent-design-capstone.html\">Projet de synthèse : conception d'agent</a></li>",
+          "clean": true
+        },
+        {
+          "n": 68,
+          "text": "                <li><a href=\"configuring-shai-mcp-opcp-explorer.html\">Configurer un agent SHAI avec MCP vers OPCP-EXPLORER</a></li>",
           "clean": true
         },
         {
@@ -12266,10 +12321,10 @@
     "fr/shai-orchestrator-lab.html": {
       "rel": "fr/shai-orchestrator-lab.html",
       "affected": false,
-      "byteLength": 19011,
-      "sha256": "093a335886bb00e35cd92e0c680cc98e315059b542ec7bffd058140fe714c782",
+      "byteLength": 25501,
+      "sha256": "6478542b6af310c8595743153193d9f00a0700711b687033ceed1e04e17ba501",
       "charsetLine": "    <meta charset=\"UTF-8\">",
-      "lineCount": 239,
+      "lineCount": 249,
       "lines": [
         {
           "n": 1,
@@ -12298,7 +12353,7 @@
         },
         {
           "n": 6,
-          "text": "    <title>Atelier : l'orchestrateur multi-agents shai - Agentic AI OPCP Labs</title>",
+          "text": "    <title>Atelier : la boucle superviseur du CLI Agent Orchestrator (CAO) - Agentic AI OPCP Labs</title>",
           "clean": true
         },
         {
@@ -12473,7 +12528,7 @@
         },
         {
           "n": 41,
-          "text": "                <li><a href=\"shai-orchestrator-lab.html\" class=\"active\">Atelier : l'orchestrateur multi-agents shai</a></li>",
+          "text": "                <li><a href=\"shai-orchestrator-lab.html\" class=\"active\">Atelier : la boucle superviseur du CLI Agent Orchestrator (CAO)</a></li>",
           "clean": true
         },
         {
@@ -12518,7 +12573,7 @@
         },
         {
           "n": 50,
-          "text": "                <h1>Atelier : l'orchestrateur multi-agents shai</h1>",
+          "text": "                <h1>Atelier : la boucle superviseur du CLI Agent Orchestrator (CAO)</h1>",
           "clean": true
         },
         {
@@ -12528,7 +12583,7 @@
         },
         {
           "n": 52,
-          "text": "                    <span class=\"difficulty-badge difficulty-badge--intermediate\">Bac à sable · Intermédiaire</span>",
+          "text": "                    <span class=\"difficulty-badge difficulty-badge--beginner\">Bac à sable · Orchestration</span>",
           "clean": true
         },
         {
@@ -12553,7 +12608,7 @@
         },
         {
           "n": 57,
-          "text": "                <p>Cet atelier guidé présente <strong>shai</strong>, l'orchestrateur multi-agents qui pilote le travail sur la plateforme agentique <strong>opcp-explorer</strong>. Vous découvrirez comment l'orchestrateur est assemblé, de quoi chaque rôle d'agent est responsable, comment une tâche est déléguée de l'orchestrateur vers un agent travailleur et en revient, puis comment piloter l'ensemble depuis la ligne de commande. Chaque commande et chaque extrait de configuration de cette page sont <strong>purement illustratifs</strong> : lisez-les pour comprendre la forme du système ; cette leçon ne fournit aucun script exécutable.</p>",
+          "text": "                <p>Cet atelier pratique pilote le <strong>CLI Agent Orchestrator (CAO)</strong> — un outil réel que vous installez et exécutez vous-même. CAO coordonne plusieurs CLI de fournisseurs comme une équipe : un agent <strong>superviseur</strong> découpe un objectif en sous-tâches et les délègue à des agents travailleurs délimités. Au fil de l'atelier, vous installez CAO, démarrez le <code>cao-server</code>, lancez un superviseur dans votre propre répertoire de projet, déléguez une petite tâche, observez l'exécution via le terminal attaché et l'interface web, puis arrêtez l'ensemble. Les commandes de cette page sont réelles et exécutables sur votre propre installation de CAO.</p>",
           "clean": true
         },
         {
@@ -12563,387 +12618,387 @@
         },
         {
           "n": 59,
-          "text": "                <div class=\"alert alert-info\">",
-          "clean": true
-        },
-        {
-          "n": 60,
-          "text": "                    <strong>Atelier en lecture seule :</strong> les exemples ci-dessous montrent les commandes et la configuration que vous utiliseriez sur une plateforme réelle. Rien ne s'exécute ici. Traitez les extraits comme une référence que vous adaptez dans votre propre environnement, où s'appliquent les <a href=\"guardrails-5-layers.html\">cinq couches de garde-fous</a>.",
-          "clean": true
-        },
-        {
-          "n": 61,
-          "text": "                </div>",
-          "clean": true
-        },
-        {
-          "n": 62,
-          "text": "",
-          "clean": true
-        },
-        {
-          "n": 63,
           "text": "                <h2>Objectifs pédagogiques</h2>",
           "clean": true
         },
         {
-          "n": 64,
+          "n": 60,
           "text": "                <ul>",
+          "clean": true
+        },
+        {
+          "n": 61,
+          "text": "                    <li>Décrire comment CAO est assemblé : un <code>cao-server</code> local qui démarre des CLI de fournisseurs dans des sessions de terminal isolées.</li>",
+          "clean": true
+        },
+        {
+          "n": 62,
+          "text": "                    <li>Nommer les rôles d'agent — superviseur, travailleur et relecteur — et ce dont chacun est responsable.</li>",
+          "clean": true
+        },
+        {
+          "n": 63,
+          "text": "                    <li>Expliquer le modèle de délégation : comment une tâche circule du superviseur vers un travailleur et en revient.</li>",
+          "clean": true
+        },
+        {
+          "n": 64,
+          "text": "                    <li>Exécuter la boucle superviseur de bout en bout depuis la ligne de commande : installer, lancer, déléguer, observer et arrêter.</li>",
           "clean": true
         },
         {
           "n": 65,
-          "text": "                    <li>Décrire l'architecture de l'orchestrateur multi-agents shai et la façon dont ses parties s'articulent.</li>",
+          "text": "                    <li>Lire un exemple de profil d'agent CAO et comprendre chaque champ comme une décision de gouvernance.</li>",
           "clean": true
         },
         {
           "n": 66,
-          "text": "                    <li>Nommer les rôles d'agent — orchestrateur, travailleur et relecteur — et ce dont chacun est responsable.</li>",
+          "text": "                </ul>",
           "clean": true
         },
         {
           "n": 67,
-          "text": "                    <li>Expliquer le modèle de délégation : comment une tâche circule de l'orchestrateur vers un travailleur et en revient.</li>",
+          "text": "",
           "clean": true
         },
         {
           "n": 68,
-          "text": "                    <li>Suivre pas à pas les instructions de la ligne de commande shai pour configurer, lancer et observer une session orchestrée.</li>",
+          "text": "                <h2>Prérequis &amp; installation</h2>",
           "clean": true
         },
         {
           "n": 69,
-          "text": "                    <li>Lire un exemple de configuration d'orchestrateur et comprendre chaque champ comme une décision de gouvernance.</li>",
+          "text": "                <p>Avant d'exécuter quoi que ce soit, assurez-vous que votre machine dispose des outils dont CAO dépend. Installez chacun d'eux et confirmez qu'il figure dans votre PATH :</p>",
           "clean": true
         },
         {
           "n": 70,
-          "text": "                </ul>",
+          "text": "                <ul>",
           "clean": true
         },
         {
           "n": 71,
-          "text": "",
+          "text": "                    <li><strong>Python 3.11+</strong> — CAO fonctionne sous Python 3.11 ou version ultérieure.</li>",
           "clean": true
         },
         {
           "n": 72,
-          "text": "                <h2>L'architecture de l'orchestrateur</h2>",
+          "text": "                    <li><strong>tmux 3.3+</strong> — CAO démarre chaque CLI de fournisseur dans une session de terminal tmux isolée ; vous avez donc besoin de tmux 3.3 ou version ultérieure.</li>",
           "clean": true
         },
         {
           "n": 73,
-          "text": "                <p>shai n'est pas un agent unique — c'est un <strong>orchestrateur</strong> qui coordonne plusieurs agents spécialisés vers un même objectif. L'orchestrateur tient la tâche de haut niveau, la découpe en sous-tâches, confie chaque sous-tâche à un agent travailleur, rassemble les résultats et décide quand le travail global est terminé. Les travailleurs ne communiquent jamais directement entre eux ; tout passe par l'orchestrateur, ce qui garde la session observable et vous offre un point de contrôle unique.</p>",
+          "text": "                    <li><strong>uv</strong> — l'installateur de paquets et d'outils Python utilisé pour installer l'outil en ligne de commande <code>cao</code>.</li>",
           "clean": true
         },
         {
           "n": 74,
-          "text": "",
+          "text": "                    <li><strong>Au moins un CLI de fournisseur authentifié</strong> — chaque agent est adossé à un CLI de fournisseur doté de sa propre authentification native. Le fournisseur par défaut est le <strong>SHAI CLI</strong> ; assurez-vous qu'il est installé et connecté avant de lancer un agent.</li>",
           "clean": true
         },
         {
           "n": 75,
-          "text": "                <pre><code>flowchart TD",
+          "text": "                </ul>",
           "clean": true
         },
         {
           "n": 76,
-          "text": "    U[Opérateur / CLI] --> O[orchestrateur shai]",
+          "text": "",
           "clean": true
         },
         {
           "n": 77,
-          "text": "    O --> W1[Agent travailleur : découverte]",
+          "text": "                <h2>L'architecture de CAO</h2>",
           "clean": true
         },
         {
           "n": 78,
-          "text": "    O --> W2[Agent travailleur : action]",
+          "text": "                <p>CAO n'est pas un agent unique — c'est une couche d'orchestration locale. Le processus <code>cao-server</code> s'exécute sur votre machine et démarre chaque CLI de fournisseur dans sa propre session de terminal tmux isolée, si bien que chaque agent est un processus CLI à part entière avec sa propre authentification native plutôt qu'un sous-processus caché. Par-dessus, un profil <strong>superviseur</strong> tient l'objectif de haut niveau, le découpe en sous-tâches et délègue chacune à un agent travailleur spécialisé — en parallèle lorsque les sous-tâches sont indépendantes, ou en séquence lorsqu'elles dépendent les unes des autres. Les travailleurs ne communiquent jamais directement entre eux ; tout passe par le superviseur, ce qui garde l'exécution observable et vous offre un point de contrôle unique.</p>",
           "clean": true
         },
         {
           "n": 79,
-          "text": "    O --> R[Agent relecteur]",
+          "text": "",
           "clean": true
         },
         {
           "n": 80,
-          "text": "    W1 --> O",
+          "text": "                <pre><code>flowchart TD",
           "clean": true
         },
         {
           "n": 81,
-          "text": "    W2 --> O",
+          "text": "    U[Operator / CLI] --> S[CAO supervisor]",
           "clean": true
         },
         {
           "n": 82,
-          "text": "    R --> O",
+          "text": "    S --> W1[Worker agent: developer]",
           "clean": true
         },
         {
           "n": 83,
-          "text": "    O --> U</code></pre>",
+          "text": "    S --> W2[Worker agent: developer]",
           "clean": true
         },
         {
           "n": 84,
-          "text": "                <p class=\"caption\">L'orchestrateur est le pivot : il délègue aux travailleurs, achemine les résultats via un relecteur et rend compte à l'opérateur.</p>",
+          "text": "    S --> R[Reviewer agent]",
           "clean": true
         },
         {
           "n": 85,
-          "text": "",
+          "text": "    W1 --> S",
           "clean": true
         },
         {
           "n": 86,
-          "text": "                <p>Trois éléments font de ceci une conception défendable plutôt qu'une simple diffusion de tâches :</p>",
+          "text": "    W2 --> S",
           "clean": true
         },
         {
           "n": 87,
-          "text": "                <ul>",
+          "text": "    R --> S",
           "clean": true
         },
         {
           "n": 88,
-          "text": "                    <li><strong>Un coordinateur unique.</strong> Un seul orchestrateur tient le plan, donc il existe exactement un endroit qui décide de ce qui s'exécute ensuite et du moment où s'arrêter.</li>",
+          "text": "    S --> U</code></pre>",
           "clean": true
         },
         {
           "n": 89,
-          "text": "                    <li><strong>Des travailleurs isolés.</strong> Chaque travailleur reçoit une tâche étroite et un jeu d'outils délimité, si bien qu'une erreur chez l'un ne peut pas se propager à un autre.</li>",
+          "text": "                <p class=\"caption\">Le superviseur est le pivot : il délègue aux agents travailleurs, achemine les résultats via un relecteur et rend compte à l'opérateur.</p>",
           "clean": true
         },
         {
           "n": 90,
-          "text": "                    <li><strong>Une porte de relecture.</strong> Les résultats qui modifient l'état passent par un relecteur avant que l'orchestrateur ne les accepte, gardant un contrôle aligné sur l'humain dans la boucle.</li>",
+          "text": "",
           "clean": true
         },
         {
           "n": 91,
-          "text": "                </ul>",
+          "text": "                <p>Trois éléments font de ceci une conception défendable plutôt qu'une simple diffusion de tâches :</p>",
           "clean": true
         },
         {
           "n": 92,
-          "text": "",
-          "clean": true
-        },
-        {
-          "n": 93,
-          "text": "                <h2>Les rôles d'agent</h2>",
-          "clean": true
-        },
-        {
-          "n": 94,
-          "text": "                <p>Une session shai se compose de trois types d'agent. Chacun a une seule mission et un périmètre de permissions dimensionné pour cette mission.</p>",
-          "clean": true
-        },
-        {
-          "n": 95,
-          "text": "                <table>",
-          "clean": true
-        },
-        {
-          "n": 96,
-          "text": "                    <thead>",
-          "clean": true
-        },
-        {
-          "n": 97,
-          "text": "                        <tr><th>Rôle</th><th>Responsabilité</th><th>Périmètre d'outils typique</th></tr>",
-          "clean": true
-        },
-        {
-          "n": 98,
-          "text": "                    </thead>",
-          "clean": true
-        },
-        {
-          "n": 99,
-          "text": "                    <tbody>",
-          "clean": true
-        },
-        {
-          "n": 100,
-          "text": "                        <tr><td><strong>Orchestrateur</strong></td><td>Tient l'objectif de haut niveau, planifie et ordonne les sous-tâches, délègue aux travailleurs, agrège les résultats, décide quand s'arrêter.</td><td>Aucun outil hôte ; délégation seule</td></tr>",
-          "clean": true
-        },
-        {
-          "n": 101,
-          "text": "                        <tr><td><strong>Travailleur</strong></td><td>Exécute une sous-tâche déléguée (découvrir, démarrer, arrêter, sauvegarder, modifier) et renvoie un résultat structuré.</td><td><code>read</code> / <code>write</code> / <code>bash</code> délimités selon la tâche</td></tr>",
-          "clean": true
-        },
-        {
-          "n": 102,
-          "text": "                        <tr><td><strong>Relecteur</strong></td><td>Inspecte l'action modifiante proposée par un travailleur et l'approuve ou la rejette avant que l'orchestrateur ne l'applique.</td><td><code>read</code> uniquement</td></tr>",
-          "clean": true
-        },
-        {
-          "n": 103,
-          "text": "                    </tbody>",
-          "clean": true
-        },
-        {
-          "n": 104,
-          "text": "                </table>",
-          "clean": true
-        },
-        {
-          "n": 105,
-          "text": "                <div class=\"alert alert-info\">",
-          "clean": true
-        },
-        {
-          "n": 106,
-          "text": "                    <strong>Gouvernance :</strong> l'orchestrateur ne détient délibérément <em>aucun</em> outil hôte. Il ne peut que déléguer. Les attributions puissantes comme <code>write</code> et <code>bash</code> vivent sur des travailleurs individuels et sont délimitées par sous-tâche, si bien que le rayon d'impact de chaque agent reste petit.",
-          "clean": true
-        },
-        {
-          "n": 107,
-          "text": "                </div>",
-          "clean": true
-        },
-        {
-          "n": 108,
-          "text": "",
-          "clean": true
-        },
-        {
-          "n": 109,
-          "text": "                <h2>Le modèle de délégation</h2>",
-          "clean": true
-        },
-        {
-          "n": 110,
-          "text": "                <p>La délégation est le cœur de shai. L'opérateur confie un objectif à l'orchestrateur ; l'orchestrateur décide quel travailleur doit traiter chaque morceau et transmet une tâche autonome. Une tâche déléguée porte tout ce dont le travailleur a besoin et rien de plus :</p>",
-          "clean": true
-        },
-        {
-          "n": 111,
           "text": "                <ul>",
           "clean": true
         },
         {
-          "n": 112,
-          "text": "                    <li><strong>Un énoncé d'objectif</strong> — la seule chose que ce travailleur doit accomplir.</li>",
+          "n": 93,
+          "text": "                    <li><strong>Un coordinateur unique.</strong> Un seul superviseur tient le plan, donc il existe exactement un endroit qui décide de ce qui s'exécute ensuite et du moment où s'arrêter.</li>",
           "clean": true
         },
         {
-          "n": 113,
-          "text": "                    <li><strong>Des entrées délimitées</strong> — uniquement les données pertinentes pour la sous-tâche.</li>",
+          "n": 94,
+          "text": "                    <li><strong>Des travailleurs isolés.</strong> Chaque travailleur s'exécute comme son propre processus CLI de fournisseur dans une session de terminal isolée, avec un périmètre <code>allowedTools</code> dimensionné à sa tâche, si bien qu'une erreur chez l'un ne peut pas se propager à un autre.</li>",
           "clean": true
         },
         {
-          "n": 114,
-          "text": "                    <li><strong>Une attribution d'outils</strong> — le jeu d'outils minimal pour cette sous-tâche.</li>",
+          "n": 95,
+          "text": "                    <li><strong>Une porte de relecture.</strong> Le travail modifiant passe par un agent <code>role: reviewer</code> avant que le superviseur ne l'accepte, gardant un contrôle aligné sur l'humain dans la boucle.</li>",
           "clean": true
         },
         {
-          "n": 115,
-          "text": "                    <li><strong>Un contrat de retour</strong> — le résultat structuré que l'orchestrateur attend en retour.</li>",
-          "clean": true
-        },
-        {
-          "n": 116,
+          "n": 96,
           "text": "                </ul>",
           "clean": true
         },
         {
+          "n": 97,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 98,
+          "text": "                <h2>Les rôles d'agent</h2>",
+          "clean": true
+        },
+        {
+          "n": 99,
+          "text": "                <p>Une exécution CAO se compose de trois types d'agent, chacun adossé à un profil intégré (<code>code_supervisor.md</code>, <code>developer.md</code>, <code>reviewer.md</code>). Chacun a une seule mission et un périmètre <code>allowedTools</code> dimensionné pour cette mission.</p>",
+          "clean": true
+        },
+        {
+          "n": 100,
+          "text": "                <table>",
+          "clean": true
+        },
+        {
+          "n": 101,
+          "text": "                    <thead>",
+          "clean": true
+        },
+        {
+          "n": 102,
+          "text": "                        <tr><th>Rôle (<code>role:</code>)</th><th>Responsabilité</th><th>Périmètre d'outils typique</th></tr>",
+          "clean": true
+        },
+        {
+          "n": 103,
+          "text": "                    </thead>",
+          "clean": true
+        },
+        {
+          "n": 104,
+          "text": "                    <tbody>",
+          "clean": true
+        },
+        {
+          "n": 105,
+          "text": "                        <tr><td><strong>superviseur</strong> (<code>code_supervisor</code>)</td><td>Tient l'objectif de haut niveau, le découpe en sous-tâches, délègue chacune à un travailleur, achemine le travail modifiant via le relecteur, agrège les résultats et décide quand le travail est terminé. N'écrit jamais de code lui-même.</td><td>Coordination seule : <code>@cao-mcp-server</code>, <code>fs_read</code>, <code>fs_list</code> ; délègue via <code>delegateTools</code> (par défaut <code>[\"*\"]</code>)</td></tr>",
+          "clean": true
+        },
+        {
+          "n": 106,
+          "text": "                        <tr><td><strong>travailleur — developer</strong> (<code>developer</code>)</td><td>Exécute une sous-tâche déléguée, autonome — implémente le changement délimité — et renvoie un résultat structuré au superviseur.</td><td>Lecture/écriture/exécution : <code>fs_*</code>, <code>execute_bash</code>, <code>@cao-mcp-server</code> (@builtin), délimités par sous-tâche</td></tr>",
+          "clean": true
+        },
+        {
+          "n": 107,
+          "text": "                        <tr><td><strong>travailleur — reviewer</strong> (<code>reviewer</code>)</td><td>Inspecte l'action modifiante proposée par un travailleur quant à son exactitude, sa qualité et sa sûreté, puis l'approuve ou la rejette avant que le superviseur n'accepte le changement.</td><td>Lecture seule : <code>fs_read</code>, <code>fs_list</code>, <code>@cao-mcp-server</code> (@builtin)</td></tr>",
+          "clean": true
+        },
+        {
+          "n": 108,
+          "text": "                    </tbody>",
+          "clean": true
+        },
+        {
+          "n": 109,
+          "text": "                </table>",
+          "clean": true
+        },
+        {
+          "n": 110,
+          "text": "                <div class=\"alert alert-info\">",
+          "clean": true
+        },
+        {
+          "n": 111,
+          "text": "                    <strong>Gouvernance :</strong> le superviseur ne détient délibérément aucun outil hôte d'écriture ou d'exécution — il coordonne et délègue. Les attributions puissantes comme <code>fs_write</code> et <code>execute_bash</code> vivent sur le travailleur developer et sont délimitées par sous-tâche via <code>allowedTools</code>, tandis que <code>delegateTools</code> plafonne ce que le superviseur peut transmettre, si bien que le rayon d'impact de chaque agent reste petit.",
+          "clean": true
+        },
+        {
+          "n": 112,
+          "text": "                </div>",
+          "clean": true
+        },
+        {
+          "n": 113,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 114,
+          "text": "                <h2>Le modèle de délégation</h2>",
+          "clean": true
+        },
+        {
+          "n": 115,
+          "text": "                <p>La délégation est le cœur de CAO. L'opérateur confie un objectif au superviseur ; le superviseur décide quel travailleur doit traiter chaque morceau et délègue une sous-tâche autonome. Une sous-tâche déléguée porte tout ce dont le travailleur a besoin et rien de plus :</p>",
+          "clean": true
+        },
+        {
+          "n": 116,
+          "text": "                <ul>",
+          "clean": true
+        },
+        {
           "n": 117,
-          "text": "                <p>Le cycle de vie d'une seule tâche déléguée ressemble à ceci :</p>",
+          "text": "                    <li><strong>Un énoncé d'objectif</strong> — la seule chose que ce travailleur doit accomplir.</li>",
           "clean": true
         },
         {
           "n": 118,
-          "text": "                <pre><code>sequenceDiagram",
+          "text": "                    <li><strong>Des entrées délimitées</strong> — uniquement les données pertinentes pour la sous-tâche.</li>",
           "clean": true
         },
         {
           "n": 119,
-          "text": "    Opérateur->>Orchestrateur: objectif",
+          "text": "                    <li><strong>Une attribution d'outils</strong> — le jeu d'outils minimal pour cette sous-tâche, borné par le plafond <code>delegateTools</code> du superviseur.</li>",
           "clean": true
         },
         {
           "n": 120,
-          "text": "    Orchestrateur->>Travailleur: déléguer(sous-tâche, outils délimités)",
+          "text": "                    <li><strong>Un contrat de retour</strong> — le résultat structuré que le superviseur attend en retour.</li>",
           "clean": true
         },
         {
           "n": 121,
-          "text": "    Travailleur->>Travailleur: exécuter la sous-tâche",
+          "text": "                </ul>",
           "clean": true
         },
         {
           "n": 122,
-          "text": "    Travailleur-->>Orchestrateur: résultat structuré",
+          "text": "                <p>Un travailleur exécute sa sous-tâche et renvoie un résultat structuré au superviseur. Lorsque le travail est <em>modifiant</em> — il change des fichiers ou de l'état — le superviseur achemine ce résultat via un agent relecteur avant de l'accepter ; une sous-tâche en lecture seule revient directement au superviseur. Le cycle de vie d'une seule tâche déléguée ressemble à ceci :</p>",
           "clean": true
         },
         {
           "n": 123,
-          "text": "    Orchestrateur->>Relecteur: relire(résultat) si modifiant",
+          "text": "                <pre><code>sequenceDiagram",
           "clean": true
         },
         {
           "n": 124,
-          "text": "    Relecteur-->>Orchestrateur: approuver / rejeter",
+          "text": "    Operator->>Supervisor: goal",
           "clean": true
         },
         {
           "n": 125,
-          "text": "    Orchestrateur-->>Opérateur: résultat agrégé</code></pre>",
+          "text": "    Supervisor->>Worker: delegate(sub-task, scoped tools)",
           "clean": true
         },
         {
           "n": 126,
-          "text": "                <p class=\"caption\">Une sous-tâche en lecture seule revient directement à l'orchestrateur ; une sous-tâche modifiante passe d'abord par le relecteur.</p>",
+          "text": "    Worker->>Worker: run sub-task",
           "clean": true
         },
         {
           "n": 127,
-          "text": "                <p>Parce que l'orchestrateur est le seul agent qui voit le plan complet, il est aussi le seul endroit qui applique les limites opérationnelles — nombre maximal de sous-tâches, plafond de relances et délai mural pour la session. Ces limites sont la forme, au niveau de l'orchestrateur, des critères d'arrêt que vous avez rencontrés plus tôt dans le cours.</p>",
+          "text": "    Worker-->>Supervisor: structured result",
           "clean": true
         },
         {
           "n": 128,
-          "text": "",
+          "text": "    Supervisor->>Reviewer: review(result) if mutating",
           "clean": true
         },
         {
           "n": 129,
-          "text": "                <h2>Pas à pas : piloter shai depuis la ligne de commande</h2>",
+          "text": "    Reviewer-->>Supervisor: approve / reject",
           "clean": true
         },
         {
           "n": 130,
-          "text": "                <p>Les commandes ci-dessous parcourent une session orchestrée de bout en bout. Elles sont illustratives — adaptez les chemins et les noms à votre propre environnement.</p>",
+          "text": "    Supervisor-->>Operator: aggregated outcome</code></pre>",
           "clean": true
         },
         {
           "n": 131,
-          "text": "",
+          "text": "                <p class=\"caption\">Une sous-tâche en lecture seule revient directement au superviseur ; une sous-tâche modifiante passe d'abord par le relecteur.</p>",
           "clean": true
         },
         {
           "n": 132,
-          "text": "                <h3>Étape 1 — Vérifier que l'orchestrateur est disponible</h3>",
+          "text": "                <p>Parce que le superviseur est le seul agent qui voit le plan complet, il est aussi le seul endroit qui applique les limites opérationnelles — il ordonne les sous-tâches, relance les délégations échouées et décide quand l'objectif est atteint ou qu'une limite est touchée. Ces contrôles de la boucle superviseur sont la forme, au niveau de l'orchestration, des critères d'arrêt que vous avez rencontrés plus tôt dans le cours.</p>",
           "clean": true
         },
         {
           "n": 133,
-          "text": "                <p>Confirmez que la ligne de commande est bien dans votre PATH et affiche une version avant toute autre chose.</p>",
+          "text": "",
           "clean": true
         },
         {
           "n": 134,
-          "text": "                <pre><code>shai --version",
+          "text": "                <h2>Pas à pas : la boucle superviseur</h2>",
           "clean": true
         },
         {
           "n": 135,
-          "text": "shai orchestrator status</code></pre>",
+          "text": "                <p>Les étapes ci-dessous parcourent une boucle superviseur de bout en bout sur votre propre projet. Exécutez vous-même chaque commande : installez CAO, démarrez le serveur, lancez un superviseur depuis votre répertoire de projet, déléguez une petite tâche, observez son exécution, puis arrêtez-la. Partout où vous voyez <code>/path/to/your/project</code>, remplacez par le chemin absolu du projet dans lequel vous souhaitez que le superviseur travaille.</p>",
           "clean": true
         },
         {
@@ -12953,516 +13008,566 @@
         },
         {
           "n": 137,
-          "text": "                <h3>Étape 2 — Pointer shai vers une configuration d'orchestrateur</h3>",
+          "text": "                <h3>Étape 1 — Installer CAO et vérifier</h3>",
           "clean": true
         },
         {
           "n": 138,
-          "text": "                <p>L'orchestrateur est défini par un seul fichier de configuration (présenté en entier dans la section suivante). Validez-le avant de lancer pour qu'une faute de frappe échoue bruyamment plutôt qu'en pleine exécution.</p>",
+          "text": "                <p>Installez l'outil en ligne de commande <code>cao</code> avec <code>uv</code>, puis confirmez qu'il figure dans votre PATH en affichant son aide.</p>",
           "clean": true
         },
         {
           "n": 139,
-          "text": "                <pre><code>shai orchestrator validate --config ./orchestrator.config.json</code></pre>",
+          "text": "                <pre><code>uv tool install git+https://github.com/Sam9682/cli-agent-orchestrator.git@main --upgrade",
           "clean": true
         },
         {
           "n": 140,
-          "text": "",
+          "text": "cao --help</code></pre>",
           "clean": true
         },
         {
           "n": 141,
-          "text": "                <h3>Étape 3 — Lancer une session avec un objectif</h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 142,
-          "text": "                <p>Confiez à l'orchestrateur un unique objectif de haut niveau. L'orchestrateur planifie lui-même les sous-tâches et les délègue aux travailleurs — vous n'appelez pas les travailleurs directement.</p>",
+          "text": "                <h3>Étape 2 — Installer l'agent superviseur</h3>",
           "clean": true
         },
         {
           "n": 143,
-          "text": "                <pre><code>shai orchestrator run \\",
+          "text": "                <p>Installez le profil superviseur intégré pour que <code>cao launch</code> puisse le démarrer.</p>",
           "clean": true
         },
         {
           "n": 144,
-          "text": "  --config ./orchestrator.config.json \\",
+          "text": "                <pre><code>cao install code_supervisor</code></pre>",
           "clean": true
         },
         {
           "n": 145,
-          "text": "  --goal \"Découvrir les conteneurs en cours et signaler les agents probables\" \\",
+          "text": "",
           "clean": true
         },
         {
           "n": 146,
-          "text": "  --max-subtasks 6</code></pre>",
+          "text": "                <h3>Étape 3 — Démarrer le serveur (Terminal A)</h3>",
           "clean": true
         },
         {
           "n": 147,
-          "text": "",
+          "text": "                <p>Dans un terminal dédié, démarrez <code>cao-server</code>. C'est un processus de longue durée qui démarre chaque CLI de fournisseur dans sa propre session de terminal tmux isolée — laissez-le s'exécuter pour le reste de l'atelier.</p>",
           "clean": true
         },
         {
           "n": 148,
-          "text": "                <h3>Étape 4 — Observer la délégation en temps réel</h3>",
+          "text": "                <pre><code>cao-server</code></pre>",
           "clean": true
         },
         {
           "n": 149,
-          "text": "                <p>Suivez la session pour voir chaque sous-tâche déléguée, chaque résultat de travailleur renvoyé et chaque décision de relecture au fil de l'eau.</p>",
+          "text": "",
           "clean": true
         },
         {
           "n": 150,
-          "text": "                <pre><code>shai orchestrator logs --follow --run-id latest</code></pre>",
+          "text": "                <h3>Étape 4 — Lancer le superviseur (Terminal B)</h3>",
           "clean": true
         },
         {
           "n": 151,
-          "text": "",
+          "text": "                <p>Dans un terminal séparé, placez-vous dans votre répertoire de projet et lancez le superviseur. Cela vous attache à la session du superviseur pour que vous puissiez lui parler directement.</p>",
           "clean": true
         },
         {
           "n": 152,
-          "text": "                <h3>Étape 5 — Lire le résultat agrégé</h3>",
+          "text": "                <pre><code>cd /path/to/your/project && cao launch --agents code_supervisor</code></pre>",
           "clean": true
         },
         {
           "n": 153,
-          "text": "                <p>Lorsque l'orchestrateur estime l'objectif atteint (ou qu'une limite est touchée), il imprime un seul rapport agrégé combinant chaque résultat de travailleur.</p>",
+          "text": "",
           "clean": true
         },
         {
           "n": 154,
-          "text": "                <pre><code>shai orchestrator report --run-id latest</code></pre>",
+          "text": "                <h3>Étape 5 — Déléguer une petite tâche</h3>",
           "clean": true
         },
         {
           "n": 155,
-          "text": "",
+          "text": "                <p>Dans la session superviseur attachée, saisissez un objectif court — gardez-le petit et relisible, par exemple en demandant au superviseur d'apporter un unique changement restreint et bien délimité à votre projet. Le superviseur découpe l'objectif en sous-tâches et les délègue à un agent travailleur ; vous n'appelez pas le travailleur directement.</p>",
           "clean": true
         },
         {
           "n": 156,
-          "text": "                <h3>Étape 6 — Arrêter une session si nécessaire</h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 157,
-          "text": "                <p>Le coupe-circuit arrête l'orchestrateur et tous les travailleurs auxquels il a délégué, en une seule commande.</p>",
+          "text": "                <h3>Étape 6 — Observer l'exécution</h3>",
           "clean": true
         },
         {
           "n": 158,
-          "text": "                <pre><code>shai orchestrator stop --run-id latest</code></pre>",
+          "text": "                <p>Observez la délégation à deux endroits : le terminal de lancement attaché montre l'activité du superviseur et du travailleur à mesure qu'elle se déroule, et l'interface web à l'adresse <code>http://localhost:9889</code> vous offre une vue visuelle des sessions et de la délégation entre elles.</p>",
           "clean": true
         },
         {
           "n": 159,
-          "text": "                <div class=\"alert alert-info\">",
+          "text": "",
           "clean": true
         },
         {
           "n": 160,
-          "text": "                    <strong>Gouvernance :</strong> <code>stop</code> est votre unique coupe-circuit fiable. Comme les travailleurs ne s'exécutent jamais que sous l'orchestrateur, arrêter l'orchestrateur démantèle toute la session — il n'y a aucun travailleur orphelin à traquer séparément.",
+          "text": "                <h3>Étape 7 — Arrêter</h3>",
           "clean": true
         },
         {
           "n": 161,
-          "text": "                </div>",
+          "text": "                <p>Lorsque vous avez terminé, arrêtez l'exécution. Arrêtez une seule session nommée, ou démantelez toutes les sessions d'un coup.</p>",
           "clean": true
         },
         {
           "n": 162,
-          "text": "",
+          "text": "                <pre><code>cao shutdown --session {session-name}",
           "clean": true
         },
         {
           "n": 163,
-          "text": "                <h2>Exemple de configuration d'orchestrateur</h2>",
+          "text": "cao shutdown --all</code></pre>",
           "clean": true
         },
         {
           "n": 164,
-          "text": "                <p>L'orchestrateur est entièrement défini par un seul fichier JSON. Il nomme l'orchestrateur, choisit le modèle qui planifie pour lui, déclare les agents travailleur et relecteur auxquels il peut déléguer, et fixe les limites opérationnelles d'une session. Voici le fichier illustratif complet, que nous ouvrons ensuite champ par champ.</p>",
+          "text": "                <div class=\"alert alert-info\">",
           "clean": true
         },
         {
           "n": 165,
-          "text": "                <pre><code>{",
+          "text": "                    <strong>Gouvernance :</strong> <code>cao shutdown</code> est votre coupe-circuit. <code>cao shutdown --session {session-name}</code> arrête une session ; <code>cao shutdown --all</code> démantèle toutes les sessions que CAO exécute. Comme les travailleurs ne s'exécutent que sous la session du superviseur, l'arrêt stoppe le superviseur et ses travailleurs ensemble — il n'y a aucun agent orphelin à traquer séparément.",
           "clean": true
         },
         {
           "n": 166,
-          "text": "  \"name\": \"opcp-explorer-orchestrator\",",
+          "text": "                </div>",
           "clean": true
         },
         {
           "n": 167,
-          "text": "  \"description\": \"Orchestrateur multi-agents shai qui planifie un objectif, délègue des sous-tâches à des travailleurs délimités et achemine les actions modifiantes via un relecteur.\",",
+          "text": "",
           "clean": true
         },
         {
           "n": 168,
-          "text": "  \"llm_provider\": {",
+          "text": "                <h2>Exemples de profils d'agent CAO</h2>",
           "clean": true
         },
         {
           "n": 169,
-          "text": "    \"provider\": \"ovhcloud\",",
+          "text": "                <p>Un agent CAO n'est pas un bloc JSON — c'est un fichier Markdown doté d'un en-tête YAML frontmatter et d'un corps Markdown. Le frontmatter déclare l'identité de l'agent et son enveloppe de gouvernance (qui il est, quel fournisseur l'adosse, quels outils il peut utiliser et combien il peut transmettre aux travailleurs) ; le corps est l'invite système qui indique à l'agent comment se comporter. Voici deux profils réels — un superviseur et un travailleur developer — que nous ouvrons ensuite champ par champ.</p>",
           "clean": true
         },
         {
           "n": 170,
-          "text": "    \"model\": \"Qwen3.5-397B-A17B\",",
+          "text": "",
           "clean": true
         },
         {
           "n": 171,
-          "text": "    \"mode\": \"FunctionCall\"",
+          "text": "                <h3>Profil superviseur (<code>code_supervisor.md</code>)</h3>",
           "clean": true
         },
         {
           "n": 172,
-          "text": "  },",
+          "text": "                <pre><code>---",
           "clean": true
         },
         {
           "n": 173,
-          "text": "  \"orchestrator\": {",
+          "text": "name: code_supervisor",
           "clean": true
         },
         {
           "n": 174,
-          "text": "    \"max_subtasks\": 6,",
+          "text": "description: Coding Supervisor Agent in a multi-agent system",
           "clean": true
         },
         {
           "n": 175,
-          "text": "    \"max_retries_per_subtask\": 2,",
+          "text": "role: supervisor",
           "clean": true
         },
         {
           "n": 176,
-          "text": "    \"run_timeout_seconds\": 600,",
+          "text": "provider: shai_cli",
           "clean": true
         },
         {
           "n": 177,
-          "text": "    \"require_review_for_mutating\": true",
+          "text": "delegateTools: [\"*\"]",
           "clean": true
         },
         {
           "n": 178,
-          "text": "  },",
+          "text": "---",
           "clean": true
         },
         {
           "n": 179,
-          "text": "  \"agents\": {",
+          "text": "",
           "clean": true
         },
         {
           "n": 180,
-          "text": "    \"discovery-worker\": {",
+          "text": "You are the Coding Supervisor. You never write code yourself. You break a",
           "clean": true
         },
         {
           "n": 181,
-          "text": "      \"role\": \"worker\",",
+          "text": "goal into sub-tasks, delegate each to a worker agent, route mutating work",
           "clean": true
         },
         {
           "n": 182,
-          "text": "      \"system_prompt\": \"Découvrir les conteneurs de la plateforme et renvoyer une liste structurée.\",",
+          "text": "through the reviewer, and decide when the job is done.</code></pre>",
           "clean": true
         },
         {
           "n": 183,
-          "text": "      \"tools\": [\"read\", \"bash\"]",
+          "text": "",
           "clean": true
         },
         {
           "n": 184,
-          "text": "    },",
+          "text": "                <h3>Profil travailleur (<code>developer.md</code>)</h3>",
           "clean": true
         },
         {
           "n": 185,
-          "text": "    \"action-worker\": {",
+          "text": "                <pre><code>---",
           "clean": true
         },
         {
           "n": 186,
-          "text": "      \"role\": \"worker\",",
+          "text": "name: developer",
           "clean": true
         },
         {
           "n": 187,
-          "text": "      \"system_prompt\": \"Appliquer l'unique action qui t'est déléguée et renvoyer le résultat.\",",
+          "text": "description: Developer Agent in a multi-agent system",
           "clean": true
         },
         {
           "n": 188,
-          "text": "      \"tools\": [\"read\", \"write\", \"bash\"]",
+          "text": "role: developer",
           "clean": true
         },
         {
           "n": 189,
-          "text": "    },",
+          "text": "provider: shai_cli",
           "clean": true
         },
         {
           "n": 190,
-          "text": "    \"reviewer\": {",
+          "text": "allowedTools: [\"fs_read\", \"fs_write\", \"execute_bash\", \"@cao-mcp-server\"]",
           "clean": true
         },
         {
           "n": 191,
-          "text": "      \"role\": \"reviewer\",",
+          "text": "---",
           "clean": true
         },
         {
           "n": 192,
-          "text": "      \"system_prompt\": \"Inspecter l'action modifiante proposée et l'approuver ou la rejeter.\",",
+          "text": "",
           "clean": true
         },
         {
           "n": 193,
-          "text": "      \"tools\": [\"read\"]",
+          "text": "You are a Developer agent. Implement the single scoped sub-task delegated to",
           "clean": true
         },
         {
           "n": 194,
-          "text": "    }",
+          "text": "you and return a structured result.</code></pre>",
           "clean": true
         },
         {
           "n": 195,
-          "text": "  }",
+          "text": "",
           "clean": true
         },
         {
           "n": 196,
-          "text": "}</code></pre>",
+          "text": "                <h3><code>name</code></h3>",
           "clean": true
         },
         {
           "n": 197,
-          "text": "",
+          "text": "                <p><strong>Décision de gouvernance :</strong> le <code>name</code> est l'identifiant stable de l'agent — c'est ainsi que le profil apparaît dans les journaux et les pistes d'audit, et c'est la poignée que vous passez à <code>cao install</code> et à <code>cao launch --agents</code>. Un nom stable et significatif est ce qui permet à un relecteur de relier une exécution au profil exact qui l'a autorisée.</p>",
           "clean": true
         },
         {
           "n": 198,
-          "text": "                <h3>Identité : <code>name</code> et <code>description</code></h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 199,
-          "text": "                <p>Le champ <code>name</code> étiquette l'orchestrateur dans les journaux et les pistes d'audit ; <code>description</code> énonce ce qu'il coordonne en une phrase lisible par un humain. Un nom stable est ce qui permet à un relecteur de relier une session à la configuration qui l'a autorisée.</p>",
+          "text": "                <h3><code>role</code></h3>",
           "clean": true
         },
         {
           "n": 200,
-          "text": "",
+          "text": "                <p><strong>Décision de gouvernance :</strong> le <code>role</code> est un préréglage de permissions nommé — les valeurs autorisées sont <code>supervisor</code>, <code>developer</code> et <code>reviewer</code>. Choisir un rôle, c'est choisir un ensemble <code>allowedTools</code> par défaut : un superviseur coordonne et délègue, un developer obtient lecture/écriture/exécution pour faire un travail délimité, et un reviewer est en lecture seule par conception. Le rôle est le contrôle de gouvernance à gros grain que vous fixez avant tout autre réglage.</p>",
           "clean": true
         },
         {
           "n": 201,
-          "text": "                <h3><code>llm_provider</code></h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 202,
-          "text": "                <p>Le bloc <code>llm_provider</code> choisit le modèle qui <em>planifie</em> pour l'orchestrateur — fournisseur <code>ovhcloud</code>, modèle <code>Qwen3.5-397B-A17B</code>, mode <code>FunctionCall</code>. En mode <code>FunctionCall</code>, l'orchestrateur peut émettre des appels de délégation vers ses agents travailleurs plutôt que de seulement produire du texte.</p>",
+          "text": "                <h3><code>provider</code></h3>",
           "clean": true
         },
         {
           "n": 203,
-          "text": "",
+          "text": "                <p><strong>Décision de gouvernance :</strong> <code>provider</code> choisit quel CLI de fournisseur authentifié adosse l'agent — ici <code>shai_cli</code>, le SHAI CLI par défaut. Comme les agents restent des processus CLI à part entière avec authentification native, le fournisseur que vous nommez est l'identité et les identifiants sous lesquels s'exécutent les actions de l'agent ; il a donc sa place dans le récit d'audit aux côtés des attributions d'outils.</p>",
           "clean": true
         },
         {
           "n": 204,
-          "text": "                <h3>Le bloc de limites <code>orchestrator</code></h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 205,
-          "text": "                <p>Ce bloc est le critère d'arrêt au niveau de l'orchestrateur. <code>max_subtasks</code> plafonne le nombre de morceaux en lesquels un objectif peut être découpé ; <code>max_retries_per_subtask</code> borne la fréquence de relance d'une sous-tâche échouée ; <code>run_timeout_seconds</code> fixe un plafond mural pour toute la session ; et <code>require_review_for_mutating</code> force chaque résultat de travailleur modifiant à passer par le relecteur avant que l'orchestrateur ne l'applique.</p>",
+          "text": "                <h3><code>allowedTools</code></h3>",
           "clean": true
         },
         {
           "n": 206,
-          "text": "                <div class=\"alert alert-info\">",
+          "text": "                <p><strong>Décision de gouvernance :</strong> <code>allowedTools</code> est la liste d'autorisation d'outils explicite pour l'agent lui-même, et elle remplace les valeurs par défaut du rôle. C'est l'expression concrète du moindre privilège : le developer ci-dessus se voit accorder exactement <code>fs_read</code>, <code>fs_write</code>, <code>execute_bash</code> et les outils <code>@cao-mcp-server</code> — rien de plus. Si une sous-tâche n'a pas besoin d'écrire des fichiers ou d'exécuter des commandes, ne listez pas ces outils dans le profil qui l'exécute.</p>",
           "clean": true
         },
         {
           "n": 207,
-          "text": "                    <strong>Gouvernance :</strong> <code>require_review_for_mutating: true</code> est la porte de relecture du schéma d'architecture rendue concrète. La laisser active maintient un contrôle entre un travailleur proposant un changement et ce changement prenant effet — ne la désactivez pour rien qui écrit, démarre, arrête ou supprime.",
+          "text": "                <div class=\"alert alert-info\">",
           "clean": true
         },
         {
           "n": 208,
-          "text": "                </div>",
+          "text": "                    <strong>Gouvernance :</strong> le rôle fixe une valeur par défaut raisonnable, mais <code>allowedTools</code> est l'endroit où vous rendez le moindre privilège explicite. Restreignez la liste à exactement ce dont l'agent a besoin ; une liste d'autorisation que vous lisez d'un coup d'œil est une liste qu'un relecteur peut approuver.",
           "clean": true
         },
         {
           "n": 209,
-          "text": "",
+          "text": "                </div>",
           "clean": true
         },
         {
           "n": 210,
-          "text": "                <h3>La table <code>agents</code></h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 211,
-          "text": "                <p>Chaque entrée nomme un agent auquel l'orchestrateur peut déléguer, déclare son <code>role</code> (travailleur ou relecteur), lui donne un <code>system_prompt</code> d'une ligne délimitant sa mission, et lui accorde un jeu d'<code>tools</code> minimal. Notez le motif : le travailleur de découverte est surtout en lecture (<code>read</code>, <code>bash</code>), le travailleur d'action est le seul doté de <code>write</code>, et le relecteur est en <code>read</code> seul par conception.</p>",
+          "text": "                <h3><code>delegateTools</code></h3>",
           "clean": true
         },
         {
           "n": 212,
-          "text": "                <div class=\"alert alert-info\">",
+          "text": "                <p><strong>Décision de gouvernance :</strong> <code>delegateTools</code> est le <em>plafond de délégation</em> — le maximum qu'un agent peut accorder aux travailleurs qu'il crée, jamais plus que cela quel que soit ce que demande le propre profil d'un travailleur. Il vaut par défaut <code>[\"*\"]</code> pour <code>role: supervisor</code> (un superviseur peut transmettre tout outil qu'il est lui-même autorisé à utiliser) et le propre <code>allowedTools</code> de l'agent pour tout autre rôle. Le superviseur ci-dessus conserve le <code>delegateTools: [\"*\"]</code> explicite ; le travailleur developer n'en définit aucun, donc son plafond est simplement son propre <code>allowedTools</code>.</p>",
           "clean": true
         },
         {
           "n": 213,
-          "text": "                    <strong>Gouvernance :</strong> les attributions d'outils ici sont le moindre privilège en action. Seul l'<code>action-worker</code> peut modifier la plateforme, et même ses changements doivent passer le relecteur. Si une sous-tâche n'a pas besoin de <code>write</code> ou de <code>bash</code>, ne les accordez pas à l'agent qui l'exécute.",
-          "clean": true
-        },
-        {
-          "n": 214,
-          "text": "                </div>",
-          "clean": true
-        },
-        {
-          "n": 215,
-          "text": "",
-          "clean": true
-        },
-        {
-          "n": 216,
-          "text": "                <h2>Points clés</h2>",
-          "clean": true
-        },
-        {
-          "n": 217,
-          "text": "                <ul>",
-          "clean": true
-        },
-        {
-          "n": 218,
-          "text": "                    <li>shai est un orchestrateur qui coordonne des agents spécialisés vers un même objectif — pas un agent unique.</li>",
-          "clean": true
-        },
-        {
-          "n": 219,
-          "text": "                    <li>Trois rôles : un orchestrateur qui planifie et délègue, des travailleurs qui exécutent des sous-tâches délimitées, et un relecteur qui garde les actions modifiantes.</li>",
-          "clean": true
-        },
-        {
-          "n": 220,
-          "text": "                    <li>La délégation porte un objectif, des entrées délimitées, une attribution d'outils minimale et un contrat de retour — rien de plus.</li>",
-          "clean": true
-        },
-        {
-          "n": 221,
-          "text": "                    <li>Vous pilotez une session depuis la ligne de commande : valider la configuration, lancer avec un objectif, suivre les journaux, lire le rapport et arrêter avec le coupe-circuit.</li>",
-          "clean": true
-        },
-        {
-          "n": 222,
-          "text": "                    <li>Les limites opérationnelles et la porte de relecture vivent dans la configuration de l'orchestrateur, rendant toute la session observable et bornée.</li>",
-          "clean": true
-        },
-        {
-          "n": 223,
-          "text": "                </ul>",
-          "clean": true
-        },
-        {
-          "n": 224,
-          "text": "",
-          "clean": true
-        },
-        {
-          "n": 225,
           "text": "                <div class=\"alert alert-info\">",
           "clean": true
         },
         {
-          "n": 226,
-          "text": "                    <strong>Suite :</strong> <a href=\"running-applications-lab.html\">Atelier : exploitation des applications OPCP-EXPLORER</a> — mettez ces rôles au travail sur l'ensemble des opérations pratiques.",
+          "n": 214,
+          "text": "                    <strong>Gouvernance :</strong> <code>delegateTools</code> est la façon de plafonner le rayon d'impact sur tout un arbre de délégation. Abaisser le <code>delegateTools</code> d'un superviseur sous <code>[\"*\"]</code> garantit qu'aucun travailleur qu'il engendre ne peut dépasser cette borne — le plafond est appliqué à la délégation, pas à la confiance. Un agent de rôle reviewer (issu de <code>reviewer.md</code>, <code>allowedTools</code> en lecture seule) est ce via quoi le superviseur achemine le travail modifiant avant de l'accepter.",
           "clean": true
         },
         {
-          "n": 227,
+          "n": 215,
           "text": "                </div>",
           "clean": true
         },
         {
-          "n": 228,
-          "text": "            </div>",
-          "clean": true
-        },
-        {
-          "n": 229,
+          "n": 216,
           "text": "",
           "clean": true
         },
         {
+          "n": 217,
+          "text": "                <h2>Correspondance de gouvernance</h2>",
+          "clean": true
+        },
+        {
+          "n": 218,
+          "text": "                <p>Le vocabulaire de gouvernance vu plus tôt dans le cours n'est pas abstrait ici — chaque concept se rattache à un mécanisme CAO concret que vous avez déjà vu dans cet atelier.</p>",
+          "clean": true
+        },
+        {
+          "n": 219,
+          "text": "                <ul>",
+          "clean": true
+        },
+        {
+          "n": 220,
+          "text": "                    <li><strong>Moindre privilège → <code>allowedTools</code> / <code>delegateTools</code>.</strong> <code>allowedTools</code> dimensionne l'attribution d'outils propre à chaque agent exactement à ce dont sa tâche a besoin, et <code>delegateTools</code> plafonne le maximum qu'un superviseur peut transmettre aux travailleurs qu'il crée. Ensemble, ils gardent le rayon d'impact de chaque agent aussi petit que le travail le permet.</li>",
+          "clean": true
+        },
+        {
+          "n": 221,
+          "text": "                    <li><strong>Porte de relecture → un agent <code>role: reviewer</code>.</strong> Le travail modifiant est acheminé via un agent de rôle reviewer de CAO (issu de <code>reviewer.md</code>, <code>allowedTools</code> en lecture seule) qui inspecte le changement avant que le superviseur ne l'accepte, gardant un contrôle aligné sur l'humain dans la boucle.</li>",
+          "clean": true
+        },
+        {
+          "n": 222,
+          "text": "                    <li><strong>Coupe-circuit → <code>cao shutdown</code>.</strong> <code>cao shutdown --session {session-name}</code> arrête une session nommée et <code>cao shutdown --all</code> démantèle toutes les sessions que CAO exécute — une façon unique et décisive de stopper une exécution.</li>",
+          "clean": true
+        },
+        {
+          "n": 223,
+          "text": "                    <li><strong>Limites opérationnelles → contrôles de la boucle superviseur.</strong> Le superviseur est le coordinateur unique qui ordonne les sous-tâches, relance les délégations échouées et décide quand l'objectif est atteint ou qu'une limite est touchée ; les restrictions d'outils bornent le rayon d'impact de chaque travailleur. Ce sont là les limites réelles et appliquées d'une exécution CAO.</li>",
+          "clean": true
+        },
+        {
+          "n": 224,
+          "text": "                </ul>",
+          "clean": true
+        },
+        {
+          "n": 225,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 226,
+          "text": "                <h2>Points clés</h2>",
+          "clean": true
+        },
+        {
+          "n": 227,
+          "text": "                <ul>",
+          "clean": true
+        },
+        {
+          "n": 228,
+          "text": "                    <li>CAO coordonne plusieurs CLI de fournisseurs comme une équipe via un superviseur — c'est une couche d'orchestration, pas un agent unique.</li>",
+          "clean": true
+        },
+        {
+          "n": 229,
+          "text": "                    <li>Trois rôles : un superviseur qui planifie et délègue, un travailleur (developer) qui exécute des sous-tâches délimitées, et un relecteur qui garde le travail modifiant.</li>",
+          "clean": true
+        },
+        {
           "n": 230,
-          "text": "            <button class=\"btn btn-success btn-mark-complete\" data-lesson-id=\"shai-orchestrator-lab\">",
+          "text": "                    <li>Une délégation porte un objectif, des entrées délimitées, une attribution d'outils minimale (bornée par <code>delegateTools</code>) et un contrat de retour — rien de plus.</li>",
           "clean": true
         },
         {
           "n": 231,
-          "text": "                Marquer comme terminé",
+          "text": "                    <li>Vous pilotez la boucle superviseur depuis la ligne de commande : installer CAO, démarrer <code>cao-server</code>, lancer le superviseur, déléguer une petite tâche, observer l'exécution et l'arrêter.</li>",
           "clean": true
         },
         {
           "n": 232,
-          "text": "            </button>",
+          "text": "                    <li>La gouvernance est concrète : le moindre privilège vit dans <code>allowedTools</code>/<code>delegateTools</code>, la porte de relecture est un agent de rôle reviewer, et <code>cao shutdown</code> est le coupe-circuit.</li>",
           "clean": true
         },
         {
           "n": 233,
-          "text": "        </div>",
+          "text": "                </ul>",
           "clean": true
         },
         {
           "n": 234,
-          "text": "    </main>",
+          "text": "",
           "clean": true
         },
         {
           "n": 235,
-          "text": "    <script type=\"module\" src=\"../js/app.js\"></script>",
+          "text": "                <div class=\"alert alert-info\">",
           "clean": true
         },
         {
           "n": 236,
-          "text": "    <script type=\"module\" defer src=\"../assets/js/diagrams.js\"></script>",
+          "text": "                    <strong>Suite :</strong> <a href=\"running-applications-lab.html\">Atelier : exploitation des applications OPCP-EXPLORER</a> — mettez ces rôles au travail sur l'ensemble des opérations pratiques.",
           "clean": true
         },
         {
           "n": 237,
-          "text": "</body>",
+          "text": "                </div>",
           "clean": true
         },
         {
           "n": 238,
-          "text": "</html>",
+          "text": "            </div>",
           "clean": true
         },
         {
           "n": 239,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 240,
+          "text": "            <button class=\"btn btn-success btn-mark-complete\" data-lesson-id=\"shai-orchestrator-lab\">",
+          "clean": true
+        },
+        {
+          "n": 241,
+          "text": "                Marquer comme terminé",
+          "clean": true
+        },
+        {
+          "n": 242,
+          "text": "            </button>",
+          "clean": true
+        },
+        {
+          "n": 243,
+          "text": "        </div>",
+          "clean": true
+        },
+        {
+          "n": 244,
+          "text": "    </main>",
+          "clean": true
+        },
+        {
+          "n": 245,
+          "text": "    <script type=\"module\" src=\"../js/app.js\"></script>",
+          "clean": true
+        },
+        {
+          "n": 246,
+          "text": "    <script type=\"module\" defer src=\"../assets/js/diagrams.js\"></script>",
+          "clean": true
+        },
+        {
+          "n": 247,
+          "text": "</body>",
+          "clean": true
+        },
+        {
+          "n": 248,
+          "text": "</html>",
+          "clean": true
+        },
+        {
+          "n": 249,
           "text": "",
           "clean": true
         }
@@ -22022,7 +22127,7 @@
       "rel": "en/index.html",
       "affected": false,
       "byteLength": 10760,
-      "sha256": "4d4dd916892684020811ca2ef18e52300fac45e6fdd736feab299f2122b767ac",
+      "sha256": "ae40d61fed5bce2e9b931643a54b6cc8802eac6c712eaab5029a5e1a910f17cf",
       "charsetLine": "    <meta charset=\"UTF-8\">\r",
       "lineCount": 158,
       "lines": [
@@ -22213,157 +22318,157 @@
         },
         {
           "n": 38,
-          "text": "        <div class=\"sidebar-section\" data-section=\"section-1\">\r",
-          "clean": true
-        },
-        {
-          "n": 39,
-          "text": "            <h2 class=\"sidebar-section-title\">Fundamentals &amp; Governance</h2>\r",
-          "clean": true
-        },
-        {
-          "n": 40,
-          "text": "            <h3 class=\"sidebar-subsection-title\">Introduction &amp; Fundamentals</h3>\r",
-          "clean": true
-        },
-        {
-          "n": 41,
-          "text": "            <ul class=\"sidebar-nav\" id=\"nav-intro\">\r",
-          "clean": true
-        },
-        {
-          "n": 42,
-          "text": "                <li><a href=\"assistant-vs-agent.html\">From Assistant to Agent</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 43,
-          "text": "                <li><a href=\"agent-anatomy-7-components.html\">Anatomy: Seven Core Components</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 44,
-          "text": "                <li><a href=\"agentic-loop-and-variants.html\">The Agentic Loop &amp; Variants</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 45,
-          "text": "                <li><a href=\"stopping-criteria.html\">Stopping Criteria</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 46,
-          "text": "            </ul>\r",
-          "clean": true
-        },
-        {
-          "n": 47,
-          "text": "            <h3 class=\"sidebar-subsection-title\">Design &amp; Governance</h3>\r",
-          "clean": true
-        },
-        {
-          "n": 48,
-          "text": "            <ul class=\"sidebar-nav\" id=\"nav-afternoon\">\r",
-          "clean": true
-        },
-        {
-          "n": 49,
-          "text": "                <li><a href=\"multi-agent-patterns.html\">Multi-Agent Patterns</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 50,
-          "text": "                <li><a href=\"when-not-multi-agent.html\">When Not to Go Multi-Agent</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 51,
-          "text": "                <li><a href=\"guardrails-5-layers.html\">Guardrails: Five Layers</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 52,
-          "text": "                <li><a href=\"human-in-the-loop-ovhcloud-policy.html\">Human-in-the-Loop &amp; OVHcloud AI Policy</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 53,
-          "text": "                <li><a href=\"threat-modeling-workshop.html\">Workshop: Threat Modeling</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 54,
-          "text": "                <li><a href=\"agent-design-capstone.html\">Capstone: Agent Design</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 55,
-          "text": "                <li><a href=\"configuring-shai-mcp-opcp-explorer.html\">Configuring a SHAI Agent with MCP to OPCP-EXPLORER</a></li>\r",
-          "clean": true
-        },
-        {
-          "n": 56,
-          "text": "            </ul>\r",
-          "clean": true
-        },
-        {
-          "n": 57,
-          "text": "        </div>\r",
-          "clean": true
-        },
-        {
-          "n": 58,
           "text": "        <div class=\"sidebar-section\" data-section=\"section-2\">\r",
           "clean": true
         },
         {
-          "n": 59,
+          "n": 39,
           "text": "            <h2 class=\"sidebar-section-title\">Quiz</h2>\r",
           "clean": true
         },
         {
-          "n": 60,
+          "n": 40,
           "text": "            <ul class=\"sidebar-nav\" id=\"nav-quiz\">\r",
           "clean": true
         },
         {
-          "n": 61,
+          "n": 41,
           "text": "                <li><a href=\"quiz-fundamentals.html\">Quiz: Fundamentals &amp; Governance</a></li>\r",
           "clean": true
         },
         {
-          "n": 62,
+          "n": 42,
           "text": "            </ul>\r",
           "clean": true
         },
         {
-          "n": 63,
+          "n": 43,
           "text": "        </div>\r",
           "clean": true
         },
         {
-          "n": 64,
+          "n": 44,
           "text": "        <div class=\"sidebar-section\" data-section=\"section-3\">\r",
           "clean": true
         },
         {
-          "n": 65,
+          "n": 45,
           "text": "            <h2 class=\"sidebar-section-title\">Sandbox Labs</h2>\r",
           "clean": true
         },
         {
-          "n": 66,
+          "n": 46,
           "text": "            <ul class=\"sidebar-nav\" id=\"nav-sandbox\">\r",
           "clean": true
         },
         {
-          "n": 67,
+          "n": 47,
           "text": "                <li><a href=\"shai-orchestrator-lab.html\">Lab: The shai Multi-Agent Orchestrator</a></li>\r",
           "clean": true
         },
         {
-          "n": 68,
+          "n": 48,
           "text": "                <li><a href=\"running-applications-lab.html\">Lab: OPCP-EXPLORER Running Applications</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 49,
+          "text": "            </ul>\r",
+          "clean": true
+        },
+        {
+          "n": 50,
+          "text": "        </div>\r",
+          "clean": true
+        },
+        {
+          "n": 51,
+          "text": "        <div class=\"sidebar-section\" data-section=\"section-1\">\r",
+          "clean": true
+        },
+        {
+          "n": 52,
+          "text": "            <h2 class=\"sidebar-section-title\">Fundamentals &amp; Governance</h2>\r",
+          "clean": true
+        },
+        {
+          "n": 53,
+          "text": "            <h3 class=\"sidebar-subsection-title\">Introduction &amp; Fundamentals</h3>\r",
+          "clean": true
+        },
+        {
+          "n": 54,
+          "text": "            <ul class=\"sidebar-nav\" id=\"nav-intro\">\r",
+          "clean": true
+        },
+        {
+          "n": 55,
+          "text": "                <li><a href=\"assistant-vs-agent.html\">From Assistant to Agent</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 56,
+          "text": "                <li><a href=\"agent-anatomy-7-components.html\">Anatomy: Seven Core Components</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 57,
+          "text": "                <li><a href=\"agentic-loop-and-variants.html\">The Agentic Loop &amp; Variants</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 58,
+          "text": "                <li><a href=\"stopping-criteria.html\">Stopping Criteria</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 59,
+          "text": "            </ul>\r",
+          "clean": true
+        },
+        {
+          "n": 60,
+          "text": "            <h3 class=\"sidebar-subsection-title\">Design &amp; Governance</h3>\r",
+          "clean": true
+        },
+        {
+          "n": 61,
+          "text": "            <ul class=\"sidebar-nav\" id=\"nav-afternoon\">\r",
+          "clean": true
+        },
+        {
+          "n": 62,
+          "text": "                <li><a href=\"multi-agent-patterns.html\">Multi-Agent Patterns</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 63,
+          "text": "                <li><a href=\"when-not-multi-agent.html\">When Not to Go Multi-Agent</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 64,
+          "text": "                <li><a href=\"guardrails-5-layers.html\">Guardrails: Five Layers</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 65,
+          "text": "                <li><a href=\"human-in-the-loop-ovhcloud-policy.html\">Human-in-the-Loop &amp; OVHcloud AI Policy</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 66,
+          "text": "                <li><a href=\"threat-modeling-workshop.html\">Workshop: Threat Modeling</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 67,
+          "text": "                <li><a href=\"agent-design-capstone.html\">Capstone: Agent Design</a></li>\r",
+          "clean": true
+        },
+        {
+          "n": 68,
+          "text": "                <li><a href=\"configuring-shai-mcp-opcp-explorer.html\">Configuring a SHAI Agent with MCP to OPCP-EXPLORER</a></li>\r",
           "clean": true
         },
         {
@@ -23671,10 +23776,10 @@
     "en/quiz-fundamentals.html": {
       "rel": "en/quiz-fundamentals.html",
       "affected": false,
-      "byteLength": 15846,
-      "sha256": "457a3d71f57181a5eb4d9cf19d7ef1b4609c19a47b0578eb08483ecd826ceb71",
+      "byteLength": 16751,
+      "sha256": "8cdfc02cb4cff888ec0f38a8676d9c88820f08b55d2b4e302315b11921448bf1",
       "charsetLine": "    <meta charset=\"UTF-8\">",
-      "lineCount": 202,
+      "lineCount": 213,
       "lines": [
         {
           "n": 1,
@@ -23958,7 +24063,7 @@
         },
         {
           "n": 57,
-          "text": "                                <legend>What is the core difference between an AI assistant and an AI agent?</legend>",
+          "text": "                                <legend><strong>What is the core difference between an AI assistant and an AI agent?</strong></legend>",
           "clean": true
         },
         {
@@ -24003,7 +24108,7 @@
         },
         {
           "n": 66,
-          "text": "                                <legend>According to the autonomy spectrum, how much autonomy should you grant an agent?</legend>",
+          "text": "                                <legend><strong>According to the autonomy spectrum, how much autonomy should you grant an agent?</strong></legend>",
           "clean": true
         },
         {
@@ -24048,7 +24153,7 @@
         },
         {
           "n": 75,
-          "text": "                                <legend>Which set lists the seven core components of an AI agent?</legend>",
+          "text": "                                <legend><strong>Which set lists the seven core components of an AI agent?</strong></legend>",
           "clean": true
         },
         {
@@ -24093,7 +24198,7 @@
         },
         {
           "n": 84,
-          "text": "                                <legend>In an agent's anatomy, what role do the tools play?</legend>",
+          "text": "                                <legend><strong>In an agent's anatomy, what role do the tools play?</strong></legend>",
           "clean": true
         },
         {
@@ -24138,7 +24243,7 @@
         },
         {
           "n": 93,
-          "text": "                                <legend>What is the base agentic loop?</legend>",
+          "text": "                                <legend><strong>What is the base agentic loop?</strong></legend>",
           "clean": true
         },
         {
@@ -24183,7 +24288,7 @@
         },
         {
           "n": 102,
-          "text": "                                <legend>Which agentic loop variant adds a self-critique step, writing a lesson to memory after a failed attempt and retrying with that insight?</legend>",
+          "text": "                                <legend><strong>Which agentic loop variant adds a self-critique step, writing a lesson to memory after a failed attempt and retrying with that insight?</strong></legend>",
           "clean": true
         },
         {
@@ -24228,7 +24333,7 @@
         },
         {
           "n": 111,
-          "text": "                                <legend>What is the best practice for setting an agent's stopping criteria?</legend>",
+          "text": "                                <legend><strong>What is the best practice for setting an agent's stopping criteria?</strong></legend>",
           "clean": true
         },
         {
@@ -24273,7 +24378,7 @@
         },
         {
           "n": 120,
-          "text": "                                <legend>Which option lists the four multi-agent architectural patterns?</legend>",
+          "text": "                                <legend><strong>Which option lists the four multi-agent architectural patterns?</strong></legend>",
           "clean": true
         },
         {
@@ -24318,7 +24423,7 @@
         },
         {
           "n": 129,
-          "text": "                                <legend>What is the rule of thumb for choosing between a single agent and a multi-agent design?</legend>",
+          "text": "                                <legend><strong>What is the rule of thumb for choosing between a single agent and a multi-agent design?</strong></legend>",
           "clean": true
         },
         {
@@ -24363,7 +24468,7 @@
         },
         {
           "n": 138,
-          "text": "                                <legend>Which of these is a hidden cost that a multi-agent design introduces?</legend>",
+          "text": "                                <legend><strong>Which of these is a hidden cost that a multi-agent design introduces?</strong></legend>",
           "clean": true
         },
         {
@@ -24408,7 +24513,7 @@
         },
         {
           "n": 147,
-          "text": "                                <legend>Which option lists the five guardrail layers of defense in depth?</legend>",
+          "text": "                                <legend><strong>Which option lists the five guardrail layers of defense in depth?</strong></legend>",
           "clean": true
         },
         {
@@ -24453,7 +24558,7 @@
         },
         {
           "n": 156,
-          "text": "                                <legend>The permissions guardrail layer answers which question?</legend>",
+          "text": "                                <legend><strong>The permissions guardrail layer answers which question?</strong></legend>",
           "clean": true
         },
         {
@@ -24498,7 +24603,7 @@
         },
         {
           "n": 165,
-          "text": "                                <legend>Which option correctly names the three degrees of human oversight?</legend>",
+          "text": "                                <legend><strong>Which option correctly names the three degrees of human oversight?</strong></legend>",
           "clean": true
         },
         {
@@ -24543,7 +24648,7 @@
         },
         {
           "n": 174,
-          "text": "                                <legend>In the threat-modeling workshop, which three agent-specific threats must the model cover?</legend>",
+          "text": "                                <legend><strong>In the threat-modeling workshop, which three agent-specific threats must the model cover?</strong></legend>",
           "clean": true
         },
         {
@@ -24588,7 +24693,7 @@
         },
         {
           "n": 183,
-          "text": "                                <legend>In the SHAI MCP configuration, what does setting <code>enabled_tools</code> to <code>[\"*\"]</code> mean from a governance standpoint?</legend>",
+          "text": "                                <legend><strong>In the SHAI MCP configuration, what does setting <code>enabled_tools</code> to <code>[\"*\"]</code> mean from a governance standpoint?</strong></legend>",
           "clean": true
         },
         {
@@ -24648,41 +24753,96 @@
         },
         {
           "n": 195,
-          "text": "            </div>",
-          "clean": true
-        },
-        {
-          "n": 196,
-          "text": "        </div>",
-          "clean": true
-        },
-        {
-          "n": 197,
-          "text": "    </main>",
-          "clean": true
-        },
-        {
-          "n": 198,
           "text": "",
           "clean": true
         },
         {
+          "n": 196,
+          "text": "                <div class=\"quiz-fail-feedback\" role=\"alert\">",
+          "clean": true
+        },
+        {
+          "n": 197,
+          "text": "                    <p class=\"quiz-fail-feedback__heading\">",
+          "clean": true
+        },
+        {
+          "n": 198,
+          "text": "                        <span class=\"quiz-fail-feedback__cross\" aria-hidden=\"true\"></span>",
+          "clean": true
+        },
+        {
           "n": 199,
-          "text": "    <script type=\"module\" src=\"../js/app.js\"></script>",
+          "text": "                        <span>Quiz not passed</span>",
           "clean": true
         },
         {
           "n": 200,
-          "text": "</body>",
+          "text": "                    </p>",
           "clean": true
         },
         {
           "n": 201,
-          "text": "</html>",
+          "text": "                    <p class=\"quiz-fail-feedback__message\">You did not reach the passing score. Review the material and try again.</p>",
           "clean": true
         },
         {
           "n": 202,
+          "text": "                    <p class=\"quiz-fail-feedback__link\">",
+          "clean": true
+        },
+        {
+          "n": 203,
+          "text": "                        <a href=\"assistant-vs-agent.html\">&#8592; Jump back to III) Fundamentals &amp; Governance</a>",
+          "clean": true
+        },
+        {
+          "n": 204,
+          "text": "                    </p>",
+          "clean": true
+        },
+        {
+          "n": 205,
+          "text": "                </div>",
+          "clean": true
+        },
+        {
+          "n": 206,
+          "text": "            </div>",
+          "clean": true
+        },
+        {
+          "n": 207,
+          "text": "        </div>",
+          "clean": true
+        },
+        {
+          "n": 208,
+          "text": "    </main>",
+          "clean": true
+        },
+        {
+          "n": 209,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 210,
+          "text": "    <script type=\"module\" src=\"../js/app.js\"></script>",
+          "clean": true
+        },
+        {
+          "n": 211,
+          "text": "</body>",
+          "clean": true
+        },
+        {
+          "n": 212,
+          "text": "</html>",
+          "clean": true
+        },
+        {
+          "n": 213,
           "text": "",
           "clean": true
         }
@@ -24692,7 +24852,7 @@
       "rel": "en/running-applications-lab.html",
       "affected": false,
       "byteLength": 43306,
-      "sha256": "43e949f3c314eb227940557481ab0797d8c8a0fe1af250cd85eed87c974e0724",
+      "sha256": "59f37a84c9e6b4ca311cd07cfe70751f2c28337873078e4f5f94e38c2b969817",
       "charsetLine": "    <meta charset=\"UTF-8\">",
       "lineCount": 681,
       "lines": [
@@ -24883,157 +25043,157 @@
         },
         {
           "n": 38,
-          "text": "        <div class=\"sidebar-section\" data-section=\"section-1\">",
-          "clean": true
-        },
-        {
-          "n": 39,
-          "text": "            <h2 class=\"sidebar-section-title\">Fundamentals &amp; Governance</h2>",
-          "clean": true
-        },
-        {
-          "n": 40,
-          "text": "            <h3 class=\"sidebar-subsection-title\">Introduction &amp; Fundamentals</h3>",
-          "clean": true
-        },
-        {
-          "n": 41,
-          "text": "            <ul class=\"sidebar-nav\">",
-          "clean": true
-        },
-        {
-          "n": 42,
-          "text": "                <li><a href=\"assistant-vs-agent.html\">From Assistant to Agent</a></li>",
-          "clean": true
-        },
-        {
-          "n": 43,
-          "text": "                <li><a href=\"agent-anatomy-7-components.html\">Anatomy: Seven Core Components</a></li>",
-          "clean": true
-        },
-        {
-          "n": 44,
-          "text": "                <li><a href=\"agentic-loop-and-variants.html\">The Agentic Loop &amp; Variants</a></li>",
-          "clean": true
-        },
-        {
-          "n": 45,
-          "text": "                <li><a href=\"stopping-criteria.html\">Stopping Criteria</a></li>",
-          "clean": true
-        },
-        {
-          "n": 46,
-          "text": "            </ul>",
-          "clean": true
-        },
-        {
-          "n": 47,
-          "text": "            <h3 class=\"sidebar-subsection-title\">Design &amp; Governance</h3>",
-          "clean": true
-        },
-        {
-          "n": 48,
-          "text": "            <ul class=\"sidebar-nav\" id=\"nav-afternoon\">",
-          "clean": true
-        },
-        {
-          "n": 49,
-          "text": "                <li><a href=\"multi-agent-patterns.html\">Multi-Agent Patterns</a></li>",
-          "clean": true
-        },
-        {
-          "n": 50,
-          "text": "                <li><a href=\"when-not-multi-agent.html\">When Not to Go Multi-Agent</a></li>",
-          "clean": true
-        },
-        {
-          "n": 51,
-          "text": "                <li><a href=\"guardrails-5-layers.html\">Guardrails: Five Layers</a></li>",
-          "clean": true
-        },
-        {
-          "n": 52,
-          "text": "                <li><a href=\"human-in-the-loop-ovhcloud-policy.html\">Human-in-the-Loop &amp; OVHcloud AI Policy</a></li>",
-          "clean": true
-        },
-        {
-          "n": 53,
-          "text": "                <li><a href=\"threat-modeling-workshop.html\">Workshop: Threat Modeling</a></li>",
-          "clean": true
-        },
-        {
-          "n": 54,
-          "text": "                <li><a href=\"agent-design-capstone.html\">Capstone: Agent Design</a></li>",
-          "clean": true
-        },
-        {
-          "n": 55,
-          "text": "                <li><a href=\"configuring-shai-mcp-opcp-explorer.html\">Configuring a SHAI Agent with MCP to OPCP-EXPLORER</a></li>",
-          "clean": true
-        },
-        {
-          "n": 56,
-          "text": "            </ul>",
-          "clean": true
-        },
-        {
-          "n": 57,
-          "text": "        </div>",
-          "clean": true
-        },
-        {
-          "n": 58,
           "text": "        <div class=\"sidebar-section\" data-section=\"section-2\">",
           "clean": true
         },
         {
-          "n": 59,
+          "n": 39,
           "text": "            <h2 class=\"sidebar-section-title\">Quiz</h2>",
           "clean": true
         },
         {
-          "n": 60,
+          "n": 40,
           "text": "            <ul class=\"sidebar-nav\">",
           "clean": true
         },
         {
-          "n": 61,
+          "n": 41,
           "text": "                <li><a href=\"quiz-fundamentals.html\">Fundamentals &amp; Governance Quiz</a></li>",
           "clean": true
         },
         {
-          "n": 62,
+          "n": 42,
           "text": "            </ul>",
           "clean": true
         },
         {
-          "n": 63,
+          "n": 43,
           "text": "        </div>",
           "clean": true
         },
         {
-          "n": 64,
+          "n": 44,
           "text": "        <div class=\"sidebar-section\" data-section=\"section-3\">",
           "clean": true
         },
         {
-          "n": 65,
+          "n": 45,
           "text": "            <h2 class=\"sidebar-section-title\">Sandbox Labs</h2>",
           "clean": true
         },
         {
-          "n": 66,
+          "n": 46,
           "text": "            <ul class=\"sidebar-nav\">",
           "clean": true
         },
         {
-          "n": 67,
+          "n": 47,
           "text": "                <li><a href=\"shai-orchestrator-lab.html\">Lab: the shai Multi-Agent Orchestrator</a></li>",
           "clean": true
         },
         {
-          "n": 68,
+          "n": 48,
           "text": "                <li><a href=\"running-applications-lab.html\" class=\"active\">Lab: OPCP-EXPLORER Running Applications</a></li>",
+          "clean": true
+        },
+        {
+          "n": 49,
+          "text": "            </ul>",
+          "clean": true
+        },
+        {
+          "n": 50,
+          "text": "        </div>",
+          "clean": true
+        },
+        {
+          "n": 51,
+          "text": "        <div class=\"sidebar-section\" data-section=\"section-1\">",
+          "clean": true
+        },
+        {
+          "n": 52,
+          "text": "            <h2 class=\"sidebar-section-title\">Fundamentals &amp; Governance</h2>",
+          "clean": true
+        },
+        {
+          "n": 53,
+          "text": "            <h3 class=\"sidebar-subsection-title\">Introduction &amp; Fundamentals</h3>",
+          "clean": true
+        },
+        {
+          "n": 54,
+          "text": "            <ul class=\"sidebar-nav\">",
+          "clean": true
+        },
+        {
+          "n": 55,
+          "text": "                <li><a href=\"assistant-vs-agent.html\">From Assistant to Agent</a></li>",
+          "clean": true
+        },
+        {
+          "n": 56,
+          "text": "                <li><a href=\"agent-anatomy-7-components.html\">Anatomy: Seven Core Components</a></li>",
+          "clean": true
+        },
+        {
+          "n": 57,
+          "text": "                <li><a href=\"agentic-loop-and-variants.html\">The Agentic Loop &amp; Variants</a></li>",
+          "clean": true
+        },
+        {
+          "n": 58,
+          "text": "                <li><a href=\"stopping-criteria.html\">Stopping Criteria</a></li>",
+          "clean": true
+        },
+        {
+          "n": 59,
+          "text": "            </ul>",
+          "clean": true
+        },
+        {
+          "n": 60,
+          "text": "            <h3 class=\"sidebar-subsection-title\">Design &amp; Governance</h3>",
+          "clean": true
+        },
+        {
+          "n": 61,
+          "text": "            <ul class=\"sidebar-nav\" id=\"nav-afternoon\">",
+          "clean": true
+        },
+        {
+          "n": 62,
+          "text": "                <li><a href=\"multi-agent-patterns.html\">Multi-Agent Patterns</a></li>",
+          "clean": true
+        },
+        {
+          "n": 63,
+          "text": "                <li><a href=\"when-not-multi-agent.html\">When Not to Go Multi-Agent</a></li>",
+          "clean": true
+        },
+        {
+          "n": 64,
+          "text": "                <li><a href=\"guardrails-5-layers.html\">Guardrails: Five Layers</a></li>",
+          "clean": true
+        },
+        {
+          "n": 65,
+          "text": "                <li><a href=\"human-in-the-loop-ovhcloud-policy.html\">Human-in-the-Loop &amp; OVHcloud AI Policy</a></li>",
+          "clean": true
+        },
+        {
+          "n": 66,
+          "text": "                <li><a href=\"threat-modeling-workshop.html\">Workshop: Threat Modeling</a></li>",
+          "clean": true
+        },
+        {
+          "n": 67,
+          "text": "                <li><a href=\"agent-design-capstone.html\">Capstone: Agent Design</a></li>",
+          "clean": true
+        },
+        {
+          "n": 68,
+          "text": "                <li><a href=\"configuring-shai-mcp-opcp-explorer.html\">Configuring a SHAI Agent with MCP to OPCP-EXPLORER</a></li>",
           "clean": true
         },
         {
@@ -28106,10 +28266,10 @@
     "en/shai-orchestrator-lab.html": {
       "rel": "en/shai-orchestrator-lab.html",
       "affected": false,
-      "byteLength": 17003,
-      "sha256": "4eb5409e728145d5796065fdcd2968c8602cd6a99eae84e544e713e6b7869c2e",
+      "byteLength": 22724,
+      "sha256": "f53d00d3cafbe24662bf81f0e6167d3621e2f2fc46bccdb29ce010a07924e514",
       "charsetLine": "    <meta charset=\"UTF-8\">",
-      "lineCount": 240,
+      "lineCount": 250,
       "lines": [
         {
           "n": 1,
@@ -28138,7 +28298,7 @@
         },
         {
           "n": 6,
-          "text": "    <title>Lab: The shai Multi-Agent Orchestrator - Agentic AI OPCP Labs</title>",
+          "text": "    <title>Lab: CLI Agent Orchestrator (CAO) Supervisor Loop - Agentic AI OPCP Labs</title>",
           "clean": true
         },
         {
@@ -28313,7 +28473,7 @@
         },
         {
           "n": 41,
-          "text": "                <li><a href=\"shai-orchestrator-lab.html\" class=\"active\">Lab: The shai Multi-Agent Orchestrator</a></li>",
+          "text": "                <li><a href=\"shai-orchestrator-lab.html\" class=\"active\">Lab: CLI Agent Orchestrator (CAO) Supervisor Loop</a></li>",
           "clean": true
         },
         {
@@ -28358,7 +28518,7 @@
         },
         {
           "n": 50,
-          "text": "                <h1>Lab: The shai Multi-Agent Orchestrator</h1>",
+          "text": "                <h1>Lab: CLI Agent Orchestrator (CAO) Supervisor Loop</h1>",
           "clean": true
         },
         {
@@ -28393,7 +28553,7 @@
         },
         {
           "n": 57,
-          "text": "                <p>This guided lab introduces <strong>shai</strong>, the multi-agent orchestrator that drives work across the <strong>opcp-explorer</strong> agentic-ai-platform. You will learn how the orchestrator is put together, what each agent role is responsible for, how a task is delegated from the orchestrator down to a worker agent, and how to drive the whole thing from the command line. Every command and configuration snippet on this page is <strong>illustrative text only</strong> — read it to understand the shape of the system; this lesson ships no runnable scripts.</p>",
+          "text": "                <p>This hands-on lab drives the <strong>CLI Agent Orchestrator (CAO)</strong> — a real tool you install and run yourself. CAO coordinates several provider CLIs as a team: a <strong>supervisor</strong> agent breaks a goal into sub-tasks and delegates them to scoped worker agents. Over the course of the lab you install CAO, start the <code>cao-server</code>, launch a supervisor in your own project directory, delegate a small task, watch the run through the attached terminal and the Web UI, and shut everything down. The commands on this page are real and executable against your own CAO installation.</p>",
           "clean": true
         },
         {
@@ -28403,387 +28563,387 @@
         },
         {
           "n": 59,
-          "text": "                <div class=\"alert alert-info\">",
-          "clean": true
-        },
-        {
-          "n": 60,
-          "text": "                    <strong>Read-only lab:</strong> the examples below show the commands and configuration you would use on a live platform. Nothing here executes. Treat the snippets as a reference you adapt in your own environment, where the <a href=\"guardrails-5-layers.html\">five guardrail layers</a> apply.",
-          "clean": true
-        },
-        {
-          "n": 61,
-          "text": "                </div>",
-          "clean": true
-        },
-        {
-          "n": 62,
-          "text": "",
-          "clean": true
-        },
-        {
-          "n": 63,
           "text": "                <h2>Learning Objectives</h2>",
           "clean": true
         },
         {
-          "n": 64,
+          "n": 60,
           "text": "                <ul>",
+          "clean": true
+        },
+        {
+          "n": 61,
+          "text": "                    <li>Describe how CAO is put together: a local <code>cao-server</code> that starts provider CLIs in isolated terminal sessions.</li>",
+          "clean": true
+        },
+        {
+          "n": 62,
+          "text": "                    <li>Name the agent roles — supervisor, worker, and reviewer — and what each is responsible for.</li>",
+          "clean": true
+        },
+        {
+          "n": 63,
+          "text": "                    <li>Explain the delegation model: how a task flows from the supervisor to a worker and back.</li>",
+          "clean": true
+        },
+        {
+          "n": 64,
+          "text": "                    <li>Run the core supervisor loop from the command line: install, launch, delegate, observe, and shut down.</li>",
           "clean": true
         },
         {
           "n": 65,
-          "text": "                    <li>Describe the architecture of the shai multi-agent orchestrator and how its parts fit together.</li>",
+          "text": "                    <li>Read an example CAO agent profile and understand each field as a governance decision.</li>",
           "clean": true
         },
         {
           "n": 66,
-          "text": "                    <li>Name the agent roles — orchestrator, worker, and reviewer — and what each is responsible for.</li>",
+          "text": "                </ul>",
           "clean": true
         },
         {
           "n": 67,
-          "text": "                    <li>Explain the delegation model: how a task flows from the orchestrator to a worker and back.</li>",
+          "text": "",
           "clean": true
         },
         {
           "n": 68,
-          "text": "                    <li>Follow step-by-step shai CLI instructions to configure, launch, and observe an orchestrated run.</li>",
+          "text": "                <h2>Prerequisites &amp; Setup</h2>",
           "clean": true
         },
         {
           "n": 69,
-          "text": "                    <li>Read an example orchestrator configuration and understand each field as a governance decision.</li>",
+          "text": "                <p>Before you run anything, make sure your machine has the tools CAO depends on. Install each of these and confirm it is on your path:</p>",
           "clean": true
         },
         {
           "n": 70,
-          "text": "                </ul>",
+          "text": "                <ul>",
           "clean": true
         },
         {
           "n": 71,
-          "text": "",
+          "text": "                    <li><strong>Python 3.11+</strong> — CAO runs on Python 3.11 or later.</li>",
           "clean": true
         },
         {
           "n": 72,
-          "text": "                <h2>Orchestrator Architecture</h2>",
+          "text": "                    <li><strong>tmux 3.3+</strong> — CAO starts each provider CLI in an isolated tmux terminal session, so you need tmux 3.3 or later.</li>",
           "clean": true
         },
         {
           "n": 73,
-          "text": "                <p>shai is not a single agent — it is an <strong>orchestrator</strong> that coordinates several specialized agents toward one goal. The orchestrator owns the top-level task, breaks it into sub-tasks, hands each sub-task to a worker agent, collects the results, and decides when the overall job is done. Workers never talk to each other directly; everything flows through the orchestrator, which keeps the run observable and gives you a single point of control.</p>",
+          "text": "                    <li><strong>uv</strong> — the Python package and tool installer used to install the <code>cao</code> command line tool.</li>",
           "clean": true
         },
         {
           "n": 74,
-          "text": "",
+          "text": "                    <li><strong>At least one authenticated provider CLI</strong> — each agent is backed by a provider CLI with its own native authentication. The default provider is the <strong>SHAI CLI</strong>; make sure it is installed and signed in before you launch an agent.</li>",
           "clean": true
         },
         {
           "n": 75,
-          "text": "                <pre><code>flowchart TD",
+          "text": "                </ul>",
           "clean": true
         },
         {
           "n": 76,
-          "text": "    U[Operator / CLI] --> O[shai orchestrator]",
+          "text": "",
           "clean": true
         },
         {
           "n": 77,
-          "text": "    O --> W1[Worker agent: discovery]",
+          "text": "                <h2>CAO Architecture</h2>",
           "clean": true
         },
         {
           "n": 78,
-          "text": "    O --> W2[Worker agent: action]",
+          "text": "                <p>CAO is not a single agent — it is a local orchestration layer. The <code>cao-server</code> process runs on your machine and starts each provider CLI inside its own isolated tmux terminal session, so every agent is a full CLI process with its own native authentication rather than a hidden sub-process. On top of that, a <strong>supervisor</strong> profile owns the top-level goal, breaks it into sub-tasks, and delegates each one to a specialist worker agent — either in parallel when the sub-tasks are independent or in sequence when they depend on one another. Workers never talk to each other directly; everything flows through the supervisor, which keeps the run observable and gives you a single point of control.</p>",
           "clean": true
         },
         {
           "n": 79,
-          "text": "    O --> R[Reviewer agent]",
+          "text": "",
           "clean": true
         },
         {
           "n": 80,
-          "text": "    W1 --> O",
+          "text": "                <pre><code>flowchart TD",
           "clean": true
         },
         {
           "n": 81,
-          "text": "    W2 --> O",
+          "text": "    U[Operator / CLI] --> S[CAO supervisor]",
           "clean": true
         },
         {
           "n": 82,
-          "text": "    R --> O",
+          "text": "    S --> W1[Worker agent: developer]",
           "clean": true
         },
         {
           "n": 83,
-          "text": "    O --> U</code></pre>",
+          "text": "    S --> W2[Worker agent: developer]",
           "clean": true
         },
         {
           "n": 84,
-          "text": "                <p class=\"caption\">The orchestrator is the hub: it delegates to workers, routes results through a reviewer, and reports back to the operator.</p>",
+          "text": "    S --> R[Reviewer agent]",
           "clean": true
         },
         {
           "n": 85,
-          "text": "",
+          "text": "    W1 --> S",
           "clean": true
         },
         {
           "n": 86,
-          "text": "                <p>Three things make this a defensible design rather than just a fan-out:</p>",
+          "text": "    W2 --> S",
           "clean": true
         },
         {
           "n": 87,
-          "text": "                <ul>",
+          "text": "    R --> S",
           "clean": true
         },
         {
           "n": 88,
-          "text": "                    <li><strong>A single coordinator.</strong> One orchestrator holds the plan, so there is exactly one place that decides what runs next and when to stop.</li>",
+          "text": "    S --> U</code></pre>",
           "clean": true
         },
         {
           "n": 89,
-          "text": "                    <li><strong>Isolated workers.</strong> Each worker gets a narrow task and a scoped set of tools, so a mistake in one worker cannot cascade into another.</li>",
+          "text": "                <p class=\"caption\">The supervisor is the hub: it delegates to worker agents, routes results through a reviewer, and reports back to the operator.</p>",
           "clean": true
         },
         {
           "n": 90,
-          "text": "                    <li><strong>A review gate.</strong> Mutating results pass through a reviewer before the orchestrator accepts them, keeping a human-aligned check in the loop.</li>",
+          "text": "",
           "clean": true
         },
         {
           "n": 91,
-          "text": "                </ul>",
+          "text": "                <p>Three things make this a defensible design rather than just a fan-out:</p>",
           "clean": true
         },
         {
           "n": 92,
-          "text": "",
-          "clean": true
-        },
-        {
-          "n": 93,
-          "text": "                <h2>Agent Roles</h2>",
-          "clean": true
-        },
-        {
-          "n": 94,
-          "text": "                <p>A shai run is made up of three kinds of agent. Each has one job and a permission scope sized to that job.</p>",
-          "clean": true
-        },
-        {
-          "n": 95,
-          "text": "                <table>",
-          "clean": true
-        },
-        {
-          "n": 96,
-          "text": "                    <thead>",
-          "clean": true
-        },
-        {
-          "n": 97,
-          "text": "                        <tr><th>Role</th><th>Responsibility</th><th>Typical tool scope</th></tr>",
-          "clean": true
-        },
-        {
-          "n": 98,
-          "text": "                    </thead>",
-          "clean": true
-        },
-        {
-          "n": 99,
-          "text": "                    <tbody>",
-          "clean": true
-        },
-        {
-          "n": 100,
-          "text": "                        <tr><td><strong>Orchestrator</strong></td><td>Owns the top-level goal, plans and sequences sub-tasks, delegates to workers, aggregates results, decides when to stop.</td><td>No host tools; delegation only</td></tr>",
-          "clean": true
-        },
-        {
-          "n": 101,
-          "text": "                        <tr><td><strong>Worker</strong></td><td>Executes one delegated sub-task (discover, start, stop, back up, modify) and returns a structured result.</td><td>Scoped <code>read</code> / <code>write</code> / <code>bash</code> as the task requires</td></tr>",
-          "clean": true
-        },
-        {
-          "n": 102,
-          "text": "                        <tr><td><strong>Reviewer</strong></td><td>Inspects a worker's proposed mutating action and approves or rejects it before the orchestrator applies it.</td><td><code>read</code> only</td></tr>",
-          "clean": true
-        },
-        {
-          "n": 103,
-          "text": "                    </tbody>",
-          "clean": true
-        },
-        {
-          "n": 104,
-          "text": "                </table>",
-          "clean": true
-        },
-        {
-          "n": 105,
-          "text": "                <div class=\"alert alert-info\">",
-          "clean": true
-        },
-        {
-          "n": 106,
-          "text": "                    <strong>Governance:</strong> the orchestrator deliberately holds <em>no</em> host tools. It can only delegate. Powerful grants like <code>write</code> and <code>bash</code> live on individual workers and are scoped per sub-task, so the blast radius of any one agent stays small.",
-          "clean": true
-        },
-        {
-          "n": 107,
-          "text": "                </div>",
-          "clean": true
-        },
-        {
-          "n": 108,
-          "text": "",
-          "clean": true
-        },
-        {
-          "n": 109,
-          "text": "                <h2>The Delegation Model</h2>",
-          "clean": true
-        },
-        {
-          "n": 110,
-          "text": "                <p>Delegation is the heart of shai. The operator hands the orchestrator a goal; the orchestrator decides which worker should handle each piece and passes a self-contained task down. A delegated task carries everything the worker needs and nothing it does not:</p>",
-          "clean": true
-        },
-        {
-          "n": 111,
           "text": "                <ul>",
           "clean": true
         },
         {
-          "n": 112,
-          "text": "                    <li><strong>A goal statement</strong> — the one thing this worker must accomplish.</li>",
+          "n": 93,
+          "text": "                    <li><strong>A single coordinator.</strong> One supervisor holds the plan, so there is exactly one place that decides what runs next and when to stop.</li>",
           "clean": true
         },
         {
-          "n": 113,
-          "text": "                    <li><strong>Scoped inputs</strong> — only the data relevant to the sub-task.</li>",
+          "n": 94,
+          "text": "                    <li><strong>Isolated workers.</strong> Each worker runs as its own provider CLI process in an isolated terminal session with an <code>allowedTools</code> scope sized to its task, so a mistake in one worker cannot cascade into another.</li>",
           "clean": true
         },
         {
-          "n": 114,
-          "text": "                    <li><strong>A tool grant</strong> — the minimal set of tools for that sub-task.</li>",
+          "n": 95,
+          "text": "                    <li><strong>A review gate.</strong> Mutating work passes through a <code>role: reviewer</code> agent before the supervisor accepts it, keeping a human-aligned check in the loop.</li>",
           "clean": true
         },
         {
-          "n": 115,
-          "text": "                    <li><strong>A return contract</strong> — the structured result the orchestrator expects back.</li>",
-          "clean": true
-        },
-        {
-          "n": 116,
+          "n": 96,
           "text": "                </ul>",
           "clean": true
         },
         {
+          "n": 97,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 98,
+          "text": "                <h2>Agent Roles</h2>",
+          "clean": true
+        },
+        {
+          "n": 99,
+          "text": "                <p>A CAO run is made up of three kinds of agent, each backed by a built-in profile (<code>code_supervisor.md</code>, <code>developer.md</code>, <code>reviewer.md</code>). Each has one job and an <code>allowedTools</code> scope sized to that job.</p>",
+          "clean": true
+        },
+        {
+          "n": 100,
+          "text": "                <table>",
+          "clean": true
+        },
+        {
+          "n": 101,
+          "text": "                    <thead>",
+          "clean": true
+        },
+        {
+          "n": 102,
+          "text": "                        <tr><th>Role (<code>role:</code>)</th><th>Responsibility</th><th>Typical tool scope</th></tr>",
+          "clean": true
+        },
+        {
+          "n": 103,
+          "text": "                    </thead>",
+          "clean": true
+        },
+        {
+          "n": 104,
+          "text": "                    <tbody>",
+          "clean": true
+        },
+        {
+          "n": 105,
+          "text": "                        <tr><td><strong>supervisor</strong> (<code>code_supervisor</code>)</td><td>Owns the top-level goal, breaks it into sub-tasks, delegates each to a worker, routes mutating work through the reviewer, aggregates results, and decides when the job is done. Never writes code itself.</td><td>Coordination only: <code>@cao-mcp-server</code>, <code>fs_read</code>, <code>fs_list</code>; delegates via <code>delegateTools</code> (defaults to <code>[\"*\"]</code>)</td></tr>",
+          "clean": true
+        },
+        {
+          "n": 106,
+          "text": "                        <tr><td><strong>worker — developer</strong> (<code>developer</code>)</td><td>Executes one delegated, self-contained sub-task — implements the scoped change — and returns a structured result to the supervisor.</td><td>Read/write/run: <code>fs_*</code>, <code>execute_bash</code>, <code>@cao-mcp-server</code> (@builtin), scoped per sub-task</td></tr>",
+          "clean": true
+        },
+        {
+          "n": 107,
+          "text": "                        <tr><td><strong>worker — reviewer</strong> (<code>reviewer</code>)</td><td>Inspects a worker's proposed mutating action for correctness, quality, and safety, then approves or rejects it before the supervisor accepts the change.</td><td>Read-only: <code>fs_read</code>, <code>fs_list</code>, <code>@cao-mcp-server</code> (@builtin)</td></tr>",
+          "clean": true
+        },
+        {
+          "n": 108,
+          "text": "                    </tbody>",
+          "clean": true
+        },
+        {
+          "n": 109,
+          "text": "                </table>",
+          "clean": true
+        },
+        {
+          "n": 110,
+          "text": "                <div class=\"alert alert-info\">",
+          "clean": true
+        },
+        {
+          "n": 111,
+          "text": "                    <strong>Governance:</strong> the supervisor deliberately holds no host write or run tools — it coordinates and delegates. Powerful grants like <code>fs_write</code> and <code>execute_bash</code> live on the developer worker and are scoped per sub-task through <code>allowedTools</code>, while <code>delegateTools</code> caps what the supervisor may hand down, so the blast radius of any one agent stays small.",
+          "clean": true
+        },
+        {
+          "n": 112,
+          "text": "                </div>",
+          "clean": true
+        },
+        {
+          "n": 113,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 114,
+          "text": "                <h2>The Delegation Model</h2>",
+          "clean": true
+        },
+        {
+          "n": 115,
+          "text": "                <p>Delegation is the heart of CAO. The operator hands the supervisor a goal; the supervisor decides which worker should handle each piece and delegates a self-contained sub-task down. A delegated sub-task carries everything the worker needs and nothing it does not:</p>",
+          "clean": true
+        },
+        {
+          "n": 116,
+          "text": "                <ul>",
+          "clean": true
+        },
+        {
           "n": 117,
-          "text": "                <p>The lifecycle of a single delegated task looks like this:</p>",
+          "text": "                    <li><strong>A goal statement</strong> — the one thing this worker must accomplish.</li>",
           "clean": true
         },
         {
           "n": 118,
-          "text": "                <pre><code>sequenceDiagram",
+          "text": "                    <li><strong>Scoped inputs</strong> — only the data relevant to the sub-task.</li>",
           "clean": true
         },
         {
           "n": 119,
-          "text": "    Operator->>Orchestrator: goal",
+          "text": "                    <li><strong>A tool grant</strong> — the minimal set of tools for that sub-task, bounded by the supervisor's <code>delegateTools</code> ceiling.</li>",
           "clean": true
         },
         {
           "n": 120,
-          "text": "    Orchestrator->>Worker: delegate(sub-task, scoped tools)",
+          "text": "                    <li><strong>A return contract</strong> — the structured result the supervisor expects back.</li>",
           "clean": true
         },
         {
           "n": 121,
-          "text": "    Worker->>Worker: run sub-task",
+          "text": "                </ul>",
           "clean": true
         },
         {
           "n": 122,
-          "text": "    Worker-->>Orchestrator: structured result",
+          "text": "                <p>A worker runs its sub-task and returns a structured result to the supervisor. When the work is <em>mutating</em> — it changes files or state — the supervisor routes that result through a reviewer agent before accepting it; a read-only sub-task returns straight to the supervisor. The lifecycle of a single delegated task looks like this:</p>",
           "clean": true
         },
         {
           "n": 123,
-          "text": "    Orchestrator->>Reviewer: review(result) if mutating",
+          "text": "                <pre><code>sequenceDiagram",
           "clean": true
         },
         {
           "n": 124,
-          "text": "    Reviewer-->>Orchestrator: approve / reject",
+          "text": "    Operator->>Supervisor: goal",
           "clean": true
         },
         {
           "n": 125,
-          "text": "    Orchestrator-->>Operator: aggregated outcome</code></pre>",
+          "text": "    Supervisor->>Worker: delegate(sub-task, scoped tools)",
           "clean": true
         },
         {
           "n": 126,
-          "text": "                <p class=\"caption\">A read-only sub-task returns straight to the orchestrator; a mutating one is routed through the reviewer first.</p>",
+          "text": "    Worker->>Worker: run sub-task",
           "clean": true
         },
         {
           "n": 127,
-          "text": "                <p>Because the orchestrator is the only agent that sees the whole plan, it is also the only place that enforces operational limits — maximum sub-tasks, retry ceilings, and a wall-clock timeout for the run. Those limits are the orchestrator-level form of the stopping criteria you met earlier in the course.</p>",
+          "text": "    Worker-->>Supervisor: structured result",
           "clean": true
         },
         {
           "n": 128,
-          "text": "",
+          "text": "    Supervisor->>Reviewer: review(result) if mutating",
           "clean": true
         },
         {
           "n": 129,
-          "text": "                <h2>Step-by-Step: Driving shai from the CLI</h2>",
+          "text": "    Reviewer-->>Supervisor: approve / reject",
           "clean": true
         },
         {
           "n": 130,
-          "text": "                <p>The commands below walk through one orchestrated run end to end. They are illustrative — adapt the paths and names to your own environment.</p>",
+          "text": "    Supervisor-->>Operator: aggregated outcome</code></pre>",
           "clean": true
         },
         {
           "n": 131,
-          "text": "",
+          "text": "                <p class=\"caption\">A read-only sub-task returns straight to the supervisor; a mutating one is routed through the reviewer first.</p>",
           "clean": true
         },
         {
           "n": 132,
-          "text": "                <h3>Step 1 — Check the orchestrator is available</h3>",
+          "text": "                <p>Because the supervisor is the only agent that sees the whole plan, it is also the only place that enforces operational limits — it sequences sub-tasks, retries failed delegations, and decides when the goal is met or a limit is hit. Those supervisor-loop controls are the orchestration-level form of the stopping criteria you met earlier in the course.</p>",
           "clean": true
         },
         {
           "n": 133,
-          "text": "                <p>Confirm the CLI is on your path and reports a version before you do anything else.</p>",
+          "text": "",
           "clean": true
         },
         {
           "n": 134,
-          "text": "                <pre><code>shai --version",
+          "text": "                <h2>Step-by-Step: Core Supervisor Loop</h2>",
           "clean": true
         },
         {
           "n": 135,
-          "text": "shai orchestrator status</code></pre>",
+          "text": "                <p>The steps below walk through one supervisor loop end to end against your own project. Run every command yourself: install CAO, start the server, launch a supervisor from your project directory, delegate a small task, watch it run, and shut it down. Wherever you see <code>/path/to/your/project</code>, substitute the absolute path to the project you want the supervisor to work in.</p>",
           "clean": true
         },
         {
@@ -28793,521 +28953,571 @@
         },
         {
           "n": 137,
-          "text": "                <h3>Step 2 — Point shai at an orchestrator configuration</h3>",
+          "text": "                <h3>Step 1 — Install CAO and verify</h3>",
           "clean": true
         },
         {
           "n": 138,
-          "text": "                <p>The orchestrator is defined by one config file (shown in full in the next section). Validate it before you launch so a typo fails loudly rather than mid-run.</p>",
+          "text": "                <p>Install the <code>cao</code> command line tool with <code>uv</code>, then confirm it is on your path by printing its help.</p>",
           "clean": true
         },
         {
           "n": 139,
-          "text": "                <pre><code>shai orchestrator validate --config ./orchestrator.config.json</code></pre>",
+          "text": "                <pre><code>uv tool install git+https://github.com/Sam9682/cli-agent-orchestrator.git@main --upgrade",
           "clean": true
         },
         {
           "n": 140,
-          "text": "",
+          "text": "cao --help</code></pre>",
           "clean": true
         },
         {
           "n": 141,
-          "text": "                <h3>Step 3 — Launch a run with a goal</h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 142,
-          "text": "                <p>Hand the orchestrator a single top-level goal. The orchestrator plans the sub-tasks and delegates them to workers itself — you do not call the workers directly.</p>",
+          "text": "                <h3>Step 2 — Install the supervisor agent</h3>",
           "clean": true
         },
         {
           "n": 143,
-          "text": "                <pre><code>shai orchestrator run \\",
+          "text": "                <p>Install the built-in supervisor profile so <code>cao launch</code> can start it.</p>",
           "clean": true
         },
         {
           "n": 144,
-          "text": "  --config ./orchestrator.config.json \\",
+          "text": "                <pre><code>cao install code_supervisor</code></pre>",
           "clean": true
         },
         {
           "n": 145,
-          "text": "  --goal \"Discover running containers and report probable agents\" \\",
+          "text": "",
           "clean": true
         },
         {
           "n": 146,
-          "text": "  --max-subtasks 6</code></pre>",
+          "text": "                <h3>Step 3 — Start the server (Terminal A)</h3>",
           "clean": true
         },
         {
           "n": 147,
-          "text": "",
+          "text": "                <p>In a dedicated terminal, start <code>cao-server</code>. This is a long-running process that starts each provider CLI in its own isolated tmux terminal session — leave it running for the rest of the lab.</p>",
           "clean": true
         },
         {
           "n": 148,
-          "text": "                <h3>Step 4 — Watch delegation in real time</h3>",
+          "text": "                <pre><code>cao-server</code></pre>",
           "clean": true
         },
         {
           "n": 149,
-          "text": "                <p>Follow the run so you can see each sub-task delegated, each worker result returned, and each review decision as it happens.</p>",
+          "text": "",
           "clean": true
         },
         {
           "n": 150,
-          "text": "                <pre><code>shai orchestrator logs --follow --run-id latest</code></pre>",
+          "text": "                <h3>Step 4 — Launch the supervisor (Terminal B)</h3>",
           "clean": true
         },
         {
           "n": 151,
-          "text": "",
+          "text": "                <p>In a separate terminal, change into your project directory and launch the supervisor. This attaches you to the supervisor's session so you can talk to it directly.</p>",
           "clean": true
         },
         {
           "n": 152,
-          "text": "                <h3>Step 5 — Read the aggregated outcome</h3>",
+          "text": "                <pre><code>cd /path/to/your/project && cao launch --agents code_supervisor</code></pre>",
           "clean": true
         },
         {
           "n": 153,
-          "text": "                <p>When the orchestrator decides the goal is met (or a limit is hit), it prints one aggregated report combining every worker result.</p>",
+          "text": "",
           "clean": true
         },
         {
           "n": 154,
-          "text": "                <pre><code>shai orchestrator report --run-id latest</code></pre>",
+          "text": "                <h3>Step 5 — Delegate a small task</h3>",
           "clean": true
         },
         {
           "n": 155,
-          "text": "",
+          "text": "                <p>In the attached supervisor session, type a short goal — keep it small and reviewable, for example asking the supervisor to make one small, well-scoped change to your project. The supervisor breaks the goal into sub-tasks and delegates them to a worker agent; you do not call the worker directly.</p>",
           "clean": true
         },
         {
           "n": 156,
-          "text": "                <h3>Step 6 — Stop a run if needed</h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 157,
-          "text": "                <p>The kill switch halts the orchestrator and every worker it delegated to, in one command.</p>",
+          "text": "                <h3>Step 6 — Observe the run</h3>",
           "clean": true
         },
         {
           "n": 158,
-          "text": "                <pre><code>shai orchestrator stop --run-id latest</code></pre>",
+          "text": "                <p>Watch the delegation happen in two places: the attached launch terminal shows the supervisor and worker activity as it unfolds, and the Web UI at <code>http://localhost:9889</code> gives you a visual view of the sessions and the delegation between them.</p>",
           "clean": true
         },
         {
           "n": 159,
-          "text": "                <div class=\"alert alert-info\">",
+          "text": "",
           "clean": true
         },
         {
           "n": 160,
-          "text": "                    <strong>Governance:</strong> <code>stop</code> is your single reliable kill switch. Because workers only ever run under the orchestrator, stopping the orchestrator tears down the whole run — there are no orphaned workers to chase down separately.",
+          "text": "                <h3>Step 7 — Shut down</h3>",
           "clean": true
         },
         {
           "n": 161,
-          "text": "                </div>",
+          "text": "                <p>When you are done, shut the run down. Stop a single named session, or tear down every session at once.</p>",
           "clean": true
         },
         {
           "n": 162,
-          "text": "",
+          "text": "                <pre><code>cao shutdown --session {session-name}",
           "clean": true
         },
         {
           "n": 163,
-          "text": "                <h2>Example Orchestrator Configuration</h2>",
+          "text": "cao shutdown --all</code></pre>",
           "clean": true
         },
         {
           "n": 164,
-          "text": "                <p>The orchestrator is defined entirely by one JSON file. It names the orchestrator, picks the model that plans for it, declares the worker and reviewer agents it may delegate to, and sets the operational limits for a run. Here is the full illustrative file, which we then open field by field.</p>",
+          "text": "                <div class=\"alert alert-info\">",
           "clean": true
         },
         {
           "n": 165,
-          "text": "                <pre><code>{",
+          "text": "                    <strong>Governance:</strong> <code>cao shutdown</code> is your kill switch. <code>cao shutdown --session {session-name}</code> stops one session; <code>cao shutdown --all</code> tears down every session CAO is running. Because workers only run under the supervisor's session, shutting down stops the supervisor and its workers together — there are no orphaned agents to chase down separately.",
           "clean": true
         },
         {
           "n": 166,
-          "text": "  \"name\": \"opcp-explorer-orchestrator\",",
+          "text": "                </div>",
           "clean": true
         },
         {
           "n": 167,
-          "text": "  \"description\": \"shai multi-agent orchestrator that plans a goal, delegates sub-tasks to scoped workers, and routes mutating actions through a reviewer.\",",
+          "text": "",
           "clean": true
         },
         {
           "n": 168,
-          "text": "  \"llm_provider\": {",
+          "text": "                <h2>Example CAO Agent Profiles</h2>",
           "clean": true
         },
         {
           "n": 169,
-          "text": "    \"provider\": \"ovhcloud\",",
+          "text": "                <p>A CAO agent is not a JSON blob — it is a Markdown file with a YAML frontmatter header and a Markdown body. The frontmatter declares the agent's identity and its governance envelope (who it is, what provider backs it, which tools it may use, and how much it may hand down to workers); the body is the system prompt that tells the agent how to behave. Here are two real profiles — a supervisor and a developer worker — which we then open field by field.</p>",
           "clean": true
         },
         {
           "n": 170,
-          "text": "    \"model\": \"Qwen3.5-397B-A17B\",",
+          "text": "",
           "clean": true
         },
         {
           "n": 171,
-          "text": "    \"mode\": \"FunctionCall\"",
+          "text": "                <h3>Supervisor profile (<code>code_supervisor.md</code>)</h3>",
           "clean": true
         },
         {
           "n": 172,
-          "text": "  },",
+          "text": "                <pre><code>---",
           "clean": true
         },
         {
           "n": 173,
-          "text": "  \"orchestrator\": {",
+          "text": "name: code_supervisor",
           "clean": true
         },
         {
           "n": 174,
-          "text": "    \"max_subtasks\": 6,",
+          "text": "description: Coding Supervisor Agent in a multi-agent system",
           "clean": true
         },
         {
           "n": 175,
-          "text": "    \"max_retries_per_subtask\": 2,",
+          "text": "role: supervisor",
           "clean": true
         },
         {
           "n": 176,
-          "text": "    \"run_timeout_seconds\": 600,",
+          "text": "provider: shai_cli",
           "clean": true
         },
         {
           "n": 177,
-          "text": "    \"require_review_for_mutating\": true",
+          "text": "delegateTools: [\"*\"]",
           "clean": true
         },
         {
           "n": 178,
-          "text": "  },",
+          "text": "---",
           "clean": true
         },
         {
           "n": 179,
-          "text": "  \"agents\": {",
+          "text": "",
           "clean": true
         },
         {
           "n": 180,
-          "text": "    \"discovery-worker\": {",
+          "text": "You are the Coding Supervisor. You never write code yourself. You break a",
           "clean": true
         },
         {
           "n": 181,
-          "text": "      \"role\": \"worker\",",
+          "text": "goal into sub-tasks, delegate each to a worker agent, route mutating work",
           "clean": true
         },
         {
           "n": 182,
-          "text": "      \"system_prompt\": \"Discover the containers on the platform and return a structured list.\",",
+          "text": "through the reviewer, and decide when the job is done.</code></pre>",
           "clean": true
         },
         {
           "n": 183,
-          "text": "      \"tools\": [\"read\", \"bash\"]",
+          "text": "",
           "clean": true
         },
         {
           "n": 184,
-          "text": "    },",
+          "text": "                <h3>Worker profile (<code>developer.md</code>)</h3>",
           "clean": true
         },
         {
           "n": 185,
-          "text": "    \"action-worker\": {",
+          "text": "                <pre><code>---",
           "clean": true
         },
         {
           "n": 186,
-          "text": "      \"role\": \"worker\",",
+          "text": "name: developer",
           "clean": true
         },
         {
           "n": 187,
-          "text": "      \"system_prompt\": \"Apply the single action delegated to you and return the result.\",",
+          "text": "description: Developer Agent in a multi-agent system",
           "clean": true
         },
         {
           "n": 188,
-          "text": "      \"tools\": [\"read\", \"write\", \"bash\"]",
+          "text": "role: developer",
           "clean": true
         },
         {
           "n": 189,
-          "text": "    },",
+          "text": "provider: shai_cli",
           "clean": true
         },
         {
           "n": 190,
-          "text": "    \"reviewer\": {",
+          "text": "allowedTools: [\"fs_read\", \"fs_write\", \"execute_bash\", \"@cao-mcp-server\"]",
           "clean": true
         },
         {
           "n": 191,
-          "text": "      \"role\": \"reviewer\",",
+          "text": "---",
           "clean": true
         },
         {
           "n": 192,
-          "text": "      \"system_prompt\": \"Inspect the proposed mutating action and approve or reject it.\",",
+          "text": "",
           "clean": true
         },
         {
           "n": 193,
-          "text": "      \"tools\": [\"read\"]",
+          "text": "You are a Developer agent. Implement the single scoped sub-task delegated to",
           "clean": true
         },
         {
           "n": 194,
-          "text": "    }",
+          "text": "you and return a structured result.</code></pre>",
           "clean": true
         },
         {
           "n": 195,
-          "text": "  }",
+          "text": "",
           "clean": true
         },
         {
           "n": 196,
-          "text": "}</code></pre>",
+          "text": "                <h3><code>name</code></h3>",
           "clean": true
         },
         {
           "n": 197,
-          "text": "",
+          "text": "                <p><strong>Governance decision:</strong> the <code>name</code> is the agent's stable identifier — it is how the profile shows up in logs and audit trails, and it is the handle you pass to <code>cao install</code> and to <code>cao launch --agents</code>. A stable, meaningful name is what lets a reviewer trace a run back to the exact profile that authorized it.</p>",
           "clean": true
         },
         {
           "n": 198,
-          "text": "                <h3>Identity: <code>name</code> and <code>description</code></h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 199,
-          "text": "                <p>The <code>name</code> labels the orchestrator in logs and audit trails; <code>description</code> states what it coordinates in one human-readable sentence. A stable name is what lets a reviewer trace a run back to the configuration that authorized it.</p>",
+          "text": "                <h3><code>role</code></h3>",
           "clean": true
         },
         {
           "n": 200,
-          "text": "",
+          "text": "                <p><strong>Governance decision:</strong> the <code>role</code> is a named permission preset — allowed values are <code>supervisor</code>, <code>developer</code>, and <code>reviewer</code>. Choosing a role is choosing a default <code>allowedTools</code> bundle: a supervisor coordinates and delegates, a developer gets read/write/execute to do scoped work, and a reviewer is read-only by design. The role is the coarse-grained governance control you set before you tune anything else.</p>",
           "clean": true
         },
         {
           "n": 201,
-          "text": "                <h3><code>llm_provider</code></h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 202,
-          "text": "                <p>The <code>llm_provider</code> block picks the model that <em>plans</em> for the orchestrator — provider <code>ovhcloud</code>, model <code>Qwen3.5-397B-A17B</code>, mode <code>FunctionCall</code>. In <code>FunctionCall</code> mode the orchestrator can issue delegation calls to its worker agents rather than only emitting text.</p>",
+          "text": "                <h3><code>provider</code></h3>",
           "clean": true
         },
         {
           "n": 203,
-          "text": "",
+          "text": "                <p><strong>Governance decision:</strong> <code>provider</code> picks which authenticated provider CLI backs the agent — here <code>shai_cli</code>, the default Kiro CLI. Because agents remain full CLI processes with native authentication, the provider you name is the identity and credentials the agent's actions run under, so it belongs in the audit story alongside the tool grants.</p>",
           "clean": true
         },
         {
           "n": 204,
-          "text": "                <h3>The <code>orchestrator</code> limits block</h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 205,
-          "text": "                <p>This block is the orchestrator-level stopping criteria. <code>max_subtasks</code> caps how many pieces a goal can be split into; <code>max_retries_per_subtask</code> bounds how often a failed sub-task is retried; <code>run_timeout_seconds</code> sets a wall-clock ceiling for the whole run; and <code>require_review_for_mutating</code> forces every mutating worker result through the reviewer before the orchestrator applies it.</p>",
+          "text": "                <h3><code>allowedTools</code></h3>",
           "clean": true
         },
         {
           "n": 206,
-          "text": "                <div class=\"alert alert-info\">",
+          "text": "                <p><strong>Governance decision:</strong> <code>allowedTools</code> is the explicit tool allowlist for the agent itself, and it overrides the role's defaults. It is the concrete expression of least privilege: the developer above is granted exactly <code>fs_read</code>, <code>fs_write</code>, <code>execute_bash</code>, and the <code>@cao-mcp-server</code> tools — nothing more. If a sub-task does not need to write files or run commands, do not list those tools in the profile that runs it.</p>",
           "clean": true
         },
         {
           "n": 207,
-          "text": "                    <strong>Governance:</strong> <code>require_review_for_mutating: true</code> is the review gate from the architecture diagram made concrete. Leaving it on keeps a check between a worker proposing a change and that change taking effect — do not turn it off for anything that writes, starts, stops, or deletes.",
+          "text": "                <div class=\"alert alert-info\">",
           "clean": true
         },
         {
           "n": 208,
-          "text": "                </div>",
+          "text": "                    <strong>Governance:</strong> the role sets a sensible default, but <code>allowedTools</code> is where you make least privilege explicit. Narrow the list to exactly what the agent needs; an allowlist you can read at a glance is an allowlist a reviewer can approve.",
           "clean": true
         },
         {
           "n": 209,
-          "text": "",
+          "text": "                </div>",
           "clean": true
         },
         {
           "n": 210,
-          "text": "                <h3>The <code>agents</code> map</h3>",
+          "text": "",
           "clean": true
         },
         {
           "n": 211,
-          "text": "                <p>Each entry names an agent the orchestrator may delegate to, declares its <code>role</code> (worker or reviewer), gives it a one-line <code>system_prompt</code> scoping its job, and grants it a minimal <code>tools</code> set. Note the pattern: the discovery worker is read-mostly (<code>read</code>, <code>bash</code>), the action worker is the only one granted <code>write</code>, and the reviewer is <code>read</code>-only by design.</p>",
+          "text": "                <h3><code>delegateTools</code></h3>",
           "clean": true
         },
         {
           "n": 212,
-          "text": "                <div class=\"alert alert-info\">",
+          "text": "                <p><strong>Governance decision:</strong> <code>delegateTools</code> is the <em>delegation ceiling</em> — the most an agent may grant to the workers it creates, never more than this regardless of what a worker's own profile asks for. It defaults to <code>[\"*\"]</code> for <code>role: supervisor</code> (a supervisor may hand down any tool it is itself allowed) and to the agent's own <code>allowedTools</code> for every other role. The supervisor above keeps the explicit <code>delegateTools: [\"*\"]</code>; the developer worker does not set one, so its ceiling is simply its own <code>allowedTools</code>.</p>",
           "clean": true
         },
         {
           "n": 213,
-          "text": "                    <strong>Governance:</strong> the tool grants here are least privilege in action. Only the <code>action-worker</code> can change the platform, and even its changes must clear the reviewer. If a sub-task does not need <code>write</code> or <code>bash</code>, do not grant them to the agent that runs it.",
-          "clean": true
-        },
-        {
-          "n": 214,
-          "text": "                </div>",
-          "clean": true
-        },
-        {
-          "n": 215,
-          "text": "",
-          "clean": true
-        },
-        {
-          "n": 216,
-          "text": "                <h2>Key Takeaways</h2>",
-          "clean": true
-        },
-        {
-          "n": 217,
-          "text": "                <ul>",
-          "clean": true
-        },
-        {
-          "n": 218,
-          "text": "                    <li>shai is an orchestrator that coordinates specialized agents toward one goal — not a single agent.</li>",
-          "clean": true
-        },
-        {
-          "n": 219,
-          "text": "                    <li>Three roles: an orchestrator that plans and delegates, workers that execute scoped sub-tasks, and a reviewer that gates mutating actions.</li>",
-          "clean": true
-        },
-        {
-          "n": 220,
-          "text": "                    <li>Delegation carries a goal, scoped inputs, a minimal tool grant, and a return contract — nothing more.</li>",
-          "clean": true
-        },
-        {
-          "n": 221,
-          "text": "                    <li>You drive a run from the CLI: validate the config, launch with a goal, follow the logs, read the report, and stop with the kill switch.</li>",
-          "clean": true
-        },
-        {
-          "n": 222,
-          "text": "                    <li>Operational limits and the review gate live in the orchestrator config, making the whole run observable and bounded.</li>",
-          "clean": true
-        },
-        {
-          "n": 223,
-          "text": "                </ul>",
-          "clean": true
-        },
-        {
-          "n": 224,
-          "text": "",
-          "clean": true
-        },
-        {
-          "n": 225,
           "text": "                <div class=\"alert alert-info\">",
           "clean": true
         },
         {
-          "n": 226,
-          "text": "                    <strong>Next:</strong> <a href=\"running-applications-lab.html\">OPCP-EXPLORER Running Applications</a> — put these roles to work across the full set of hands-on operations.",
+          "n": 214,
+          "text": "                    <strong>Governance:</strong> <code>delegateTools</code> is how you cap blast radius across a whole delegation tree. Lowering a supervisor's <code>delegateTools</code> below <code>[\"*\"]</code> guarantees that no worker it spawns can exceed that bound — the ceiling is enforced on delegation, not on trust. A reviewer-role agent (from <code>reviewer.md</code>, read-only <code>allowedTools</code>) is what the supervisor routes mutating work through before accepting it.",
           "clean": true
         },
         {
-          "n": 227,
+          "n": 215,
           "text": "                </div>",
           "clean": true
         },
         {
+          "n": 216,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 217,
+          "text": "                <h2>Governance Mapping</h2>",
+          "clean": true
+        },
+        {
+          "n": 218,
+          "text": "                <p>The governance vocabulary from earlier in the course is not abstract here — each concept maps onto a concrete CAO mechanism you have already seen in this lab.</p>",
+          "clean": true
+        },
+        {
+          "n": 219,
+          "text": "                <ul>",
+          "clean": true
+        },
+        {
+          "n": 220,
+          "text": "                    <li><strong>Least privilege → <code>allowedTools</code> / <code>delegateTools</code>.</strong> <code>allowedTools</code> sizes each agent's own tool grant down to exactly what its task needs, and <code>delegateTools</code> caps the most a supervisor may hand down to the workers it creates. Together they keep every agent's blast radius as small as the work allows.</li>",
+          "clean": true
+        },
+        {
+          "n": 221,
+          "text": "                    <li><strong>Review gate → a <code>role: reviewer</code> agent.</strong> Mutating work is routed through a CAO reviewer-role agent (from <code>reviewer.md</code>, read-only <code>allowedTools</code>) that inspects the change before the supervisor accepts it, keeping a human-aligned check in the loop.</li>",
+          "clean": true
+        },
+        {
+          "n": 222,
+          "text": "                    <li><strong>Kill switch → <code>cao shutdown</code>.</strong> <code>cao shutdown --session {session-name}</code> stops one named session and <code>cao shutdown --all</code> tears down every session CAO is running — a single, decisive way to halt a run.</li>",
+          "clean": true
+        },
+        {
+          "n": 223,
+          "text": "                    <li><strong>Operational limits → supervisor-loop controls.</strong> The supervisor is the single coordinator that sequences sub-tasks, retries failed delegations, and decides when the goal is met or a limit is hit; tool restrictions bound each worker's blast radius. Those are the real, enforced limits of a CAO run.</li>",
+          "clean": true
+        },
+        {
+          "n": 224,
+          "text": "                </ul>",
+          "clean": true
+        },
+        {
+          "n": 225,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 226,
+          "text": "                <h2>Key Takeaways</h2>",
+          "clean": true
+        },
+        {
+          "n": 227,
+          "text": "                <ul>",
+          "clean": true
+        },
+        {
           "n": 228,
-          "text": "            </div>",
+          "text": "                    <li>CAO coordinates several provider CLIs as a team through a supervisor — it is an orchestration layer, not a single agent.</li>",
           "clean": true
         },
         {
           "n": 229,
-          "text": "",
+          "text": "                    <li>Three roles: a supervisor that plans and delegates, a worker (developer) that executes scoped sub-tasks, and a reviewer that gates mutating work.</li>",
           "clean": true
         },
         {
           "n": 230,
-          "text": "            <button class=\"btn btn-success btn-mark-complete\" data-lesson-id=\"shai-orchestrator-lab\">",
+          "text": "                    <li>A delegation carries a goal, scoped inputs, a minimal tool grant (bounded by <code>delegateTools</code>), and a return contract — nothing more.</li>",
           "clean": true
         },
         {
           "n": 231,
-          "text": "                Mark as Complete",
+          "text": "                    <li>You drive the core supervisor loop from the CLI: install CAO, start <code>cao-server</code>, launch the supervisor, delegate a small task, observe the run, and shut it down.</li>",
           "clean": true
         },
         {
           "n": 232,
-          "text": "            </button>",
+          "text": "                    <li>Governance is concrete: least privilege lives in <code>allowedTools</code>/<code>delegateTools</code>, the review gate is a reviewer-role agent, and <code>cao shutdown</code> is the kill switch.</li>",
           "clean": true
         },
         {
           "n": 233,
-          "text": "        </div>",
+          "text": "                </ul>",
           "clean": true
         },
         {
           "n": 234,
-          "text": "    </main>",
-          "clean": true
-        },
-        {
-          "n": 235,
           "text": "",
           "clean": true
         },
         {
+          "n": 235,
+          "text": "                <div class=\"alert alert-info\">",
+          "clean": true
+        },
+        {
           "n": 236,
-          "text": "    <script type=\"module\" src=\"../js/app.js\"></script>",
+          "text": "                    <strong>Next:</strong> <a href=\"running-applications-lab.html\">OPCP-EXPLORER Running Applications</a> — put these roles to work across the full set of hands-on operations.",
           "clean": true
         },
         {
           "n": 237,
-          "text": "    <script type=\"module\" defer src=\"../assets/js/diagrams.js\"></script>",
+          "text": "                </div>",
           "clean": true
         },
         {
           "n": 238,
-          "text": "</body>",
+          "text": "            </div>",
           "clean": true
         },
         {
           "n": 239,
-          "text": "</html>",
+          "text": "",
           "clean": true
         },
         {
           "n": 240,
+          "text": "            <button class=\"btn btn-success btn-mark-complete\" data-lesson-id=\"shai-orchestrator-lab\">",
+          "clean": true
+        },
+        {
+          "n": 241,
+          "text": "                Mark as Complete",
+          "clean": true
+        },
+        {
+          "n": 242,
+          "text": "            </button>",
+          "clean": true
+        },
+        {
+          "n": 243,
+          "text": "        </div>",
+          "clean": true
+        },
+        {
+          "n": 244,
+          "text": "    </main>",
+          "clean": true
+        },
+        {
+          "n": 245,
+          "text": "",
+          "clean": true
+        },
+        {
+          "n": 246,
+          "text": "    <script type=\"module\" src=\"../js/app.js\"></script>",
+          "clean": true
+        },
+        {
+          "n": 247,
+          "text": "    <script type=\"module\" defer src=\"../assets/js/diagrams.js\"></script>",
+          "clean": true
+        },
+        {
+          "n": 248,
+          "text": "</body>",
+          "clean": true
+        },
+        {
+          "n": 249,
+          "text": "</html>",
+          "clean": true
+        },
+        {
+          "n": 250,
           "text": "",
           "clean": true
         }

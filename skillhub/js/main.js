@@ -164,12 +164,15 @@ function wireQuiz() {
   if (!form) return;
 
   const resultEl = document.querySelector('.quiz-result, [data-quiz-result]');
+  // The fail-feedback panel receives `data-quiz-passed` on submit; CSS reveals
+  // it only when the value is "false" (not passed).
+  const completeEl = document.querySelector('.quiz-fail-feedback, [data-quiz-fail-feedback]');
   const locale =
     document.documentElement && document.documentElement.lang
       ? document.documentElement.lang
       : undefined;
 
-  initQuiz({ form, questions: QUIZ_QUESTIONS, resultEl, locale });
+  initQuiz({ form, questions: QUIZ_QUESTIONS, resultEl, completeEl, locale });
 }
 
 /**

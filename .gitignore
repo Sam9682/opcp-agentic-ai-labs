@@ -38,14 +38,15 @@ yarn-error.log*
 .vscode/
 *.swp
 *.swo
+.kiro
+.kiro/*
+.kiro/
+.shai
+.shai/
+.shai/*
+.hypothesis
 
 # OS
 .DS_Store
 Thumbs.db
 
-kiro
-kiro/*
-kiro/
-shai
-shai/
-shai/*
