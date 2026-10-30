@@ -1,0 +1,99 @@
+{
+  "_comment": "Frozen correct-answer baseline for quiz-distractor-refinement, captured from skillhub/js/quiz-questions.js BEFORE any distractor rewrite. Used by Property 2 (correct index & ordering invariant) and Property 3 (correct text invariant) to prove the correct option never moved or changed in either locale. For each of the 15 questions it records the id, the correctIndex, and the correct option's EN/FR text verbatim.",
+  "source": "skillhub/js/quiz-questions.js",
+  "capturedAt": "pre-refinement",
+  "questionCount": 15,
+  "correctIndexVector": [0, 1, 0, 1, 1, 2, 1, 0, 1, 0, 0, 1, 0, 0, 0],
+  "questions": [
+    {
+      "id": "assistant-vs-agent-loop-driver",
+      "correctIndex": 0,
+      "correctEn": "An assistant responds to a single request and stops, while an agent drives its own loop to pursue a goal across many steps.",
+      "correctFr": "Un assistant répond à une seule requête puis s'arrête, tandis qu'un agent pilote sa propre boucle pour poursuivre un objectif sur plusieurs étapes."
+    },
+    {
+      "id": "autonomy-spectrum-least-autonomy",
+      "correctIndex": 1,
+      "correctEn": "The least autonomy that still lets the agent accomplish the task, matched with appropriate guardrails.",
+      "correctFr": "La plus faible autonomie permettant encore à l'agent d'accomplir la tâche, associée à des garde-fous appropriés."
+    },
+    {
+      "id": "anatomy-seven-components",
+      "correctIndex": 0,
+      "correctEn": "Brain, short-term memory, long-term memory, tools, planner, execution loop, and guardrails.",
+      "correctFr": "Cerveau, mémoire à court terme, mémoire à long terme, outils, planificateur, boucle d'exécution et garde-fous."
+    },
+    {
+      "id": "anatomy-tools-role",
+      "correctIndex": 1,
+      "correctEn": "They are the agent's hands — APIs, CLIs, functions, and MCP servers that let it affect the world.",
+      "correctFr": "Ils sont les mains de l'agent — API, CLI, fonctions et serveurs MCP qui lui permettent d'agir sur le monde."
+    },
+    {
+      "id": "agentic-loop-cycle",
+      "correctIndex": 1,
+      "correctEn": "Think → Act → Observe, repeated until a stopping condition is met.",
+      "correctFr": "Penser → Agir → Observer, répété jusqu'à ce qu'une condition d'arrêt soit remplie."
+    },
+    {
+      "id": "loop-variant-reflexion",
+      "correctIndex": 2,
+      "correctEn": "Reflexion",
+      "correctFr": "Reflexion"
+    },
+    {
+      "id": "stopping-criteria-pairing",
+      "correctIndex": 1,
+      "correctEn": "Pair the goal condition with at least one hard limit (such as max iterations or a timeout) so the agent terminates even when the goal is unreachable.",
+      "correctFr": "Associer la condition d'objectif à au moins une limite stricte (comme un nombre maximal d'itérations ou un délai) afin que l'agent s'arrête même lorsque l'objectif est inatteignable."
+    },
+    {
+      "id": "multi-agent-four-patterns",
+      "correctIndex": 0,
+      "correctEn": "Supervisor, pipeline, parallel, and network.",
+      "correctFr": "Superviseur, pipeline, parallèle et réseau."
+    },
+    {
+      "id": "when-not-multi-agent-default",
+      "correctIndex": 1,
+      "correctEn": "Start with one agent and split into multiple only when a concrete need — specialization, parallelism, or scope isolation — justifies the added cost.",
+      "correctFr": "Commencer avec un seul agent et ne passer à plusieurs que lorsqu'un besoin concret — spécialisation, parallélisme ou isolation des périmètres — justifie le coût supplémentaire."
+    },
+    {
+      "id": "multi-agent-hidden-cost",
+      "correctIndex": 0,
+      "correctEn": "Coordination overhead, cost multiplication, and harder observability.",
+      "correctFr": "Surcoût de coordination, multiplication des coûts et observabilité plus difficile."
+    },
+    {
+      "id": "guardrails-five-layers",
+      "correctIndex": 0,
+      "correctEn": "Permissions, operational limits, human approval, observability, and kill switch.",
+      "correctFr": "Permissions, limites opérationnelles, approbation humaine, observabilité et interrupteur d'arrêt."
+    },
+    {
+      "id": "guardrails-permissions-question",
+      "correctIndex": 1,
+      "correctEn": "What may the agent touch?",
+      "correctFr": "À quoi l'agent peut-il toucher ?"
+    },
+    {
+      "id": "hitl-degrees-oversight",
+      "correctIndex": 0,
+      "correctEn": "Human-in-the-loop, human-on-the-loop, and human-out-of-the-loop.",
+      "correctFr": "Humain dans la boucle, humain sur la boucle et humain hors de la boucle."
+    },
+    {
+      "id": "threat-modeling-agent-specific-threats",
+      "correctIndex": 0,
+      "correctEn": "Tool misuse, prompt injection, and runaway loops.",
+      "correctFr": "Mauvais usage des outils, injection de prompt et boucles incontrôlées."
+    },
+    {
+      "id": "shai-mcp-enabled-tools-wildcard",
+      "correctIndex": 0,
+      "correctEn": "It grants the agent every tool the server exposes, present and future — the opposite of least privilege.",
+      "correctFr": "Cela accorde à l'agent chaque outil exposé par le serveur, présent et futur — l'inverse du moindre privilège."
+    }
+  ]
+}

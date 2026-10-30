@@ -56,17 +56,17 @@
                             <fieldset>
                                 <legend><strong>What is the core difference between an AI assistant and an AI agent?</strong></legend>
                                 <label class="quiz-option"><input type="radio" name="assistant-vs-agent-loop-driver" value="0"> An assistant responds to a single request and stops, while an agent drives its own loop to pursue a goal across many steps.</label>
-                                <label class="quiz-option"><input type="radio" name="assistant-vs-agent-loop-driver" value="1"> An assistant always runs on a larger model than an agent.</label>
-                                <label class="quiz-option"><input type="radio" name="assistant-vs-agent-loop-driver" value="2"> An agent can only answer questions, while an assistant takes actions.</label>
+                                <label class="quiz-option"><input type="radio" name="assistant-vs-agent-loop-driver" value="1"> Both call tools, but an agent uses more of them than an assistant does within a single response.</label>
+                                <label class="quiz-option"><input type="radio" name="assistant-vs-agent-loop-driver" value="2"> An assistant and an agent are the same thing; the label just depends on which vendor ships the model.</label>
                             </fieldset>
                         </li>
 
                         <li class="quiz-question">
                             <fieldset>
                                 <legend><strong>According to the autonomy spectrum, how much autonomy should you grant an agent?</strong></legend>
-                                <label class="quiz-option"><input type="radio" name="autonomy-spectrum-least-autonomy" value="0"> Always the maximum, so the agent can finish faster.</label>
+                                <label class="quiz-option"><input type="radio" name="autonomy-spectrum-least-autonomy" value="0"> Scale the autonomy to the difficulty of the task, so harder goals get more freedom to act.</label>
                                 <label class="quiz-option"><input type="radio" name="autonomy-spectrum-least-autonomy" value="1"> The least autonomy that still lets the agent accomplish the task, matched with appropriate guardrails.</label>
-                                <label class="quiz-option"><input type="radio" name="autonomy-spectrum-least-autonomy" value="2"> Autonomy is binary, so you either grant full control or none.</label>
+                                <label class="quiz-option"><input type="radio" name="autonomy-spectrum-least-autonomy" value="2"> Grant broad autonomy up front, then tighten it only after the agent makes a costly mistake.</label>
                             </fieldset>
                         </li>
 
@@ -74,34 +74,34 @@
                             <fieldset>
                                 <legend><strong>Which set lists the seven core components of an AI agent?</strong></legend>
                                 <label class="quiz-option"><input type="radio" name="anatomy-seven-components" value="0"> Brain, short-term memory, long-term memory, tools, planner, execution loop, and guardrails.</label>
-                                <label class="quiz-option"><input type="radio" name="anatomy-seven-components" value="1"> Keyboard, screen, network, disk, CPU, GPU, and power supply.</label>
-                                <label class="quiz-option"><input type="radio" name="anatomy-seven-components" value="2"> Frontend, backend, database, cache, queue, load balancer, and CDN.</label>
+                                <label class="quiz-option"><input type="radio" name="anatomy-seven-components" value="1"> Brain, memory, tools, and an execution loop — the essentials an agent needs to run.</label>
+                                <label class="quiz-option"><input type="radio" name="anatomy-seven-components" value="2"> Brain, a single memory store, tools, planner, execution loop, guardrails, and a user interface.</label>
                             </fieldset>
                         </li>
 
                         <li class="quiz-question">
                             <fieldset>
                                 <legend><strong>In an agent's anatomy, what role do the tools play?</strong></legend>
-                                <label class="quiz-option"><input type="radio" name="anatomy-tools-role" value="0"> They are the reasoning engine that decides the next step.</label>
+                                <label class="quiz-option"><input type="radio" name="anatomy-tools-role" value="0"> They are the brain that reasons about the goal and chooses which action to take next.</label>
                                 <label class="quiz-option"><input type="radio" name="anatomy-tools-role" value="1"> They are the agent's hands — APIs, CLIs, functions, and MCP servers that let it affect the world.</label>
-                                <label class="quiz-option"><input type="radio" name="anatomy-tools-role" value="2"> They store persistent knowledge across sessions.</label>
+                                <label class="quiz-option"><input type="radio" name="anatomy-tools-role" value="2"> They are the planner that breaks the goal into an ordered list of steps before execution.</label>
                             </fieldset>
                         </li>
 
                         <li class="quiz-question">
                             <fieldset>
                                 <legend><strong>What is the base agentic loop?</strong></legend>
-                                <label class="quiz-option"><input type="radio" name="agentic-loop-cycle" value="0"> Observe → Store → Forget, repeated once.</label>
+                                <label class="quiz-option"><input type="radio" name="agentic-loop-cycle" value="0"> Think → Act, repeated until a stopping condition is met.</label>
                                 <label class="quiz-option"><input type="radio" name="agentic-loop-cycle" value="1"> Think → Act → Observe, repeated until a stopping condition is met.</label>
-                                <label class="quiz-option"><input type="radio" name="agentic-loop-cycle" value="2"> Plan → Deploy → Delete, run exactly twice.</label>
+                                <label class="quiz-option"><input type="radio" name="agentic-loop-cycle" value="2"> Think → Act → Observe, run exactly once per user request.</label>
                             </fieldset>
                         </li>
 
                         <li class="quiz-question">
                             <fieldset>
                                 <legend><strong>Which agentic loop variant adds a self-critique step, writing a lesson to memory after a failed attempt and retrying with that insight?</strong></legend>
-                                <label class="quiz-option"><input type="radio" name="loop-variant-reflexion" value="0"> ReAct</label>
-                                <label class="quiz-option"><input type="radio" name="loop-variant-reflexion" value="1"> Plan-and-Execute</label>
+                                <label class="quiz-option"><input type="radio" name="loop-variant-reflexion" value="0"> ReAct, which interleaves reasoning and acting on each step but keeps no lesson across attempts.</label>
+                                <label class="quiz-option"><input type="radio" name="loop-variant-reflexion" value="1"> Plan-and-Execute, which drafts the full plan up front but does not critique a failure and retry with the lesson.</label>
                                 <label class="quiz-option"><input type="radio" name="loop-variant-reflexion" value="2"> Reflexion</label>
                             </fieldset>
                         </li>
@@ -109,9 +109,9 @@
                         <li class="quiz-question">
                             <fieldset>
                                 <legend><strong>What is the best practice for setting an agent's stopping criteria?</strong></legend>
-                                <label class="quiz-option"><input type="radio" name="stopping-criteria-pairing" value="0"> Rely on the goal-achieved condition alone, since it is the ideal stop.</label>
+                                <label class="quiz-option"><input type="radio" name="stopping-criteria-pairing" value="0"> Define only the goal-achieved condition, since that is the stop you actually want the agent to reach.</label>
                                 <label class="quiz-option"><input type="radio" name="stopping-criteria-pairing" value="1"> Pair the goal condition with at least one hard limit (such as max iterations or a timeout) so the agent terminates even when the goal is unreachable.</label>
-                                <label class="quiz-option"><input type="radio" name="stopping-criteria-pairing" value="2"> Never set any limits, so the agent can keep retrying until it succeeds.</label>
+                                <label class="quiz-option"><input type="radio" name="stopping-criteria-pairing" value="2"> Set a very high max-iteration cap so the agent almost always reaches the goal before the limit ever triggers.</label>
                             </fieldset>
                         </li>
 
@@ -119,17 +119,17 @@
                             <fieldset>
                                 <legend><strong>Which option lists the four multi-agent architectural patterns?</strong></legend>
                                 <label class="quiz-option"><input type="radio" name="multi-agent-four-patterns" value="0"> Supervisor, pipeline, parallel, and network.</label>
-                                <label class="quiz-option"><input type="radio" name="multi-agent-four-patterns" value="1"> Monolith, microservice, serverless, and batch.</label>
-                                <label class="quiz-option"><input type="radio" name="multi-agent-four-patterns" value="2"> Client, server, proxy, and gateway.</label>
+                                <label class="quiz-option"><input type="radio" name="multi-agent-four-patterns" value="1"> Supervisor, pipeline, and parallel — the three ways agents are wired together.</label>
+                                <label class="quiz-option"><input type="radio" name="multi-agent-four-patterns" value="2"> Router, planner, worker, and aggregator.</label>
                             </fieldset>
                         </li>
 
                         <li class="quiz-question">
                             <fieldset>
                                 <legend><strong>What is the rule of thumb for choosing between a single agent and a multi-agent design?</strong></legend>
-                                <label class="quiz-option"><input type="radio" name="when-not-multi-agent-default" value="0"> Always start with multiple agents, because specialization is free.</label>
+                                <label class="quiz-option"><input type="radio" name="when-not-multi-agent-default" value="0"> Prefer multiple agents by default, since splitting the work into specialists almost always improves quality.</label>
                                 <label class="quiz-option"><input type="radio" name="when-not-multi-agent-default" value="1"> Start with one agent and split into multiple only when a concrete need — specialization, parallelism, or scope isolation — justifies the added cost.</label>
-                                <label class="quiz-option"><input type="radio" name="when-not-multi-agent-default" value="2"> The number of agents should always match the number of tools available.</label>
+                                <label class="quiz-option"><input type="radio" name="when-not-multi-agent-default" value="2"> Split into several agents whenever the task has distinct sub-tasks, since separate concerns deserve separate agents.</label>
                             </fieldset>
                         </li>
 
@@ -137,8 +137,8 @@
                             <fieldset>
                                 <legend><strong>Which of these is a hidden cost that a multi-agent design introduces?</strong></legend>
                                 <label class="quiz-option"><input type="radio" name="multi-agent-hidden-cost" value="0"> Coordination overhead, cost multiplication, and harder observability.</label>
-                                <label class="quiz-option"><input type="radio" name="multi-agent-hidden-cost" value="1"> Guaranteed lower latency in every case.</label>
-                                <label class="quiz-option"><input type="radio" name="multi-agent-hidden-cost" value="2"> Automatic elimination of all error propagation.</label>
+                                <label class="quiz-option"><input type="radio" name="multi-agent-hidden-cost" value="1"> Higher coordination overhead, which is the single cost multi-agent designs add.</label>
+                                <label class="quiz-option"><input type="radio" name="multi-agent-hidden-cost" value="2"> A larger combined context window, since each agent must hold the entire shared conversation in memory.</label>
                             </fieldset>
                         </li>
 
@@ -146,17 +146,17 @@
                             <fieldset>
                                 <legend><strong>Which option lists the five guardrail layers of defense in depth?</strong></legend>
                                 <label class="quiz-option"><input type="radio" name="guardrails-five-layers" value="0"> Permissions, operational limits, human approval, observability, and kill switch.</label>
-                                <label class="quiz-option"><input type="radio" name="guardrails-five-layers" value="1"> Firewall, antivirus, VPN, backup, and password.</label>
-                                <label class="quiz-option"><input type="radio" name="guardrails-five-layers" value="2"> Encryption, compression, caching, logging, and sharding.</label>
+                                <label class="quiz-option"><input type="radio" name="guardrails-five-layers" value="1"> Permissions, operational limits, and human approval.</label>
+                                <label class="quiz-option"><input type="radio" name="guardrails-five-layers" value="2"> Permissions, operational limits, human approval, audit logging, and automatic rollback.</label>
                             </fieldset>
                         </li>
 
                         <li class="quiz-question">
                             <fieldset>
                                 <legend><strong>The permissions guardrail layer answers which question?</strong></legend>
-                                <label class="quiz-option"><input type="radio" name="guardrails-permissions-question" value="0"> How much may the agent do?</label>
+                                <label class="quiz-option"><input type="radio" name="guardrails-permissions-question" value="0"> How many actions may the agent run before it must stop?</label>
                                 <label class="quiz-option"><input type="radio" name="guardrails-permissions-question" value="1"> What may the agent touch?</label>
-                                <label class="quiz-option"><input type="radio" name="guardrails-permissions-question" value="2"> Can we stop the agent now?</label>
+                                <label class="quiz-option"><input type="radio" name="guardrails-permissions-question" value="2"> Which data may the agent read?</label>
                             </fieldset>
                         </li>
 
@@ -164,8 +164,8 @@
                             <fieldset>
                                 <legend><strong>Which option correctly names the three degrees of human oversight?</strong></legend>
                                 <label class="quiz-option"><input type="radio" name="hitl-degrees-oversight" value="0"> Human-in-the-loop, human-on-the-loop, and human-out-of-the-loop.</label>
-                                <label class="quiz-option"><input type="radio" name="hitl-degrees-oversight" value="1"> Manual, semi-automatic, and turbo.</label>
-                                <label class="quiz-option"><input type="radio" name="hitl-degrees-oversight" value="2"> Read, write, and execute.</label>
+                                <label class="quiz-option"><input type="radio" name="hitl-degrees-oversight" value="1"> Human-in-the-loop and human-on-the-loop.</label>
+                                <label class="quiz-option"><input type="radio" name="hitl-degrees-oversight" value="2"> Human-in-the-loop, human-on-the-loop, and fully autonomous.</label>
                             </fieldset>
                         </li>
 
@@ -173,8 +173,8 @@
                             <fieldset>
                                 <legend><strong>In the threat-modeling workshop, which three agent-specific threats must the model cover?</strong></legend>
                                 <label class="quiz-option"><input type="radio" name="threat-modeling-agent-specific-threats" value="0"> Tool misuse, prompt injection, and runaway loops.</label>
-                                <label class="quiz-option"><input type="radio" name="threat-modeling-agent-specific-threats" value="1"> Slow typing, low battery, and small screens.</label>
-                                <label class="quiz-option"><input type="radio" name="threat-modeling-agent-specific-threats" value="2"> Font errors, color contrast, and spelling mistakes.</label>
+                                <label class="quiz-option"><input type="radio" name="threat-modeling-agent-specific-threats" value="1"> Tool misuse and prompt injection.</label>
+                                <label class="quiz-option"><input type="radio" name="threat-modeling-agent-specific-threats" value="2"> SQL injection, cross-site scripting, and weak passwords.</label>
                             </fieldset>
                         </li>
 
@@ -182,8 +182,8 @@
                             <fieldset>
                                 <legend><strong>In the SHAI MCP configuration, what does setting <code>enabled_tools</code> to <code>["*"]</code> mean from a governance standpoint?</strong></legend>
                                 <label class="quiz-option"><input type="radio" name="shai-mcp-enabled-tools-wildcard" value="0"> It grants the agent every tool the server exposes, present and future — the opposite of least privilege.</label>
-                                <label class="quiz-option"><input type="radio" name="shai-mcp-enabled-tools-wildcard" value="1"> It disables all tools so the agent is read-only.</label>
-                                <label class="quiz-option"><input type="radio" name="shai-mcp-enabled-tools-wildcard" value="2"> It limits the agent to exactly one tool chosen at random.</label>
+                                <label class="quiz-option"><input type="radio" name="shai-mcp-enabled-tools-wildcard" value="1"> It grants the agent only the tools the server exposes today, so new tools must be added explicitly.</label>
+                                <label class="quiz-option"><input type="radio" name="shai-mcp-enabled-tools-wildcard" value="2"> It enables every tool but keeps them read-only until each one is approved individually.</label>
                             </fieldset>
                         </li>
                     </ol>

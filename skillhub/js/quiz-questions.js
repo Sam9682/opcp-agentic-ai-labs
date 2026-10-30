@@ -53,14 +53,14 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'An assistant always runs on a larger model than an agent.',
-          fr: "Un assistant fonctionne toujours sur un modèle plus grand qu'un agent.",
+          en: 'Both call tools, but an agent uses more of them than an assistant does within a single response.',
+          fr: "Les deux appellent des outils, mais un agent en utilise davantage qu'un assistant au sein d'une même réponse.",
         },
       },
       {
         text: {
-          en: 'An agent can only answer questions, while an assistant takes actions.',
-          fr: "Un agent ne peut que répondre à des questions, tandis qu'un assistant effectue des actions.",
+          en: 'An assistant and an agent are the same thing; the label just depends on which vendor ships the model.',
+          fr: "Un assistant et un agent sont la même chose ; l'appellation dépend seulement de l'éditeur qui fournit le modèle.",
         },
       },
     ],
@@ -75,8 +75,8 @@ export const QUIZ_QUESTIONS = [
     options: [
       {
         text: {
-          en: 'Always the maximum, so the agent can finish faster.',
-          fr: "Toujours le maximum, pour que l'agent termine plus vite.",
+          en: 'Scale the autonomy to the difficulty of the task, so harder goals get more freedom to act.',
+          fr: "Adapter l'autonomie à la difficulté de la tâche, afin que les objectifs plus ardus bénéficient de plus de liberté d'action.",
         },
       },
       {
@@ -87,8 +87,8 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'Autonomy is binary, so you either grant full control or none.',
-          fr: "L'autonomie est binaire : on accorde soit le contrôle total, soit aucun.",
+          en: 'Grant broad autonomy up front, then tighten it only after the agent makes a costly mistake.',
+          fr: "Accorder une large autonomie dès le départ, puis la restreindre seulement après que l'agent a commis une erreur coûteuse.",
         },
       },
     ],
@@ -109,14 +109,14 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'Keyboard, screen, network, disk, CPU, GPU, and power supply.',
-          fr: 'Clavier, écran, réseau, disque, processeur, carte graphique et alimentation.',
+          en: 'Brain, memory, tools, and an execution loop — the essentials an agent needs to run.',
+          fr: "Cerveau, mémoire, outils et boucle d'exécution — l'essentiel dont un agent a besoin pour fonctionner.",
         },
       },
       {
         text: {
-          en: 'Frontend, backend, database, cache, queue, load balancer, and CDN.',
-          fr: 'Frontend, backend, base de données, cache, file, répartiteur de charge et CDN.',
+          en: 'Brain, a single memory store, tools, planner, execution loop, guardrails, and a user interface.',
+          fr: "Cerveau, une mémoire unique, outils, planificateur, boucle d'exécution, garde-fous et une interface utilisateur.",
         },
       },
     ],
@@ -131,8 +131,8 @@ export const QUIZ_QUESTIONS = [
     options: [
       {
         text: {
-          en: 'They are the reasoning engine that decides the next step.',
-          fr: 'Ils sont le moteur de raisonnement qui décide de la prochaine étape.',
+          en: 'They are the brain that reasons about the goal and chooses which action to take next.',
+          fr: "Ils sont le cerveau qui raisonne sur l'objectif et choisit la prochaine action à entreprendre.",
         },
       },
       {
@@ -143,8 +143,8 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'They store persistent knowledge across sessions.',
-          fr: 'Ils stockent les connaissances persistantes entre les sessions.',
+          en: 'They are the planner that breaks the goal into an ordered list of steps before execution.',
+          fr: "Ils sont le planificateur qui décompose l'objectif en une liste ordonnée d'étapes avant l'exécution.",
         },
       },
     ],
@@ -159,8 +159,8 @@ export const QUIZ_QUESTIONS = [
     options: [
       {
         text: {
-          en: 'Observe → Store → Forget, repeated once.',
-          fr: 'Observer → Stocker → Oublier, répété une fois.',
+          en: 'Think → Act, repeated until a stopping condition is met.',
+          fr: "Penser → Agir, répété jusqu'à ce qu'une condition d'arrêt soit remplie.",
         },
       },
       {
@@ -171,8 +171,8 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'Plan → Deploy → Delete, run exactly twice.',
-          fr: 'Planifier → Déployer → Supprimer, exécuté exactement deux fois.',
+          en: 'Think → Act → Observe, run exactly once per user request.',
+          fr: 'Penser → Agir → Observer, exécuté exactement une fois par requête utilisateur.',
         },
       },
     ],
@@ -186,10 +186,16 @@ export const QUIZ_QUESTIONS = [
     },
     options: [
       {
-        text: { en: 'ReAct', fr: 'ReAct' },
+        text: {
+          en: 'ReAct, which interleaves reasoning and acting on each step but keeps no lesson across attempts.',
+          fr: "ReAct, qui entrelace raisonnement et action à chaque étape mais ne conserve aucune leçon d'un essai à l'autre.",
+        },
       },
       {
-        text: { en: 'Plan-and-Execute', fr: 'Plan-and-Execute (planifier puis exécuter)' },
+        text: {
+          en: 'Plan-and-Execute, which drafts the full plan up front but does not critique a failure and retry with the lesson.',
+          fr: "Plan-and-Execute, qui rédige le plan complet au départ mais ne critique pas un échec pour réessayer avec la leçon apprise.",
+        },
       },
       {
         text: { en: 'Reflexion', fr: 'Reflexion' },
@@ -206,8 +212,8 @@ export const QUIZ_QUESTIONS = [
     options: [
       {
         text: {
-          en: 'Rely on the goal-achieved condition alone, since it is the ideal stop.',
-          fr: "Se fier uniquement à la condition d'objectif atteint, puisqu'elle constitue l'arrêt idéal.",
+          en: 'Define only the goal-achieved condition, since that is the stop you actually want the agent to reach.',
+          fr: "Ne définir que la condition d'objectif atteint, puisque c'est l'arrêt que l'on veut réellement voir l'agent atteindre.",
         },
       },
       {
@@ -218,8 +224,8 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'Never set any limits, so the agent can keep retrying until it succeeds.',
-          fr: "Ne jamais fixer de limites, pour que l'agent puisse réessayer jusqu'à réussir.",
+          en: 'Set a very high max-iteration cap so the agent almost always reaches the goal before the limit ever triggers.',
+          fr: "Fixer un plafond d'itérations très élevé pour que l'agent atteigne presque toujours l'objectif avant que la limite ne se déclenche.",
         },
       },
     ],
@@ -240,14 +246,14 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'Monolith, microservice, serverless, and batch.',
-          fr: 'Monolithe, microservice, sans serveur et par lots.',
+          en: 'Supervisor, pipeline, and parallel — the three ways agents are wired together.',
+          fr: "Superviseur, pipeline et parallèle — les trois façons de relier des agents entre eux.",
         },
       },
       {
         text: {
-          en: 'Client, server, proxy, and gateway.',
-          fr: 'Client, serveur, proxy et passerelle.',
+          en: 'Router, planner, worker, and aggregator.',
+          fr: 'Routeur, planificateur, exécutant et agrégateur.',
         },
       },
     ],
@@ -262,8 +268,8 @@ export const QUIZ_QUESTIONS = [
     options: [
       {
         text: {
-          en: 'Always start with multiple agents, because specialization is free.',
-          fr: 'Toujours commencer avec plusieurs agents, car la spécialisation est gratuite.',
+          en: 'Prefer multiple agents by default, since splitting the work into specialists almost always improves quality.',
+          fr: "Préférer par défaut plusieurs agents, car répartir le travail entre spécialistes améliore presque toujours la qualité.",
         },
       },
       {
@@ -274,8 +280,8 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'The number of agents should always match the number of tools available.',
-          fr: "Le nombre d'agents doit toujours correspondre au nombre d'outils disponibles.",
+          en: 'Split into several agents whenever the task has distinct sub-tasks, since separate concerns deserve separate agents.',
+          fr: "Se répartir en plusieurs agents dès que la tâche comporte des sous-tâches distinctes, car des préoccupations séparées méritent des agents séparés.",
         },
       },
     ],
@@ -296,14 +302,14 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'Guaranteed lower latency in every case.',
-          fr: 'Une latence garantie plus faible dans tous les cas.',
+          en: 'Higher coordination overhead, which is the single cost multi-agent designs add.',
+          fr: "Un surcoût de coordination accru, qui est le seul coût ajouté par les conceptions multi-agents.",
         },
       },
       {
         text: {
-          en: 'Automatic elimination of all error propagation.',
-          fr: "L'élimination automatique de toute propagation d'erreurs.",
+          en: 'A larger combined context window, since each agent must hold the entire shared conversation in memory.',
+          fr: "Une fenêtre de contexte combinée plus grande, puisque chaque agent doit conserver en mémoire toute la conversation partagée.",
         },
       },
     ],
@@ -324,14 +330,14 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'Firewall, antivirus, VPN, backup, and password.',
-          fr: 'Pare-feu, antivirus, VPN, sauvegarde et mot de passe.',
+          en: 'Permissions, operational limits, and human approval.',
+          fr: 'Permissions, limites opérationnelles et approbation humaine.',
         },
       },
       {
         text: {
-          en: 'Encryption, compression, caching, logging, and sharding.',
-          fr: 'Chiffrement, compression, mise en cache, journalisation et partitionnement.',
+          en: 'Permissions, operational limits, human approval, audit logging, and automatic rollback.',
+          fr: "Permissions, limites opérationnelles, approbation humaine, journalisation d'audit et restauration automatique.",
         },
       },
     ],
@@ -346,8 +352,8 @@ export const QUIZ_QUESTIONS = [
     options: [
       {
         text: {
-          en: 'How much may the agent do?',
-          fr: "Quelle quantité d'actions l'agent peut-il effectuer ?",
+          en: 'How many actions may the agent run before it must stop?',
+          fr: "Combien d'actions l'agent peut-il exécuter avant de devoir s'arrêter ?",
         },
       },
       {
@@ -358,8 +364,8 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'Can we stop the agent now?',
-          fr: "Peut-on arrêter l'agent maintenant ?",
+          en: 'Which data may the agent read?',
+          fr: "Quelles données l'agent peut-il lire ?",
         },
       },
     ],
@@ -380,14 +386,14 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'Manual, semi-automatic, and turbo.',
-          fr: 'Manuel, semi-automatique et turbo.',
+          en: 'Human-in-the-loop and human-on-the-loop.',
+          fr: 'Humain dans la boucle et humain sur la boucle.',
         },
       },
       {
         text: {
-          en: 'Read, write, and execute.',
-          fr: 'Lecture, écriture et exécution.',
+          en: 'Human-in-the-loop, human-on-the-loop, and fully autonomous.',
+          fr: 'Humain dans la boucle, humain sur la boucle et entièrement autonome.',
         },
       },
     ],
@@ -408,14 +414,14 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'Slow typing, low battery, and small screens.',
-          fr: 'Frappe lente, batterie faible et petits écrans.',
+          en: 'Tool misuse and prompt injection.',
+          fr: 'Mauvais usage des outils et injection de prompt.',
         },
       },
       {
         text: {
-          en: 'Font errors, color contrast, and spelling mistakes.',
-          fr: "Erreurs de police, contraste des couleurs et fautes d'orthographe.",
+          en: 'SQL injection, cross-site scripting, and weak passwords.',
+          fr: 'Injection SQL, script intersites et mots de passe faibles.',
         },
       },
     ],
@@ -436,14 +442,14 @@ export const QUIZ_QUESTIONS = [
       },
       {
         text: {
-          en: 'It disables all tools so the agent is read-only.',
-          fr: "Cela désactive tous les outils pour que l'agent soit en lecture seule.",
+          en: 'It grants the agent only the tools the server exposes today, so new tools must be added explicitly.',
+          fr: "Cela n'accorde à l'agent que les outils exposés aujourd'hui par le serveur, les nouveaux outils devant être ajoutés explicitement.",
         },
       },
       {
         text: {
-          en: 'It limits the agent to exactly one tool chosen at random.',
-          fr: "Cela limite l'agent à un seul outil choisi au hasard.",
+          en: 'It enables every tool but keeps them read-only until each one is approved individually.',
+          fr: "Cela active tous les outils mais les maintient en lecture seule jusqu'à l'approbation individuelle de chacun.",
         },
       },
     ],

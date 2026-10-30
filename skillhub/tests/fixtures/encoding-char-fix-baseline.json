@@ -7801,8 +7801,8 @@
     "fr/quiz-fundamentals.html": {
       "rel": "fr/quiz-fundamentals.html",
       "affected": false,
-      "byteLength": 17695,
-      "sha256": "60a00477e9b83d0afd4e592d409f59ff46fe0460b27b277df04d67c63ce65abf",
+      "byteLength": 18844,
+      "sha256": "c02a080f071327593698165e9f281b1a329b5cf51be247a3c05fb6db173a25fe",
       "charsetLine": "    <meta charset=\"UTF-8\">",
       "lineCount": 219,
       "lines": [
@@ -8108,12 +8108,12 @@
         },
         {
           "n": 61,
-          "text": "                                <label><input type=\"radio\" name=\"assistant-vs-agent-loop-driver\" value=\"1\"> Un assistant fonctionne toujours sur un modèle plus grand qu'un agent.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"assistant-vs-agent-loop-driver\" value=\"1\"> Les deux appellent des outils, mais un agent en utilise davantage qu'un assistant au sein d'une même réponse.</label>",
           "clean": true
         },
         {
           "n": 62,
-          "text": "                                <label><input type=\"radio\" name=\"assistant-vs-agent-loop-driver\" value=\"2\"> Un agent ne peut que répondre à des questions, tandis qu'un assistant effectue des actions.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"assistant-vs-agent-loop-driver\" value=\"2\"> Un assistant et un agent sont la même chose ; l'appellation dépend seulement de l'éditeur qui fournit le modèle.</label>",
           "clean": true
         },
         {
@@ -8148,7 +8148,7 @@
         },
         {
           "n": 69,
-          "text": "                                <label><input type=\"radio\" name=\"autonomy-spectrum-least-autonomy\" value=\"0\"> Toujours le maximum, pour que l'agent termine plus vite.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"autonomy-spectrum-least-autonomy\" value=\"0\"> Adapter l'autonomie à la difficulté de la tâche, afin que les objectifs plus ardus bénéficient de plus de liberté d'action.</label>",
           "clean": true
         },
         {
@@ -8158,7 +8158,7 @@
         },
         {
           "n": 71,
-          "text": "                                <label><input type=\"radio\" name=\"autonomy-spectrum-least-autonomy\" value=\"2\"> L'autonomie est binaire : on accorde soit le contrôle total, soit aucun.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"autonomy-spectrum-least-autonomy\" value=\"2\"> Accorder une large autonomie dès le départ, puis la restreindre seulement après que l'agent a commis une erreur coûteuse.</label>",
           "clean": true
         },
         {
@@ -8198,12 +8198,12 @@
         },
         {
           "n": 79,
-          "text": "                                <label><input type=\"radio\" name=\"anatomy-seven-components\" value=\"1\"> Clavier, écran, réseau, disque, processeur, carte graphique et alimentation.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"anatomy-seven-components\" value=\"1\"> Cerveau, mémoire, outils et boucle d'exécution — l'essentiel dont un agent a besoin pour fonctionner.</label>",
           "clean": true
         },
         {
           "n": 80,
-          "text": "                                <label><input type=\"radio\" name=\"anatomy-seven-components\" value=\"2\"> Frontend, backend, base de données, cache, file, répartiteur de charge et CDN.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"anatomy-seven-components\" value=\"2\"> Cerveau, une mémoire unique, outils, planificateur, boucle d'exécution, garde-fous et une interface utilisateur.</label>",
           "clean": true
         },
         {
@@ -8238,7 +8238,7 @@
         },
         {
           "n": 87,
-          "text": "                                <label><input type=\"radio\" name=\"anatomy-tools-role\" value=\"0\"> Ils sont le moteur de raisonnement qui décide de la prochaine étape.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"anatomy-tools-role\" value=\"0\"> Ils sont le cerveau qui raisonne sur l'objectif et choisit la prochaine action à entreprendre.</label>",
           "clean": true
         },
         {
@@ -8248,7 +8248,7 @@
         },
         {
           "n": 89,
-          "text": "                                <label><input type=\"radio\" name=\"anatomy-tools-role\" value=\"2\"> Ils stockent les connaissances persistantes entre les sessions.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"anatomy-tools-role\" value=\"2\"> Ils sont le planificateur qui décompose l'objectif en une liste ordonnée d'étapes avant l'exécution.</label>",
           "clean": true
         },
         {
@@ -8283,7 +8283,7 @@
         },
         {
           "n": 96,
-          "text": "                                <label><input type=\"radio\" name=\"agentic-loop-cycle\" value=\"0\"> Observer → Stocker → Oublier, répété une fois.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"agentic-loop-cycle\" value=\"0\"> Penser → Agir, répété jusqu'à ce qu'une condition d'arrêt soit remplie.</label>",
           "clean": true
         },
         {
@@ -8293,7 +8293,7 @@
         },
         {
           "n": 98,
-          "text": "                                <label><input type=\"radio\" name=\"agentic-loop-cycle\" value=\"2\"> Planifier → Déployer → Supprimer, exécuté exactement deux fois.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"agentic-loop-cycle\" value=\"2\"> Penser → Agir → Observer, exécuté exactement une fois par requête utilisateur.</label>",
           "clean": true
         },
         {
@@ -8328,12 +8328,12 @@
         },
         {
           "n": 105,
-          "text": "                                <label><input type=\"radio\" name=\"loop-variant-reflexion\" value=\"0\"> ReAct</label>",
+          "text": "                                <label><input type=\"radio\" name=\"loop-variant-reflexion\" value=\"0\"> ReAct, qui entrelace raisonnement et action à chaque étape mais ne conserve aucune leçon d'un essai à l'autre.</label>",
           "clean": true
         },
         {
           "n": 106,
-          "text": "                                <label><input type=\"radio\" name=\"loop-variant-reflexion\" value=\"1\"> Plan-and-Execute (planifier puis exécuter)</label>",
+          "text": "                                <label><input type=\"radio\" name=\"loop-variant-reflexion\" value=\"1\"> Plan-and-Execute, qui rédige le plan complet au départ mais ne critique pas un échec pour réessayer avec la leçon apprise.</label>",
           "clean": true
         },
         {
@@ -8373,7 +8373,7 @@
         },
         {
           "n": 114,
-          "text": "                                <label><input type=\"radio\" name=\"stopping-criteria-pairing\" value=\"0\"> Se fier uniquement à la condition d'objectif atteint, puisqu'elle constitue l'arrêt idéal.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"stopping-criteria-pairing\" value=\"0\"> Ne définir que la condition d'objectif atteint, puisque c'est l'arrêt que l'on veut réellement voir l'agent atteindre.</label>",
           "clean": true
         },
         {
@@ -8383,7 +8383,7 @@
         },
         {
           "n": 116,
-          "text": "                                <label><input type=\"radio\" name=\"stopping-criteria-pairing\" value=\"2\"> Ne jamais fixer de limites, pour que l'agent puisse réessayer jusqu'à réussir.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"stopping-criteria-pairing\" value=\"2\"> Fixer un plafond d'itérations très élevé pour que l'agent atteigne presque toujours l'objectif avant que la limite ne se déclenche.</label>",
           "clean": true
         },
         {
@@ -8423,12 +8423,12 @@
         },
         {
           "n": 124,
-          "text": "                                <label><input type=\"radio\" name=\"multi-agent-four-patterns\" value=\"1\"> Monolithe, microservice, sans serveur et par lots.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"multi-agent-four-patterns\" value=\"1\"> Superviseur, pipeline et parallèle — les trois façons de relier des agents entre eux.</label>",
           "clean": true
         },
         {
           "n": 125,
-          "text": "                                <label><input type=\"radio\" name=\"multi-agent-four-patterns\" value=\"2\"> Client, serveur, proxy et passerelle.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"multi-agent-four-patterns\" value=\"2\"> Routeur, planificateur, exécutant et agrégateur.</label>",
           "clean": true
         },
         {
@@ -8463,7 +8463,7 @@
         },
         {
           "n": 132,
-          "text": "                                <label><input type=\"radio\" name=\"when-not-multi-agent-default\" value=\"0\"> Toujours commencer avec plusieurs agents, car la spécialisation est gratuite.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"when-not-multi-agent-default\" value=\"0\"> Préférer par défaut plusieurs agents, car répartir le travail entre spécialistes améliore presque toujours la qualité.</label>",
           "clean": true
         },
         {
@@ -8473,7 +8473,7 @@
         },
         {
           "n": 134,
-          "text": "                                <label><input type=\"radio\" name=\"when-not-multi-agent-default\" value=\"2\"> Le nombre d'agents doit toujours correspondre au nombre d'outils disponibles.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"when-not-multi-agent-default\" value=\"2\"> Se répartir en plusieurs agents dès que la tâche comporte des sous-tâches distinctes, car des préoccupations séparées méritent des agents séparés.</label>",
           "clean": true
         },
         {
@@ -8513,12 +8513,12 @@
         },
         {
           "n": 142,
-          "text": "                                <label><input type=\"radio\" name=\"multi-agent-hidden-cost\" value=\"1\"> Une latence garantie plus faible dans tous les cas.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"multi-agent-hidden-cost\" value=\"1\"> Un surcoût de coordination accru, qui est le seul coût ajouté par les conceptions multi-agents.</label>",
           "clean": true
         },
         {
           "n": 143,
-          "text": "                                <label><input type=\"radio\" name=\"multi-agent-hidden-cost\" value=\"2\"> L'élimination automatique de toute propagation d'erreurs.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"multi-agent-hidden-cost\" value=\"2\"> Une fenêtre de contexte combinée plus grande, puisque chaque agent doit conserver en mémoire toute la conversation partagée.</label>",
           "clean": true
         },
         {
@@ -8558,12 +8558,12 @@
         },
         {
           "n": 151,
-          "text": "                                <label><input type=\"radio\" name=\"guardrails-five-layers\" value=\"1\"> Pare-feu, antivirus, VPN, sauvegarde et mot de passe.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"guardrails-five-layers\" value=\"1\"> Permissions, limites opérationnelles et approbation humaine.</label>",
           "clean": true
         },
         {
           "n": 152,
-          "text": "                                <label><input type=\"radio\" name=\"guardrails-five-layers\" value=\"2\"> Chiffrement, compression, mise en cache, journalisation et partitionnement.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"guardrails-five-layers\" value=\"2\"> Permissions, limites opérationnelles, approbation humaine, journalisation d'audit et restauration automatique.</label>",
           "clean": true
         },
         {
@@ -8598,7 +8598,7 @@
         },
         {
           "n": 159,
-          "text": "                                <label><input type=\"radio\" name=\"guardrails-permissions-question\" value=\"0\"> Quelle quantité d'actions l'agent peut-il effectuer ?</label>",
+          "text": "                                <label><input type=\"radio\" name=\"guardrails-permissions-question\" value=\"0\"> Combien d'actions l'agent peut-il exécuter avant de devoir s'arrêter ?</label>",
           "clean": true
         },
         {
@@ -8608,7 +8608,7 @@
         },
         {
           "n": 161,
-          "text": "                                <label><input type=\"radio\" name=\"guardrails-permissions-question\" value=\"2\"> Peut-on arrêter l'agent maintenant ?</label>",
+          "text": "                                <label><input type=\"radio\" name=\"guardrails-permissions-question\" value=\"2\"> Quelles données l'agent peut-il lire ?</label>",
           "clean": true
         },
         {
@@ -8648,12 +8648,12 @@
         },
         {
           "n": 169,
-          "text": "                                <label><input type=\"radio\" name=\"hitl-degrees-oversight\" value=\"1\"> Manuel, semi-automatique et turbo.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"hitl-degrees-oversight\" value=\"1\"> Humain dans la boucle et humain sur la boucle.</label>",
           "clean": true
         },
         {
           "n": 170,
-          "text": "                                <label><input type=\"radio\" name=\"hitl-degrees-oversight\" value=\"2\"> Lecture, écriture et exécution.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"hitl-degrees-oversight\" value=\"2\"> Humain dans la boucle, humain sur la boucle et entièrement autonome.</label>",
           "clean": true
         },
         {
@@ -8693,12 +8693,12 @@
         },
         {
           "n": 178,
-          "text": "                                <label><input type=\"radio\" name=\"threat-modeling-agent-specific-threats\" value=\"1\"> Frappe lente, batterie faible et petits écrans.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"threat-modeling-agent-specific-threats\" value=\"1\"> Mauvais usage des outils et injection de prompt.</label>",
           "clean": true
         },
         {
           "n": 179,
-          "text": "                                <label><input type=\"radio\" name=\"threat-modeling-agent-specific-threats\" value=\"2\"> Erreurs de police, contraste des couleurs et fautes d'orthographe.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"threat-modeling-agent-specific-threats\" value=\"2\"> Injection SQL, script intersites et mots de passe faibles.</label>",
           "clean": true
         },
         {
@@ -8738,12 +8738,12 @@
         },
         {
           "n": 187,
-          "text": "                                <label><input type=\"radio\" name=\"shai-mcp-enabled-tools-wildcard\" value=\"1\"> Cela désactive tous les outils pour que l'agent soit en lecture seule.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"shai-mcp-enabled-tools-wildcard\" value=\"1\"> Cela n'accorde à l'agent que les outils exposés aujourd'hui par le serveur, les nouveaux outils devant être ajoutés explicitement.</label>",
           "clean": true
         },
         {
           "n": 188,
-          "text": "                                <label><input type=\"radio\" name=\"shai-mcp-enabled-tools-wildcard\" value=\"2\"> Cela limite l'agent à un seul outil choisi au hasard.</label>",
+          "text": "                                <label><input type=\"radio\" name=\"shai-mcp-enabled-tools-wildcard\" value=\"2\"> Cela active tous les outils mais les maintient en lecture seule jusqu'à l'approbation individuelle de chacun.</label>",
           "clean": true
         },
         {
@@ -23776,8 +23776,8 @@
     "en/quiz-fundamentals.html": {
       "rel": "en/quiz-fundamentals.html",
       "affected": false,
-      "byteLength": 16751,
-      "sha256": "8cdfc02cb4cff888ec0f38a8676d9c88820f08b55d2b4e302315b11921448bf1",
+      "byteLength": 17703,
+      "sha256": "2853f6f55b4fe3560e03e17ea67bd6d014a21e9a12bef023c23dbada537ff7f1",
       "charsetLine": "    <meta charset=\"UTF-8\">",
       "lineCount": 213,
       "lines": [
@@ -24073,12 +24073,12 @@
         },
         {
           "n": 59,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"assistant-vs-agent-loop-driver\" value=\"1\"> An assistant always runs on a larger model than an agent.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"assistant-vs-agent-loop-driver\" value=\"1\"> Both call tools, but an agent uses more of them than an assistant does within a single response.</label>",
           "clean": true
         },
         {
           "n": 60,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"assistant-vs-agent-loop-driver\" value=\"2\"> An agent can only answer questions, while an assistant takes actions.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"assistant-vs-agent-loop-driver\" value=\"2\"> An assistant and an agent are the same thing; the label just depends on which vendor ships the model.</label>",
           "clean": true
         },
         {
@@ -24113,7 +24113,7 @@
         },
         {
           "n": 67,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"autonomy-spectrum-least-autonomy\" value=\"0\"> Always the maximum, so the agent can finish faster.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"autonomy-spectrum-least-autonomy\" value=\"0\"> Scale the autonomy to the difficulty of the task, so harder goals get more freedom to act.</label>",
           "clean": true
         },
         {
@@ -24123,7 +24123,7 @@
         },
         {
           "n": 69,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"autonomy-spectrum-least-autonomy\" value=\"2\"> Autonomy is binary, so you either grant full control or none.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"autonomy-spectrum-least-autonomy\" value=\"2\"> Grant broad autonomy up front, then tighten it only after the agent makes a costly mistake.</label>",
           "clean": true
         },
         {
@@ -24163,12 +24163,12 @@
         },
         {
           "n": 77,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"anatomy-seven-components\" value=\"1\"> Keyboard, screen, network, disk, CPU, GPU, and power supply.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"anatomy-seven-components\" value=\"1\"> Brain, memory, tools, and an execution loop — the essentials an agent needs to run.</label>",
           "clean": true
         },
         {
           "n": 78,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"anatomy-seven-components\" value=\"2\"> Frontend, backend, database, cache, queue, load balancer, and CDN.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"anatomy-seven-components\" value=\"2\"> Brain, a single memory store, tools, planner, execution loop, guardrails, and a user interface.</label>",
           "clean": true
         },
         {
@@ -24203,7 +24203,7 @@
         },
         {
           "n": 85,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"anatomy-tools-role\" value=\"0\"> They are the reasoning engine that decides the next step.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"anatomy-tools-role\" value=\"0\"> They are the brain that reasons about the goal and chooses which action to take next.</label>",
           "clean": true
         },
         {
@@ -24213,7 +24213,7 @@
         },
         {
           "n": 87,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"anatomy-tools-role\" value=\"2\"> They store persistent knowledge across sessions.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"anatomy-tools-role\" value=\"2\"> They are the planner that breaks the goal into an ordered list of steps before execution.</label>",
           "clean": true
         },
         {
@@ -24248,7 +24248,7 @@
         },
         {
           "n": 94,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"agentic-loop-cycle\" value=\"0\"> Observe → Store → Forget, repeated once.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"agentic-loop-cycle\" value=\"0\"> Think → Act, repeated until a stopping condition is met.</label>",
           "clean": true
         },
         {
@@ -24258,7 +24258,7 @@
         },
         {
           "n": 96,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"agentic-loop-cycle\" value=\"2\"> Plan → Deploy → Delete, run exactly twice.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"agentic-loop-cycle\" value=\"2\"> Think → Act → Observe, run exactly once per user request.</label>",
           "clean": true
         },
         {
@@ -24293,12 +24293,12 @@
         },
         {
           "n": 103,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"loop-variant-reflexion\" value=\"0\"> ReAct</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"loop-variant-reflexion\" value=\"0\"> ReAct, which interleaves reasoning and acting on each step but keeps no lesson across attempts.</label>",
           "clean": true
         },
         {
           "n": 104,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"loop-variant-reflexion\" value=\"1\"> Plan-and-Execute</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"loop-variant-reflexion\" value=\"1\"> Plan-and-Execute, which drafts the full plan up front but does not critique a failure and retry with the lesson.</label>",
           "clean": true
         },
         {
@@ -24338,7 +24338,7 @@
         },
         {
           "n": 112,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"stopping-criteria-pairing\" value=\"0\"> Rely on the goal-achieved condition alone, since it is the ideal stop.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"stopping-criteria-pairing\" value=\"0\"> Define only the goal-achieved condition, since that is the stop you actually want the agent to reach.</label>",
           "clean": true
         },
         {
@@ -24348,7 +24348,7 @@
         },
         {
           "n": 114,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"stopping-criteria-pairing\" value=\"2\"> Never set any limits, so the agent can keep retrying until it succeeds.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"stopping-criteria-pairing\" value=\"2\"> Set a very high max-iteration cap so the agent almost always reaches the goal before the limit ever triggers.</label>",
           "clean": true
         },
         {
@@ -24388,12 +24388,12 @@
         },
         {
           "n": 122,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"multi-agent-four-patterns\" value=\"1\"> Monolith, microservice, serverless, and batch.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"multi-agent-four-patterns\" value=\"1\"> Supervisor, pipeline, and parallel — the three ways agents are wired together.</label>",
           "clean": true
         },
         {
           "n": 123,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"multi-agent-four-patterns\" value=\"2\"> Client, server, proxy, and gateway.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"multi-agent-four-patterns\" value=\"2\"> Router, planner, worker, and aggregator.</label>",
           "clean": true
         },
         {
@@ -24428,7 +24428,7 @@
         },
         {
           "n": 130,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"when-not-multi-agent-default\" value=\"0\"> Always start with multiple agents, because specialization is free.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"when-not-multi-agent-default\" value=\"0\"> Prefer multiple agents by default, since splitting the work into specialists almost always improves quality.</label>",
           "clean": true
         },
         {
@@ -24438,7 +24438,7 @@
         },
         {
           "n": 132,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"when-not-multi-agent-default\" value=\"2\"> The number of agents should always match the number of tools available.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"when-not-multi-agent-default\" value=\"2\"> Split into several agents whenever the task has distinct sub-tasks, since separate concerns deserve separate agents.</label>",
           "clean": true
         },
         {
@@ -24478,12 +24478,12 @@
         },
         {
           "n": 140,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"multi-agent-hidden-cost\" value=\"1\"> Guaranteed lower latency in every case.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"multi-agent-hidden-cost\" value=\"1\"> Higher coordination overhead, which is the single cost multi-agent designs add.</label>",
           "clean": true
         },
         {
           "n": 141,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"multi-agent-hidden-cost\" value=\"2\"> Automatic elimination of all error propagation.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"multi-agent-hidden-cost\" value=\"2\"> A larger combined context window, since each agent must hold the entire shared conversation in memory.</label>",
           "clean": true
         },
         {
@@ -24523,12 +24523,12 @@
         },
         {
           "n": 149,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"guardrails-five-layers\" value=\"1\"> Firewall, antivirus, VPN, backup, and password.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"guardrails-five-layers\" value=\"1\"> Permissions, operational limits, and human approval.</label>",
           "clean": true
         },
         {
           "n": 150,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"guardrails-five-layers\" value=\"2\"> Encryption, compression, caching, logging, and sharding.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"guardrails-five-layers\" value=\"2\"> Permissions, operational limits, human approval, audit logging, and automatic rollback.</label>",
           "clean": true
         },
         {
@@ -24563,7 +24563,7 @@
         },
         {
           "n": 157,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"guardrails-permissions-question\" value=\"0\"> How much may the agent do?</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"guardrails-permissions-question\" value=\"0\"> How many actions may the agent run before it must stop?</label>",
           "clean": true
         },
         {
@@ -24573,7 +24573,7 @@
         },
         {
           "n": 159,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"guardrails-permissions-question\" value=\"2\"> Can we stop the agent now?</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"guardrails-permissions-question\" value=\"2\"> Which data may the agent read?</label>",
           "clean": true
         },
         {
@@ -24613,12 +24613,12 @@
         },
         {
           "n": 167,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"hitl-degrees-oversight\" value=\"1\"> Manual, semi-automatic, and turbo.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"hitl-degrees-oversight\" value=\"1\"> Human-in-the-loop and human-on-the-loop.</label>",
           "clean": true
         },
         {
           "n": 168,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"hitl-degrees-oversight\" value=\"2\"> Read, write, and execute.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"hitl-degrees-oversight\" value=\"2\"> Human-in-the-loop, human-on-the-loop, and fully autonomous.</label>",
           "clean": true
         },
         {
@@ -24658,12 +24658,12 @@
         },
         {
           "n": 176,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"threat-modeling-agent-specific-threats\" value=\"1\"> Slow typing, low battery, and small screens.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"threat-modeling-agent-specific-threats\" value=\"1\"> Tool misuse and prompt injection.</label>",
           "clean": true
         },
         {
           "n": 177,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"threat-modeling-agent-specific-threats\" value=\"2\"> Font errors, color contrast, and spelling mistakes.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"threat-modeling-agent-specific-threats\" value=\"2\"> SQL injection, cross-site scripting, and weak passwords.</label>",
           "clean": true
         },
         {
@@ -24703,12 +24703,12 @@
         },
         {
           "n": 185,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"shai-mcp-enabled-tools-wildcard\" value=\"1\"> It disables all tools so the agent is read-only.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"shai-mcp-enabled-tools-wildcard\" value=\"1\"> It grants the agent only the tools the server exposes today, so new tools must be added explicitly.</label>",
           "clean": true
         },
         {
           "n": 186,
-          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"shai-mcp-enabled-tools-wildcard\" value=\"2\"> It limits the agent to exactly one tool chosen at random.</label>",
+          "text": "                                <label class=\"quiz-option\"><input type=\"radio\" name=\"shai-mcp-enabled-tools-wildcard\" value=\"2\"> It enables every tool but keeps them read-only until each one is approved individually.</label>",
           "clean": true
         },
         {
