@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atelier : l'orchestrateur multi-agents shai - Agentic AI OPCP Labs</title>
+    <title>Atelier : la boucle superviseur du CLI Agent Orchestrator (CAO) - Agentic AI OPCP Labs</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
@@ -38,7 +38,7 @@
         <div class="sidebar-section" data-section="section-3">
             <h2 class="sidebar-section-title">Bac à sable — travaux pratiques</h2>
             <ul class="sidebar-nav" id="nav-sandbox">
-                <li><a href="shai-orchestrator-lab.html" class="active">Atelier : l'orchestrateur multi-agents shai</a></li>
+                <li><a href="shai-orchestrator-lab.html" class="active">Atelier : la boucle superviseur du CLI Agent Orchestrator (CAO)</a></li>
                 <li><a href="running-applications-lab.html">Atelier : exploitation des applications OPCP-EXPLORER</a></li>
             </ul>
         </div>
@@ -47,179 +47,189 @@
     <main class="main-content" role="main">
         <div class="lesson-content">
             <div class="lesson-header">
-                <h1>Atelier : l'orchestrateur multi-agents shai</h1>
+                <h1>Atelier : la boucle superviseur du CLI Agent Orchestrator (CAO)</h1>
                 <div class="lesson-meta">
-                    <span class="difficulty-badge difficulty-badge--intermediate">Bac à sable · Intermédiaire</span>
+                    <span class="difficulty-badge difficulty-badge--beginner">Bac à sable · Orchestration</span>
                     <span class="duration">⏱ ~40 min</span>
                 </div>
             </div>
             <div class="lesson-body">
-                <p>Cet atelier guidé présente <strong>shai</strong>, l'orchestrateur multi-agents qui pilote le travail sur la plateforme agentique <strong>opcp-explorer</strong>. Vous découvrirez comment l'orchestrateur est assemblé, de quoi chaque rôle d'agent est responsable, comment une tâche est déléguée de l'orchestrateur vers un agent travailleur et en revient, puis comment piloter l'ensemble depuis la ligne de commande. Chaque commande et chaque extrait de configuration de cette page sont <strong>purement illustratifs</strong> : lisez-les pour comprendre la forme du système ; cette leçon ne fournit aucun script exécutable.</p>
-
-                <div class="alert alert-info">
-                    <strong>Atelier en lecture seule :</strong> les exemples ci-dessous montrent les commandes et la configuration que vous utiliseriez sur une plateforme réelle. Rien ne s'exécute ici. Traitez les extraits comme une référence que vous adaptez dans votre propre environnement, où s'appliquent les <a href="guardrails-5-layers.html">cinq couches de garde-fous</a>.
-                </div>
+                <p>Cet atelier pratique pilote le <strong>CLI Agent Orchestrator (CAO)</strong> — un outil réel que vous installez et exécutez vous-même. CAO coordonne plusieurs CLI de fournisseurs comme une équipe : un agent <strong>superviseur</strong> découpe un objectif en sous-tâches et les délègue à des agents travailleurs délimités. Au fil de l'atelier, vous installez CAO, démarrez le <code>cao-server</code>, lancez un superviseur dans votre propre répertoire de projet, déléguez une petite tâche, observez l'exécution via le terminal attaché et l'interface web, puis arrêtez l'ensemble. Les commandes de cette page sont réelles et exécutables sur votre propre installation de CAO.</p>
 
                 <h2>Objectifs pédagogiques</h2>
                 <ul>
-                    <li>Décrire l'architecture de l'orchestrateur multi-agents shai et la façon dont ses parties s'articulent.</li>
-                    <li>Nommer les rôles d'agent — orchestrateur, travailleur et relecteur — et ce dont chacun est responsable.</li>
-                    <li>Expliquer le modèle de délégation : comment une tâche circule de l'orchestrateur vers un travailleur et en revient.</li>
-                    <li>Suivre pas à pas les instructions de la ligne de commande shai pour configurer, lancer et observer une session orchestrée.</li>
-                    <li>Lire un exemple de configuration d'orchestrateur et comprendre chaque champ comme une décision de gouvernance.</li>
+                    <li>Décrire comment CAO est assemblé : un <code>cao-server</code> local qui démarre des CLI de fournisseurs dans des sessions de terminal isolées.</li>
+                    <li>Nommer les rôles d'agent — superviseur, travailleur et relecteur — et ce dont chacun est responsable.</li>
+                    <li>Expliquer le modèle de délégation : comment une tâche circule du superviseur vers un travailleur et en revient.</li>
+                    <li>Exécuter la boucle superviseur de bout en bout depuis la ligne de commande : installer, lancer, déléguer, observer et arrêter.</li>
+                    <li>Lire un exemple de profil d'agent CAO et comprendre chaque champ comme une décision de gouvernance.</li>
                 </ul>
 
-                <h2>L'architecture de l'orchestrateur</h2>
-                <p>shai n'est pas un agent unique — c'est un <strong>orchestrateur</strong> qui coordonne plusieurs agents spécialisés vers un même objectif. L'orchestrateur tient la tâche de haut niveau, la découpe en sous-tâches, confie chaque sous-tâche à un agent travailleur, rassemble les résultats et décide quand le travail global est terminé. Les travailleurs ne communiquent jamais directement entre eux ; tout passe par l'orchestrateur, ce qui garde la session observable et vous offre un point de contrôle unique.</p>
+                <h2>Prérequis &amp; installation</h2>
+                <p>Avant d'exécuter quoi que ce soit, assurez-vous que votre machine dispose des outils dont CAO dépend. Installez chacun d'eux et confirmez qu'il figure dans votre PATH :</p>
+                <ul>
+                    <li><strong>Python 3.11+</strong> — CAO fonctionne sous Python 3.11 ou version ultérieure.</li>
+                    <li><strong>tmux 3.3+</strong> — CAO démarre chaque CLI de fournisseur dans une session de terminal tmux isolée ; vous avez donc besoin de tmux 3.3 ou version ultérieure.</li>
+                    <li><strong>uv</strong> — l'installateur de paquets et d'outils Python utilisé pour installer l'outil en ligne de commande <code>cao</code>.</li>
+                    <li><strong>Au moins un CLI de fournisseur authentifié</strong> — chaque agent est adossé à un CLI de fournisseur doté de sa propre authentification native. Le fournisseur par défaut est le <strong>Kiro CLI</strong> ; assurez-vous qu'il est installé et connecté avant de lancer un agent.</li>
+                </ul>
+
+                <h2>L'architecture de CAO</h2>
+                <p>CAO n'est pas un agent unique — c'est une couche d'orchestration locale. Le processus <code>cao-server</code> s'exécute sur votre machine et démarre chaque CLI de fournisseur dans sa propre session de terminal tmux isolée, si bien que chaque agent est un processus CLI à part entière avec sa propre authentification native plutôt qu'un sous-processus caché. Par-dessus, un profil <strong>superviseur</strong> tient l'objectif de haut niveau, le découpe en sous-tâches et délègue chacune à un agent travailleur spécialisé — en parallèle lorsque les sous-tâches sont indépendantes, ou en séquence lorsqu'elles dépendent les unes des autres. Les travailleurs ne communiquent jamais directement entre eux ; tout passe par le superviseur, ce qui garde l'exécution observable et vous offre un point de contrôle unique.</p>
 
                 <pre><code>flowchart TD
-    U[Opérateur / CLI] --> O[orchestrateur shai]
-    O --> W1[Agent travailleur : découverte]
-    O --> W2[Agent travailleur : action]
-    O --> R[Agent relecteur]
-    W1 --> O
-    W2 --> O
-    R --> O
-    O --> U</code></pre>
-                <p class="caption">L'orchestrateur est le pivot : il délègue aux travailleurs, achemine les résultats via un relecteur et rend compte à l'opérateur.</p>
+    U[Operator / CLI] --> S[CAO supervisor]
+    S --> W1[Worker agent: developer]
+    S --> W2[Worker agent: developer]
+    S --> R[Reviewer agent]
+    W1 --> S
+    W2 --> S
+    R --> S
+    S --> U</code></pre>
+                <p class="caption">Le superviseur est le pivot : il délègue aux agents travailleurs, achemine les résultats via un relecteur et rend compte à l'opérateur.</p>
 
                 <p>Trois éléments font de ceci une conception défendable plutôt qu'une simple diffusion de tâches :</p>
                 <ul>
-                    <li><strong>Un coordinateur unique.</strong> Un seul orchestrateur tient le plan, donc il existe exactement un endroit qui décide de ce qui s'exécute ensuite et du moment où s'arrêter.</li>
-                    <li><strong>Des travailleurs isolés.</strong> Chaque travailleur reçoit une tâche étroite et un jeu d'outils délimité, si bien qu'une erreur chez l'un ne peut pas se propager à un autre.</li>
-                    <li><strong>Une porte de relecture.</strong> Les résultats qui modifient l'état passent par un relecteur avant que l'orchestrateur ne les accepte, gardant un contrôle aligné sur l'humain dans la boucle.</li>
+                    <li><strong>Un coordinateur unique.</strong> Un seul superviseur tient le plan, donc il existe exactement un endroit qui décide de ce qui s'exécute ensuite et du moment où s'arrêter.</li>
+                    <li><strong>Des travailleurs isolés.</strong> Chaque travailleur s'exécute comme son propre processus CLI de fournisseur dans une session de terminal isolée, avec un périmètre <code>allowedTools</code> dimensionné à sa tâche, si bien qu'une erreur chez l'un ne peut pas se propager à un autre.</li>
+                    <li><strong>Une porte de relecture.</strong> Le travail modifiant passe par un agent <code>role: reviewer</code> avant que le superviseur ne l'accepte, gardant un contrôle aligné sur l'humain dans la boucle.</li>
                 </ul>
 
                 <h2>Les rôles d'agent</h2>
-                <p>Une session shai se compose de trois types d'agent. Chacun a une seule mission et un périmètre de permissions dimensionné pour cette mission.</p>
+                <p>Une exécution CAO se compose de trois types d'agent, chacun adossé à un profil intégré (<code>code_supervisor.md</code>, <code>developer.md</code>, <code>reviewer.md</code>). Chacun a une seule mission et un périmètre <code>allowedTools</code> dimensionné pour cette mission.</p>
                 <table>
                     <thead>
-                        <tr><th>Rôle</th><th>Responsabilité</th><th>Périmètre d'outils typique</th></tr>
+                        <tr><th>Rôle (<code>role:</code>)</th><th>Responsabilité</th><th>Périmètre d'outils typique</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><strong>Orchestrateur</strong></td><td>Tient l'objectif de haut niveau, planifie et ordonne les sous-tâches, délègue aux travailleurs, agrège les résultats, décide quand s'arrêter.</td><td>Aucun outil hôte ; délégation seule</td></tr>
-                        <tr><td><strong>Travailleur</strong></td><td>Exécute une sous-tâche déléguée (découvrir, démarrer, arrêter, sauvegarder, modifier) et renvoie un résultat structuré.</td><td><code>read</code> / <code>write</code> / <code>bash</code> délimités selon la tâche</td></tr>
-                        <tr><td><strong>Relecteur</strong></td><td>Inspecte l'action modifiante proposée par un travailleur et l'approuve ou la rejette avant que l'orchestrateur ne l'applique.</td><td><code>read</code> uniquement</td></tr>
+                        <tr><td><strong>superviseur</strong> (<code>code_supervisor</code>)</td><td>Tient l'objectif de haut niveau, le découpe en sous-tâches, délègue chacune à un travailleur, achemine le travail modifiant via le relecteur, agrège les résultats et décide quand le travail est terminé. N'écrit jamais de code lui-même.</td><td>Coordination seule : <code>@cao-mcp-server</code>, <code>fs_read</code>, <code>fs_list</code> ; délègue via <code>delegateTools</code> (par défaut <code>["*"]</code>)</td></tr>
+                        <tr><td><strong>travailleur — developer</strong> (<code>developer</code>)</td><td>Exécute une sous-tâche déléguée, autonome — implémente le changement délimité — et renvoie un résultat structuré au superviseur.</td><td>Lecture/écriture/exécution : <code>fs_*</code>, <code>execute_bash</code>, <code>@cao-mcp-server</code> (@builtin), délimités par sous-tâche</td></tr>
+                        <tr><td><strong>travailleur — reviewer</strong> (<code>reviewer</code>)</td><td>Inspecte l'action modifiante proposée par un travailleur quant à son exactitude, sa qualité et sa sûreté, puis l'approuve ou la rejette avant que le superviseur n'accepte le changement.</td><td>Lecture seule : <code>fs_read</code>, <code>fs_list</code>, <code>@cao-mcp-server</code> (@builtin)</td></tr>
                     </tbody>
                 </table>
                 <div class="alert alert-info">
-                    <strong>Gouvernance :</strong> l'orchestrateur ne détient délibérément <em>aucun</em> outil hôte. Il ne peut que déléguer. Les attributions puissantes comme <code>write</code> et <code>bash</code> vivent sur des travailleurs individuels et sont délimitées par sous-tâche, si bien que le rayon d'impact de chaque agent reste petit.
+                    <strong>Gouvernance :</strong> le superviseur ne détient délibérément aucun outil hôte d'écriture ou d'exécution — il coordonne et délègue. Les attributions puissantes comme <code>fs_write</code> et <code>execute_bash</code> vivent sur le travailleur developer et sont délimitées par sous-tâche via <code>allowedTools</code>, tandis que <code>delegateTools</code> plafonne ce que le superviseur peut transmettre, si bien que le rayon d'impact de chaque agent reste petit.
                 </div>
 
                 <h2>Le modèle de délégation</h2>
-                <p>La délégation est le cœur de shai. L'opérateur confie un objectif à l'orchestrateur ; l'orchestrateur décide quel travailleur doit traiter chaque morceau et transmet une tâche autonome. Une tâche déléguée porte tout ce dont le travailleur a besoin et rien de plus :</p>
+                <p>La délégation est le cœur de CAO. L'opérateur confie un objectif au superviseur ; le superviseur décide quel travailleur doit traiter chaque morceau et délègue une sous-tâche autonome. Une sous-tâche déléguée porte tout ce dont le travailleur a besoin et rien de plus :</p>
                 <ul>
                     <li><strong>Un énoncé d'objectif</strong> — la seule chose que ce travailleur doit accomplir.</li>
                     <li><strong>Des entrées délimitées</strong> — uniquement les données pertinentes pour la sous-tâche.</li>
-                    <li><strong>Une attribution d'outils</strong> — le jeu d'outils minimal pour cette sous-tâche.</li>
-                    <li><strong>Un contrat de retour</strong> — le résultat structuré que l'orchestrateur attend en retour.</li>
+                    <li><strong>Une attribution d'outils</strong> — le jeu d'outils minimal pour cette sous-tâche, borné par le plafond <code>delegateTools</code> du superviseur.</li>
+                    <li><strong>Un contrat de retour</strong> — le résultat structuré que le superviseur attend en retour.</li>
                 </ul>
-                <p>Le cycle de vie d'une seule tâche déléguée ressemble à ceci :</p>
+                <p>Un travailleur exécute sa sous-tâche et renvoie un résultat structuré au superviseur. Lorsque le travail est <em>modifiant</em> — il change des fichiers ou de l'état — le superviseur achemine ce résultat via un agent relecteur avant de l'accepter ; une sous-tâche en lecture seule revient directement au superviseur. Le cycle de vie d'une seule tâche déléguée ressemble à ceci :</p>
                 <pre><code>sequenceDiagram
-    Opérateur->>Orchestrateur: objectif
-    Orchestrateur->>Travailleur: déléguer(sous-tâche, outils délimités)
-    Travailleur->>Travailleur: exécuter la sous-tâche
-    Travailleur-->>Orchestrateur: résultat structuré
-    Orchestrateur->>Relecteur: relire(résultat) si modifiant
-    Relecteur-->>Orchestrateur: approuver / rejeter
-    Orchestrateur-->>Opérateur: résultat agrégé</code></pre>
-                <p class="caption">Une sous-tâche en lecture seule revient directement à l'orchestrateur ; une sous-tâche modifiante passe d'abord par le relecteur.</p>
-                <p>Parce que l'orchestrateur est le seul agent qui voit le plan complet, il est aussi le seul endroit qui applique les limites opérationnelles — nombre maximal de sous-tâches, plafond de relances et délai mural pour la session. Ces limites sont la forme, au niveau de l'orchestrateur, des critères d'arrêt que vous avez rencontrés plus tôt dans le cours.</p>
+    Operator->>Supervisor: goal
+    Supervisor->>Worker: delegate(sub-task, scoped tools)
+    Worker->>Worker: run sub-task
+    Worker-->>Supervisor: structured result
+    Supervisor->>Reviewer: review(result) if mutating
+    Reviewer-->>Supervisor: approve / reject
+    Supervisor-->>Operator: aggregated outcome</code></pre>
+                <p class="caption">Une sous-tâche en lecture seule revient directement au superviseur ; une sous-tâche modifiante passe d'abord par le relecteur.</p>
+                <p>Parce que le superviseur est le seul agent qui voit le plan complet, il est aussi le seul endroit qui applique les limites opérationnelles — il ordonne les sous-tâches, relance les délégations échouées et décide quand l'objectif est atteint ou qu'une limite est touchée. Ces contrôles de la boucle superviseur sont la forme, au niveau de l'orchestration, des critères d'arrêt que vous avez rencontrés plus tôt dans le cours.</p>
 
-                <h2>Pas à pas : piloter shai depuis la ligne de commande</h2>
-                <p>Les commandes ci-dessous parcourent une session orchestrée de bout en bout. Elles sont illustratives — adaptez les chemins et les noms à votre propre environnement.</p>
+                <h2>Pas à pas : la boucle superviseur</h2>
+                <p>Les étapes ci-dessous parcourent une boucle superviseur de bout en bout sur votre propre projet. Exécutez vous-même chaque commande : installez CAO, démarrez le serveur, lancez un superviseur depuis votre répertoire de projet, déléguez une petite tâche, observez son exécution, puis arrêtez-la. Partout où vous voyez <code>/path/to/your/project</code>, remplacez par le chemin absolu du projet dans lequel vous souhaitez que le superviseur travaille.</p>
 
-                <h3>Étape 1 — Vérifier que l'orchestrateur est disponible</h3>
-                <p>Confirmez que la ligne de commande est bien dans votre PATH et affiche une version avant toute autre chose.</p>
-                <pre><code>shai --version
-shai orchestrator status</code></pre>
+                <h3>Étape 1 — Installer CAO et vérifier</h3>
+                <p>Installez l'outil en ligne de commande <code>cao</code> avec <code>uv</code>, puis confirmez qu'il figure dans votre PATH en affichant son aide.</p>
+                <pre><code>uv tool install git+https://github.com/awslabs/cli-agent-orchestrator.git@main --upgrade
+cao --help</code></pre>
 
-                <h3>Étape 2 — Pointer shai vers une configuration d'orchestrateur</h3>
-                <p>L'orchestrateur est défini par un seul fichier de configuration (présenté en entier dans la section suivante). Validez-le avant de lancer pour qu'une faute de frappe échoue bruyamment plutôt qu'en pleine exécution.</p>
-                <pre><code>shai orchestrator validate --config ./orchestrator.config.json</code></pre>
+                <h3>Étape 2 — Installer l'agent superviseur</h3>
+                <p>Installez le profil superviseur intégré pour que <code>cao launch</code> puisse le démarrer.</p>
+                <pre><code>cao install code_supervisor</code></pre>
 
-                <h3>Étape 3 — Lancer une session avec un objectif</h3>
-                <p>Confiez à l'orchestrateur un unique objectif de haut niveau. L'orchestrateur planifie lui-même les sous-tâches et les délègue aux travailleurs — vous n'appelez pas les travailleurs directement.</p>
-                <pre><code>shai orchestrator run \
-  --config ./orchestrator.config.json \
-  --goal "Découvrir les conteneurs en cours et signaler les agents probables" \
-  --max-subtasks 6</code></pre>
+                <h3>Étape 3 — Démarrer le serveur (Terminal A)</h3>
+                <p>Dans un terminal dédié, démarrez <code>cao-server</code>. C'est un processus de longue durée qui démarre chaque CLI de fournisseur dans sa propre session de terminal tmux isolée — laissez-le s'exécuter pour le reste de l'atelier.</p>
+                <pre><code>cao-server</code></pre>
 
-                <h3>Étape 4 — Observer la délégation en temps réel</h3>
-                <p>Suivez la session pour voir chaque sous-tâche déléguée, chaque résultat de travailleur renvoyé et chaque décision de relecture au fil de l'eau.</p>
-                <pre><code>shai orchestrator logs --follow --run-id latest</code></pre>
+                <h3>Étape 4 — Lancer le superviseur (Terminal B)</h3>
+                <p>Dans un terminal séparé, placez-vous dans votre répertoire de projet et lancez le superviseur. Cela vous attache à la session du superviseur pour que vous puissiez lui parler directement.</p>
+                <pre><code>cd /path/to/your/project && cao launch --agents code_supervisor</code></pre>
 
-                <h3>Étape 5 — Lire le résultat agrégé</h3>
-                <p>Lorsque l'orchestrateur estime l'objectif atteint (ou qu'une limite est touchée), il imprime un seul rapport agrégé combinant chaque résultat de travailleur.</p>
-                <pre><code>shai orchestrator report --run-id latest</code></pre>
+                <h3>Étape 5 — Déléguer une petite tâche</h3>
+                <p>Dans la session superviseur attachée, saisissez un objectif court — gardez-le petit et relisible, par exemple en demandant au superviseur d'apporter un unique changement restreint et bien délimité à votre projet. Le superviseur découpe l'objectif en sous-tâches et les délègue à un agent travailleur ; vous n'appelez pas le travailleur directement.</p>
 
-                <h3>Étape 6 — Arrêter une session si nécessaire</h3>
-                <p>Le coupe-circuit arrête l'orchestrateur et tous les travailleurs auxquels il a délégué, en une seule commande.</p>
-                <pre><code>shai orchestrator stop --run-id latest</code></pre>
+                <h3>Étape 6 — Observer l'exécution</h3>
+                <p>Observez la délégation à deux endroits : le terminal de lancement attaché montre l'activité du superviseur et du travailleur à mesure qu'elle se déroule, et l'interface web à l'adresse <code>http://localhost:9889</code> vous offre une vue visuelle des sessions et de la délégation entre elles.</p>
+
+                <h3>Étape 7 — Arrêter</h3>
+                <p>Lorsque vous avez terminé, arrêtez l'exécution. Arrêtez une seule session nommée, ou démantelez toutes les sessions d'un coup.</p>
+                <pre><code>cao shutdown --session {session-name}
+cao shutdown --all</code></pre>
                 <div class="alert alert-info">
-                    <strong>Gouvernance :</strong> <code>stop</code> est votre unique coupe-circuit fiable. Comme les travailleurs ne s'exécutent jamais que sous l'orchestrateur, arrêter l'orchestrateur démantèle toute la session — il n'y a aucun travailleur orphelin à traquer séparément.
+                    <strong>Gouvernance :</strong> <code>cao shutdown</code> est votre coupe-circuit. <code>cao shutdown --session {session-name}</code> arrête une session ; <code>cao shutdown --all</code> démantèle toutes les sessions que CAO exécute. Comme les travailleurs ne s'exécutent que sous la session du superviseur, l'arrêt stoppe le superviseur et ses travailleurs ensemble — il n'y a aucun agent orphelin à traquer séparément.
                 </div>
 
-                <h2>Exemple de configuration d'orchestrateur</h2>
-                <p>L'orchestrateur est entièrement défini par un seul fichier JSON. Il nomme l'orchestrateur, choisit le modèle qui planifie pour lui, déclare les agents travailleur et relecteur auxquels il peut déléguer, et fixe les limites opérationnelles d'une session. Voici le fichier illustratif complet, que nous ouvrons ensuite champ par champ.</p>
-                <pre><code>{
-  "name": "opcp-explorer-orchestrator",
-  "description": "Orchestrateur multi-agents shai qui planifie un objectif, délègue des sous-tâches à des travailleurs délimités et achemine les actions modifiantes via un relecteur.",
-  "llm_provider": {
-    "provider": "ovhcloud",
-    "model": "Qwen3.5-397B-A17B",
-    "mode": "FunctionCall"
-  },
-  "orchestrator": {
-    "max_subtasks": 6,
-    "max_retries_per_subtask": 2,
-    "run_timeout_seconds": 600,
-    "require_review_for_mutating": true
-  },
-  "agents": {
-    "discovery-worker": {
-      "role": "worker",
-      "system_prompt": "Découvrir les conteneurs de la plateforme et renvoyer une liste structurée.",
-      "tools": ["read", "bash"]
-    },
-    "action-worker": {
-      "role": "worker",
-      "system_prompt": "Appliquer l'unique action qui t'est déléguée et renvoyer le résultat.",
-      "tools": ["read", "write", "bash"]
-    },
-    "reviewer": {
-      "role": "reviewer",
-      "system_prompt": "Inspecter l'action modifiante proposée et l'approuver ou la rejeter.",
-      "tools": ["read"]
-    }
-  }
-}</code></pre>
+                <h2>Exemples de profils d'agent CAO</h2>
+                <p>Un agent CAO n'est pas un bloc JSON — c'est un fichier Markdown doté d'un en-tête YAML frontmatter et d'un corps Markdown. Le frontmatter déclare l'identité de l'agent et son enveloppe de gouvernance (qui il est, quel fournisseur l'adosse, quels outils il peut utiliser et combien il peut transmettre aux travailleurs) ; le corps est l'invite système qui indique à l'agent comment se comporter. Voici deux profils réels — un superviseur et un travailleur developer — que nous ouvrons ensuite champ par champ.</p>
 
-                <h3>Identité : <code>name</code> et <code>description</code></h3>
-                <p>Le champ <code>name</code> étiquette l'orchestrateur dans les journaux et les pistes d'audit ; <code>description</code> énonce ce qu'il coordonne en une phrase lisible par un humain. Un nom stable est ce qui permet à un relecteur de relier une session à la configuration qui l'a autorisée.</p>
+                <h3>Profil superviseur (<code>code_supervisor.md</code>)</h3>
+                <pre><code>---
+name: code_supervisor
+description: Coding Supervisor Agent in a multi-agent system
+role: supervisor
+provider: kiro_cli
+delegateTools: ["*"]
+---
 
-                <h3><code>llm_provider</code></h3>
-                <p>Le bloc <code>llm_provider</code> choisit le modèle qui <em>planifie</em> pour l'orchestrateur — fournisseur <code>ovhcloud</code>, modèle <code>Qwen3.5-397B-A17B</code>, mode <code>FunctionCall</code>. En mode <code>FunctionCall</code>, l'orchestrateur peut émettre des appels de délégation vers ses agents travailleurs plutôt que de seulement produire du texte.</p>
+You are the Coding Supervisor. You never write code yourself. You break a
+goal into sub-tasks, delegate each to a worker agent, route mutating work
+through the reviewer, and decide when the job is done.</code></pre>
 
-                <h3>Le bloc de limites <code>orchestrator</code></h3>
-                <p>Ce bloc est le critère d'arrêt au niveau de l'orchestrateur. <code>max_subtasks</code> plafonne le nombre de morceaux en lesquels un objectif peut être découpé ; <code>max_retries_per_subtask</code> borne la fréquence de relance d'une sous-tâche échouée ; <code>run_timeout_seconds</code> fixe un plafond mural pour toute la session ; et <code>require_review_for_mutating</code> force chaque résultat de travailleur modifiant à passer par le relecteur avant que l'orchestrateur ne l'applique.</p>
+                <h3>Profil travailleur (<code>developer.md</code>)</h3>
+                <pre><code>---
+name: developer
+description: Developer Agent in a multi-agent system
+role: developer
+provider: kiro_cli
+allowedTools: ["fs_read", "fs_write", "execute_bash", "@cao-mcp-server"]
+---
+
+You are a Developer agent. Implement the single scoped sub-task delegated to
+you and return a structured result.</code></pre>
+
+                <h3><code>name</code></h3>
+                <p><strong>Décision de gouvernance :</strong> le <code>name</code> est l'identifiant stable de l'agent — c'est ainsi que le profil apparaît dans les journaux et les pistes d'audit, et c'est la poignée que vous passez à <code>cao install</code> et à <code>cao launch --agents</code>. Un nom stable et significatif est ce qui permet à un relecteur de relier une exécution au profil exact qui l'a autorisée.</p>
+
+                <h3><code>role</code></h3>
+                <p><strong>Décision de gouvernance :</strong> le <code>role</code> est un préréglage de permissions nommé — les valeurs autorisées sont <code>supervisor</code>, <code>developer</code> et <code>reviewer</code>. Choisir un rôle, c'est choisir un ensemble <code>allowedTools</code> par défaut : un superviseur coordonne et délègue, un developer obtient lecture/écriture/exécution pour faire un travail délimité, et un reviewer est en lecture seule par conception. Le rôle est le contrôle de gouvernance à gros grain que vous fixez avant tout autre réglage.</p>
+
+                <h3><code>provider</code></h3>
+                <p><strong>Décision de gouvernance :</strong> <code>provider</code> choisit quel CLI de fournisseur authentifié adosse l'agent — ici <code>kiro_cli</code>, le Kiro CLI par défaut. Comme les agents restent des processus CLI à part entière avec authentification native, le fournisseur que vous nommez est l'identité et les identifiants sous lesquels s'exécutent les actions de l'agent ; il a donc sa place dans le récit d'audit aux côtés des attributions d'outils.</p>
+
+                <h3><code>allowedTools</code></h3>
+                <p><strong>Décision de gouvernance :</strong> <code>allowedTools</code> est la liste d'autorisation d'outils explicite pour l'agent lui-même, et elle remplace les valeurs par défaut du rôle. C'est l'expression concrète du moindre privilège : le developer ci-dessus se voit accorder exactement <code>fs_read</code>, <code>fs_write</code>, <code>execute_bash</code> et les outils <code>@cao-mcp-server</code> — rien de plus. Si une sous-tâche n'a pas besoin d'écrire des fichiers ou d'exécuter des commandes, ne listez pas ces outils dans le profil qui l'exécute.</p>
                 <div class="alert alert-info">
-                    <strong>Gouvernance :</strong> <code>require_review_for_mutating: true</code> est la porte de relecture du schéma d'architecture rendue concrète. La laisser active maintient un contrôle entre un travailleur proposant un changement et ce changement prenant effet — ne la désactivez pour rien qui écrit, démarre, arrête ou supprime.
+                    <strong>Gouvernance :</strong> le rôle fixe une valeur par défaut raisonnable, mais <code>allowedTools</code> est l'endroit où vous rendez le moindre privilège explicite. Restreignez la liste à exactement ce dont l'agent a besoin ; une liste d'autorisation que vous lisez d'un coup d'œil est une liste qu'un relecteur peut approuver.
                 </div>
 
-                <h3>La table <code>agents</code></h3>
-                <p>Chaque entrée nomme un agent auquel l'orchestrateur peut déléguer, déclare son <code>role</code> (travailleur ou relecteur), lui donne un <code>system_prompt</code> d'une ligne délimitant sa mission, et lui accorde un jeu d'<code>tools</code> minimal. Notez le motif : le travailleur de découverte est surtout en lecture (<code>read</code>, <code>bash</code>), le travailleur d'action est le seul doté de <code>write</code>, et le relecteur est en <code>read</code> seul par conception.</p>
+                <h3><code>delegateTools</code></h3>
+                <p><strong>Décision de gouvernance :</strong> <code>delegateTools</code> est le <em>plafond de délégation</em> — le maximum qu'un agent peut accorder aux travailleurs qu'il crée, jamais plus que cela quel que soit ce que demande le propre profil d'un travailleur. Il vaut par défaut <code>["*"]</code> pour <code>role: supervisor</code> (un superviseur peut transmettre tout outil qu'il est lui-même autorisé à utiliser) et le propre <code>allowedTools</code> de l'agent pour tout autre rôle. Le superviseur ci-dessus conserve le <code>delegateTools: ["*"]</code> explicite ; le travailleur developer n'en définit aucun, donc son plafond est simplement son propre <code>allowedTools</code>.</p>
                 <div class="alert alert-info">
-                    <strong>Gouvernance :</strong> les attributions d'outils ici sont le moindre privilège en action. Seul l'<code>action-worker</code> peut modifier la plateforme, et même ses changements doivent passer le relecteur. Si une sous-tâche n'a pas besoin de <code>write</code> ou de <code>bash</code>, ne les accordez pas à l'agent qui l'exécute.
+                    <strong>Gouvernance :</strong> <code>delegateTools</code> est la façon de plafonner le rayon d'impact sur tout un arbre de délégation. Abaisser le <code>delegateTools</code> d'un superviseur sous <code>["*"]</code> garantit qu'aucun travailleur qu'il engendre ne peut dépasser cette borne — le plafond est appliqué à la délégation, pas à la confiance. Un agent de rôle reviewer (issu de <code>reviewer.md</code>, <code>allowedTools</code> en lecture seule) est ce via quoi le superviseur achemine le travail modifiant avant de l'accepter.
                 </div>
+
+                <h2>Correspondance de gouvernance</h2>
+                <p>Le vocabulaire de gouvernance vu plus tôt dans le cours n'est pas abstrait ici — chaque concept se rattache à un mécanisme CAO concret que vous avez déjà vu dans cet atelier.</p>
+                <ul>
+                    <li><strong>Moindre privilège → <code>allowedTools</code> / <code>delegateTools</code>.</strong> <code>allowedTools</code> dimensionne l'attribution d'outils propre à chaque agent exactement à ce dont sa tâche a besoin, et <code>delegateTools</code> plafonne le maximum qu'un superviseur peut transmettre aux travailleurs qu'il crée. Ensemble, ils gardent le rayon d'impact de chaque agent aussi petit que le travail le permet.</li>
+                    <li><strong>Porte de relecture → un agent <code>role: reviewer</code>.</strong> Le travail modifiant est acheminé via un agent de rôle reviewer de CAO (issu de <code>reviewer.md</code>, <code>allowedTools</code> en lecture seule) qui inspecte le changement avant que le superviseur ne l'accepte, gardant un contrôle aligné sur l'humain dans la boucle.</li>
+                    <li><strong>Coupe-circuit → <code>cao shutdown</code>.</strong> <code>cao shutdown --session {session-name}</code> arrête une session nommée et <code>cao shutdown --all</code> démantèle toutes les sessions que CAO exécute — une façon unique et décisive de stopper une exécution.</li>
+                    <li><strong>Limites opérationnelles → contrôles de la boucle superviseur.</strong> Le superviseur est le coordinateur unique qui ordonne les sous-tâches, relance les délégations échouées et décide quand l'objectif est atteint ou qu'une limite est touchée ; les restrictions d'outils bornent le rayon d'impact de chaque travailleur. Ce sont là les limites réelles et appliquées d'une exécution CAO.</li>
+                </ul>
 
                 <h2>Points clés</h2>
                 <ul>
-                    <li>shai est un orchestrateur qui coordonne des agents spécialisés vers un même objectif — pas un agent unique.</li>
-                    <li>Trois rôles : un orchestrateur qui planifie et délègue, des travailleurs qui exécutent des sous-tâches délimitées, et un relecteur qui garde les actions modifiantes.</li>
-                    <li>La délégation porte un objectif, des entrées délimitées, une attribution d'outils minimale et un contrat de retour — rien de plus.</li>
-                    <li>Vous pilotez une session depuis la ligne de commande : valider la configuration, lancer avec un objectif, suivre les journaux, lire le rapport et arrêter avec le coupe-circuit.</li>
-                    <li>Les limites opérationnelles et la porte de relecture vivent dans la configuration de l'orchestrateur, rendant toute la session observable et bornée.</li>
+                    <li>CAO coordonne plusieurs CLI de fournisseurs comme une équipe via un superviseur — c'est une couche d'orchestration, pas un agent unique.</li>
+                    <li>Trois rôles : un superviseur qui planifie et délègue, un travailleur (developer) qui exécute des sous-tâches délimitées, et un relecteur qui garde le travail modifiant.</li>
+                    <li>Une délégation porte un objectif, des entrées délimitées, une attribution d'outils minimale (bornée par <code>delegateTools</code>) et un contrat de retour — rien de plus.</li>
+                    <li>Vous pilotez la boucle superviseur depuis la ligne de commande : installer CAO, démarrer <code>cao-server</code>, lancer le superviseur, déléguer une petite tâche, observer l'exécution et l'arrêter.</li>
+                    <li>La gouvernance est concrète : le moindre privilège vit dans <code>allowedTools</code>/<code>delegateTools</code>, la porte de relecture est un agent de rôle reviewer, et <code>cao shutdown</code> est le coupe-circuit.</li>
                 </ul>
 
                 <div class="alert alert-info">

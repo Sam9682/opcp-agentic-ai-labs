@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab: The shai Multi-Agent Orchestrator - Agentic AI OPCP Labs</title>
+    <title>Lab: CLI Agent Orchestrator (CAO) Supervisor Loop - Agentic AI OPCP Labs</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
@@ -38,7 +38,7 @@
         <div class="sidebar-section" data-section="section-3">
             <h2 class="sidebar-section-title">Sandbox Labs</h2>
             <ul class="sidebar-nav" id="nav-sandbox">
-                <li><a href="shai-orchestrator-lab.html" class="active">Lab: The shai Multi-Agent Orchestrator</a></li>
+                <li><a href="shai-orchestrator-lab.html" class="active">Lab: CLI Agent Orchestrator (CAO) Supervisor Loop</a></li>
                 <li><a href="running-applications-lab.html">OPCP-EXPLORER Running Applications</a></li>
             </ul>
         </div>
@@ -47,179 +47,189 @@
     <main class="main-content" role="main">
         <div class="lesson-content">
             <div class="lesson-header">
-                <h1>Lab: The shai Multi-Agent Orchestrator</h1>
+                <h1>Lab: CLI Agent Orchestrator (CAO) Supervisor Loop</h1>
                 <div class="lesson-meta">
                     <span class="difficulty-badge difficulty-badge--beginner">Sandbox · Orchestration</span>
                     <span class="duration">⏱ ~40 min</span>
                 </div>
             </div>
             <div class="lesson-body">
-                <p>This guided lab introduces <strong>shai</strong>, the multi-agent orchestrator that drives work across the <strong>opcp-explorer</strong> agentic-ai-platform. You will learn how the orchestrator is put together, what each agent role is responsible for, how a task is delegated from the orchestrator down to a worker agent, and how to drive the whole thing from the command line. Every command and configuration snippet on this page is <strong>illustrative text only</strong> — read it to understand the shape of the system; this lesson ships no runnable scripts.</p>
-
-                <div class="alert alert-info">
-                    <strong>Read-only lab:</strong> the examples below show the commands and configuration you would use on a live platform. Nothing here executes. Treat the snippets as a reference you adapt in your own environment, where the <a href="guardrails-5-layers.html">five guardrail layers</a> apply.
-                </div>
+                <p>This hands-on lab drives the <strong>CLI Agent Orchestrator (CAO)</strong> — a real tool you install and run yourself. CAO coordinates several provider CLIs as a team: a <strong>supervisor</strong> agent breaks a goal into sub-tasks and delegates them to scoped worker agents. Over the course of the lab you install CAO, start the <code>cao-server</code>, launch a supervisor in your own project directory, delegate a small task, watch the run through the attached terminal and the Web UI, and shut everything down. The commands on this page are real and executable against your own CAO installation.</p>
 
                 <h2>Learning Objectives</h2>
                 <ul>
-                    <li>Describe the architecture of the shai multi-agent orchestrator and how its parts fit together.</li>
-                    <li>Name the agent roles — orchestrator, worker, and reviewer — and what each is responsible for.</li>
-                    <li>Explain the delegation model: how a task flows from the orchestrator to a worker and back.</li>
-                    <li>Follow step-by-step shai CLI instructions to configure, launch, and observe an orchestrated run.</li>
-                    <li>Read an example orchestrator configuration and understand each field as a governance decision.</li>
+                    <li>Describe how CAO is put together: a local <code>cao-server</code> that starts provider CLIs in isolated terminal sessions.</li>
+                    <li>Name the agent roles — supervisor, worker, and reviewer — and what each is responsible for.</li>
+                    <li>Explain the delegation model: how a task flows from the supervisor to a worker and back.</li>
+                    <li>Run the core supervisor loop from the command line: install, launch, delegate, observe, and shut down.</li>
+                    <li>Read an example CAO agent profile and understand each field as a governance decision.</li>
                 </ul>
 
-                <h2>Orchestrator Architecture</h2>
-                <p>shai is not a single agent — it is an <strong>orchestrator</strong> that coordinates several specialized agents toward one goal. The orchestrator owns the top-level task, breaks it into sub-tasks, hands each sub-task to a worker agent, collects the results, and decides when the overall job is done. Workers never talk to each other directly; everything flows through the orchestrator, which keeps the run observable and gives you a single point of control.</p>
+                <h2>Prerequisites &amp; Setup</h2>
+                <p>Before you run anything, make sure your machine has the tools CAO depends on. Install each of these and confirm it is on your path:</p>
+                <ul>
+                    <li><strong>Python 3.11+</strong> — CAO runs on Python 3.11 or later.</li>
+                    <li><strong>tmux 3.3+</strong> — CAO starts each provider CLI in an isolated tmux terminal session, so you need tmux 3.3 or later.</li>
+                    <li><strong>uv</strong> — the Python package and tool installer used to install the <code>cao</code> command line tool.</li>
+                    <li><strong>At least one authenticated provider CLI</strong> — each agent is backed by a provider CLI with its own native authentication. The default provider is the <strong>Kiro CLI</strong>; make sure it is installed and signed in before you launch an agent.</li>
+                </ul>
+
+                <h2>CAO Architecture</h2>
+                <p>CAO is not a single agent — it is a local orchestration layer. The <code>cao-server</code> process runs on your machine and starts each provider CLI inside its own isolated tmux terminal session, so every agent is a full CLI process with its own native authentication rather than a hidden sub-process. On top of that, a <strong>supervisor</strong> profile owns the top-level goal, breaks it into sub-tasks, and delegates each one to a specialist worker agent — either in parallel when the sub-tasks are independent or in sequence when they depend on one another. Workers never talk to each other directly; everything flows through the supervisor, which keeps the run observable and gives you a single point of control.</p>
 
                 <pre><code>flowchart TD
-    U[Operator / CLI] --> O[shai orchestrator]
-    O --> W1[Worker agent: discovery]
-    O --> W2[Worker agent: action]
-    O --> R[Reviewer agent]
-    W1 --> O
-    W2 --> O
-    R --> O
-    O --> U</code></pre>
-                <p class="caption">The orchestrator is the hub: it delegates to workers, routes results through a reviewer, and reports back to the operator.</p>
+    U[Operator / CLI] --> S[CAO supervisor]
+    S --> W1[Worker agent: developer]
+    S --> W2[Worker agent: developer]
+    S --> R[Reviewer agent]
+    W1 --> S
+    W2 --> S
+    R --> S
+    S --> U</code></pre>
+                <p class="caption">The supervisor is the hub: it delegates to worker agents, routes results through a reviewer, and reports back to the operator.</p>
 
                 <p>Three things make this a defensible design rather than just a fan-out:</p>
                 <ul>
-                    <li><strong>A single coordinator.</strong> One orchestrator holds the plan, so there is exactly one place that decides what runs next and when to stop.</li>
-                    <li><strong>Isolated workers.</strong> Each worker gets a narrow task and a scoped set of tools, so a mistake in one worker cannot cascade into another.</li>
-                    <li><strong>A review gate.</strong> Mutating results pass through a reviewer before the orchestrator accepts them, keeping a human-aligned check in the loop.</li>
+                    <li><strong>A single coordinator.</strong> One supervisor holds the plan, so there is exactly one place that decides what runs next and when to stop.</li>
+                    <li><strong>Isolated workers.</strong> Each worker runs as its own provider CLI process in an isolated terminal session with an <code>allowedTools</code> scope sized to its task, so a mistake in one worker cannot cascade into another.</li>
+                    <li><strong>A review gate.</strong> Mutating work passes through a <code>role: reviewer</code> agent before the supervisor accepts it, keeping a human-aligned check in the loop.</li>
                 </ul>
 
                 <h2>Agent Roles</h2>
-                <p>A shai run is made up of three kinds of agent. Each has one job and a permission scope sized to that job.</p>
+                <p>A CAO run is made up of three kinds of agent, each backed by a built-in profile (<code>code_supervisor.md</code>, <code>developer.md</code>, <code>reviewer.md</code>). Each has one job and an <code>allowedTools</code> scope sized to that job.</p>
                 <table>
                     <thead>
-                        <tr><th>Role</th><th>Responsibility</th><th>Typical tool scope</th></tr>
+                        <tr><th>Role (<code>role:</code>)</th><th>Responsibility</th><th>Typical tool scope</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><strong>Orchestrator</strong></td><td>Owns the top-level goal, plans and sequences sub-tasks, delegates to workers, aggregates results, decides when to stop.</td><td>No host tools; delegation only</td></tr>
-                        <tr><td><strong>Worker</strong></td><td>Executes one delegated sub-task (discover, start, stop, back up, modify) and returns a structured result.</td><td>Scoped <code>read</code> / <code>write</code> / <code>bash</code> as the task requires</td></tr>
-                        <tr><td><strong>Reviewer</strong></td><td>Inspects a worker's proposed mutating action and approves or rejects it before the orchestrator applies it.</td><td><code>read</code> only</td></tr>
+                        <tr><td><strong>supervisor</strong> (<code>code_supervisor</code>)</td><td>Owns the top-level goal, breaks it into sub-tasks, delegates each to a worker, routes mutating work through the reviewer, aggregates results, and decides when the job is done. Never writes code itself.</td><td>Coordination only: <code>@cao-mcp-server</code>, <code>fs_read</code>, <code>fs_list</code>; delegates via <code>delegateTools</code> (defaults to <code>["*"]</code>)</td></tr>
+                        <tr><td><strong>worker — developer</strong> (<code>developer</code>)</td><td>Executes one delegated, self-contained sub-task — implements the scoped change — and returns a structured result to the supervisor.</td><td>Read/write/run: <code>fs_*</code>, <code>execute_bash</code>, <code>@cao-mcp-server</code> (@builtin), scoped per sub-task</td></tr>
+                        <tr><td><strong>worker — reviewer</strong> (<code>reviewer</code>)</td><td>Inspects a worker's proposed mutating action for correctness, quality, and safety, then approves or rejects it before the supervisor accepts the change.</td><td>Read-only: <code>fs_read</code>, <code>fs_list</code>, <code>@cao-mcp-server</code> (@builtin)</td></tr>
                     </tbody>
                 </table>
                 <div class="alert alert-info">
-                    <strong>Governance:</strong> the orchestrator deliberately holds <em>no</em> host tools. It can only delegate. Powerful grants like <code>write</code> and <code>bash</code> live on individual workers and are scoped per sub-task, so the blast radius of any one agent stays small.
+                    <strong>Governance:</strong> the supervisor deliberately holds no host write or run tools — it coordinates and delegates. Powerful grants like <code>fs_write</code> and <code>execute_bash</code> live on the developer worker and are scoped per sub-task through <code>allowedTools</code>, while <code>delegateTools</code> caps what the supervisor may hand down, so the blast radius of any one agent stays small.
                 </div>
 
                 <h2>The Delegation Model</h2>
-                <p>Delegation is the heart of shai. The operator hands the orchestrator a goal; the orchestrator decides which worker should handle each piece and passes a self-contained task down. A delegated task carries everything the worker needs and nothing it does not:</p>
+                <p>Delegation is the heart of CAO. The operator hands the supervisor a goal; the supervisor decides which worker should handle each piece and delegates a self-contained sub-task down. A delegated sub-task carries everything the worker needs and nothing it does not:</p>
                 <ul>
                     <li><strong>A goal statement</strong> — the one thing this worker must accomplish.</li>
                     <li><strong>Scoped inputs</strong> — only the data relevant to the sub-task.</li>
-                    <li><strong>A tool grant</strong> — the minimal set of tools for that sub-task.</li>
-                    <li><strong>A return contract</strong> — the structured result the orchestrator expects back.</li>
+                    <li><strong>A tool grant</strong> — the minimal set of tools for that sub-task, bounded by the supervisor's <code>delegateTools</code> ceiling.</li>
+                    <li><strong>A return contract</strong> — the structured result the supervisor expects back.</li>
                 </ul>
-                <p>The lifecycle of a single delegated task looks like this:</p>
+                <p>A worker runs its sub-task and returns a structured result to the supervisor. When the work is <em>mutating</em> — it changes files or state — the supervisor routes that result through a reviewer agent before accepting it; a read-only sub-task returns straight to the supervisor. The lifecycle of a single delegated task looks like this:</p>
                 <pre><code>sequenceDiagram
-    Operator->>Orchestrator: goal
-    Orchestrator->>Worker: delegate(sub-task, scoped tools)
+    Operator->>Supervisor: goal
+    Supervisor->>Worker: delegate(sub-task, scoped tools)
     Worker->>Worker: run sub-task
-    Worker-->>Orchestrator: structured result
-    Orchestrator->>Reviewer: review(result) if mutating
-    Reviewer-->>Orchestrator: approve / reject
-    Orchestrator-->>Operator: aggregated outcome</code></pre>
-                <p class="caption">A read-only sub-task returns straight to the orchestrator; a mutating one is routed through the reviewer first.</p>
-                <p>Because the orchestrator is the only agent that sees the whole plan, it is also the only place that enforces operational limits — maximum sub-tasks, retry ceilings, and a wall-clock timeout for the run. Those limits are the orchestrator-level form of the stopping criteria you met earlier in the course.</p>
+    Worker-->>Supervisor: structured result
+    Supervisor->>Reviewer: review(result) if mutating
+    Reviewer-->>Supervisor: approve / reject
+    Supervisor-->>Operator: aggregated outcome</code></pre>
+                <p class="caption">A read-only sub-task returns straight to the supervisor; a mutating one is routed through the reviewer first.</p>
+                <p>Because the supervisor is the only agent that sees the whole plan, it is also the only place that enforces operational limits — it sequences sub-tasks, retries failed delegations, and decides when the goal is met or a limit is hit. Those supervisor-loop controls are the orchestration-level form of the stopping criteria you met earlier in the course.</p>
 
-                <h2>Step-by-Step: Driving shai from the CLI</h2>
-                <p>The commands below walk through one orchestrated run end to end. They are illustrative — adapt the paths and names to your own environment.</p>
+                <h2>Step-by-Step: Core Supervisor Loop</h2>
+                <p>The steps below walk through one supervisor loop end to end against your own project. Run every command yourself: install CAO, start the server, launch a supervisor from your project directory, delegate a small task, watch it run, and shut it down. Wherever you see <code>/path/to/your/project</code>, substitute the absolute path to the project you want the supervisor to work in.</p>
 
-                <h3>Step 1 — Check the orchestrator is available</h3>
-                <p>Confirm the CLI is on your path and reports a version before you do anything else.</p>
-                <pre><code>shai --version
-shai orchestrator status</code></pre>
+                <h3>Step 1 — Install CAO and verify</h3>
+                <p>Install the <code>cao</code> command line tool with <code>uv</code>, then confirm it is on your path by printing its help.</p>
+                <pre><code>uv tool install git+https://github.com/awslabs/cli-agent-orchestrator.git@main --upgrade
+cao --help</code></pre>
 
-                <h3>Step 2 — Point shai at an orchestrator configuration</h3>
-                <p>The orchestrator is defined by one config file (shown in full in the next section). Validate it before you launch so a typo fails loudly rather than mid-run.</p>
-                <pre><code>shai orchestrator validate --config ./orchestrator.config.json</code></pre>
+                <h3>Step 2 — Install the supervisor agent</h3>
+                <p>Install the built-in supervisor profile so <code>cao launch</code> can start it.</p>
+                <pre><code>cao install code_supervisor</code></pre>
 
-                <h3>Step 3 — Launch a run with a goal</h3>
-                <p>Hand the orchestrator a single top-level goal. The orchestrator plans the sub-tasks and delegates them to workers itself — you do not call the workers directly.</p>
-                <pre><code>shai orchestrator run \
-  --config ./orchestrator.config.json \
-  --goal "Discover running containers and report probable agents" \
-  --max-subtasks 6</code></pre>
+                <h3>Step 3 — Start the server (Terminal A)</h3>
+                <p>In a dedicated terminal, start <code>cao-server</code>. This is a long-running process that starts each provider CLI in its own isolated tmux terminal session — leave it running for the rest of the lab.</p>
+                <pre><code>cao-server</code></pre>
 
-                <h3>Step 4 — Watch delegation in real time</h3>
-                <p>Follow the run so you can see each sub-task delegated, each worker result returned, and each review decision as it happens.</p>
-                <pre><code>shai orchestrator logs --follow --run-id latest</code></pre>
+                <h3>Step 4 — Launch the supervisor (Terminal B)</h3>
+                <p>In a separate terminal, change into your project directory and launch the supervisor. This attaches you to the supervisor's session so you can talk to it directly.</p>
+                <pre><code>cd /path/to/your/project && cao launch --agents code_supervisor</code></pre>
 
-                <h3>Step 5 — Read the aggregated outcome</h3>
-                <p>When the orchestrator decides the goal is met (or a limit is hit), it prints one aggregated report combining every worker result.</p>
-                <pre><code>shai orchestrator report --run-id latest</code></pre>
+                <h3>Step 5 — Delegate a small task</h3>
+                <p>In the attached supervisor session, type a short goal — keep it small and reviewable, for example asking the supervisor to make one small, well-scoped change to your project. The supervisor breaks the goal into sub-tasks and delegates them to a worker agent; you do not call the worker directly.</p>
 
-                <h3>Step 6 — Stop a run if needed</h3>
-                <p>The kill switch halts the orchestrator and every worker it delegated to, in one command.</p>
-                <pre><code>shai orchestrator stop --run-id latest</code></pre>
+                <h3>Step 6 — Observe the run</h3>
+                <p>Watch the delegation happen in two places: the attached launch terminal shows the supervisor and worker activity as it unfolds, and the Web UI at <code>http://localhost:9889</code> gives you a visual view of the sessions and the delegation between them.</p>
+
+                <h3>Step 7 — Shut down</h3>
+                <p>When you are done, shut the run down. Stop a single named session, or tear down every session at once.</p>
+                <pre><code>cao shutdown --session {session-name}
+cao shutdown --all</code></pre>
                 <div class="alert alert-info">
-                    <strong>Governance:</strong> <code>stop</code> is your single reliable kill switch. Because workers only ever run under the orchestrator, stopping the orchestrator tears down the whole run — there are no orphaned workers to chase down separately.
+                    <strong>Governance:</strong> <code>cao shutdown</code> is your kill switch. <code>cao shutdown --session {session-name}</code> stops one session; <code>cao shutdown --all</code> tears down every session CAO is running. Because workers only run under the supervisor's session, shutting down stops the supervisor and its workers together — there are no orphaned agents to chase down separately.
                 </div>
 
-                <h2>Example Orchestrator Configuration</h2>
-                <p>The orchestrator is defined entirely by one JSON file. It names the orchestrator, picks the model that plans for it, declares the worker and reviewer agents it may delegate to, and sets the operational limits for a run. Here is the full illustrative file, which we then open field by field.</p>
-                <pre><code>{
-  "name": "opcp-explorer-orchestrator",
-  "description": "shai multi-agent orchestrator that plans a goal, delegates sub-tasks to scoped workers, and routes mutating actions through a reviewer.",
-  "llm_provider": {
-    "provider": "ovhcloud",
-    "model": "Qwen3.5-397B-A17B",
-    "mode": "FunctionCall"
-  },
-  "orchestrator": {
-    "max_subtasks": 6,
-    "max_retries_per_subtask": 2,
-    "run_timeout_seconds": 600,
-    "require_review_for_mutating": true
-  },
-  "agents": {
-    "discovery-worker": {
-      "role": "worker",
-      "system_prompt": "Discover the containers on the platform and return a structured list.",
-      "tools": ["read", "bash"]
-    },
-    "action-worker": {
-      "role": "worker",
-      "system_prompt": "Apply the single action delegated to you and return the result.",
-      "tools": ["read", "write", "bash"]
-    },
-    "reviewer": {
-      "role": "reviewer",
-      "system_prompt": "Inspect the proposed mutating action and approve or reject it.",
-      "tools": ["read"]
-    }
-  }
-}</code></pre>
+                <h2>Example CAO Agent Profiles</h2>
+                <p>A CAO agent is not a JSON blob — it is a Markdown file with a YAML frontmatter header and a Markdown body. The frontmatter declares the agent's identity and its governance envelope (who it is, what provider backs it, which tools it may use, and how much it may hand down to workers); the body is the system prompt that tells the agent how to behave. Here are two real profiles — a supervisor and a developer worker — which we then open field by field.</p>
 
-                <h3>Identity: <code>name</code> and <code>description</code></h3>
-                <p>The <code>name</code> labels the orchestrator in logs and audit trails; <code>description</code> states what it coordinates in one human-readable sentence. A stable name is what lets a reviewer trace a run back to the configuration that authorized it.</p>
+                <h3>Supervisor profile (<code>code_supervisor.md</code>)</h3>
+                <pre><code>---
+name: code_supervisor
+description: Coding Supervisor Agent in a multi-agent system
+role: supervisor
+provider: kiro_cli
+delegateTools: ["*"]
+---
 
-                <h3><code>llm_provider</code></h3>
-                <p>The <code>llm_provider</code> block picks the model that <em>plans</em> for the orchestrator — provider <code>ovhcloud</code>, model <code>Qwen3.5-397B-A17B</code>, mode <code>FunctionCall</code>. In <code>FunctionCall</code> mode the orchestrator can issue delegation calls to its worker agents rather than only emitting text.</p>
+You are the Coding Supervisor. You never write code yourself. You break a
+goal into sub-tasks, delegate each to a worker agent, route mutating work
+through the reviewer, and decide when the job is done.</code></pre>
 
-                <h3>The <code>orchestrator</code> limits block</h3>
-                <p>This block is the orchestrator-level stopping criteria. <code>max_subtasks</code> caps how many pieces a goal can be split into; <code>max_retries_per_subtask</code> bounds how often a failed sub-task is retried; <code>run_timeout_seconds</code> sets a wall-clock ceiling for the whole run; and <code>require_review_for_mutating</code> forces every mutating worker result through the reviewer before the orchestrator applies it.</p>
+                <h3>Worker profile (<code>developer.md</code>)</h3>
+                <pre><code>---
+name: developer
+description: Developer Agent in a multi-agent system
+role: developer
+provider: kiro_cli
+allowedTools: ["fs_read", "fs_write", "execute_bash", "@cao-mcp-server"]
+---
+
+You are a Developer agent. Implement the single scoped sub-task delegated to
+you and return a structured result.</code></pre>
+
+                <h3><code>name</code></h3>
+                <p><strong>Governance decision:</strong> the <code>name</code> is the agent's stable identifier — it is how the profile shows up in logs and audit trails, and it is the handle you pass to <code>cao install</code> and to <code>cao launch --agents</code>. A stable, meaningful name is what lets a reviewer trace a run back to the exact profile that authorized it.</p>
+
+                <h3><code>role</code></h3>
+                <p><strong>Governance decision:</strong> the <code>role</code> is a named permission preset — allowed values are <code>supervisor</code>, <code>developer</code>, and <code>reviewer</code>. Choosing a role is choosing a default <code>allowedTools</code> bundle: a supervisor coordinates and delegates, a developer gets read/write/execute to do scoped work, and a reviewer is read-only by design. The role is the coarse-grained governance control you set before you tune anything else.</p>
+
+                <h3><code>provider</code></h3>
+                <p><strong>Governance decision:</strong> <code>provider</code> picks which authenticated provider CLI backs the agent — here <code>kiro_cli</code>, the default Kiro CLI. Because agents remain full CLI processes with native authentication, the provider you name is the identity and credentials the agent's actions run under, so it belongs in the audit story alongside the tool grants.</p>
+
+                <h3><code>allowedTools</code></h3>
+                <p><strong>Governance decision:</strong> <code>allowedTools</code> is the explicit tool allowlist for the agent itself, and it overrides the role's defaults. It is the concrete expression of least privilege: the developer above is granted exactly <code>fs_read</code>, <code>fs_write</code>, <code>execute_bash</code>, and the <code>@cao-mcp-server</code> tools — nothing more. If a sub-task does not need to write files or run commands, do not list those tools in the profile that runs it.</p>
                 <div class="alert alert-info">
-                    <strong>Governance:</strong> <code>require_review_for_mutating: true</code> is the review gate from the architecture diagram made concrete. Leaving it on keeps a check between a worker proposing a change and that change taking effect — do not turn it off for anything that writes, starts, stops, or deletes.
+                    <strong>Governance:</strong> the role sets a sensible default, but <code>allowedTools</code> is where you make least privilege explicit. Narrow the list to exactly what the agent needs; an allowlist you can read at a glance is an allowlist a reviewer can approve.
                 </div>
 
-                <h3>The <code>agents</code> map</h3>
-                <p>Each entry names an agent the orchestrator may delegate to, declares its <code>role</code> (worker or reviewer), gives it a one-line <code>system_prompt</code> scoping its job, and grants it a minimal <code>tools</code> set. Note the pattern: the discovery worker is read-mostly (<code>read</code>, <code>bash</code>), the action worker is the only one granted <code>write</code>, and the reviewer is <code>read</code>-only by design.</p>
+                <h3><code>delegateTools</code></h3>
+                <p><strong>Governance decision:</strong> <code>delegateTools</code> is the <em>delegation ceiling</em> — the most an agent may grant to the workers it creates, never more than this regardless of what a worker's own profile asks for. It defaults to <code>["*"]</code> for <code>role: supervisor</code> (a supervisor may hand down any tool it is itself allowed) and to the agent's own <code>allowedTools</code> for every other role. The supervisor above keeps the explicit <code>delegateTools: ["*"]</code>; the developer worker does not set one, so its ceiling is simply its own <code>allowedTools</code>.</p>
                 <div class="alert alert-info">
-                    <strong>Governance:</strong> the tool grants here are least privilege in action. Only the <code>action-worker</code> can change the platform, and even its changes must clear the reviewer. If a sub-task does not need <code>write</code> or <code>bash</code>, do not grant them to the agent that runs it.
+                    <strong>Governance:</strong> <code>delegateTools</code> is how you cap blast radius across a whole delegation tree. Lowering a supervisor's <code>delegateTools</code> below <code>["*"]</code> guarantees that no worker it spawns can exceed that bound — the ceiling is enforced on delegation, not on trust. A reviewer-role agent (from <code>reviewer.md</code>, read-only <code>allowedTools</code>) is what the supervisor routes mutating work through before accepting it.
                 </div>
+
+                <h2>Governance Mapping</h2>
+                <p>The governance vocabulary from earlier in the course is not abstract here — each concept maps onto a concrete CAO mechanism you have already seen in this lab.</p>
+                <ul>
+                    <li><strong>Least privilege → <code>allowedTools</code> / <code>delegateTools</code>.</strong> <code>allowedTools</code> sizes each agent's own tool grant down to exactly what its task needs, and <code>delegateTools</code> caps the most a supervisor may hand down to the workers it creates. Together they keep every agent's blast radius as small as the work allows.</li>
+                    <li><strong>Review gate → a <code>role: reviewer</code> agent.</strong> Mutating work is routed through a CAO reviewer-role agent (from <code>reviewer.md</code>, read-only <code>allowedTools</code>) that inspects the change before the supervisor accepts it, keeping a human-aligned check in the loop.</li>
+                    <li><strong>Kill switch → <code>cao shutdown</code>.</strong> <code>cao shutdown --session {session-name}</code> stops one named session and <code>cao shutdown --all</code> tears down every session CAO is running — a single, decisive way to halt a run.</li>
+                    <li><strong>Operational limits → supervisor-loop controls.</strong> The supervisor is the single coordinator that sequences sub-tasks, retries failed delegations, and decides when the goal is met or a limit is hit; tool restrictions bound each worker's blast radius. Those are the real, enforced limits of a CAO run.</li>
+                </ul>
 
                 <h2>Key Takeaways</h2>
                 <ul>
-                    <li>shai is an orchestrator that coordinates specialized agents toward one goal — not a single agent.</li>
-                    <li>Three roles: an orchestrator that plans and delegates, workers that execute scoped sub-tasks, and a reviewer that gates mutating actions.</li>
-                    <li>Delegation carries a goal, scoped inputs, a minimal tool grant, and a return contract — nothing more.</li>
-                    <li>You drive a run from the CLI: validate the config, launch with a goal, follow the logs, read the report, and stop with the kill switch.</li>
-                    <li>Operational limits and the review gate live in the orchestrator config, making the whole run observable and bounded.</li>
+                    <li>CAO coordinates several provider CLIs as a team through a supervisor — it is an orchestration layer, not a single agent.</li>
+                    <li>Three roles: a supervisor that plans and delegates, a worker (developer) that executes scoped sub-tasks, and a reviewer that gates mutating work.</li>
+                    <li>A delegation carries a goal, scoped inputs, a minimal tool grant (bounded by <code>delegateTools</code>), and a return contract — nothing more.</li>
+                    <li>You drive the core supervisor loop from the CLI: install CAO, start <code>cao-server</code>, launch the supervisor, delegate a small task, observe the run, and shut it down.</li>
+                    <li>Governance is concrete: least privilege lives in <code>allowedTools</code>/<code>delegateTools</code>, the review gate is a reviewer-role agent, and <code>cao shutdown</code> is the kill switch.</li>
                 </ul>
 
                 <div class="alert alert-info">
