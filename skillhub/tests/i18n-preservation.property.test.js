@@ -432,16 +432,20 @@ describe('Preservation - Property 2: renderSidebar is unchanged (Req 3.5)', () =
   });
 
   it('renderSidebar groups by track and applies localized titles for both locales (Req 3.5)', () => {
+    // After the quiz & sandbox restructure, the sidebar renders one top-level
+    // `.sidebar-section-title` (h2) per non-empty section in the fixed order
+    // section-1, section-2, section-3 (the former per-subsection titles moved
+    // to `.sidebar-subsection-title` h3s under Section I).
     const expectedTitles = {
       en: [
-        'Introduction & Fundamentals',
-        'Design & Governance',
-        'Sandbox — opcp-explorer Platform',
+        'Fundamentals & Governance',
+        'Quiz',
+        'Sandbox Labs',
       ],
       fr: [
-        'Matin — Introduction et fondamentaux',
-        'Conception et gouvernance',
-        'Bac à sable — plateforme opcp-explorer',
+        'Fondamentaux et gouvernance',
+        'Quiz',
+        'Bac à sable — travaux pratiques',
       ],
     };
 
@@ -457,7 +461,7 @@ describe('Preservation - Property 2: renderSidebar is unchanged (Req 3.5)', () =
       ).map((el) => el.textContent);
       expect(titles).toEqual(expectedTitles[locale]);
 
-      // Three non-empty track groups in the fixed order.
+      // Three non-empty section groups in the fixed order.
       expect(container.querySelectorAll('.sidebar-section').length).toBe(3);
     }
   });

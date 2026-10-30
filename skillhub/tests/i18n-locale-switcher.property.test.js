@@ -215,8 +215,8 @@ describe('Bug Condition - Property 1: index runtime paints the progress bar (For
   it('running the index runtime recomputes the progress bar from the live catalog (Req 1.4)', () => {
     // Record two completed lessons so the live catalog percentage is non-zero
     // and distinguishable from the static "0%" authored markup.
-    localStorage.setItem('skillhub_lesson_complete_install-bare-metal', 'true');
-    localStorage.setItem('skillhub_lesson_complete_adding-applications', 'true');
+    localStorage.setItem('skillhub_lesson_complete_assistant-vs-agent', 'true');
+    localStorage.setItem('skillhub_lesson_complete_running-applications-lab', 'true');
 
     document.body.innerHTML = INDEX_HEADER_MARKUP;
     restoreLocation = mockLocation('/en/');

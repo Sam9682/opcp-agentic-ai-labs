@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab: The shai Multi-Agent Orchestrator - Agentic AI OPCP Labs</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <a href="." class="logo" aria-label="Agentic AI OPCP Labs Home">
+            <span>Agentic AI OPCP Labs</span>
+        </a>
+
+        <div class="header-actions">
+            <div class="progress-bar-container" aria-label="Overall progress">
+                <span class="progress-label">Progress:</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-percent">0%</span>
+            </div>
+
+            <div class="locale-switcher" role="navigation" aria-label="Language selector">
+                <button class="active" data-locale="en" aria-label="English">EN</button>
+                <button data-locale="fr" aria-label="Français">FR</button>
+            </div>
+
+            <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
+        <div class="sidebar-section" data-section="section-3">
+            <h2 class="sidebar-section-title">Sandbox Labs</h2>
+            <ul class="sidebar-nav" id="nav-sandbox">
+                <li><a href="shai-orchestrator-lab.html" class="active">Lab: The shai Multi-Agent Orchestrator</a></li>
+                <li><a href="running-applications-lab.html">OPCP-EXPLORER Running Applications</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content" role="main">
+        <div class="lesson-content">
+            <div class="lesson-header">
+                <h1>Lab: The shai Multi-Agent Orchestrator</h1>
+                <div class="lesson-meta">
+                    <span class="difficulty-badge difficulty-badge--beginner">Sandbox · Orchestration</span>
+                    <span class="duration">⏱ ~40 min</span>
+                </div>
+            </div>
+            <div class="lesson-body">
+                <p>This guided lab introduces <strong>shai</strong>, the multi-agent orchestrator that drives work across the <strong>opcp-explorer</strong> agentic-ai-platform. You will learn how the orchestrator is put together, what each agent role is responsible for, how a task is delegated from the orchestrator down to a worker agent, and how to drive the whole thing from the command line. Every command and configuration snippet on this page is <strong>illustrative text only</strong> — read it to understand the shape of the system; this lesson ships no runnable scripts.</p>
+
+                <div class="alert alert-info">
+                    <strong>Read-only lab:</strong> the examples below show the commands and configuration you would use on a live platform. Nothing here executes. Treat the snippets as a reference you adapt in your own environment, where the <a href="guardrails-5-layers.html">five guardrail layers</a> apply.
+                </div>
+
+                <h2>Learning Objectives</h2>
+                <ul>
+                    <li>Describe the architecture of the shai multi-agent orchestrator and how its parts fit together.</li>
+                    <li>Name the agent roles — orchestrator, worker, and reviewer — and what each is responsible for.</li>
+                    <li>Explain the delegation model: how a task flows from the orchestrator to a worker and back.</li>
+                    <li>Follow step-by-step shai CLI instructions to configure, launch, and observe an orchestrated run.</li>
+                    <li>Read an example orchestrator configuration and understand each field as a governance decision.</li>
+                </ul>
+
+                <h2>Orchestrator Architecture</h2>
+                <p>shai is not a single agent — it is an <strong>orchestrator</strong> that coordinates several specialized agents toward one goal. The orchestrator owns the top-level task, breaks it into sub-tasks, hands each sub-task to a worker agent, collects the results, and decides when the overall job is done. Workers never talk to each other directly; everything flows through the orchestrator, which keeps the run observable and gives you a single point of control.</p>
+
+                <pre><code>flowchart TD
+    U[Operator / CLI] --> O[shai orchestrator]
+    O --> W1[Worker agent: discovery]
+    O --> W2[Worker agent: action]
+    O --> R[Reviewer agent]
+    W1 --> O
+    W2 --> O
+    R --> O
+    O --> U</code></pre>
+                <p class="caption">The orchestrator is the hub: it delegates to workers, routes results through a reviewer, and reports back to the operator.</p>
+
+                <p>Three things make this a defensible design rather than just a fan-out:</p>
+                <ul>
+                    <li><strong>A single coordinator.</strong> One orchestrator holds the plan, so there is exactly one place that decides what runs next and when to stop.</li>
+                    <li><strong>Isolated workers.</strong> Each worker gets a narrow task and a scoped set of tools, so a mistake in one worker cannot cascade into another.</li>
+                    <li><strong>A review gate.</strong> Mutating results pass through a reviewer before the orchestrator accepts them, keeping a human-aligned check in the loop.</li>
+                </ul>
+
+                <h2>Agent Roles</h2>
+                <p>A shai run is made up of three kinds of agent. Each has one job and a permission scope sized to that job.</p>
+                <table>
+                    <thead>
+                        <tr><th>Role</th><th>Responsibility</th><th>Typical tool scope</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Orchestrator</strong></td><td>Owns the top-level goal, plans and sequences sub-tasks, delegates to workers, aggregates results, decides when to stop.</td><td>No host tools; delegation only</td></tr>
+                        <tr><td><strong>Worker</strong></td><td>Executes one delegated sub-task (discover, start, stop, back up, modify) and returns a structured result.</td><td>Scoped <code>read</code> / <code>write</code> / <code>bash</code> as the task requires</td></tr>
+                        <tr><td><strong>Reviewer</strong></td><td>Inspects a worker's proposed mutating action and approves or rejects it before the orchestrator applies it.</td><td><code>read</code> only</td></tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-info">
+                    <strong>Governance:</strong> the orchestrator deliberately holds <em>no</em> host tools. It can only delegate. Powerful grants like <code>write</code> and <code>bash</code> live on individual workers and are scoped per sub-task, so the blast radius of any one agent stays small.
+                </div>
+
+                <h2>The Delegation Model</h2>
+                <p>Delegation is the heart of shai. The operator hands the orchestrator a goal; the orchestrator decides which worker should handle each piece and passes a self-contained task down. A delegated task carries everything the worker needs and nothing it does not:</p>
+                <ul>
+                    <li><strong>A goal statement</strong> — the one thing this worker must accomplish.</li>
+                    <li><strong>Scoped inputs</strong> — only the data relevant to the sub-task.</li>
+                    <li><strong>A tool grant</strong> — the minimal set of tools for that sub-task.</li>
+                    <li><strong>A return contract</strong> — the structured result the orchestrator expects back.</li>
+                </ul>
+                <p>The lifecycle of a single delegated task looks like this:</p>
+                <pre><code>sequenceDiagram
+    Operator->>Orchestrator: goal
+    Orchestrator->>Worker: delegate(sub-task, scoped tools)
+    Worker->>Worker: run sub-task
+    Worker-->>Orchestrator: structured result
+    Orchestrator->>Reviewer: review(result) if mutating
+    Reviewer-->>Orchestrator: approve / reject
+    Orchestrator-->>Operator: aggregated outcome</code></pre>
+                <p class="caption">A read-only sub-task returns straight to the orchestrator; a mutating one is routed through the reviewer first.</p>
+                <p>Because the orchestrator is the only agent that sees the whole plan, it is also the only place that enforces operational limits — maximum sub-tasks, retry ceilings, and a wall-clock timeout for the run. Those limits are the orchestrator-level form of the stopping criteria you met earlier in the course.</p>
+
+                <h2>Step-by-Step: Driving shai from the CLI</h2>
+                <p>The commands below walk through one orchestrated run end to end. They are illustrative — adapt the paths and names to your own environment.</p>
+
+                <h3>Step 1 — Check the orchestrator is available</h3>
+                <p>Confirm the CLI is on your path and reports a version before you do anything else.</p>
+                <pre><code>shai --version
+shai orchestrator status</code></pre>
+
+                <h3>Step 2 — Point shai at an orchestrator configuration</h3>
+                <p>The orchestrator is defined by one config file (shown in full in the next section). Validate it before you launch so a typo fails loudly rather than mid-run.</p>
+                <pre><code>shai orchestrator validate --config ./orchestrator.config.json</code></pre>
+
+                <h3>Step 3 — Launch a run with a goal</h3>
+                <p>Hand the orchestrator a single top-level goal. The orchestrator plans the sub-tasks and delegates them to workers itself — you do not call the workers directly.</p>
+                <pre><code>shai orchestrator run \
+  --config ./orchestrator.config.json \
+  --goal "Discover running containers and report probable agents" \
+  --max-subtasks 6</code></pre>
+
+                <h3>Step 4 — Watch delegation in real time</h3>
+                <p>Follow the run so you can see each sub-task delegated, each worker result returned, and each review decision as it happens.</p>
+                <pre><code>shai orchestrator logs --follow --run-id latest</code></pre>
+
+                <h3>Step 5 — Read the aggregated outcome</h3>
+                <p>When the orchestrator decides the goal is met (or a limit is hit), it prints one aggregated report combining every worker result.</p>
+                <pre><code>shai orchestrator report --run-id latest</code></pre>
+
+                <h3>Step 6 — Stop a run if needed</h3>
+                <p>The kill switch halts the orchestrator and every worker it delegated to, in one command.</p>
+                <pre><code>shai orchestrator stop --run-id latest</code></pre>
+                <div class="alert alert-info">
+                    <strong>Governance:</strong> <code>stop</code> is your single reliable kill switch. Because workers only ever run under the orchestrator, stopping the orchestrator tears down the whole run — there are no orphaned workers to chase down separately.
+                </div>
+
+                <h2>Example Orchestrator Configuration</h2>
+                <p>The orchestrator is defined entirely by one JSON file. It names the orchestrator, picks the model that plans for it, declares the worker and reviewer agents it may delegate to, and sets the operational limits for a run. Here is the full illustrative file, which we then open field by field.</p>
+                <pre><code>{
+  "name": "opcp-explorer-orchestrator",
+  "description": "shai multi-agent orchestrator that plans a goal, delegates sub-tasks to scoped workers, and routes mutating actions through a reviewer.",
+  "llm_provider": {
+    "provider": "ovhcloud",
+    "model": "Qwen3.5-397B-A17B",
+    "mode": "FunctionCall"
+  },
+  "orchestrator": {
+    "max_subtasks": 6,
+    "max_retries_per_subtask": 2,
+    "run_timeout_seconds": 600,
+    "require_review_for_mutating": true
+  },
+  "agents": {
+    "discovery-worker": {
+      "role": "worker",
+      "system_prompt": "Discover the containers on the platform and return a structured list.",
+      "tools": ["read", "bash"]
+    },
+    "action-worker": {
+      "role": "worker",
+      "system_prompt": "Apply the single action delegated to you and return the result.",
+      "tools": ["read", "write", "bash"]
+    },
+    "reviewer": {
+      "role": "reviewer",
+      "system_prompt": "Inspect the proposed mutating action and approve or reject it.",
+      "tools": ["read"]
+    }
+  }
+}</code></pre>
+
+                <h3>Identity: <code>name</code> and <code>description</code></h3>
+                <p>The <code>name</code> labels the orchestrator in logs and audit trails; <code>description</code> states what it coordinates in one human-readable sentence. A stable name is what lets a reviewer trace a run back to the configuration that authorized it.</p>
+
+                <h3><code>llm_provider</code></h3>
+                <p>The <code>llm_provider</code> block picks the model that <em>plans</em> for the orchestrator — provider <code>ovhcloud</code>, model <code>Qwen3.5-397B-A17B</code>, mode <code>FunctionCall</code>. In <code>FunctionCall</code> mode the orchestrator can issue delegation calls to its worker agents rather than only emitting text.</p>
+
+                <h3>The <code>orchestrator</code> limits block</h3>
+                <p>This block is the orchestrator-level stopping criteria. <code>max_subtasks</code> caps how many pieces a goal can be split into; <code>max_retries_per_subtask</code> bounds how often a failed sub-task is retried; <code>run_timeout_seconds</code> sets a wall-clock ceiling for the whole run; and <code>require_review_for_mutating</code> forces every mutating worker result through the reviewer before the orchestrator applies it.</p>
+                <div class="alert alert-info">
+                    <strong>Governance:</strong> <code>require_review_for_mutating: true</code> is the review gate from the architecture diagram made concrete. Leaving it on keeps a check between a worker proposing a change and that change taking effect — do not turn it off for anything that writes, starts, stops, or deletes.
+                </div>
+
+                <h3>The <code>agents</code> map</h3>
+                <p>Each entry names an agent the orchestrator may delegate to, declares its <code>role</code> (worker or reviewer), gives it a one-line <code>system_prompt</code> scoping its job, and grants it a minimal <code>tools</code> set. Note the pattern: the discovery worker is read-mostly (<code>read</code>, <code>bash</code>), the action worker is the only one granted <code>write</code>, and the reviewer is <code>read</code>-only by design.</p>
+                <div class="alert alert-info">
+                    <strong>Governance:</strong> the tool grants here are least privilege in action. Only the <code>action-worker</code> can change the platform, and even its changes must clear the reviewer. If a sub-task does not need <code>write</code> or <code>bash</code>, do not grant them to the agent that runs it.
+                </div>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>shai is an orchestrator that coordinates specialized agents toward one goal — not a single agent.</li>
+                    <li>Three roles: an orchestrator that plans and delegates, workers that execute scoped sub-tasks, and a reviewer that gates mutating actions.</li>
+                    <li>Delegation carries a goal, scoped inputs, a minimal tool grant, and a return contract — nothing more.</li>
+                    <li>You drive a run from the CLI: validate the config, launch with a goal, follow the logs, read the report, and stop with the kill switch.</li>
+                    <li>Operational limits and the review gate live in the orchestrator config, making the whole run observable and bounded.</li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <strong>Next:</strong> <a href="running-applications-lab.html">OPCP-EXPLORER Running Applications</a> — put these roles to work across the full set of hands-on operations.
+                </div>
+            </div>
+
+            <button class="btn btn-success btn-mark-complete" data-lesson-id="shai-orchestrator-lab">
+                Mark as Complete
+            </button>
+        </div>
+    </main>
+
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" defer src="../assets/js/diagrams.js"></script>
+</body>
+</html>

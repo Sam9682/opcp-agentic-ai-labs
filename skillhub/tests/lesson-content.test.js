@@ -10,16 +10,22 @@ const SKILLHUB_ROOT = resolve(__dirname, '..');
 /**
  * Slugs of the authored agentic lessons that must exist as bilingual HTML.
  * Extended as each authoring task lands:
- *   - Task 2: morning fundamentals (below)
- *   - Task 5/7/8: afternoon lessons
+ *   - Section I.1: introduction & fundamentals (below)
+ *   - Section I.2: design & governance
+ *   - Section III: sandbox labs (shai orchestrator + running applications)
+ *
+ * The seven retired sandbox lessons (install-bare-metal, starting-applications,
+ * stopping-applications, making-backups, modifying-applications, agent-control,
+ * adding-applications) are intentionally absent — they were consolidated into
+ * `running-applications-lab`.
  */
 export const AUTHORED_SLUGS = [
-  // Morning — fundamentals
+  // Section I.1 — introduction & fundamentals
   'assistant-vs-agent',
   'agent-anatomy-7-components',
   'agentic-loop-and-variants',
   'stopping-criteria',
-  // Afternoon — design & governance
+  // Section I.2 — design & governance
   'multi-agent-patterns',
   'when-not-multi-agent',
   'guardrails-5-layers',
@@ -27,6 +33,9 @@ export const AUTHORED_SLUGS = [
   'threat-modeling-workshop',
   'agent-design-capstone',
   'configuring-shai-mcp-opcp-explorer',
+  // Section III — sandbox labs
+  'shai-orchestrator-lab',
+  'running-applications-lab',
 ];
 
 function lessonPath(locale, slug) {

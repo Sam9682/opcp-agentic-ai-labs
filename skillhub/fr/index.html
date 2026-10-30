@@ -35,37 +35,37 @@
     </header>
 
     <aside class="sidebar" role="navigation" aria-label="Navigation des leçons">
-        <div class="sidebar-section" data-track="morning">
-            <h2 class="sidebar-section-title">Matin — Introduction et fondamentaux</h2>
-            <ul class="sidebar-nav" id="nav-morning">
+        <div class="sidebar-section" data-section="section-1">
+            <h2 class="sidebar-section-title">Fondamentaux et gouvernance</h2>
+            <h3 class="sidebar-subsection-title">Introduction et fondamentaux</h3>
+            <ul class="sidebar-nav">
                 <li><a href="assistant-vs-agent.html">De l'assistant à l'agent</a></li>
-                <li><a href="agent-anatomy-7-components.html">Anatomie : les sept composants</a></li>
+                <li><a href="agent-anatomy-7-components.html">Anatomie : les sept composants clés</a></li>
                 <li><a href="agentic-loop-and-variants.html">La boucle agentique et ses variantes</a></li>
                 <li><a href="stopping-criteria.html">Critères d'arrêt</a></li>
             </ul>
-        </div>
-        <div class="sidebar-section" data-track="afternoon">
-            <h2 class="sidebar-section-title">Conception et gouvernance</h2>
+            <h3 class="sidebar-subsection-title">Conception et gouvernance</h3>
             <ul class="sidebar-nav" id="nav-afternoon">
                 <li><a href="multi-agent-patterns.html">Patrons multi-agents</a></li>
-                <li><a href="when-not-multi-agent.html">Quand éviter le multi-agents</a></li>
-                <li><a href="guardrails-5-layers.html">Garde-fous : cinq couches</a></li>
-                <li><a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop et politique IA OVHcloud</a></li>
+                <li><a href="when-not-multi-agent.html">Quand ne pas passer au multi-agents</a></li>
+                <li><a href="guardrails-5-layers.html">Garde-fous : les cinq couches</a></li>
+                <li><a href="human-in-the-loop-ovhcloud-policy.html">Supervision humaine et politique IA OVHcloud</a></li>
                 <li><a href="threat-modeling-workshop.html">Atelier : modélisation des menaces</a></li>
-                <li><a href="agent-design-capstone.html">Projet final : conception d'agent</a></li>
+                <li><a href="agent-design-capstone.html">Projet de synthèse : conception d'agent</a></li>
                 <li><a href="configuring-shai-mcp-opcp-explorer.html">Configurer un agent SHAI avec MCP vers OPCP-EXPLORER</a></li>
             </ul>
         </div>
-        <div class="sidebar-section" data-track="sandbox">
-            <h2 class="sidebar-section-title">Bac à sable — plateforme opcp-explorer</h2>
-            <ul class="sidebar-nav" id="nav-sandbox">
-                <li><a href="install-bare-metal.html">Installation sur Ubuntu Bare-Metal avec l'IA agentique</a></li>
-                <li><a href="starting-applications.html">Démarrage des applications avec l'IA agentique</a></li>
-                <li><a href="stopping-applications.html">Arrêt des applications avec l'IA agentique</a></li>
-                <li><a href="making-backups.html">Sauvegardes avec l'IA agentique</a></li>
-                <li><a href="modifying-applications.html">Modification d'applications avec l'IA agentique</a></li>
-                <li><a href="agent-control.html">Contrôle des agents IA</a></li>
-                <li><a href="adding-applications.html">Ajout de nouvelles applications avec l'IA agentique (Annexe – facultatif)</a></li>
+        <div class="sidebar-section" data-section="section-2">
+            <h2 class="sidebar-section-title">Quiz</h2>
+            <ul class="sidebar-nav">
+                <li><a href="quiz-fundamentals.html">Quiz fondamentaux et gouvernance</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-section="section-3">
+            <h2 class="sidebar-section-title">Bac à sable — travaux pratiques</h2>
+            <ul class="sidebar-nav">
+                <li><a href="shai-orchestrator-lab.html">Atelier : l'orchestrateur multi-agents shai</a></li>
+                <li><a href="running-applications-lab.html">Atelier : exploitation des applications OPCP-EXPLORER</a></li>
             </ul>
         </div>
     </aside>
@@ -89,46 +89,46 @@
                 </section>
 
                 <h2>Programme</h2>
-                <p>La session est organisée en deux parcours, plus un bac à sable de référence :</p>
+                <p>La session est organisée en trois sections :</p>
                 <ul>
-                    <li><strong>Introduction et fondamentaux (90 premières minutes)</strong> — Assistant vs agent et le spectre d'autonomie, les sept composants essentiels, la boucle Penser → Agir → Observer et ses variantes (ReAct, Plan-and-Execute, Reflexion), les critères d'arrêt, et un atelier pratique de lecture de trace.</li>
-                    <li><strong>Conception et gouvernance (90 dernières minutes)</strong> — Patrons multi-agents et communication inter-agents, quand éviter le multi-agents, les cinq couches de garde-fous, la gouvernance human-in-the-loop et la politique IA OVHcloud, ainsi que deux ateliers : modélisation des menaces et projet final de conception d'agent de bout en bout.</li>
-                    <li><strong>Bac à sable — opcp-explorer</strong> — Opérations de la plateforme (déployer, démarrer, arrêter, modifier, sauvegarder des applications) que votre agent orchestre comme boîte à outils.</li>
+                    <li><strong>I. Fondamentaux et gouvernance</strong> — Deux sous-sections. <em>I.1 Introduction et fondamentaux</em> : assistant vs agent et le spectre d'autonomie, les sept composants essentiels, la boucle Penser → Agir → Observer et ses variantes (ReAct, Plan-and-Execute, Reflexion), les critères d'arrêt. <em>I.2 Conception et gouvernance</em> : patrons multi-agents et communication inter-agents, quand éviter le multi-agents, les cinq couches de garde-fous, la gouvernance human-in-the-loop et la politique IA OVHcloud, les ateliers de modélisation des menaces et de projet final, ainsi que la configuration d'un agent SHAI.</li>
+                    <li><strong>II. Quiz</strong> — Un quiz de validation portant sur les fondamentaux et la gouvernance, à passer une fois la section I terminée.</li>
+                    <li><strong>III. Bac à sable — travaux pratiques</strong> — Deux ateliers pratiques sur opcp-explorer : l'orchestrateur multi-agents shai, puis l'exploitation des applications OPCP-EXPLORER (déployer, démarrer, arrêter, modifier, sauvegarder) que votre agent orchestre comme boîte à outils.</li>
                 </ul>
 
                 <section class="lesson-track">
-                    <h2 class="lesson-track__title">Matin — Introduction et fondamentaux</h2>
+                    <h2 class="lesson-track__title">I. Fondamentaux et gouvernance</h2>
+                    <h3 class="lesson-track__subtitle">I.1 Introduction et fondamentaux</h3>
                     <div class="lesson-card-grid">
                         <a class="lesson-card" href="assistant-vs-agent.html"><span class="lesson-card__title">De l'assistant à l'agent</span></a>
-                        <a class="lesson-card" href="agent-anatomy-7-components.html"><span class="lesson-card__title">Anatomie : les sept composants</span></a>
+                        <a class="lesson-card" href="agent-anatomy-7-components.html"><span class="lesson-card__title">Anatomie : les sept composants clés</span></a>
                         <a class="lesson-card" href="agentic-loop-and-variants.html"><span class="lesson-card__title">La boucle agentique et ses variantes</span></a>
                         <a class="lesson-card" href="stopping-criteria.html"><span class="lesson-card__title">Critères d'arrêt</span></a>
                     </div>
-                </section>
-
-                <section class="lesson-track">
-                    <h2 class="lesson-track__title">Conception et gouvernance</h2>
+                    <h3 class="lesson-track__subtitle">I.2 Conception et gouvernance</h3>
                     <div class="lesson-card-grid">
                         <a class="lesson-card" href="multi-agent-patterns.html"><span class="lesson-card__title">Patrons multi-agents</span></a>
-                        <a class="lesson-card" href="when-not-multi-agent.html"><span class="lesson-card__title">Quand éviter le multi-agents</span></a>
-                        <a class="lesson-card" href="guardrails-5-layers.html"><span class="lesson-card__title">Garde-fous : cinq couches</span></a>
-                        <a class="lesson-card" href="human-in-the-loop-ovhcloud-policy.html"><span class="lesson-card__title">Human-in-the-Loop et politique IA OVHcloud</span></a>
+                        <a class="lesson-card" href="when-not-multi-agent.html"><span class="lesson-card__title">Quand ne pas passer au multi-agents</span></a>
+                        <a class="lesson-card" href="guardrails-5-layers.html"><span class="lesson-card__title">Garde-fous : les cinq couches</span></a>
+                        <a class="lesson-card" href="human-in-the-loop-ovhcloud-policy.html"><span class="lesson-card__title">Supervision humaine et politique IA OVHcloud</span></a>
                         <a class="lesson-card" href="threat-modeling-workshop.html"><span class="lesson-card__title">Atelier : modélisation des menaces</span></a>
-                        <a class="lesson-card" href="agent-design-capstone.html"><span class="lesson-card__title">Projet final : conception d'agent</span></a>
+                        <a class="lesson-card" href="agent-design-capstone.html"><span class="lesson-card__title">Projet de synthèse : conception d'agent</span></a>
                         <a class="lesson-card" href="configuring-shai-mcp-opcp-explorer.html"><span class="lesson-card__title">Configurer un agent SHAI avec MCP vers OPCP-EXPLORER</span></a>
                     </div>
                 </section>
 
                 <section class="lesson-track">
-                    <h2 class="lesson-track__title">Bac à sable — plateforme opcp-explorer</h2>
+                    <h2 class="lesson-track__title">II. Quiz</h2>
                     <div class="lesson-card-grid">
-                        <a class="lesson-card" href="install-bare-metal.html"><span class="lesson-card__title">Installation sur Ubuntu Bare-Metal avec l'IA agentique</span></a>
-                        <a class="lesson-card" href="starting-applications.html"><span class="lesson-card__title">Démarrage des applications avec l'IA agentique</span></a>
-                        <a class="lesson-card" href="stopping-applications.html"><span class="lesson-card__title">Arrêt des applications avec l'IA agentique</span></a>
-                        <a class="lesson-card" href="making-backups.html"><span class="lesson-card__title">Sauvegardes avec l'IA agentique</span></a>
-                        <a class="lesson-card" href="modifying-applications.html"><span class="lesson-card__title">Modification d'applications avec l'IA agentique</span></a>
-                        <a class="lesson-card" href="agent-control.html"><span class="lesson-card__title">Contrôle des agents IA</span></a>
-                        <a class="lesson-card" href="adding-applications.html"><span class="lesson-card__title">Ajout de nouvelles applications avec l'IA agentique (Annexe – facultatif)</span></a>
+                        <a class="lesson-card" href="quiz-fundamentals.html"><span class="lesson-card__title">Quiz fondamentaux et gouvernance</span></a>
+                    </div>
+                </section>
+
+                <section class="lesson-track">
+                    <h2 class="lesson-track__title">III. Bac à sable — travaux pratiques</h2>
+                    <div class="lesson-card-grid">
+                        <a class="lesson-card" href="shai-orchestrator-lab.html"><span class="lesson-card__title">Atelier : l'orchestrateur multi-agents shai</span></a>
+                        <a class="lesson-card" href="running-applications-lab.html"><span class="lesson-card__title">Atelier : exploitation des applications OPCP-EXPLORER</span></a>
                     </div>
                 </section>
 
@@ -146,7 +146,7 @@
                 <p>À mesure que vous terminez chaque leçon, cliquez sur le bouton « Marquer comme terminé ». Votre progression est sauvegardée localement et affichée dans la barre de progression de l'en-tête.</p>
 
                 <div class="alert alert-info">
-                    <strong>Conseil :</strong> L'atelier de lecture de trace du matin et le module de connectivité opcp-explorer sont des labos pratiques. Complétez d'abord la lecture, puis lancez le labo pour les exercices pratiques.
+                    <strong>Conseil :</strong> Les ateliers du bac à sable sont des labos pratiques. Terminez d'abord la lecture, puis lancez l'atelier pour les exercices pratiques.
                 </div>
             </div>
         </div>

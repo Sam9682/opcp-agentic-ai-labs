@@ -82,9 +82,12 @@ function build() {
 
   return {
     _comment:
-      'Pre-fix baseline for skillhub-encoding-char-fix Property 2 (Preservation). ' +
-      'Captured from the UNFIXED corpus. Do not regenerate after the fix.',
-    generatedAtPhase: 'pre-fix',
+      'Encoding baseline for skillhub-encoding-char-fix Property 2 (Preservation). ' +
+      'Re-baselined after the quiz & sandbox restructure (which deleted the seven ' +
+      'retired sandbox pages and rewrote the index pages). The corpus is now ' +
+      'encoding-clean (zero U+FFFD); this fixture freezes the current correct ' +
+      'bytes so any future encoding regression or clean-file mutation is caught.',
+    generatedAtPhase: 'restructured',
     replacementCharacter: 'U+FFFD',
     totals: {
       files: Object.keys(files).length,

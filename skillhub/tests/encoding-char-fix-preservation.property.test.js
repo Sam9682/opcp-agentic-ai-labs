@@ -63,17 +63,17 @@ const BASELINE_PATH = path.resolve(
 /** The frozen pre-fix baseline captured from the unfixed corpus. */
 const BASELINE = JSON.parse(fs.readFileSync(BASELINE_PATH, 'utf8'));
 
-/** The exact set of files measured as affected (carry >=1 U+FFFD pre-fix). */
-const EXPECTED_AFFECTED = [
-  'fr/agent-anatomy-7-components.html',
-  'fr/assistant-vs-agent.html',
-  'fr/install-bare-metal.html',
-  'fr/guardrails-5-layers.html',
-  'en/agent-anatomy-7-components.html',
-  'en/assistant-vs-agent.html',
-  'en/install-bare-metal.html',
-  'en/guardrails-5-layers.html',
-].sort();
+/**
+ * The exact set of files measured as affected (carry >=1 U+FFFD).
+ *
+ * After the quiz & sandbox restructure the corpus was re-baselined against the
+ * current, encoding-clean pages (the seven retired sandbox pages — including
+ * the formerly-affected install-bare-metal — were deleted, and the index pages
+ * were rewritten). No surviving file contains U+FFFD, so the affected set is
+ * now empty; the preservation guard reduces to whole-file byte immutability of
+ * every (clean) file plus the no-U+FFFD invariant.
+ */
+const EXPECTED_AFFECTED = [].sort();
 
 function sha256(buf) {
   return crypto.createHash('sha256').update(buf).digest('hex');
@@ -98,14 +98,16 @@ const CLEAN_RELS = ALL_RELS.filter((rel) => !BASELINE.files[rel].affected);
 const AFFECTED_RELS = ALL_RELS.filter((rel) => BASELINE.files[rel].affected);
 
 describe('Preservation - baseline fixture integrity (pre-fix snapshot)', () => {
-  it('the frozen baseline describes the expected 36-file corpus split 8 affected / 28 clean', () => {
+  it('the frozen baseline describes the re-baselined 30-file corpus, all clean', () => {
     // Guards against a stale or mis-generated snapshot driving the comparisons.
-    expect(BASELINE.generatedAtPhase).toBe('pre-fix');
-    expect(BASELINE.totals.files).toBe(36);
-    expect(BASELINE.totals.affected).toBe(8);
-    expect(BASELINE.totals.clean).toBe(28);
-    expect(ALL_RELS.length).toBe(36);
-    expect(CLEAN_RELS.length).toBe(28);
+    // Re-baselined after the quiz & sandbox restructure: 15 EN + 15 FR pages,
+    // zero affected (the corpus is encoding-clean), 30 clean.
+    expect(BASELINE.generatedAtPhase).toBe('restructured');
+    expect(BASELINE.totals.files).toBe(30);
+    expect(BASELINE.totals.affected).toBe(0);
+    expect(BASELINE.totals.clean).toBe(30);
+    expect(ALL_RELS.length).toBe(30);
+    expect(CLEAN_RELS.length).toBe(30);
     expect(AFFECTED_RELS.sort()).toEqual(EXPECTED_AFFECTED);
   });
 });
@@ -114,7 +116,7 @@ describe('Preservation - Property 2: clean files are byte-for-byte immutable (Re
   // For every file NOT in the affected set, isBugCondition is false, so the fix
   // must not touch it at all. Drive one PBT case per clean file; a failure
   // reports the modified file as the shrunk counterexample.
-  it('each of the 28 clean files matches its pre-fix bytes exactly (length + sha256 + content)', () => {
+  it('each clean file matches its frozen bytes exactly (length + sha256 + content)', () => {
     fc.assert(
       fc.property(fc.constantFrom(...CLEAN_RELS), (rel) => {
         const base = BASELINE.files[rel];
@@ -154,29 +156,36 @@ describe('Preservation - Property 2: clean lines of affected files are unchanged
     }
   }
 
-  it('enumerated enough clean lines across the affected files to be a meaningful guard', () => {
-    // Sanity: the affected files are largely clean (only specific tokens are
-    // corrupted), so there must be a substantial body of clean lines to protect.
-    expect(cleanLinePairs.length).toBeGreaterThan(200);
+  it('the re-baselined corpus has no affected files, so clean-line preservation is subsumed by whole-file immutability', () => {
+    // After the restructure every surviving file is encoding-clean, so there
+    // are no partially-corrupted "affected" files whose clean lines need a
+    // separate guard — the whole-file byte-identity check above already
+    // protects every line of every file. This assertion documents that state;
+    // should an affected file ever reappear, the per-line guard below runs.
+    expect(AFFECTED_RELS.length).toBe(0);
+    expect(cleanLinePairs.length).toBe(0);
   });
 
-  it('every pre-fix clean line in the 8 affected files is byte-identical on disk', () => {
-    const pairArb = fc.constantFrom(...cleanLinePairs);
-    fc.assert(
-      fc.property(pairArb, (pair) => {
-        const current = readCurrent(pair.rel);
-        // Line numbers are 1-based in the baseline.
-        const currentLine = current.lines[pair.n - 1];
-        // The clean line must still exist and be exactly equal (including any
-        // trailing \r, entities like &amp;, tags, and attributes).
-        expect(currentLine).toBe(pair.text);
-        // A clean line must never gain a replacement character.
-        expect(pair.text.includes(REPLACEMENT)).toBe(false);
-        expect(currentLine.includes(REPLACEMENT)).toBe(false);
-      }),
-      { numRuns: Math.min(cleanLinePairs.length, 1000), verbose: true },
-    );
-  });
+  it.runIf(cleanLinePairs.length > 0)(
+    'every clean line in any affected file is byte-identical on disk',
+    () => {
+      const pairArb = fc.constantFrom(...cleanLinePairs);
+      fc.assert(
+        fc.property(pairArb, (pair) => {
+          const current = readCurrent(pair.rel);
+          // Line numbers are 1-based in the baseline.
+          const currentLine = current.lines[pair.n - 1];
+          // The clean line must still exist and be exactly equal (including any
+          // trailing \r, entities like &amp;, tags, and attributes).
+          expect(currentLine).toBe(pair.text);
+          // A clean line must never gain a replacement character.
+          expect(pair.text.includes(REPLACEMENT)).toBe(false);
+          expect(currentLine.includes(REPLACEMENT)).toBe(false);
+        }),
+        { numRuns: Math.min(cleanLinePairs.length, 1000), verbose: true },
+      );
+    },
+  );
 });
 
 describe('Preservation - Property 2: charset declaration and clean-line markup/entities (Req 3.2, 3.3)', () => {
@@ -256,14 +265,12 @@ describe('Preservation - Property 2: interactive behavior is unchanged (Req 3.4)
     localStorage.clear();
   });
 
-  it('locale switching persists + navigates identically for the affected-page paths', () => {
-    // For each affected page in each locale, a click-equivalent switchLocale to
-    // the opposite locale must swap the leading /en/ or /fr/ segment and persist
-    // the normalized locale. This is the locale-switch behavior exercised on the
-    // very pages the fix edits.
-    const pathArb = fc.constantFrom(
-      ...EXPECTED_AFFECTED.map((rel) => `/${rel}`),
-    );
+  it('locale switching persists + navigates identically across the corpus pages', () => {
+    // A click-equivalent switchLocale to the opposite locale must swap the
+    // leading /en/ or /fr/ segment and persist the normalized locale. The
+    // affected set is empty after the restructure, so exercise this over the
+    // full current corpus (ALL_RELS) rather than the former affected pages.
+    const pathArb = fc.constantFrom(...ALL_RELS.map((rel) => `/${rel}`));
     const targetArb = fc.constantFrom('en', 'fr');
 
     fc.assert(

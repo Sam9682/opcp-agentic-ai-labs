@@ -32,7 +32,7 @@ describe('Navigation Module', () => {
   });
 
   describe('renderSidebar()', () => {
-    it('renders lessons grouped by session track', () => {
+    it('renders lessons grouped by top-level section', () => {
       const container = document.createElement('div');
       container.className = 'sidebar';
       document.body.appendChild(container);
@@ -40,34 +40,43 @@ describe('Navigation Module', () => {
       renderSidebar(container, lessons, []);
 
       const sections = container.querySelectorAll('.sidebar-section');
-      expect(sections.length).toBe(3); // morning, afternoon, sandbox
+      expect(sections.length).toBe(3); // Fundamentals & Governance, Quiz, Sandbox Labs
 
-      const titles = container.querySelectorAll('.sidebar-section-title');
-      expect(titles[0].textContent).toBe('Introduction & Fundamentals');
-      expect(titles[1].textContent).toBe('Design & Governance');
-      expect(titles[2].textContent).toBe('Sandbox — opcp-explorer Platform');
+      const sectionTitles = container.querySelectorAll('.sidebar-section-title');
+      expect(sectionTitles.length).toBe(3);
+      expect(sectionTitles[0].textContent).toBe('Fundamentals & Governance');
+      expect(sectionTitles[1].textContent).toBe('Quiz');
+      expect(sectionTitles[2].textContent).toBe('Sandbox Labs');
+
+      const subsectionTitles = container.querySelectorAll('.sidebar-subsection-title');
+      expect(subsectionTitles.length).toBe(2);
+      expect(subsectionTitles[0].textContent).toBe('Introduction & Fundamentals');
+      expect(subsectionTitles[1].textContent).toBe('Design & Governance');
     });
 
-    it('shows correct number of lessons per track group', () => {
+    it('shows correct number of lessons per group', () => {
       const container = document.createElement('div');
       document.body.appendChild(container);
 
       renderSidebar(container, lessons, []);
 
       const navLists = container.querySelectorAll('.sidebar-nav');
-      // morning: 4 lessons
+      expect(navLists.length).toBe(4);
+      // Section I.1 intro: 4 lessons
       expect(navLists[0].querySelectorAll('li').length).toBe(4);
-      // afternoon: 7 lessons
+      // Section I.2 design: 7 lessons
       expect(navLists[1].querySelectorAll('li').length).toBe(7);
-      // sandbox: 7 lessons
-      expect(navLists[2].querySelectorAll('li').length).toBe(7);
+      // Section II quiz: 1 lesson
+      expect(navLists[2].querySelectorAll('li').length).toBe(1);
+      // Section III sandbox labs: 2 lessons
+      expect(navLists[3].querySelectorAll('li').length).toBe(2);
     });
 
     it('marks completed lessons with "completed" CSS class', () => {
       const container = document.createElement('div');
       document.body.appendChild(container);
 
-      const completedIds = ['install-bare-metal', 'adding-applications'];
+      const completedIds = ['assistant-vs-agent', 'running-applications-lab'];
       renderSidebar(container, lessons, completedIds);
 
       const completedLinks = container.querySelectorAll('a.completed');
@@ -78,7 +87,7 @@ describe('Navigation Module', () => {
       const container = document.createElement('div');
       document.body.appendChild(container);
 
-      renderSidebar(container, lessons, ['install-bare-metal']);
+      renderSidebar(container, lessons, ['assistant-vs-agent']);
 
       const completedLink = container.querySelector('a.completed');
       expect(completedLink).not.toBeNull();
@@ -89,7 +98,7 @@ describe('Navigation Module', () => {
       const container = document.createElement('div');
       document.body.appendChild(container);
 
-      renderSidebar(container, lessons, ['install-bare-metal']);
+      renderSidebar(container, lessons, ['assistant-vs-agent']);
 
       const allLinks = container.querySelectorAll('a[data-lesson-id]');
       const nonCompleted = Array.from(allLinks).filter(
@@ -100,15 +109,15 @@ describe('Navigation Module', () => {
 
     it('uses localStorage progress when progressData does not include a lesson', () => {
       // Mark a lesson complete in localStorage
-      localStorageMock.setItem('skillhub_lesson_complete_making-backups', 'true');
+      localStorageMock.setItem('skillhub_lesson_complete_shai-orchestrator-lab', 'true');
 
       const container = document.createElement('div');
       document.body.appendChild(container);
 
       renderSidebar(container, lessons, []);
 
-      const migLink = container.querySelector('a[data-lesson-id="making-backups"]');
-      expect(migLink.classList.contains('completed')).toBe(true);
+      const labLink = container.querySelector('a[data-lesson-id="shai-orchestrator-lab"]');
+      expect(labLink.classList.contains('completed')).toBe(true);
     });
 
     it('generates correct lesson URLs with locale', () => {
@@ -117,8 +126,8 @@ describe('Navigation Module', () => {
 
       renderSidebar(container, lessons, []);
 
-      const firstLink = container.querySelector('a[data-slug="install-bare-metal"]');
-      expect(firstLink.getAttribute('href')).toBe('/en/install-bare-metal.html');
+      const firstLink = container.querySelector('a[data-slug="assistant-vs-agent"]');
+      expect(firstLink.getAttribute('href')).toBe('/en/assistant-vs-agent.html');
     });
 
     it('renders French titles when locale is fr', () => {
@@ -129,14 +138,18 @@ describe('Navigation Module', () => {
 
       renderSidebar(container, lessons, []);
 
-      const titles = container.querySelectorAll('.sidebar-section-title');
-      expect(titles[0].textContent).toBe('Matin — Introduction et fondamentaux');
-      expect(titles[1].textContent).toBe('Conception et gouvernance');
-      expect(titles[2].textContent).toBe('Bac à sable — plateforme opcp-explorer');
+      const sectionTitles = container.querySelectorAll('.sidebar-section-title');
+      expect(sectionTitles[0].textContent).toBe('Fondamentaux et gouvernance');
+      expect(sectionTitles[1].textContent).toBe('Quiz');
+      expect(sectionTitles[2].textContent).toBe('Bac à sable — travaux pratiques');
+
+      const subsectionTitles = container.querySelectorAll('.sidebar-subsection-title');
+      expect(subsectionTitles[0].textContent).toBe('Introduction et fondamentaux');
+      expect(subsectionTitles[1].textContent).toBe('Conception et gouvernance');
     });
 
     it('marks active lesson based on current URL', () => {
-      window.location.pathname = '/en/install-bare-metal.html';
+      window.location.pathname = '/en/assistant-vs-agent.html';
 
       const container = document.createElement('div');
       document.body.appendChild(container);
@@ -145,7 +158,7 @@ describe('Navigation Module', () => {
 
       const activeLink = container.querySelector('a.active');
       expect(activeLink).not.toBeNull();
-      expect(activeLink.getAttribute('data-slug')).toBe('install-bare-metal');
+      expect(activeLink.getAttribute('data-slug')).toBe('assistant-vs-agent');
       expect(activeLink.getAttribute('aria-current')).toBe('page');
     });
 
@@ -251,25 +264,25 @@ describe('Navigation Module', () => {
 
   describe('navigateToLesson()', () => {
     it('navigates to correct URL with given locale', () => {
-      navigateToLesson('install-bare-metal', 'en');
-      expect(window.location.href).toBe('/en/install-bare-metal.html');
+      navigateToLesson('assistant-vs-agent', 'en');
+      expect(window.location.href).toBe('/en/assistant-vs-agent.html');
     });
 
     it('navigates to correct URL with fr locale', () => {
-      navigateToLesson('adding-applications', 'fr');
-      expect(window.location.href).toBe('/fr/adding-applications.html');
+      navigateToLesson('running-applications-lab', 'fr');
+      expect(window.location.href).toBe('/fr/running-applications-lab.html');
     });
 
     it('uses detected locale when invalid locale is provided', () => {
       // No stored locale preference, defaults to "en"
-      navigateToLesson('making-backups', 'invalid');
-      expect(window.location.href).toBe('/en/making-backups.html');
+      navigateToLesson('shai-orchestrator-lab', 'invalid');
+      expect(window.location.href).toBe('/en/shai-orchestrator-lab.html');
     });
 
     it('uses stored locale preference when locale is invalid', () => {
       localStorageMock.setItem('skillhub-locale', 'fr');
-      navigateToLesson('making-backups', 'invalid');
-      expect(window.location.href).toBe('/fr/making-backups.html');
+      navigateToLesson('shai-orchestrator-lab', 'invalid');
+      expect(window.location.href).toBe('/fr/shai-orchestrator-lab.html');
     });
   });
 
@@ -280,7 +293,7 @@ describe('Navigation Module', () => {
         <div class="sidebar"></div>
       `;
 
-      initNavigation(lessons, ['install-bare-metal']);
+      initNavigation(lessons, ['assistant-vs-agent']);
 
       const sidebar = document.querySelector('.sidebar');
       const sections = sidebar.querySelectorAll('.sidebar-section');

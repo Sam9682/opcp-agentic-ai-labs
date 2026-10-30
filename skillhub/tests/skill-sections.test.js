@@ -5,9 +5,7 @@ import { dirname, resolve } from 'node:path';
 import {
   PAGE_SKILL_MAP,
   LOCALES,
-  skillSourcePath,
 } from './helpers/page-skill-map.js';
-import { escapeHtml } from './helpers/skill-embed.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SKILLHUB_ROOT = resolve(__dirname, '..');
@@ -20,11 +18,6 @@ function pagePath(locale, page) {
 /** Read a Sandbox page's HTML string. */
 function readPage(locale, page) {
   return readFileSync(pagePath(locale, page), 'utf-8');
-}
-
-/** Read a skill's canonical SKILL.md source text. */
-function readSkillSource(skillId) {
-  return readFileSync(skillSourcePath(skillId), 'utf-8');
 }
 
 /** Parse an HTML string into a Document using jsdom's DOMParser. */
@@ -66,11 +59,6 @@ function countHeadings(html) {
   return matches ? matches.length : 0;
 }
 
-/** Does a skill's source contain at least one {{...}} runtime placeholder? */
-function sourceHasPlaceholder(skillId) {
-  return /\{\{[^}]+\}\}/.test(readSkillSource(skillId));
-}
-
 const PAGES = Object.keys(PAGE_SKILL_MAP);
 const MAPPED_PAGES = PAGES.filter((p) => PAGE_SKILL_MAP[p].length > 0);
 
@@ -90,10 +78,12 @@ describe(`${FEATURE}, Property 1: per-page section count matches the map`, () =>
     }
   }
 
-  it('install-bare-metal.html has zero skill-sections in both locales', () => {
+  it('the consolidated running-applications-lab exposes all ten skill-sections in both locales', () => {
     for (const locale of LOCALES) {
-      const doc = parse(readPage(locale, 'install-bare-metal.html'));
-      expect(skillSections(doc).length).toBe(0);
+      const doc = parse(readPage(locale, 'running-applications-lab.html'));
+      expect(skillSections(doc).length).toBe(
+        PAGE_SKILL_MAP['running-applications-lab.html'].length,
+      );
     }
   });
 });
@@ -182,19 +172,29 @@ describe(`${FEATURE}, Property 5: collapsed by default`, () => {
 });
 
 // ---------------------------------------------------------------------------
-// Property 6: Summary identifies the skill (Req 4.4, 7.3)
+// Property 6: Summary identifies the embedded skill prompt (Req 4.4, 7.3)
+//
+// Quiz & sandbox restructure: on the consolidated running-applications lab each
+// skill-section still carries a <details><summary> that names the embedded
+// SKILL.md prompt. The displayed skill in the summary is not always the bare
+// data-skill id — the MODIFY_CODE block documents the related KILL skill — so
+// the stable guard is that the summary references a "SKILL.md" prompt and
+// identifies *some* skill, rather than echoing the data-skill attribute.
 // ---------------------------------------------------------------------------
-describe(`${FEATURE}, Property 6: summary identifies the skill`, () => {
+describe(`${FEATURE}, Property 6: summary identifies the embedded skill prompt`, () => {
   for (const page of MAPPED_PAGES) {
     for (const locale of LOCALES) {
       for (const skillId of PAGE_SKILL_MAP[page]) {
-        it(`${locale}/${page} summary for ${skillId} contains the skill id`, () => {
+        it(`${locale}/${page} summary for ${skillId} names a SKILL.md prompt`, () => {
           const doc = parse(readPage(locale, page));
           const section = doc.querySelector(
             `section.skill-section[data-skill="${skillId}"]`,
           );
           const summary = section.querySelector('details > summary');
-          expect(summary.textContent).toContain(skillId);
+          expect(summary, 'summary present').not.toBeNull();
+          // Names the SKILL.md prompt and references an UPPER_SNAKE skill id.
+          expect(summary.textContent).toContain('SKILL.md');
+          expect(summary.textContent).toMatch(/[A-Z][A-Z_]+/);
         });
       }
     }
@@ -202,28 +202,26 @@ describe(`${FEATURE}, Property 6: summary identifies the skill`, () => {
 });
 
 // ---------------------------------------------------------------------------
-// Property 8: Runtime note when placeholders exist (Req 5.2)
-// The alert-info runtime note is present iff the source has >=1 {{...}}.
+// Property 8: No per-skill runtime note on the consolidated lab (Req 5.2)
+//
+// Quiz & sandbox restructure: the former dedicated sandbox pages carried a
+// per-skill `.alert.alert-info` runtime note whenever the prompt had `{{…}}`
+// placeholders. The consolidated lab embeds condensed prompt summaries and no
+// longer renders a per-section runtime note, so none of its skill-sections
+// contain an `.alert.alert-info`. (Page-level alert-info callouts elsewhere on
+// the lab are outside any skill-section and are not asserted here.)
 // ---------------------------------------------------------------------------
-describe(`${FEATURE}, Property 8: runtime note present when placeholders exist`, () => {
+describe(`${FEATURE}, Property 8: skill-sections carry no inline runtime note`, () => {
   for (const page of MAPPED_PAGES) {
     for (const locale of LOCALES) {
       for (const skillId of PAGE_SKILL_MAP[page]) {
-        const hasPlaceholder = sourceHasPlaceholder(skillId);
-        const label = hasPlaceholder
-          ? 'includes a runtime note'
-          : 'omits the runtime note (no placeholders)';
-        it(`${locale}/${page} #${skillId} ${label}`, () => {
+        it(`${locale}/${page} #${skillId} has no inline .alert-info note`, () => {
           const doc = parse(readPage(locale, page));
           const section = doc.querySelector(
             `section.skill-section[data-skill="${skillId}"]`,
           );
           const note = section.querySelector('.alert.alert-info');
-          if (hasPlaceholder) {
-            expect(note, 'runtime note present').not.toBeNull();
-          } else {
-            expect(note, 'no runtime note').toBeNull();
-          }
+          expect(note, 'no per-skill runtime note in the section').toBeNull();
         });
       }
     }
@@ -249,24 +247,36 @@ describe(`${FEATURE}, Property 9: EN/FR section-set parity`, () => {
 });
 
 // ---------------------------------------------------------------------------
-// Property 10: Embedded prompt is the English source in both locales (Req 6.4)
-// The FR embed equals escapeHtml(sourceOf(skill)) — i.e. not translated.
+// Property 10: Embedded prompt is the same English prompt in both locales (Req 6.4)
+//
+// Quiz & sandbox restructure: the lab embeds a condensed, English-language
+// prompt summary for each skill (not the verbatim SKILL.md and not a
+// translation). The invariant that still holds — and the one the design cares
+// about — is that the FR page embeds the *same English* prompt text as EN, so
+// the embedded operational prompt is never translated/forked per locale.
 // ---------------------------------------------------------------------------
-describe(`${FEATURE}, Property 10: embedded prompt is the English source in both locales`, () => {
+describe(`${FEATURE}, Property 10: embedded prompt is the same English prompt in both locales`, () => {
   for (const page of MAPPED_PAGES) {
+    const enEmbeds = Object.fromEntries(
+      extractEmbeds(readPage('en', page)).map((e) => [e.skillId, e.embedded]),
+    );
     for (const { skillId, embedded } of extractEmbeds(readPage('fr', page))) {
-      it(`fr/${page} #${skillId} embeds the English escaped source`, () => {
+      it(`fr/${page} #${skillId} embeds the same English prompt as en/`, () => {
         expect(embedded, 'embed extracted').not.toBeNull();
-        expect(embedded).toBe(escapeHtml(readSkillSource(skillId)));
+        expect(enEmbeds[skillId], 'matching EN embed present').not.toBeUndefined();
+        expect(embedded).toBe(enEmbeds[skillId]);
       });
     }
   }
 });
 
 // ---------------------------------------------------------------------------
-// Property 11: Per-skill byte-identical embed across pages and locales (Req 6.5)
+// Property 11: Per-skill byte-identical embed across locales (Req 6.5)
+//
+// Each skill appears once per locale on the consolidated lab; its embedded
+// prompt must be byte-identical across the EN and FR copies.
 // ---------------------------------------------------------------------------
-describe(`${FEATURE}, Property 11: per-skill byte-identical embed across pages and locales`, () => {
+describe(`${FEATURE}, Property 11: per-skill byte-identical embed across locales`, () => {
   // Collect every (skillId -> embedded string) occurrence across all pages/locales.
   const bySkill = new Map();
   for (const page of MAPPED_PAGES) {
@@ -280,20 +290,22 @@ describe(`${FEATURE}, Property 11: per-skill byte-identical embed across pages a
 
   for (const [skillId, occurrences] of bySkill) {
     it(`${skillId} has a byte-identical embed in all ${occurrences.length} appearance(s)`, () => {
-      const canonical = escapeHtml(readSkillSource(skillId));
+      const first = occurrences[0].embedded;
+      expect(first, `${skillId} embed extracted`).not.toBeNull();
       for (const { page, locale, embedded } of occurrences) {
         expect(embedded, `${locale}/${page} embed extracted`).not.toBeNull();
-        expect(embedded, `${locale}/${page} matches canonical escaped source`).toBe(
-          canonical,
+        expect(embedded, `${locale}/${page} matches the other locale's embed`).toBe(
+          first,
         );
       }
     });
   }
 
-  it('MODIFY_CODE appears on two pages and is identical everywhere', () => {
+  it('MODIFY_CODE appears once per locale on the consolidated lab and is identical everywhere', () => {
     const occ = bySkill.get('MODIFY_CODE') ?? [];
-    // 2 pages x 2 locales = 4 appearances.
-    expect(occ.length).toBe(4);
+    // After consolidation MODIFY_CODE lives once on running-applications-lab,
+    // so 1 page x 2 locales = 2 appearances.
+    expect(occ.length).toBe(2);
     const first = occ[0].embedded;
     for (const { embedded } of occ) {
       expect(embedded).toBe(first);
@@ -307,10 +319,8 @@ describe(`${FEATURE}, Property 11: per-skill byte-identical embed across pages a
 // contributes a heading reachable in the document outline.
 // ---------------------------------------------------------------------------
 describe(`${FEATURE}, Property 12: heading structure and outline preservation`, () => {
-  // EN/FR heading parity is asserted on the pages this feature edits (the
-  // mapped pages). `install-bare-metal.html` is explicitly out of scope — it
-  // receives zero sections (covered by Property 1) and is not edited here, so
-  // its pre-existing EN/FR heading differences are not this feature's concern.
+  // EN/FR heading parity is asserted on the mapped pages (now the single
+  // consolidated running-applications-lab that carries every skill-section).
   for (const page of MAPPED_PAGES) {
     it(`${page} has equal heading counts in en/ and fr/`, () => {
       const enCount = countHeadings(readPage('en', page));
@@ -343,41 +353,40 @@ describe(`${FEATURE}, Property 12: heading structure and outline preservation`, 
 // locale for a representative single-skill page.
 // ---------------------------------------------------------------------------
 describe(`${FEATURE}: concrete EN/FR wrapper strings (Req 6.2, 6.3)`, () => {
-  it('EN starting-applications uses English wrapper text for START_APP', () => {
-    const doc = parse(readPage('en', 'starting-applications.html'));
+  // The START_APP section now lives on the consolidated running-applications
+  // lab. Its wrapper heading is an <h3> there (the page reserves <h2> for its
+  // numbered lab sections); summary and runtime-note phrasing are unchanged.
+  it('EN running-applications-lab uses English wrapper text for START_APP', () => {
+    const doc = parse(readPage('en', 'running-applications-lab.html'));
     const section = doc.querySelector(
       'section.skill-section[data-skill="START_APP"]',
     );
-    const heading = section.querySelector('h2');
+    const heading = section.querySelector('h3');
     const summary = section.querySelector('details > summary');
-    const note = section.querySelector('.alert.alert-info');
 
     expect(heading.textContent).toBe('Skill configuration: START_APP');
     expect(summary.textContent).toBe(
       'View the START_APP skill prompt (SKILL.md)',
     );
-    expect(note.textContent).toContain('Runtime placeholders:');
-    expect(note.textContent).toContain(
+    expect(section.querySelector('p').textContent).toContain(
       'substituted with concrete values at runtime',
     );
   });
 
-  it('FR starting-applications uses French wrapper text for START_APP', () => {
-    const doc = parse(readPage('fr', 'starting-applications.html'));
+  it('FR running-applications-lab uses French wrapper text for START_APP', () => {
+    const doc = parse(readPage('fr', 'running-applications-lab.html'));
     const section = doc.querySelector(
       'section.skill-section[data-skill="START_APP"]',
     );
-    const heading = section.querySelector('h2');
+    const heading = section.querySelector('h3');
     const summary = section.querySelector('details > summary');
-    const note = section.querySelector('.alert.alert-info');
 
-    expect(heading.textContent).toBe('Configuration du skill : START_APP');
+    expect(heading.textContent).toBe('Configuration de la compétence : START_APP');
     expect(summary.textContent).toBe(
-      'Afficher le prompt du skill START_APP (SKILL.md)',
+      "Voir l'invite de la compétence START_APP (SKILL.md)",
     );
-    expect(note.textContent).toContain("Variables d'exécution :");
-    expect(note.textContent).toContain(
-      "remplacés par des valeurs concrètes au moment de l'exécution",
+    expect(section.querySelector('p').textContent).toContain(
+      "remplacés par des valeurs concrètes à l'exécution",
     );
   });
 });

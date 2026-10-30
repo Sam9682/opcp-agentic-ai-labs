@@ -122,7 +122,7 @@ describe('buildAllScormPackages driver', () => {
   beforeAll(async () => {
     root = await mkdtemp(path.join(tmpdir(), 'scorm-all-'));
     await makeSyntheticSite(root, 'trace-reading');
-    await makeSyntheticSite(root, 'making-backups');
+    await makeSyntheticSite(root, 'running-applications-lab');
     results = await buildAllScormPackages({ repoRoot: root });
   });
 
@@ -133,10 +133,10 @@ describe('buildAllScormPackages driver', () => {
   it('builds one package per discovered lab into scorm/<lab>_scorm/', async () => {
     expect(results).toHaveLength(2);
     const byLab = Object.fromEntries(results.map((r) => [r.lab, r]));
-    expect(byLab['making-backups']).toBeDefined();
+    expect(byLab['running-applications-lab']).toBeDefined();
     expect(byLab['trace-reading']).toBeDefined();
 
-    for (const lab of ['trace-reading', 'making-backups']) {
+    for (const lab of ['trace-reading', 'running-applications-lab']) {
       const r = byLab[lab];
       expect(r.error).toBeUndefined();
       expect(r.outDir).toBe(path.join(root, 'scorm', `${lab}_scorm`));
@@ -151,13 +151,13 @@ describe('buildAllScormPackages driver', () => {
       path.join(root, 'scorm', 'trace-reading_scorm', 'imsmanifest.xml'),
       'utf8',
     );
-    const backupsXml = await readFile(
-      path.join(root, 'scorm', 'making-backups_scorm', 'imsmanifest.xml'),
+    const runningXml = await readFile(
+      path.join(root, 'scorm', 'running-applications-lab_scorm', 'imsmanifest.xml'),
       'utf8',
     );
     expect(traceXml).toContain('TRACE_READING_SCORM12');
-    expect(traceXml).not.toContain('MAKING_BACKUPS_SCORM12');
-    expect(backupsXml).toContain('MAKING_BACKUPS_SCORM12');
-    expect(backupsXml).not.toContain('TRACE_READING_SCORM12');
+    expect(traceXml).not.toContain('RUNNING_APPLICATIONS_LAB_SCORM12');
+    expect(runningXml).toContain('RUNNING_APPLICATIONS_LAB_SCORM12');
+    expect(runningXml).not.toContain('TRACE_READING_SCORM12');
   });
 });

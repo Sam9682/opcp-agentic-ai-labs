@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier : l'orchestrateur multi-agents shai - Agentic AI OPCP Labs</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <a href="." class="logo" aria-label="Accueil Agentic AI OPCP Labs">
+            <span>Agentic AI OPCP Labs</span>
+        </a>
+
+        <div class="header-actions">
+            <div class="progress-bar-container" aria-label="Progression globale">
+                <span class="progress-label">Progression :</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-percent">0%</span>
+            </div>
+
+            <div class="locale-switcher" role="navigation" aria-label="Sélecteur de langue">
+                <button data-locale="en" aria-label="English">EN</button>
+                <button class="active" data-locale="fr" aria-label="Français">FR</button>
+            </div>
+
+            <button class="hamburger-btn" aria-label="Basculer le menu de navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" role="navigation" aria-label="Navigation des leçons">
+        <div class="sidebar-section" data-section="section-3">
+            <h2 class="sidebar-section-title">Bac à sable — travaux pratiques</h2>
+            <ul class="sidebar-nav" id="nav-sandbox">
+                <li><a href="shai-orchestrator-lab.html" class="active">Atelier : l'orchestrateur multi-agents shai</a></li>
+                <li><a href="running-applications-lab.html">Atelier : exploitation des applications OPCP-EXPLORER</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content" role="main">
+        <div class="lesson-content">
+            <div class="lesson-header">
+                <h1>Atelier : l'orchestrateur multi-agents shai</h1>
+                <div class="lesson-meta">
+                    <span class="difficulty-badge difficulty-badge--intermediate">Bac à sable · Intermédiaire</span>
+                    <span class="duration">⏱ ~40 min</span>
+                </div>
+            </div>
+            <div class="lesson-body">
+                <p>Cet atelier guidé présente <strong>shai</strong>, l'orchestrateur multi-agents qui pilote le travail sur la plateforme agentique <strong>opcp-explorer</strong>. Vous découvrirez comment l'orchestrateur est assemblé, de quoi chaque rôle d'agent est responsable, comment une tâche est déléguée de l'orchestrateur vers un agent travailleur et en revient, puis comment piloter l'ensemble depuis la ligne de commande. Chaque commande et chaque extrait de configuration de cette page sont <strong>purement illustratifs</strong> : lisez-les pour comprendre la forme du système ; cette leçon ne fournit aucun script exécutable.</p>
+
+                <div class="alert alert-info">
+                    <strong>Atelier en lecture seule :</strong> les exemples ci-dessous montrent les commandes et la configuration que vous utiliseriez sur une plateforme réelle. Rien ne s'exécute ici. Traitez les extraits comme une référence que vous adaptez dans votre propre environnement, où s'appliquent les <a href="guardrails-5-layers.html">cinq couches de garde-fous</a>.
+                </div>
+
+                <h2>Objectifs pédagogiques</h2>
+                <ul>
+                    <li>Décrire l'architecture de l'orchestrateur multi-agents shai et la façon dont ses parties s'articulent.</li>
+                    <li>Nommer les rôles d'agent — orchestrateur, travailleur et relecteur — et ce dont chacun est responsable.</li>
+                    <li>Expliquer le modèle de délégation : comment une tâche circule de l'orchestrateur vers un travailleur et en revient.</li>
+                    <li>Suivre pas à pas les instructions de la ligne de commande shai pour configurer, lancer et observer une session orchestrée.</li>
+                    <li>Lire un exemple de configuration d'orchestrateur et comprendre chaque champ comme une décision de gouvernance.</li>
+                </ul>
+
+                <h2>L'architecture de l'orchestrateur</h2>
+                <p>shai n'est pas un agent unique — c'est un <strong>orchestrateur</strong> qui coordonne plusieurs agents spécialisés vers un même objectif. L'orchestrateur tient la tâche de haut niveau, la découpe en sous-tâches, confie chaque sous-tâche à un agent travailleur, rassemble les résultats et décide quand le travail global est terminé. Les travailleurs ne communiquent jamais directement entre eux ; tout passe par l'orchestrateur, ce qui garde la session observable et vous offre un point de contrôle unique.</p>
+
+                <pre><code>flowchart TD
+    U[Opérateur / CLI] --> O[orchestrateur shai]
+    O --> W1[Agent travailleur : découverte]
+    O --> W2[Agent travailleur : action]
+    O --> R[Agent relecteur]
+    W1 --> O
+    W2 --> O
+    R --> O
+    O --> U</code></pre>
+                <p class="caption">L'orchestrateur est le pivot : il délègue aux travailleurs, achemine les résultats via un relecteur et rend compte à l'opérateur.</p>
+
+                <p>Trois éléments font de ceci une conception défendable plutôt qu'une simple diffusion de tâches :</p>
+                <ul>
+                    <li><strong>Un coordinateur unique.</strong> Un seul orchestrateur tient le plan, donc il existe exactement un endroit qui décide de ce qui s'exécute ensuite et du moment où s'arrêter.</li>
+                    <li><strong>Des travailleurs isolés.</strong> Chaque travailleur reçoit une tâche étroite et un jeu d'outils délimité, si bien qu'une erreur chez l'un ne peut pas se propager à un autre.</li>
+                    <li><strong>Une porte de relecture.</strong> Les résultats qui modifient l'état passent par un relecteur avant que l'orchestrateur ne les accepte, gardant un contrôle aligné sur l'humain dans la boucle.</li>
+                </ul>
+
+                <h2>Les rôles d'agent</h2>
+                <p>Une session shai se compose de trois types d'agent. Chacun a une seule mission et un périmètre de permissions dimensionné pour cette mission.</p>
+                <table>
+                    <thead>
+                        <tr><th>Rôle</th><th>Responsabilité</th><th>Périmètre d'outils typique</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Orchestrateur</strong></td><td>Tient l'objectif de haut niveau, planifie et ordonne les sous-tâches, délègue aux travailleurs, agrège les résultats, décide quand s'arrêter.</td><td>Aucun outil hôte ; délégation seule</td></tr>
+                        <tr><td><strong>Travailleur</strong></td><td>Exécute une sous-tâche déléguée (découvrir, démarrer, arrêter, sauvegarder, modifier) et renvoie un résultat structuré.</td><td><code>read</code> / <code>write</code> / <code>bash</code> délimités selon la tâche</td></tr>
+                        <tr><td><strong>Relecteur</strong></td><td>Inspecte l'action modifiante proposée par un travailleur et l'approuve ou la rejette avant que l'orchestrateur ne l'applique.</td><td><code>read</code> uniquement</td></tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-info">
+                    <strong>Gouvernance :</strong> l'orchestrateur ne détient délibérément <em>aucun</em> outil hôte. Il ne peut que déléguer. Les attributions puissantes comme <code>write</code> et <code>bash</code> vivent sur des travailleurs individuels et sont délimitées par sous-tâche, si bien que le rayon d'impact de chaque agent reste petit.
+                </div>
+
+                <h2>Le modèle de délégation</h2>
+                <p>La délégation est le cœur de shai. L'opérateur confie un objectif à l'orchestrateur ; l'orchestrateur décide quel travailleur doit traiter chaque morceau et transmet une tâche autonome. Une tâche déléguée porte tout ce dont le travailleur a besoin et rien de plus :</p>
+                <ul>
+                    <li><strong>Un énoncé d'objectif</strong> — la seule chose que ce travailleur doit accomplir.</li>
+                    <li><strong>Des entrées délimitées</strong> — uniquement les données pertinentes pour la sous-tâche.</li>
+                    <li><strong>Une attribution d'outils</strong> — le jeu d'outils minimal pour cette sous-tâche.</li>
+                    <li><strong>Un contrat de retour</strong> — le résultat structuré que l'orchestrateur attend en retour.</li>
+                </ul>
+                <p>Le cycle de vie d'une seule tâche déléguée ressemble à ceci :</p>
+                <pre><code>sequenceDiagram
+    Opérateur->>Orchestrateur: objectif
+    Orchestrateur->>Travailleur: déléguer(sous-tâche, outils délimités)
+    Travailleur->>Travailleur: exécuter la sous-tâche
+    Travailleur-->>Orchestrateur: résultat structuré
+    Orchestrateur->>Relecteur: relire(résultat) si modifiant
+    Relecteur-->>Orchestrateur: approuver / rejeter
+    Orchestrateur-->>Opérateur: résultat agrégé</code></pre>
+                <p class="caption">Une sous-tâche en lecture seule revient directement à l'orchestrateur ; une sous-tâche modifiante passe d'abord par le relecteur.</p>
+                <p>Parce que l'orchestrateur est le seul agent qui voit le plan complet, il est aussi le seul endroit qui applique les limites opérationnelles — nombre maximal de sous-tâches, plafond de relances et délai mural pour la session. Ces limites sont la forme, au niveau de l'orchestrateur, des critères d'arrêt que vous avez rencontrés plus tôt dans le cours.</p>
+
+                <h2>Pas à pas : piloter shai depuis la ligne de commande</h2>
+                <p>Les commandes ci-dessous parcourent une session orchestrée de bout en bout. Elles sont illustratives — adaptez les chemins et les noms à votre propre environnement.</p>
+
+                <h3>Étape 1 — Vérifier que l'orchestrateur est disponible</h3>
+                <p>Confirmez que la ligne de commande est bien dans votre PATH et affiche une version avant toute autre chose.</p>
+                <pre><code>shai --version
+shai orchestrator status</code></pre>
+
+                <h3>Étape 2 — Pointer shai vers une configuration d'orchestrateur</h3>
+                <p>L'orchestrateur est défini par un seul fichier de configuration (présenté en entier dans la section suivante). Validez-le avant de lancer pour qu'une faute de frappe échoue bruyamment plutôt qu'en pleine exécution.</p>
+                <pre><code>shai orchestrator validate --config ./orchestrator.config.json</code></pre>
+
+                <h3>Étape 3 — Lancer une session avec un objectif</h3>
+                <p>Confiez à l'orchestrateur un unique objectif de haut niveau. L'orchestrateur planifie lui-même les sous-tâches et les délègue aux travailleurs — vous n'appelez pas les travailleurs directement.</p>
+                <pre><code>shai orchestrator run \
+  --config ./orchestrator.config.json \
+  --goal "Découvrir les conteneurs en cours et signaler les agents probables" \
+  --max-subtasks 6</code></pre>
+
+                <h3>Étape 4 — Observer la délégation en temps réel</h3>
+                <p>Suivez la session pour voir chaque sous-tâche déléguée, chaque résultat de travailleur renvoyé et chaque décision de relecture au fil de l'eau.</p>
+                <pre><code>shai orchestrator logs --follow --run-id latest</code></pre>
+
+                <h3>Étape 5 — Lire le résultat agrégé</h3>
+                <p>Lorsque l'orchestrateur estime l'objectif atteint (ou qu'une limite est touchée), il imprime un seul rapport agrégé combinant chaque résultat de travailleur.</p>
+                <pre><code>shai orchestrator report --run-id latest</code></pre>
+
+                <h3>Étape 6 — Arrêter une session si nécessaire</h3>
+                <p>Le coupe-circuit arrête l'orchestrateur et tous les travailleurs auxquels il a délégué, en une seule commande.</p>
+                <pre><code>shai orchestrator stop --run-id latest</code></pre>
+                <div class="alert alert-info">
+                    <strong>Gouvernance :</strong> <code>stop</code> est votre unique coupe-circuit fiable. Comme les travailleurs ne s'exécutent jamais que sous l'orchestrateur, arrêter l'orchestrateur démantèle toute la session — il n'y a aucun travailleur orphelin à traquer séparément.
+                </div>
+
+                <h2>Exemple de configuration d'orchestrateur</h2>
+                <p>L'orchestrateur est entièrement défini par un seul fichier JSON. Il nomme l'orchestrateur, choisit le modèle qui planifie pour lui, déclare les agents travailleur et relecteur auxquels il peut déléguer, et fixe les limites opérationnelles d'une session. Voici le fichier illustratif complet, que nous ouvrons ensuite champ par champ.</p>
+                <pre><code>{
+  "name": "opcp-explorer-orchestrator",
+  "description": "Orchestrateur multi-agents shai qui planifie un objectif, délègue des sous-tâches à des travailleurs délimités et achemine les actions modifiantes via un relecteur.",
+  "llm_provider": {
+    "provider": "ovhcloud",
+    "model": "Qwen3.5-397B-A17B",
+    "mode": "FunctionCall"
+  },
+  "orchestrator": {
+    "max_subtasks": 6,
+    "max_retries_per_subtask": 2,
+    "run_timeout_seconds": 600,
+    "require_review_for_mutating": true
+  },
+  "agents": {
+    "discovery-worker": {
+      "role": "worker",
+      "system_prompt": "Découvrir les conteneurs de la plateforme et renvoyer une liste structurée.",
+      "tools": ["read", "bash"]
+    },
+    "action-worker": {
+      "role": "worker",
+      "system_prompt": "Appliquer l'unique action qui t'est déléguée et renvoyer le résultat.",
+      "tools": ["read", "write", "bash"]
+    },
+    "reviewer": {
+      "role": "reviewer",
+      "system_prompt": "Inspecter l'action modifiante proposée et l'approuver ou la rejeter.",
+      "tools": ["read"]
+    }
+  }
+}</code></pre>
+
+                <h3>Identité : <code>name</code> et <code>description</code></h3>
+                <p>Le champ <code>name</code> étiquette l'orchestrateur dans les journaux et les pistes d'audit ; <code>description</code> énonce ce qu'il coordonne en une phrase lisible par un humain. Un nom stable est ce qui permet à un relecteur de relier une session à la configuration qui l'a autorisée.</p>
+
+                <h3><code>llm_provider</code></h3>
+                <p>Le bloc <code>llm_provider</code> choisit le modèle qui <em>planifie</em> pour l'orchestrateur — fournisseur <code>ovhcloud</code>, modèle <code>Qwen3.5-397B-A17B</code>, mode <code>FunctionCall</code>. En mode <code>FunctionCall</code>, l'orchestrateur peut émettre des appels de délégation vers ses agents travailleurs plutôt que de seulement produire du texte.</p>
+
+                <h3>Le bloc de limites <code>orchestrator</code></h3>
+                <p>Ce bloc est le critère d'arrêt au niveau de l'orchestrateur. <code>max_subtasks</code> plafonne le nombre de morceaux en lesquels un objectif peut être découpé ; <code>max_retries_per_subtask</code> borne la fréquence de relance d'une sous-tâche échouée ; <code>run_timeout_seconds</code> fixe un plafond mural pour toute la session ; et <code>require_review_for_mutating</code> force chaque résultat de travailleur modifiant à passer par le relecteur avant que l'orchestrateur ne l'applique.</p>
+                <div class="alert alert-info">
+                    <strong>Gouvernance :</strong> <code>require_review_for_mutating: true</code> est la porte de relecture du schéma d'architecture rendue concrète. La laisser active maintient un contrôle entre un travailleur proposant un changement et ce changement prenant effet — ne la désactivez pour rien qui écrit, démarre, arrête ou supprime.
+                </div>
+
+                <h3>La table <code>agents</code></h3>
+                <p>Chaque entrée nomme un agent auquel l'orchestrateur peut déléguer, déclare son <code>role</code> (travailleur ou relecteur), lui donne un <code>system_prompt</code> d'une ligne délimitant sa mission, et lui accorde un jeu d'<code>tools</code> minimal. Notez le motif : le travailleur de découverte est surtout en lecture (<code>read</code>, <code>bash</code>), le travailleur d'action est le seul doté de <code>write</code>, et le relecteur est en <code>read</code> seul par conception.</p>
+                <div class="alert alert-info">
+                    <strong>Gouvernance :</strong> les attributions d'outils ici sont le moindre privilège en action. Seul l'<code>action-worker</code> peut modifier la plateforme, et même ses changements doivent passer le relecteur. Si une sous-tâche n'a pas besoin de <code>write</code> ou de <code>bash</code>, ne les accordez pas à l'agent qui l'exécute.
+                </div>
+
+                <h2>Points clés</h2>
+                <ul>
+                    <li>shai est un orchestrateur qui coordonne des agents spécialisés vers un même objectif — pas un agent unique.</li>
+                    <li>Trois rôles : un orchestrateur qui planifie et délègue, des travailleurs qui exécutent des sous-tâches délimitées, et un relecteur qui garde les actions modifiantes.</li>
+                    <li>La délégation porte un objectif, des entrées délimitées, une attribution d'outils minimale et un contrat de retour — rien de plus.</li>
+                    <li>Vous pilotez une session depuis la ligne de commande : valider la configuration, lancer avec un objectif, suivre les journaux, lire le rapport et arrêter avec le coupe-circuit.</li>
+                    <li>Les limites opérationnelles et la porte de relecture vivent dans la configuration de l'orchestrateur, rendant toute la session observable et bornée.</li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <strong>Suite :</strong> <a href="running-applications-lab.html">Atelier : exploitation des applications OPCP-EXPLORER</a> — mettez ces rôles au travail sur l'ensemble des opérations pratiques.
+                </div>
+            </div>
+
+            <button class="btn btn-success btn-mark-complete" data-lesson-id="shai-orchestrator-lab">
+                Marquer comme terminé
+            </button>
+        </div>
+    </main>
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" defer src="../assets/js/diagrams.js"></script>
+</body>
+</html>

@@ -14,32 +14,32 @@ describe('Progress Tracker', () => {
 
   describe('markLessonComplete()', () => {
     it('marks a lesson as complete in localStorage', () => {
-      markLessonComplete('install-bare-metal');
-      expect(localStorage.getItem('skillhub_lesson_complete_install-bare-metal')).toBe('true');
+      markLessonComplete('assistant-vs-agent');
+      expect(localStorage.getItem('skillhub_lesson_complete_assistant-vs-agent')).toBe('true');
     });
 
     it('can mark multiple lessons as complete', () => {
-      markLessonComplete('install-bare-metal');
-      markLessonComplete('adding-applications');
-      expect(localStorage.getItem('skillhub_lesson_complete_install-bare-metal')).toBe('true');
-      expect(localStorage.getItem('skillhub_lesson_complete_adding-applications')).toBe('true');
+      markLessonComplete('assistant-vs-agent');
+      markLessonComplete('running-applications-lab');
+      expect(localStorage.getItem('skillhub_lesson_complete_assistant-vs-agent')).toBe('true');
+      expect(localStorage.getItem('skillhub_lesson_complete_running-applications-lab')).toBe('true');
     });
 
     it('marking an already complete lesson is idempotent', () => {
-      markLessonComplete('install-bare-metal');
-      markLessonComplete('install-bare-metal');
-      expect(localStorage.getItem('skillhub_lesson_complete_install-bare-metal')).toBe('true');
+      markLessonComplete('assistant-vs-agent');
+      markLessonComplete('assistant-vs-agent');
+      expect(localStorage.getItem('skillhub_lesson_complete_assistant-vs-agent')).toBe('true');
     });
   });
 
   describe('isLessonComplete()', () => {
     it('returns true for a completed lesson', () => {
-      markLessonComplete('install-bare-metal');
-      expect(isLessonComplete('install-bare-metal')).toBe(true);
+      markLessonComplete('assistant-vs-agent');
+      expect(isLessonComplete('assistant-vs-agent')).toBe(true);
     });
 
     it('returns false for a lesson not yet completed', () => {
-      expect(isLessonComplete('install-bare-metal')).toBe(false);
+      expect(isLessonComplete('assistant-vs-agent')).toBe(false);
     });
 
     it('returns false for a non-existent lesson id', () => {
@@ -88,33 +88,33 @@ describe('Progress Tracker', () => {
     });
 
     it('returns array of completed lesson ids', () => {
-      markLessonComplete('install-bare-metal');
-      markLessonComplete('adding-applications');
+      markLessonComplete('assistant-vs-agent');
+      markLessonComplete('running-applications-lab');
       const completed = getCompletedLessons();
       expect(completed).toHaveLength(2);
-      expect(completed).toContain('install-bare-metal');
-      expect(completed).toContain('adding-applications');
+      expect(completed).toContain('assistant-vs-agent');
+      expect(completed).toContain('running-applications-lab');
     });
 
     it('does not include unrelated localStorage items', () => {
       localStorage.setItem('unrelated_key', 'value');
-      markLessonComplete('install-bare-metal');
+      markLessonComplete('assistant-vs-agent');
       const completed = getCompletedLessons();
-      expect(completed).toEqual(['install-bare-metal']);
+      expect(completed).toEqual(['assistant-vs-agent']);
     });
   });
 
   describe('resetProgress()', () => {
     it('removes all progress entries from localStorage', () => {
-      markLessonComplete('install-bare-metal');
-      markLessonComplete('adding-applications');
+      markLessonComplete('assistant-vs-agent');
+      markLessonComplete('running-applications-lab');
       resetProgress();
       expect(getCompletedLessons()).toEqual([]);
     });
 
     it('does not remove unrelated localStorage entries', () => {
       localStorage.setItem('other_key', 'value');
-      markLessonComplete('install-bare-metal');
+      markLessonComplete('assistant-vs-agent');
       resetProgress();
       expect(localStorage.getItem('other_key')).toBe('value');
     });

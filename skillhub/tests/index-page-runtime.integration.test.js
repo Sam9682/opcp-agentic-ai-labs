@@ -98,8 +98,8 @@ describe('Index-page runtime integration - header is painted and wired on both l
     it(`runs initApp() on the ${locale} index: paints the progress bar and wires the toggle`, () => {
       // Two completed lessons so the live-catalog percentage is non-zero and
       // distinguishable from the authored static "0%".
-      localStorage.setItem('skillhub_lesson_complete_install-bare-metal', 'true');
-      localStorage.setItem('skillhub_lesson_complete_adding-applications', 'true');
+      localStorage.setItem('skillhub_lesson_complete_running-applications-lab', 'true');
+      localStorage.setItem('skillhub_lesson_complete_shai-orchestrator-lab', 'true');
 
       loadIndexDocument(locale);
       restoreLocation = mockLocation(`/${locale}/`);
@@ -124,7 +124,7 @@ describe('Index-page runtime integration - header is painted and wired on both l
   it('paints an identical header percentage on the EN and FR index pages (same catalog)', () => {
     // Identical completion state must yield an identical header percentage on
     // both locales, confirming the headers behave the same across locales.
-    localStorage.setItem('skillhub_lesson_complete_install-bare-metal', 'true');
+    localStorage.setItem('skillhub_lesson_complete_running-applications-lab', 'true');
 
     const read = (locale) => {
       document.body.innerHTML = '';

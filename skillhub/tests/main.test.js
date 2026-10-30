@@ -34,8 +34,8 @@ describe('Main Module', () => {
 
   it('displays correct percentage when lessons are completed', () => {
     // Mark some lessons as complete in localStorage
-    localStorage.setItem('skillhub_lesson_complete_install-bare-metal', 'true');
-    localStorage.setItem('skillhub_lesson_complete_adding-applications', 'true');
+    localStorage.setItem('skillhub_lesson_complete_assistant-vs-agent', 'true');
+    localStorage.setItem('skillhub_lesson_complete_running-applications-lab', 'true');
 
     document.body.innerHTML = `
       <div class="progress-bar" style="width: 0%" aria-valuenow="0"></div>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz des fondamentaux - Agentic AI OPCP Labs</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <a href="." class="logo" aria-label="Accueil Agentic AI OPCP Labs">
+            <span>Agentic AI OPCP Labs</span>
+        </a>
+
+        <div class="header-actions">
+            <div class="progress-bar-container" aria-label="Progression globale">
+                <span class="progress-label">Progression :</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-percent">0%</span>
+            </div>
+
+            <div class="locale-switcher" role="navigation" aria-label="Sélecteur de langue">
+                <button data-locale="en" aria-label="English">EN</button>
+                <button class="active" data-locale="fr" aria-label="Français">FR</button>
+            </div>
+
+            <button class="hamburger-btn" aria-label="Basculer le menu de navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" role="navigation" aria-label="Navigation des leçons"></aside>
+
+    <main class="main-content" role="main">
+        <div class="lesson-content">
+            <div class="lesson-header">
+                <h1>Quiz des fondamentaux</h1>
+                <div class="lesson-meta">
+                    <span class="difficulty-badge difficulty-badge--intermediate">Section II — Quiz</span>
+                    <span class="duration">? ~15 min</span>
+                </div>
+            </div>
+            <div class="lesson-body">
+                <p>Ce quiz valide votre compréhension des leçons de la Section I (Fondamentaux et gouvernance). Il comporte 15 questions à choix unique. Sélectionnez une seule réponse par question, puis envoyez pour obtenir votre note instantanément.</p>
+
+                <div class="alert alert-info">
+                    <strong>Pour réussir :</strong> au moins 12 bonnes réponses sur 15. Une réussite est enregistrée dans votre progression et reconnue dans les deux langues.
+                </div>
+
+                <form class="quiz-form" aria-label="Quiz des fondamentaux" novalidate>
+                    <ol class="quiz-questions">
+                        <li class="quiz-question" data-question-id="assistant-vs-agent-loop-driver">
+                            <fieldset>
+                                <legend>1. Quelle est la différence fondamentale entre un assistant IA et un agent IA ?</legend>
+                                <label><input type="radio" name="assistant-vs-agent-loop-driver" value="0"> Un assistant répond à une seule requête puis s'arrête, tandis qu'un agent pilote sa propre boucle pour poursuivre un objectif sur plusieurs étapes.</label>
+                                <label><input type="radio" name="assistant-vs-agent-loop-driver" value="1"> Un assistant fonctionne toujours sur un modèle plus grand qu'un agent.</label>
+                                <label><input type="radio" name="assistant-vs-agent-loop-driver" value="2"> Un agent ne peut que répondre à des questions, tandis qu'un assistant effectue des actions.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="autonomy-spectrum-least-autonomy">
+                            <fieldset>
+                                <legend>2. Selon le spectre d'autonomie, quel niveau d'autonomie faut-il accorder à un agent ?</legend>
+                                <label><input type="radio" name="autonomy-spectrum-least-autonomy" value="0"> Toujours le maximum, pour que l'agent termine plus vite.</label>
+                                <label><input type="radio" name="autonomy-spectrum-least-autonomy" value="1"> La plus faible autonomie permettant encore à l'agent d'accomplir la tâche, associée à des garde-fous appropriés.</label>
+                                <label><input type="radio" name="autonomy-spectrum-least-autonomy" value="2"> L'autonomie est binaire : on accorde soit le contrôle total, soit aucun.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="anatomy-seven-components">
+                            <fieldset>
+                                <legend>3. Quel ensemble énumère les sept composants de base d'un agent IA ?</legend>
+                                <label><input type="radio" name="anatomy-seven-components" value="0"> Cerveau, mémoire à court terme, mémoire à long terme, outils, planificateur, boucle d'exécution et garde-fous.</label>
+                                <label><input type="radio" name="anatomy-seven-components" value="1"> Clavier, écran, réseau, disque, processeur, carte graphique et alimentation.</label>
+                                <label><input type="radio" name="anatomy-seven-components" value="2"> Frontend, backend, base de données, cache, file, répartiteur de charge et CDN.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="anatomy-tools-role">
+                            <fieldset>
+                                <legend>4. Dans l'anatomie d'un agent, quel rôle jouent les outils ?</legend>
+                                <label><input type="radio" name="anatomy-tools-role" value="0"> Ils sont le moteur de raisonnement qui décide de la prochaine étape.</label>
+                                <label><input type="radio" name="anatomy-tools-role" value="1"> Ils sont les mains de l'agent — API, CLI, fonctions et serveurs MCP qui lui permettent d'agir sur le monde.</label>
+                                <label><input type="radio" name="anatomy-tools-role" value="2"> Ils stockent les connaissances persistantes entre les sessions.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="agentic-loop-cycle">
+                            <fieldset>
+                                <legend>5. Quelle est la boucle agentique de base ?</legend>
+                                <label><input type="radio" name="agentic-loop-cycle" value="0"> Observer → Stocker → Oublier, répété une fois.</label>
+                                <label><input type="radio" name="agentic-loop-cycle" value="1"> Penser → Agir → Observer, répété jusqu'à ce qu'une condition d'arrêt soit remplie.</label>
+                                <label><input type="radio" name="agentic-loop-cycle" value="2"> Planifier → Déployer → Supprimer, exécuté exactement deux fois.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="loop-variant-reflexion">
+                            <fieldset>
+                                <legend>6. Quelle variante de la boucle agentique ajoute une étape d'autocritique, consignant une leçon en mémoire après un échec puis réessayant avec cet apprentissage ?</legend>
+                                <label><input type="radio" name="loop-variant-reflexion" value="0"> ReAct</label>
+                                <label><input type="radio" name="loop-variant-reflexion" value="1"> Plan-and-Execute (planifier puis exécuter)</label>
+                                <label><input type="radio" name="loop-variant-reflexion" value="2"> Reflexion</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="stopping-criteria-pairing">
+                            <fieldset>
+                                <legend>7. Quelle est la bonne pratique pour définir les critères d'arrêt d'un agent ?</legend>
+                                <label><input type="radio" name="stopping-criteria-pairing" value="0"> Se fier uniquement à la condition d'objectif atteint, puisqu'elle constitue l'arrêt idéal.</label>
+                                <label><input type="radio" name="stopping-criteria-pairing" value="1"> Associer la condition d'objectif à au moins une limite stricte (comme un nombre maximal d'itérations ou un délai) afin que l'agent s'arrête même lorsque l'objectif est inatteignable.</label>
+                                <label><input type="radio" name="stopping-criteria-pairing" value="2"> Ne jamais fixer de limites, pour que l'agent puisse réessayer jusqu'à réussir.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="multi-agent-four-patterns">
+                            <fieldset>
+                                <legend>8. Quelle option énumère les quatre patrons architecturaux multi-agents ?</legend>
+                                <label><input type="radio" name="multi-agent-four-patterns" value="0"> Superviseur, pipeline, parallèle et réseau.</label>
+                                <label><input type="radio" name="multi-agent-four-patterns" value="1"> Monolithe, microservice, sans serveur et par lots.</label>
+                                <label><input type="radio" name="multi-agent-four-patterns" value="2"> Client, serveur, proxy et passerelle.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="when-not-multi-agent-default">
+                            <fieldset>
+                                <legend>9. Quelle est la règle empirique pour choisir entre un agent unique et une conception multi-agents ?</legend>
+                                <label><input type="radio" name="when-not-multi-agent-default" value="0"> Toujours commencer avec plusieurs agents, car la spécialisation est gratuite.</label>
+                                <label><input type="radio" name="when-not-multi-agent-default" value="1"> Commencer avec un seul agent et ne passer à plusieurs que lorsqu'un besoin concret — spécialisation, parallélisme ou isolation des périmètres — justifie le coût supplémentaire.</label>
+                                <label><input type="radio" name="when-not-multi-agent-default" value="2"> Le nombre d'agents doit toujours correspondre au nombre d'outils disponibles.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="multi-agent-hidden-cost">
+                            <fieldset>
+                                <legend>10. Lequel de ces éléments est un coût caché introduit par une conception multi-agents ?</legend>
+                                <label><input type="radio" name="multi-agent-hidden-cost" value="0"> Surcoût de coordination, multiplication des coûts et observabilité plus difficile.</label>
+                                <label><input type="radio" name="multi-agent-hidden-cost" value="1"> Une latence garantie plus faible dans tous les cas.</label>
+                                <label><input type="radio" name="multi-agent-hidden-cost" value="2"> L'élimination automatique de toute propagation d'erreurs.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="guardrails-five-layers">
+                            <fieldset>
+                                <legend>11. Quelle option énumère les cinq couches de garde-fous en défense en profondeur ?</legend>
+                                <label><input type="radio" name="guardrails-five-layers" value="0"> Permissions, limites opérationnelles, approbation humaine, observabilité et interrupteur d'arrêt.</label>
+                                <label><input type="radio" name="guardrails-five-layers" value="1"> Pare-feu, antivirus, VPN, sauvegarde et mot de passe.</label>
+                                <label><input type="radio" name="guardrails-five-layers" value="2"> Chiffrement, compression, mise en cache, journalisation et partitionnement.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="guardrails-permissions-question">
+                            <fieldset>
+                                <legend>12. La couche de garde-fou « permissions » répond à quelle question ?</legend>
+                                <label><input type="radio" name="guardrails-permissions-question" value="0"> Quelle quantité d'actions l'agent peut-il effectuer ?</label>
+                                <label><input type="radio" name="guardrails-permissions-question" value="1"> À quoi l'agent peut-il toucher ?</label>
+                                <label><input type="radio" name="guardrails-permissions-question" value="2"> Peut-on arrêter l'agent maintenant ?</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="hitl-degrees-oversight">
+                            <fieldset>
+                                <legend>13. Quelle option nomme correctement les trois degrés de supervision humaine ?</legend>
+                                <label><input type="radio" name="hitl-degrees-oversight" value="0"> Humain dans la boucle, humain sur la boucle et humain hors de la boucle.</label>
+                                <label><input type="radio" name="hitl-degrees-oversight" value="1"> Manuel, semi-automatique et turbo.</label>
+                                <label><input type="radio" name="hitl-degrees-oversight" value="2"> Lecture, écriture et exécution.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="threat-modeling-agent-specific-threats">
+                            <fieldset>
+                                <legend>14. Dans l'atelier de modélisation des menaces, quelles trois menaces propres aux agents le modèle doit-il couvrir ?</legend>
+                                <label><input type="radio" name="threat-modeling-agent-specific-threats" value="0"> Mauvais usage des outils, injection de prompt et boucles incontrôlées.</label>
+                                <label><input type="radio" name="threat-modeling-agent-specific-threats" value="1"> Frappe lente, batterie faible et petits écrans.</label>
+                                <label><input type="radio" name="threat-modeling-agent-specific-threats" value="2"> Erreurs de police, contraste des couleurs et fautes d'orthographe.</label>
+                            </fieldset>
+                        </li>
+
+                        <li class="quiz-question" data-question-id="shai-mcp-enabled-tools-wildcard">
+                            <fieldset>
+                                <legend>15. Dans la configuration MCP de SHAI, que signifie, du point de vue de la gouvernance, le fait de régler <code>enabled_tools</code> sur <code>["*"]</code> ?</legend>
+                                <label><input type="radio" name="shai-mcp-enabled-tools-wildcard" value="0"> Cela accorde à l'agent chaque outil exposé par le serveur, présent et futur — l'inverse du moindre privilège.</label>
+                                <label><input type="radio" name="shai-mcp-enabled-tools-wildcard" value="1"> Cela désactive tous les outils pour que l'agent soit en lecture seule.</label>
+                                <label><input type="radio" name="shai-mcp-enabled-tools-wildcard" value="2"> Cela limite l'agent à un seul outil choisi au hasard.</label>
+                            </fieldset>
+                        </li>
+                    </ol>
+
+                    <button type="submit" class="btn btn-primary quiz-submit">Soumettre le quiz</button>
+                </form>
+
+                <p class="quiz-result" role="status" aria-live="polite"></p>
+            </div>
+
+            <button class="btn btn-success btn-mark-complete" data-lesson-id="quiz-fundamentals">
+                Marquer comme terminé
+            </button>
+        </div>
+    </main>
+
+    <script type="module" src="../js/app.js"></script>
+</body>
+</html>

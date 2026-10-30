@@ -1,19 +1,16 @@
 /**
  * SkillHub navigation module.
  *
- * Renders the lesson sidebar grouped by session track, wires lesson links to
- * locale-aware URLs, reflects completion/active state, and drives the
- * responsive hamburger menu. Completion is slug-keyed and locale-independent:
- * a lesson is treated as complete when its id appears in the supplied
- * `completedIds` or when its `skillhub_lesson_complete_<slug>` key in
- * localStorage is the string `'true'`.
+ * Renders the lesson sidebar grouped by top-level section and, within a
+ * section, by optional labeled subsection; wires lesson links to locale-aware
+ * URLs, reflects completion/active state, and drives the responsive hamburger
+ * menu. Completion is slug-keyed and locale-independent: a lesson is treated as
+ * complete when its id appears in the supplied `completedIds` or when its
+ * `skillhub_lesson_complete_<slug>` key in localStorage is the string `'true'`.
  */
 
 import { lessons as catalogLessons } from './lessons.js';
 import { detectLocale, getStoredLocalePreference } from './i18n.js';
-
-/** Fixed track ordering used to group and emit sidebar sections. */
-const TRACK_ORDER = ['morning', 'afternoon', 'sandbox'];
 
 /** Prefix for per-lesson completion flags persisted in localStorage. */
 const COMPLETE_PREFIX = 'skillhub_lesson_complete_';
@@ -21,24 +18,56 @@ const COMPLETE_PREFIX = 'skillhub_lesson_complete_';
 /** The locales the runtime supports. */
 const SUPPORTED_LOCALES = ['en', 'fr'];
 
+/** Fixed top-level section ordering used to group and emit sidebar sections. */
+const SECTION_ORDER = ['section-1', 'section-2', 'section-3'];
+
 /**
- * Localized, exact section titles per track (asserted verbatim by the tests).
+ * Verbatim bilingual section titles, asserted by the tests.
  * @type {Record<string, { en: string, fr: string }>}
  */
-const TRACK_TITLES = {
-  morning: {
-    en: 'Introduction & Fundamentals',
-    fr: 'Matin — Introduction et fondamentaux',
-  },
-  afternoon: {
-    en: 'Design & Governance',
-    fr: 'Conception et gouvernance',
-  },
-  sandbox: {
-    en: 'Sandbox — opcp-explorer Platform',
-    fr: 'Bac à sable — plateforme opcp-explorer',
-  },
+const SECTION_TITLES = {
+  'section-1': { en: 'Fundamentals & Governance', fr: 'Fondamentaux et gouvernance' },
+  'section-2': { en: 'Quiz', fr: 'Quiz' },
+  'section-3': { en: 'Sandbox Labs', fr: 'Bac à sable — travaux pratiques' },
 };
+
+/**
+ * Ordered subsections per section. Sections with a single, unlabeled group use
+ * `[null]`; only Section I carries labeled subsections (I.1 intro, I.2 design).
+ * @type {Record<string, Array<string|null>>}
+ */
+const SUBSECTION_ORDER = {
+  'section-1': ['intro', 'design'],
+  'section-2': [null],
+  'section-3': [null],
+};
+
+/**
+ * Verbatim bilingual subsection titles for labeled subsections.
+ * @type {Record<string, { en: string, fr: string }>}
+ */
+const SUBSECTION_TITLES = {
+  intro: { en: 'Introduction & Fundamentals', fr: 'Introduction et fondamentaux' },
+  design: { en: 'Design & Governance', fr: 'Conception et gouvernance' },
+};
+
+/**
+ * Map a (section, subsection) group to the `<ul>` id used for its nav list.
+ *
+ * The I.2 (`design`) list keeps the legacy id `nav-afternoon` so the
+ * navigation-consistency property test continues to resolve it. The I.1
+ * (`intro`) list uses `nav-morning`; unlabeled single groups fall back to
+ * `nav-<section>`.
+ *
+ * @param {string} section
+ * @param {string|null} subsection
+ * @returns {string}
+ */
+function navListId(section, subsection) {
+  if (subsection === 'design') return 'nav-afternoon';
+  if (subsection === 'intro') return 'nav-morning';
+  return `nav-${section}`;
+}
 
 /**
  * Resolve the active locale for rendering.
@@ -82,13 +111,57 @@ function isComplete(slug, completedSet) {
 }
 
 /**
+ * Render one `<li><a>…</a></li>` lesson link into `ul`.
+ *
+ * Link text is the localized title; `href` is `/<locale>/<slug>.html`, with
+ * `data-slug` and `data-lesson-id` set. Completed lessons get a `completed`
+ * class plus a completion `aria-label`; the lesson matching the current
+ * pathname gets an `active` class plus `aria-current="page"`.
+ *
+ * @param {HTMLElement} ul - List element to append the link into.
+ * @param {object} lesson - Lesson to render.
+ * @param {string} locale - Active locale.
+ * @param {Set<string>} completedSet - Slugs known to be complete.
+ * @param {string} pathname - Current page pathname.
+ * @returns {void}
+ */
+function appendLessonLink(ul, lesson, locale, completedSet, pathname) {
+  const li = document.createElement('li');
+  const link = document.createElement('a');
+
+  link.textContent =
+    (lesson.title && lesson.title[locale]) || (lesson.title && lesson.title.en) || '';
+  link.setAttribute('href', `/${locale}/${lesson.slug}.html`);
+  link.setAttribute('data-slug', lesson.slug);
+  link.setAttribute('data-lesson-id', lesson.id);
+
+  if (isComplete(lesson.slug, completedSet)) {
+    link.classList.add('completed');
+    link.setAttribute('aria-label', `${link.textContent} (completed)`);
+  }
+
+  if (pathname.endsWith(`/${lesson.slug}.html`)) {
+    link.classList.add('active');
+    link.setAttribute('aria-current', 'page');
+  }
+
+  li.appendChild(link);
+  ul.appendChild(li);
+}
+
+/**
  * Render the lesson sidebar into `container`.
  *
- * Lessons are grouped by track in the fixed order `['morning', 'afternoon',
- * 'sandbox']`; one `.sidebar-section` is emitted per non-empty group. Each
- * section has an `<h2 class="sidebar-section-title">` with the locale-
- * appropriate title and a `<ul class="sidebar-nav">` of `<li>` lesson links.
- * An empty lesson list yields zero sections and does not throw.
+ * Lessons are grouped by top-level section in the fixed order `['section-1',
+ * 'section-2', 'section-3']`; one `.sidebar-section` is emitted per non-empty
+ * section, each with an `<h2 class="sidebar-section-title">` carrying the
+ * locale-appropriate title and a `data-section` attribute. Within a section,
+ * lessons are grouped by `SUBSECTION_ORDER[section]`; a labeled subsection
+ * (I.1/I.2) emits an `<h3 class="sidebar-subsection-title">`, while an
+ * unlabeled single group (Sections II and III) renders its links directly under
+ * the section heading with no sub-heading. Each group's links live in a
+ * `<ul class="sidebar-nav">` with a group-specific id. An empty lesson list
+ * yields zero sections and does not throw.
  *
  * Each lesson link (`<a>`): text is the localized title, `href` is
  * `/<locale>/<slug>.html`, with `data-slug` and `data-lesson-id` set. Completed
@@ -113,46 +186,50 @@ export function renderSidebar(container, lessonList, completedIds = []) {
 
   const list = Array.isArray(lessonList) ? lessonList : [];
 
-  for (const track of TRACK_ORDER) {
-    const trackLessons = list.filter((lesson) => lesson.track === track);
-    if (trackLessons.length === 0) continue;
+  for (const sectionKey of SECTION_ORDER) {
+    const sectionLessons = list.filter((lesson) => lesson.section === sectionKey);
+    if (sectionLessons.length === 0) continue;
 
     const section = document.createElement('div');
     section.className = 'sidebar-section';
+    section.setAttribute('data-section', sectionKey);
 
     const heading = document.createElement('h2');
     heading.className = 'sidebar-section-title';
-    const titles = TRACK_TITLES[track] || { en: track, fr: track };
-    heading.textContent = titles[locale] || titles.en;
+    const sectionTitles = SECTION_TITLES[sectionKey] || { en: sectionKey, fr: sectionKey };
+    heading.textContent = sectionTitles[locale] || sectionTitles.en;
     section.appendChild(heading);
 
-    const ul = document.createElement('ul');
-    ul.className = 'sidebar-nav';
+    const subsectionKeys = SUBSECTION_ORDER[sectionKey] || [null];
 
-    for (const lesson of trackLessons) {
-      const li = document.createElement('li');
-      const link = document.createElement('a');
+    for (const subsectionKey of subsectionKeys) {
+      const groupLessons =
+        subsectionKey === null
+          ? sectionLessons
+          : sectionLessons.filter((lesson) => lesson.subsection === subsectionKey);
+      if (groupLessons.length === 0) continue;
 
-      link.textContent = (lesson.title && lesson.title[locale]) || (lesson.title && lesson.title.en) || '';
-      link.setAttribute('href', `/${locale}/${lesson.slug}.html`);
-      link.setAttribute('data-slug', lesson.slug);
-      link.setAttribute('data-lesson-id', lesson.id);
-
-      if (isComplete(lesson.slug, completedSet)) {
-        link.classList.add('completed');
-        link.setAttribute('aria-label', `${link.textContent} (completed)`);
+      // Emit a subsection heading only for labeled subsections (I.1/I.2);
+      // unlabeled single groups (Sections II and III) render no sub-heading.
+      const subsectionTitles = subsectionKey && SUBSECTION_TITLES[subsectionKey];
+      if (subsectionTitles) {
+        const subheading = document.createElement('h3');
+        subheading.className = 'sidebar-subsection-title';
+        subheading.textContent = subsectionTitles[locale] || subsectionTitles.en;
+        section.appendChild(subheading);
       }
 
-      if (pathname.endsWith(`/${lesson.slug}.html`)) {
-        link.classList.add('active');
-        link.setAttribute('aria-current', 'page');
+      const ul = document.createElement('ul');
+      ul.className = 'sidebar-nav';
+      ul.id = navListId(sectionKey, subsectionKey);
+
+      for (const lesson of groupLessons) {
+        appendLessonLink(ul, lesson, locale, completedSet, pathname);
       }
 
-      li.appendChild(link);
-      ul.appendChild(li);
+      section.appendChild(ul);
     }
 
-    section.appendChild(ul);
     container.appendChild(section);
   }
 }

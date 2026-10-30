@@ -20,6 +20,8 @@ import { lessons } from './lessons.js';
 import { initNavigation } from './navigation.js';
 import { initGuardrailChecklist } from './self-assessment.js';
 import { initLocaleSwitcher } from './i18n.js';
+import { QUIZ_QUESTIONS } from './quiz-questions.js';
+import { initQuiz } from './quiz.js';
 
 /**
  * Selectors for the two progress-bar families. The test DOM uses
@@ -48,6 +50,7 @@ export function initApp() {
   runStep(updateProgressBar);
   runStep(wireNavigation);
   runStep(wireSelfAssessment);
+  runStep(wireQuiz);
   runStep(wireLocaleSwitcher);
 }
 
@@ -142,6 +145,31 @@ function wireSelfAssessment() {
       : undefined;
 
   initGuardrailChecklist({ container, resultEl, completeBtn, locale });
+}
+
+/**
+ * Wire the Section I fundamentals quiz when its form is present.
+ *
+ * Returns early when no quiz form exists, so pages without a quiz initialize
+ * unchanged. Reads the active locale from `<html lang>` so the result message
+ * is localized, then delegates to {@link initQuiz}, which binds submit scoring
+ * and best-effort completion recording (Requirement 5.1).
+ *
+ * @returns {void}
+ */
+function wireQuiz() {
+  if (typeof document === 'undefined') return;
+
+  const form = document.querySelector('.quiz-form, [data-quiz-form]');
+  if (!form) return;
+
+  const resultEl = document.querySelector('.quiz-result, [data-quiz-result]');
+  const locale =
+    document.documentElement && document.documentElement.lang
+      ? document.documentElement.lang
+      : undefined;
+
+  initQuiz({ form, questions: QUIZ_QUESTIONS, resultEl, locale });
 }
 
 /**

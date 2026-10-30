@@ -2,13 +2,26 @@
  * Lesson catalog for the SkillHub bilingual (EN/FR) runtime.
  *
  * The `lessons` array is the single source of truth for the course catalog. It
- * lists all 18 lessons in programme order: 4 morning fundamentals, 7 afternoon
- * design & governance lessons, then 7 sandbox (hands-on) lessons.
+ * lists all 14 catalog entries in programme order, grouped into three
+ * top-level sections:
+ *   - Section I (Fundamentals & Governance): 4 intro (I.1) + 7 design (I.2)
+ *     lessons, carried over from the former `morning`/`afternoon` tracks.
+ *   - Section II (Quiz): the `quiz-fundamentals` gated quiz.
+ *   - Section III (Sandbox Labs): the shai orchestrator lab and the
+ *     consolidated Running Applications lab.
+ *
+ * Grouping fields:
+ *   - `section` is one of 'section-1' | 'section-2' | 'section-3' and drives
+ *     the sidebar renderer.
+ *   - `subsection` is one of 'intro' | 'design' | null; only Section I uses
+ *     labeled subsections (I.1 intro, I.2 design).
+ *   - `track` ('morning' | 'afternoon' | 'sandbox' | 'quiz') is retained for
+ *     back-compat track-scoped queries.
  *
  * Invariants (enforced by skillhub/tests/lessons.test.js):
  *   - `id` and `slug` are unique across the catalog, and `id === slug`.
  *   - `title.en` and `title.fr` are both non-empty.
- *   - `track` is one of 'morning' | 'afternoon' | 'sandbox'.
+ *   - `track` is one of 'morning' | 'afternoon' | 'sandbox' | 'quiz'.
  *   - `difficulty` is one of 'beginner' | 'intermediate' | 'advanced', with at
  *     least one lesson per difficulty.
  *   - `estimatedMinutes` is an integer in [1, 480].
@@ -19,7 +32,7 @@
  */
 
 export const lessons = [
-  // ── Morning — fundamentals ────────────────────────────────────────────────
+  // ── Section I.1 — Introduction & Fundamentals (formerly morning) ──────────
   {
     id: 'assistant-vs-agent',
     slug: 'assistant-vs-agent',
@@ -28,6 +41,8 @@ export const lessons = [
       fr: "De l'assistant à l'agent",
     },
     track: 'morning',
+    section: 'section-1',
+    subsection: 'intro',
     difficulty: 'beginner',
     estimatedMinutes: 30,
     prerequisites: [],
@@ -40,6 +55,8 @@ export const lessons = [
       fr: "Anatomie d'un agent IA",
     },
     track: 'morning',
+    section: 'section-1',
+    subsection: 'intro',
     difficulty: 'beginner',
     estimatedMinutes: 40,
     prerequisites: ['assistant-vs-agent'],
@@ -52,6 +69,8 @@ export const lessons = [
       fr: 'La boucle agentique et ses variantes',
     },
     track: 'morning',
+    section: 'section-1',
+    subsection: 'intro',
     difficulty: 'intermediate',
     estimatedMinutes: 45,
     prerequisites: ['agent-anatomy-7-components'],
@@ -64,12 +83,14 @@ export const lessons = [
       fr: "Critères d'arrêt",
     },
     track: 'morning',
+    section: 'section-1',
+    subsection: 'intro',
     difficulty: 'intermediate',
     estimatedMinutes: 35,
     prerequisites: ['agentic-loop-and-variants'],
   },
 
-  // ── Afternoon — design & governance ───────────────────────────────────────
+  // ── Section I.2 — Design & Governance (formerly afternoon) ────────────────
   {
     id: 'multi-agent-patterns',
     slug: 'multi-agent-patterns',
@@ -78,6 +99,8 @@ export const lessons = [
       fr: 'Systèmes multi-agents',
     },
     track: 'afternoon',
+    section: 'section-1',
+    subsection: 'design',
     difficulty: 'intermediate',
     estimatedMinutes: 45,
     prerequisites: ['stopping-criteria'],
@@ -90,6 +113,8 @@ export const lessons = [
       fr: 'Quand éviter le multi-agents',
     },
     track: 'afternoon',
+    section: 'section-1',
+    subsection: 'design',
     difficulty: 'intermediate',
     estimatedMinutes: 30,
     prerequisites: ['multi-agent-patterns'],
@@ -102,6 +127,8 @@ export const lessons = [
       fr: 'Garde-fous : les cinq couches',
     },
     track: 'afternoon',
+    section: 'section-1',
+    subsection: 'design',
     difficulty: 'intermediate',
     estimatedMinutes: 45,
     prerequisites: ['when-not-multi-agent'],
@@ -114,6 +141,8 @@ export const lessons = [
       fr: 'Human-in-the-Loop et politique IA OVHcloud',
     },
     track: 'afternoon',
+    section: 'section-1',
+    subsection: 'design',
     difficulty: 'advanced',
     estimatedMinutes: 40,
     prerequisites: ['guardrails-5-layers'],
@@ -126,6 +155,8 @@ export const lessons = [
       fr: "Atelier : modélisation des menaces d'un agent IA",
     },
     track: 'afternoon',
+    section: 'section-1',
+    subsection: 'design',
     difficulty: 'advanced',
     estimatedMinutes: 60,
     prerequisites: ['human-in-the-loop-ovhcloud-policy'],
@@ -138,6 +169,8 @@ export const lessons = [
       fr: 'Projet final : concevoir un agent IA de bout en bout',
     },
     track: 'afternoon',
+    section: 'section-1',
+    subsection: 'design',
     difficulty: 'advanced',
     estimatedMinutes: 90,
     prerequisites: ['threat-modeling-workshop'],
@@ -150,100 +183,62 @@ export const lessons = [
       fr: 'Configurer un agent SHAI avec MCP vers OPCP-EXPLORER',
     },
     track: 'afternoon',
+    section: 'section-1',
+    subsection: 'design',
     difficulty: 'advanced',
     estimatedMinutes: 45,
     prerequisites: ['agent-design-capstone'],
   },
 
-  // ── Sandbox — hands-on OPCP Explorer labs ─────────────────────────────────
+  // ── Section II — Quiz ─────────────────────────────────────────────────────
   {
-    id: 'install-bare-metal',
-    slug: 'install-bare-metal',
+    id: 'quiz-fundamentals',
+    slug: 'quiz-fundamentals',
     title: {
-      en: 'Installation on Bare-Metal Ubuntu with Agentic AI',
-      fr: "Installation sur Ubuntu Bare-Metal avec l'IA agentique",
+      en: 'Quiz: Fundamentals & Governance',
+      fr: 'Quiz : fondamentaux et gouvernance',
     },
-    track: 'sandbox',
-    difficulty: 'beginner',
-    estimatedMinutes: 45,
-    prerequisites: [],
-  },
-  {
-    id: 'starting-applications',
-    slug: 'starting-applications',
-    title: {
-      en: 'Starting Applications with Agentic AI',
-      fr: "Démarrage des applications avec l'IA agentique",
-    },
-    track: 'sandbox',
-    difficulty: 'beginner',
-    estimatedMinutes: 25,
-    prerequisites: ['install-bare-metal'],
-  },
-  {
-    id: 'stopping-applications',
-    slug: 'stopping-applications',
-    title: {
-      en: 'Stopping Applications with Agentic AI',
-      fr: "Arrêt des applications avec l'IA agentique",
-    },
-    track: 'sandbox',
-    difficulty: 'beginner',
-    estimatedMinutes: 25,
-    prerequisites: ['starting-applications'],
-  },
-  {
-    id: 'making-backups',
-    slug: 'making-backups',
-    title: {
-      en: 'Making Backups with Agentic AI',
-      fr: "Sauvegardes avec l'IA agentique",
-    },
-    track: 'sandbox',
+    track: 'quiz',
+    section: 'section-2',
+    subsection: null,
     difficulty: 'intermediate',
-    estimatedMinutes: 35,
-    prerequisites: ['install-bare-metal'],
+    estimatedMinutes: 15,
+    prerequisites: ['agent-design-capstone'],
   },
+
+  // ── Section III — Sandbox Labs (hands-on OPCP Explorer) ───────────────────
   {
-    id: 'modifying-applications',
-    slug: 'modifying-applications',
+    id: 'shai-orchestrator-lab',
+    slug: 'shai-orchestrator-lab',
     title: {
-      en: 'Modifying Applications with Agentic AI',
-      fr: "Modification d'applications avec l'IA agentique",
+      en: 'Lab: The shai Multi-Agent Orchestrator',
+      fr: "Atelier : l'orchestrateur multi-agents shai",
     },
     track: 'sandbox',
+    section: 'section-3',
+    subsection: null,
     difficulty: 'intermediate',
     estimatedMinutes: 40,
-    prerequisites: ['stopping-applications'],
+    prerequisites: ['configuring-shai-mcp-opcp-explorer'],
   },
   {
-    id: 'agent-control',
-    slug: 'agent-control',
+    id: 'running-applications-lab',
+    slug: 'running-applications-lab',
     title: {
-      en: 'Controlling AI Agents',
-      fr: 'Contrôle des agents IA',
+      en: 'Lab: OPCP-EXPLORER Running Applications',
+      fr: 'Atelier : exploitation des applications OPCP-EXPLORER',
     },
     track: 'sandbox',
-    difficulty: 'advanced',
-    estimatedMinutes: 35,
-    prerequisites: ['modifying-applications'],
-  },
-  {
-    id: 'adding-applications',
-    slug: 'adding-applications',
-    title: {
-      en: 'Adding New Applications with Agentic AI (Annex – optional)',
-      fr: "Ajout de nouvelles applications avec l'IA agentique (Annexe – facultatif)",
-    },
-    track: 'sandbox',
+    section: 'section-3',
+    subsection: null,
     difficulty: 'beginner',
-    estimatedMinutes: 30,
-    prerequisites: ['agent-control'],
+    estimatedMinutes: 90,
+    prerequisites: ['shai-orchestrator-lab'],
   },
 ];
 
 /** Track ordering used by track-scoped queries. */
-const TRACK_ORDER = ['morning', 'afternoon', 'sandbox'];
+const TRACK_ORDER = ['morning', 'afternoon', 'sandbox', 'quiz'];
 
 /**
  * Return the lesson whose slug matches, or `undefined` when none exists.

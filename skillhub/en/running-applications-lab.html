@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab: OPCP-EXPLORER Running Applications - Agentic AI OPCP Labs</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <a href="." class="logo" aria-label="Agentic AI OPCP Labs Home">
+            <span>Agentic AI OPCP Labs</span>
+        </a>
+
+        <div class="header-actions">
+            <div class="progress-bar-container" aria-label="Overall progress">
+                <span class="progress-label">Progress:</span>
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-percent">0%</span>
+            </div>
+
+            <div class="locale-switcher" role="navigation" aria-label="Language selector">
+                <button class="active" data-locale="en" aria-label="English">EN</button>
+                <button data-locale="fr" aria-label="Français">FR</button>
+            </div>
+
+            <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
+        <div class="sidebar-section" data-section="section-1">
+            <h2 class="sidebar-section-title">Fundamentals &amp; Governance</h2>
+            <h3 class="sidebar-subsection-title">Introduction &amp; Fundamentals</h3>
+            <ul class="sidebar-nav">
+                <li><a href="assistant-vs-agent.html">From Assistant to Agent</a></li>
+                <li><a href="agent-anatomy-7-components.html">Anatomy: Seven Core Components</a></li>
+                <li><a href="agentic-loop-and-variants.html">The Agentic Loop &amp; Variants</a></li>
+                <li><a href="stopping-criteria.html">Stopping Criteria</a></li>
+            </ul>
+            <h3 class="sidebar-subsection-title">Design &amp; Governance</h3>
+            <ul class="sidebar-nav" id="nav-afternoon">
+                <li><a href="multi-agent-patterns.html">Multi-Agent Patterns</a></li>
+                <li><a href="when-not-multi-agent.html">When Not to Go Multi-Agent</a></li>
+                <li><a href="guardrails-5-layers.html">Guardrails: Five Layers</a></li>
+                <li><a href="human-in-the-loop-ovhcloud-policy.html">Human-in-the-Loop &amp; OVHcloud AI Policy</a></li>
+                <li><a href="threat-modeling-workshop.html">Workshop: Threat Modeling</a></li>
+                <li><a href="agent-design-capstone.html">Capstone: Agent Design</a></li>
+                <li><a href="configuring-shai-mcp-opcp-explorer.html">Configuring a SHAI Agent with MCP to OPCP-EXPLORER</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-section="section-2">
+            <h2 class="sidebar-section-title">Quiz</h2>
+            <ul class="sidebar-nav">
+                <li><a href="quiz-fundamentals.html">Fundamentals &amp; Governance Quiz</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section" data-section="section-3">
+            <h2 class="sidebar-section-title">Sandbox Labs</h2>
+            <ul class="sidebar-nav">
+                <li><a href="shai-orchestrator-lab.html">Lab: the shai Multi-Agent Orchestrator</a></li>
+                <li><a href="running-applications-lab.html" class="active">Lab: OPCP-EXPLORER Running Applications</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content" role="main">
+        <div class="lesson-content">
+            <div class="lesson-header">
+                <h1>Lab: OPCP-EXPLORER Running Applications</h1>
+                <div class="lesson-meta">
+                    <span class="difficulty-badge difficulty-badge--beginner">Sandbox Labs · Beginner</span>
+                    <span class="duration">⏱ ~90 min</span>
+                </div>
+            </div>
+            <div class="lesson-body">
+                <p>This single hands-on lab consolidates the full OPCP-EXPLORER operations workflow that was previously spread across seven separate sandbox lessons. You will install the Agentic-AI-Platform on bare-metal Ubuntu, register and start applications, stop them gracefully, back up and restore their databases, modify them with AI assistance, and govern the agents that drive every one of those actions. Each section below maps to one former topic, so nothing from the original material is lost — it is simply organized as one coherent lab.</p>
+
+                <div class="alert alert-info">
+                    <strong>How to use this lab:</strong> work through the sections in order the first time. Each section states its prerequisites, what you will learn, the concrete commands, and the agent skill that automates the action. All example commands and skill prompts are illustrative — read them to understand what the agent runs on your behalf.
+                </div>
+
+                <h2>Lab Contents</h2>
+                <ol>
+                    <li><a href="#install">Installation on Bare-Metal Ubuntu</a></li>
+                    <li><a href="#adding">Adding New Applications</a></li>
+                    <li><a href="#starting">Starting Applications</a></li>
+                    <li><a href="#stopping">Stopping Applications</a></li>
+                    <li><a href="#backups">Making Backups (and Restoring)</a></li>
+                    <li><a href="#modifying">Modifying Applications</a></li>
+                    <li><a href="#agent-control">Controlling AI Agents</a></li>
+                </ol>
+
+                <figure class="lesson-figure">
+                    <img src="../assets/img/architecture-agents.svg" alt="Architecture of the platform's AI agents: Operator, Developer, and Control" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                    <figcaption>The platform's AI agents and their responsibilities</figcaption>
+                </figure>
+
+                <!-- ============================================================ -->
+                <!-- 1. INSTALL BARE METAL -->
+                <!-- ============================================================ -->
+                <h2 id="install">1. Installation on Bare-Metal Ubuntu</h2>
+                <p>Deploy the Agentic-AI-Platform on a fresh bare-metal Ubuntu server (22.04 or 24.04 LTS), from system preparation to final deployment.</p>
+
+                <figure class="lesson-figure">
+                    <img src="../assets/img/agentic-ai-platform-architecture.png" alt="Agentic AI platform architecture" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                    <figcaption>Agentic AI platform architecture</figcaption>
+                </figure>
+
+                <h3>Prerequisites</h3>
+                <ul>
+                    <li>A clean Ubuntu 22.04 or 24.04 LTS installation</li>
+                    <li>Root or sudo access</li>
+                    <li>At least 4 GB RAM and 20 GB disk space</li>
+                    <li>Internet connectivity for package downloads</li>
+                    <li>An NVIDIA-compatible GPU (optional, for MIG support)</li>
+                </ul>
+
+                <h3>Quick Installation</h3>
+                <p>The fastest way to deploy the platform is the automated <code>init_pltf.sh</code> script, which runs every step for you and sets up the control plane for the Agentic AI platform. The script lives at the <strong>root</strong> of the dedicated platform repository on GitHub: <a href="https://github.com/Sam9682/agentic-ai-plateform" target="_blank" rel="noopener noreferrer">github.com/Sam9682/agentic-ai-plateform</a>.</p>
+                <pre><code>git clone https://github.com/Sam9682/agentic-ai-plateform.git
+cd agentic-ai-plateform
+# init_pltf.sh is here, in the repository root:
+ls -l init_pltf.sh
+chmod +x init_pltf.sh
+./init_pltf.sh</code></pre>
+                <div class="alert alert-info">
+                    <strong>Note:</strong> Run the script from the repository root, always with the <code>./</code> prefix. It prompts for the platform identity (folder slug, display name, repo URL) and writes <code>PLTF_NAME</code> / <code>PLTF_FOLDER</code> into <code>conf/deploy.ini</code>. Press Enter to accept the defaults, or pre-set them via environment variables for a non-interactive run.
+                </div>
+
+                <details class="manual-install">
+                <summary><strong>Manual Installation (optional)</strong></summary>
+                <p>These are the individual steps the automated script performs. Follow them only if you want a step-by-step install or need to customize the process.</p>
+
+                <h4>Step 1: Install System Dependencies</h4>
+                <pre><code>sudo apt update
+sudo apt --fix-broken install -y
+sudo apt install -y python3 python3-pip python3-venv net-tools unzip</code></pre>
+
+                <h4>Step 2: Install CLI Tools (shai and Terraform)</h4>
+                <pre><code># OVH CLI (shai)
+curl -fsSL https://raw.githubusercontent.com/ovh/shai/main/install.sh | sh
+echo 'export PATH="~/.local/bin:$PATH"' >> ~/.bashrc
+
+# Terraform
+curl -s "https://releases.hashicorp.com/terraform/1.14.5/terraform_1.14.5_linux_amd64.zip" -o "terraform.zip"
+unzip -q terraform.zip
+sudo mv terraform /usr/local/bin/
+rm -f terraform.zip</code></pre>
+
+                <h4>Step 3: Network Configuration (Netplan)</h4>
+                <p>The script configures interface priorities so the public interface is preferred for default routing: public interface route metric <code>50</code> (high priority), private interface route metric <code>200</code> (low priority). Interface detection is automatic (private ranges <code>10.x</code>, <code>172.16-31.x</code>, <code>192.168.x</code>).</p>
+                <div class="alert alert-warning">
+                    <strong>Warning:</strong> A backup of the existing netplan file is created automatically before any modification.
+                </div>
+
+                <h4>Step 4: Install Docker</h4>
+                <pre><code>curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker $USER
+sudo curl -sL "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+rm -f get-docker.sh</code></pre>
+                <div class="alert alert-info">
+                    <strong>Note:</strong> Log out and back in for the <code>docker</code> group membership to take effect.
+                </div>
+
+                <h4>Step 5: Install NVIDIA Drivers and GPU Support (Optional)</h4>
+                <pre><code>sudo apt install -y nvidia-driver-550 nvidia-utils-550
+sudo nvidia-smi -mig 1
+sudo apt install -y nvidia-container-toolkit
+docker run --rm --gpus '"device=0"' nvidia/cuda:12.3.0-base-ubuntu22.04 nvidia-smi</code></pre>
+                <div class="alert alert-warning">
+                    <strong>Note:</strong> MIG mode is only available on NVIDIA A100, A30, H100, and similar GPUs; it is skipped on incompatible hardware.
+                </div>
+
+                <h4>Step 6: Configure AWS (OVH S3 Storage)</h4>
+                <pre><code>mkdir -p ~/.aws
+cat > ~/.aws/config &lt;&lt;EOF
+[profile OVH-SWAUTOMORPH]
+region = gra
+output = json
+EOF
+cat > ~/.aws/credentials &lt;&lt;EOF
+[OVH-SWAUTOMORPH]
+aws_access_key_id = YOUR_ACCESS_KEY
+aws_secret_access_key = YOUR_SECRET_KEY
+endpoint_url = https://s3.gra.io.cloud.ovh.net/
+signature_version = s3v4
+EOF
+export AWS_DEFAULT_PROFILE=OVH-SWAUTOMORPH
+export AWS_ENDPOINT_URL_S3=https://s3.gra.io.cloud.ovh.net/</code></pre>
+
+                <h4>Step 7: Clone the Repository</h4>
+                <pre><code>git clone https://github.com/Sam9682/opcp-agentic-ai-labs.git
+cd opcp-agentic-ai-labs
+git submodule update --init --recursive</code></pre>
+
+                <h4>Step 8: Set Up the Python Environment</h4>
+                <pre><code>python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt</code></pre>
+
+                <h4>Step 9: Final Configuration</h4>
+                <pre><code>mkdir -p logs
+chmod +x setup_modsecurity_config.sh
+cd ~
+mkdir -p deployments/admin</code></pre>
+
+                <div class="alert alert-warning">
+                    <strong>Post-installation checklist — do not forget to:</strong>
+                    <ul>
+                        <li>Modify <code>./conf/deploy.ini</code> with your platform settings, especially <code>PLTF_NAME</code> and <code>DOMAIN</code></li>
+                        <li>Add the SSL certificate to <code>~/opcp-agentic-ai-labs/ssl/fullchain_domain.crt</code> and the private key to <code>~/opcp-agentic-ai-labs/ssl/privateKey_domain.key</code> for nginx HTTPS</li>
+                        <li>Enter <code>aws_access_key_id</code> and <code>aws_secret_access_key</code> in <code>~/.aws/credentials</code> for S3 synchronization</li>
+                    </ul>
+                </div>
+                </details>
+
+                <!-- ============================================================ -->
+                <!-- 2. ADDING APPLICATIONS -->
+                <!-- ============================================================ -->
+                <h2 id="adding">2. Adding New Applications</h2>
+                <p>Register and deploy applications on the platform using the CLI, the REST API, or the web admin interface. The web admin exposes an <strong>Applications Management</strong> table listing every registered application with its ID, name, URL, description, Git URL, repo size, and build/start/stop/ps timings, plus <strong>Edit</strong> and <strong>Delete</strong> actions.</p>
+
+                <figure class="lesson-figure">
+                    <img src="../assets/img/Screen_Apps1.png" alt="Applications Management interface showing the list of registered applications with metadata and action buttons" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                    <figcaption>The "Applications Management" panel from the OPCP-AiPoweredStore platform</figcaption>
+                </figure>
+
+                <h3>Method 1: Web Interface</h3>
+                <ol>
+                    <li>Log into the admin interface</li>
+                    <li>Open the <strong>Applications</strong> menu in the top navigation bar</li>
+                    <li>Click <strong>Add New Application</strong></li>
+                    <li>Fill in the form: Name (technical, no spaces, lowercase), Description, URL, and Git URL</li>
+                    <li>Submit the form</li>
+                </ol>
+
+                <h3>Method 2: CLI</h3>
+                <pre><code>cd ~/opcp-agentic-ai-labs
+source .venv/bin/activate
+python opcp-explorer.py add-app \
+  --name "my-application" \
+  --description "My application description" \
+  --git-url "git@github.com/user/my-application.git" \
+  --url "https://my-domain.com/admin/my-application"</code></pre>
+
+                <h3>Method 3: REST API</h3>
+                <pre><code>curl -X POST https://&lt;your-domain&gt;/api/applications \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer &lt;your-token&gt;" \
+  -d '{
+    "name": "my-application",
+    "description": "My application description",
+    "git_url": "git@github.com/user/my-application.git",
+    "url": "https://my-domain.com/admin/my-application"
+  }'</code></pre>
+                <div class="alert alert-warning">
+                    <strong>Warning:</strong> Deleting an application is irreversible. Make sure you have a backup before proceeding.
+                </div>
+
+                <!-- ============================================================ -->
+                <!-- 3. STARTING APPLICATIONS -->
+                <!-- ============================================================ -->
+                <h2 id="starting">3. Starting Applications</h2>
+                <p>Start a registered application, understand its Docker container orchestration, monitor startup logs, and verify its health.</p>
+
+                <figure class="lesson-figure">
+                    <img src="../assets/img/Screen_AppStart1.png" alt="Screenshot showing how to start an application on the platform" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                    <figcaption>Example of starting an application on the OPCP-AiPoweredStore platform</figcaption>
+                </figure>
+
+                <pre><code># Navigate to the platform directory
+cd ~/opcp-agentic-ai-labs
+
+# Start an application
+./deployApp.sh &lt;app_name&gt;
+
+# Verify the running containers and tail logs
+docker ps
+docker logs &lt;container_name&gt; --tail 50</code></pre>
+
+                <section class="skill-section" data-skill="START_APP">
+                    <h3>Skill configuration: START_APP</h3>
+                    <p>Starting an application is driven by the <code>START_APP</code> agent skill. The prompt below is the exact configuration the agent follows to deploy and start an application. Tokens such as <code>{{APPLICATION_FOLDER}}</code> and <code>{{USER_ID}}</code> are substituted with concrete values at runtime.</p>
+                    <details class="skill-prompt">
+                        <summary>View the START_APP skill prompt (SKILL.md)</summary>
+                        <pre><code>You are an autonomous IT Operater agent with access to execute shell commands on a Linux server.
+Please deploy and start the application by executing the following steps in sequence.
+IMPORTANT :
+- all commands have to be executed in the application located {{APPLICATION_FOLDER}}.
+- Execute all steps to deploy with the environment variable USER_ID={{USER_ID}}
+
+#### 1. Check Prerequisites (docker and docker-compose must be installed):
+command -v docker || exit 1
+command -v docker-compose || exit 1
+
+#### 2. Calculate HTTP Ports used by the application's containers:
+source {{APPLICATION_FOLDER}}/conf/deploy.ini
+RANGE_START=${RANGE_START:-6000}
+RANGE_RESERVED=${RANGE_RESERVED:-100}
+RANGE_PORTS_PER_APPLICATION=${RANGE_PORTS_PER_APPLICATION:-12}
+if ! [[ "$USER_ID" =~ ^[0-9]+$ ]]; then USER_ID=0; fi
+PORT_RANGE_BEGIN=$((RANGE_START + USER_ID * RANGE_RESERVED))
+base=$((PORT_RANGE_BEGIN + APPLICATION_IDENTITY_NUMBER * RANGE_PORTS_PER_APPLICATION))
+
+#### 3. Generate Secrets (only if .env.prod doesn't exist), build .env.prod with
+# POSTGRES_* credentials, DATABASE_URL, JWT_SECRET, DOMAIN and API_URL, then chmod 600 .env.prod
+
+#### 4. Generate Nginx Configuration from conf/nginx.conf.template if it exists.
+
+#### 5. Start the docker services:
+docker-compose -p "$NAME_OF_APPLICATION-$USER_ID-$HTTPS_PORT" -f docker-compose.yml --env-file .env.prod up -d
+
+#### 6. Configure Firewall (UFW) to allow the calculated HTTP/HTTPS ports.
+
+#### 7. Verify the service is up:
+curl -f -s "https://${DOMAIN}:${HTTPS_PORT}/" || true
+
+Finally, display the link to the web site: https://${DOMAIN}:${HTTPS_PORT}</code></pre>
+                    </details>
+                </section>
+
+                <!-- ============================================================ -->
+                <!-- 4. STOPPING APPLICATIONS -->
+                <!-- ============================================================ -->
+                <h2 id="stopping">4. Stopping Applications</h2>
+                <p>Gracefully stop an application, understand the shutdown process, and clean up resources afterwards.</p>
+
+                <figure class="lesson-figure">
+                    <img src="../assets/img/Screen_AppStop1.png" alt="Screenshot showing how to stop an application on the platform" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                    <figcaption>Example of stopping an application on the OPCP-AiPoweredStore platform</figcaption>
+                </figure>
+
+                <pre><code># Stop a specific application
+cd ~/deployments/&lt;app_name&gt;
+docker-compose down
+
+# Stop with volume cleanup (removes data)
+docker-compose down -v
+
+# Stop the entire platform
+cd ~/opcp-agentic-ai-labs
+docker-compose down</code></pre>
+                <div class="alert alert-warning">
+                    <strong>Warning:</strong> The <code>-v</code> flag removes associated volumes and data. Always create a backup before using it.
+                </div>
+
+                <section class="skill-section" data-skill="STOP_APP">
+                    <h3>Skill configuration: STOP_APP</h3>
+                    <p>Stopping an application is driven by the <code>STOP_APP</code> agent skill, which performs a graceful shutdown of the application's running Docker containers.</p>
+                    <details class="skill-prompt">
+                        <summary>View the STOP_APP skill prompt (SKILL.md)</summary>
+                        <pre><code>Please stop all running Docker containers for the specified user instance.
+IMPORTANT :
+- all commands have to be executed in the application located {{APPLICATION_FOLDER}}.
+- Execute all steps with the environment variable USER_ID={{USER_ID}}
+
+#### 1. Calculate HTTP Ports (same port-calculation logic as START_APP).
+
+#### 2. Stop the running application by container name pattern:
+echo "Stopping {{APPLICATION_NAME}} services..."
+containers=$(docker ps -q --filter "name=${NAME_OF_APPLICATION}-.*-${USER_ID}-.*")
+if [[ -n "$containers" ]]; then
+    docker stop $containers
+    docker rm $containers
+    echo "Services stopped successfully"
+else
+    echo "No running containers found for USER_ID: $USER_ID"
+fi
+
+After completion, verify networks are removed, volumes are preserved, and report the final status.</code></pre>
+                    </details>
+                </section>
+
+                <!-- ============================================================ -->
+                <!-- 5. MAKING BACKUPS -->
+                <!-- ============================================================ -->
+                <h2 id="backups">5. Making Backups (and Restoring)</h2>
+                <p>Back up application databases to OVH S3-compatible object storage, restore them when needed, and clean a database safely. The backup lifecycle: dump the database with <code>pg_dump</code>, sync the dump to OVH S3, download it when needed, and restore it into the database container.</p>
+
+                <pre><code>flowchart LR
+    DB[(PostgreSQL in container)] --&gt;|pg_dump| Dump[backup_YYYYMMDD.sql]
+    Dump --&gt;|aws s3 sync| S3[(OVH S3 bucket)]
+    S3 --&gt;|aws s3 cp| Local[restore.sql]
+    Local --&gt;|psql| DB2[(PostgreSQL in container)]</code></pre>
+                <p class="caption">The backup lifecycle: dump, sync to OVH S3, download, and restore.</p>
+
+                <pre><code># Backup a PostgreSQL database
+docker exec &lt;db_container&gt; pg_dump -U postgres &lt;database&gt; > backup_$(date +%Y%m%d).sql
+
+# Sync backups to OVH S3 object storage
+aws s3 sync ./backups/ s3://&lt;bucket_name&gt;/backups/ \
+  --profile OVH-SWAUTOMORPH \
+  --endpoint-url https://s3.gra.io.cloud.ovh.net/
+
+# Download and restore
+aws s3 cp s3://&lt;bucket_name&gt;/backups/backup_20240101.sql ./restore.sql \
+  --profile OVH-SWAUTOMORPH \
+  --endpoint-url https://s3.gra.io.cloud.ovh.net/
+docker exec -i &lt;db_container&gt; psql -U postgres &lt;database&gt; &lt; restore.sql</code></pre>
+
+                <section class="skill-section" data-skill="BACKUP_DATABASE">
+                    <h3>Skill configuration: BACKUP_DATABASE</h3>
+                    <p>The database backup action is driven by the <code>BACKUP_DATABASE</code> agent skill, which dumps the PostgreSQL database and uploads the archive to OVH S3.</p>
+                    <details class="skill-prompt">
+                        <summary>View the BACKUP_DATABASE skill prompt (SKILL.md)</summary>
+                        <pre><code>You are an autonomous IT Operater agent with access to execute shell commands on a Linux server.
+Please backup the PostgreSQL database by executing these steps:
+- Backups are stored in OVH S3 using IPv4 addressing
+- The S3 bucket path follows: s3://bucket-name/{{APPLICATION_NAME}}/{{IPv4_ADDRESS}}/backups/
+
+#### 1. Check Prerequisites: docker, docker-compose, aws cli.
+#### 2. Retrieve DB configuration (DB_CONTAINER, DB_NAME, DB_USER) from docker-compose.yml, falling back to .env.prod.
+#### 3. Get the server IPv4 address.
+#### 4. Create ./backups and a dated backup file name.
+#### 5. Execute the backup:
+docker exec $DB_CONTAINER pg_dump -U $DB_USER $DB_NAME | gzip > $BACKUP_FILE
+#### 6. Upload to OVH S3:
+aws s3 cp $BACKUP_FILE "s3://${S3_BUCKET}/${NAME_OF_APPLICATION}/${SERVER_IP}/backups/" --acl private
+#### 7. Record the backup in deployment history.
+#### 8. Clean up local backups older than 7 days.
+
+Finally, display the backup file, S3 location, size, and deployment id.</code></pre>
+                    </details>
+                </section>
+
+                <section class="skill-section" data-skill="RESTORE_DATABASE">
+                    <h3>Skill configuration: RESTORE_DATABASE</h3>
+                    <p>The restore action is driven by the <code>RESTORE_DATABASE</code> agent skill, which downloads a backup from OVH S3 and restores it into PostgreSQL after taking a safety backup.</p>
+                    <details class="skill-prompt">
+                        <summary>View the RESTORE_DATABASE skill prompt (SKILL.md)</summary>
+                        <pre><code>You are an autonomous IT Operater agent with access to execute shell commands on a Linux server.
+Please restore the PostgreSQL database by executing these steps:
+#### 1. Check Prerequisites: docker, docker-compose, aws cli.
+#### 2. Retrieve DB configuration from docker-compose.yml / .env.prod.
+#### 3. Get the server IPv4 address.
+#### 4. List available backups from OVH S3.
+#### 5. Download the backup (defaults to the latest if {{BACKUP_FILE}} is not specified).
+#### 6. Stop application services to prevent conflicts.
+#### 7. Create a safety backup of the current database.
+#### 8. Drop and recreate the database.
+#### 9. Restore from the backup file:
+gunzip -c $LOCAL_BACKUP_FILE | docker exec -i $DB_CONTAINER psql -U $DB_USER -d $DB_NAME
+#### 10. Restart application services.
+#### 11. Verify the database connection.
+
+On failure, automatically restore from the safety backup.</code></pre>
+                    </details>
+                </section>
+
+                <section class="skill-section" data-skill="CLEAN_DATABASE">
+                    <h3>Skill configuration: CLEAN_DATABASE</h3>
+                    <p>The clean action is driven by the <code>CLEAN_DATABASE</code> agent skill, which creates a safety backup and then drops and recreates the database.</p>
+                    <details class="skill-prompt">
+                        <summary>View the CLEAN_DATABASE skill prompt (SKILL.md)</summary>
+                        <pre><code>You are an autonomous IT Operater agent with access to execute shell commands on a Linux server.
+Please clean the PostgreSQL database by executing these steps:
+- This operation drops and recreates the database, removing all data; a safety backup is created first.
+
+#### 1. Check Prerequisites: docker, docker-compose.
+#### 2. Retrieve DB configuration from docker-compose.yml / .env.prod.
+#### 3. Verify the database container is running.
+#### 4. Create a safety backup before cleaning.
+#### 5. Stop application services.
+#### 6. Terminate active database connections.
+#### 7. Drop and recreate the database.
+#### 8. Apply initial schema from ./scripts/init if present.
+#### 9. Restart application services.
+#### 10. Verify the database is clean and accessible.
+
+Finally, report the database name, safety backup location, size, and status.</code></pre>
+                    </details>
+                </section>
+
+                <!-- ============================================================ -->
+                <!-- 6. MODIFYING APPLICATIONS -->
+                <!-- ============================================================ -->
+                <h2 id="modifying">6. Modifying Applications</h2>
+                <p>Use AI-powered tools (the Shai CLI) to modify, customize, and extend deployed applications. The AI-assisted workflow: describe the change, review the generated code, validate it in staging, roll back on failure, and deploy to production once it passes.</p>
+
+                <pre><code>flowchart TD
+    Identify[Identify the app and the change needed] --&gt; Describe[Describe the change to Shai CLI]
+    Describe --&gt; Review[Review the generated code changes]
+    Review --&gt; Staging[Apply and test in a staging environment]
+    Staging --&gt; OK{Tests pass?}
+    OK --&gt;|no| Rollback[Roll back the change] --&gt; Describe
+    OK --&gt;|yes| Prod[Deploy to production]</code></pre>
+                <p class="caption">The AI-assisted modification workflow.</p>
+
+                <ol>
+                    <li>Identify the application and the change needed</li>
+                    <li>Describe the modification to the Shai CLI</li>
+                    <li>Review the generated code changes</li>
+                    <li>Apply and test in a staging environment</li>
+                    <li>Deploy to production once validated (roll back on failure)</li>
+                </ol>
+
+                <section class="skill-section" data-skill="MODIFY_CODE">
+                    <h3>Skill configuration: MODIFY_CODE / KILL</h3>
+                    <p>When a modification requires an immediate teardown, the <code>KILL</code> skill forcefully terminates the application's containers (SIGKILL) and removes them while preserving named volumes — unlike the graceful <code>STOP_APP</code>.</p>
+                    <details class="skill-prompt">
+                        <summary>View the KILL skill prompt (SKILL.md)</summary>
+                        <pre><code>You are an autonomous Operations agent running on a Linux server.
+This skill forcefully kills all running Docker containers of a deployed application
+instance for a given user (docker kill / SIGKILL), then removes the dead containers.
+Named volumes and data are preserved; unsaved in-memory state is lost.
+
+#### 1. Calculate HTTP Ports (same logic as START_APP).
+#### 2. Identify the target containers by name pattern ${NAME_OF_APPLICATION}-.*-${USER_ID}-.*.
+#### 3. Forcefully kill and remove the containers:
+docker kill $containers
+docker rm -f $containers
+#### 4. Verify no matching containers remain and report the result.
+
+Use KILL only when an immediate termination is required.</code></pre>
+                    </details>
+                </section>
+
+                <section class="skill-section" data-skill="VERIFY_APP_COMPLIANCE">
+                    <h3>Skill configuration: VERIFY_APP_COMPLIANCE</h3>
+                    <p>The compliance check is driven by the <code>VERIFY_APP_COMPLIANCE</code> agent skill, which audits an application against the ai-swautomorph platform architecture and produces a compliance report with a score.</p>
+                    <details class="skill-prompt">
+                        <summary>View the VERIFY_APP_COMPLIANCE skill prompt (SKILL.md)</summary>
+                        <pre><code>You are an autonomous compliance verification agent on a Linux server.
+Goal: verify whether {{APPLICATION_FOLDER}} is compliant with the ai-swautomorph
+platform architecture (reference at ~/ai-swautomorph).
+
+#### 1. Verify ~/ai-swautomorph exists.
+#### 2. Analyze the platform requirements (docker-compose.yml, deployApp.sh, conf/deploy.ini, nginx, SSL).
+#### 3. Analyze the current application structure.
+#### 4. Compare and identify gaps: compliant / missing / non-compliant components and configuration issues.
+#### 5. Check docker-compose.yml compliance (port mappings, volumes, networks, USER_ID naming).
+#### 6. Check deployApp.sh compliance (start/stop/restart/ps/logs, port calculation, SSL, firewall).
+#### 7. Generate a compliance score (e.g. "65% (13/20 requirements met)").
+#### 8. Provide actionable recommendations with priority and complexity.
+#### 9. Generate a summary report.
+
+Be thorough, reference swautomorph examples, and prioritize by deployment impact.</code></pre>
+                    </details>
+                </section>
+
+                <section class="skill-section" data-skill="MAKE_APP_COMPLIANT">
+                    <h3>Skill configuration: MAKE_APP_COMPLIANT</h3>
+                    <p>The remediation is driven by the <code>MAKE_APP_COMPLIANT</code> agent skill, which modifies an application's deployment files (only infrastructure, never business logic) so it conforms to the platform architecture, committing the changes on a dedicated branch.</p>
+                    <details class="skill-prompt">
+                        <summary>View the MAKE_APP_COMPLIANT skill prompt (SKILL.md)</summary>
+                        <pre><code>You are an autonomous compliance remediation agent on a Linux server.
+Goal: modify {{APPLICATION_FOLDER}} to be fully compliant with the ai-swautomorph
+platform architecture (reference at ~/ai-swautomorph).
+
+#### 1. Verify ~/ai-swautomorph exists and run a compliance check first.
+#### 2. Ensure the git working tree is clean; create a compliance branch.
+#### 3. Copy/create docker-compose.yml with correct port variables and USER_ID container naming.
+#### 4. Add ai-swautomorph-shared as a git submodule and symlink deployApp.sh -> ./shared/deployApp.sh.
+#### 5. Create/update conf/deploy.ini, conf/nginx.conf.template, ssl/, .env.prod template.
+#### 6. Set executable permissions, test config loading, re-run the compliance check.
+#### 7. Stage, commit, and push the changes; generate a remediation report.
+
+CRITICAL: do NOT modify application business logic, schemas, data, or app-specific
+env vars. ONLY add or update deployment infrastructure files.</code></pre>
+                    </details>
+                </section>
+
+                <!-- ============================================================ -->
+                <!-- 7. AGENT CONTROL -->
+                <!-- ============================================================ -->
+                <h2 id="agent-control">7. Controlling AI Agents</h2>
+                <p>Granting an agent autonomy is a governance decision, not a technical one. This section shows how to keep an agent useful without letting it act beyond its mandate: place operations on the <strong>autonomy spectrum</strong>, decide where <strong>approval gates</strong> belong, name the <strong>guardrail layers</strong> that wrap every action, and judge what must stay <strong>human-in-the-loop</strong>. The examples come from the OPCP-EXPLORER platform, whose virtual agents — a Developer agent that modifies code and an Operations agent that runs START, STOP, RESTART, PS, and LOGS — act on real deployments.</p>
+
+                <figure class="lesson-figure">
+                    <img src="../assets/img/agent-control.svg" alt="Control model for an AI agent: five autonomy levels rise from Suggest to Fully autonomous, each wrapped in concentric guardrail layers, with an approval gate and a human-in-the-loop reviewer feeding into the gates, and a kill switch as the hard outer boundary." style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                    <figcaption>Controlling an agent: rising autonomy levels pass through an approval gate, operate inside five guardrail layers, and escalate to a human reviewer, with the kill switch as the hard outer boundary.</figcaption>
+                </figure>
+
+                <h3>The Autonomy Spectrum</h3>
+                <p>Autonomy is a spectrum, not a switch. Each step to the right grants more freedom and removes a point of human control, so each step must be earned by lower risk or stronger guardrails.</p>
+                <ol>
+                    <li><strong>Suggest</strong> — the agent proposes; a human performs every action.</li>
+                    <li><strong>Confirm each step</strong> — the agent acts, but a human approves before each action. Billing-affecting START/STOP fits here.</li>
+                    <li><strong>Act with checkpoints</strong> — the agent runs several steps, pausing at defined checkpoints (deploy to staging automatically, pause before production).</li>
+                    <li><strong>Act and report</strong> — the agent completes the task and reports afterward; a human can intervene or revert.</li>
+                    <li><strong>Fully autonomous</strong> — the agent acts without review inside its granted scope.</li>
+                </ol>
+
+                <h3>Approval Gates</h3>
+                <p>An approval gate is a point where an action pauses until a human signs off. Place a gate wherever an action is hard to reverse, costs money, or widens access: admin-only destructive actions (delete an application, destroy a GPU/MIG instance), billing-affecting operations (START/STOP), and production promotion.</p>
+
+                <h3>Guardrail Layers</h3>
+                <p>Guardrails constrain <em>every</em> action regardless of whether a human is watching. They map directly onto OPCP-EXPLORER's security features.</p>
+                <table>
+                    <thead>
+                        <tr><th>Layer</th><th>What it constrains</th><th>On OPCP-EXPLORER</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Permissions</td><td>Which actions are allowed</td><td>User isolation with separate deployment directories; admin-only destructive endpoints</td></tr>
+                        <tr><td>Validation</td><td>The shape and safety of inputs</td><td>Input validation, SQL-injection prevention, path-traversal protection</td></tr>
+                        <tr><td>Limits / Timeouts</td><td>How long and how far an action runs</td><td>30-minute operation timeout with process-group termination; read-only, no-network serverless jobs</td></tr>
+                        <tr><td>Observability</td><td>That every action is auditable</td><td>Prompt logs and billing_activities.log</td></tr>
+                        <tr><td>Kill switch</td><td>The ability to stop everything at once</td><td>Process-group termination and graceful degradation</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Human-in-the-Loop</h3>
+                <p>Human-in-the-loop (HITL) is the policy that some actions must not proceed without a person in the decision. Reserve mandatory HITL for actions that are irreversible, security-sensitive, or costly, and treat graceful degradation (falling back to a safe reduced mode) as a safety default.</p>
+
+                <section class="skill-section" data-skill="AGENTS_CONTROL">
+                    <h3>Skill configuration: AGENTS_CONTROL</h3>
+                    <p>Controlling the platform's agents is driven by the <code>AGENTS_CONTROL</code> agent skill, which discovers, classifies, inspects, and manages (stop/restart/start) the agent containers running across the managed servers.</p>
+                    <details class="skill-prompt">
+                        <summary>View the AGENTS_CONTROL skill prompt (SKILL.md)</summary>
+                        <pre><code>name: AGENTS_CONTROL
+description: Control the AI agents run by the agentic-ai-plateform control plane —
+discover, classify, inspect, and manage (stop/restart) the agent containers
+running across the platform's managed servers.
+
+IMPORTANT:
+- Discovery and classification are read-only and safe.
+- Stop/restart/start actions mutate running agents — always confirm the target
+  with the operator before executing a lifecycle action.
+- PLATFORM_URL defaults to https://agentic-ai-plateform.com.
+
+#### 1. Resolve configuration and authenticate (login -> session cookie).
+#### 2. List and classify agents via GET /api/agent-control/containers (append ?live=1 for a fresh scan).
+#### 3. Inspect a specific agent, including the classification_evidence that justified the label.
+#### 4. Manage lifecycle over SSH (docker stop|restart|start) after confirming the target.
+#### 5. Verify and report the agent's new state.
+
+Classification threshold: score >= 0.5 -> probable_agent (src/runtime_monitor/agent_classifier.py).</code></pre>
+                    </details>
+                </section>
+
+                <section class="skill-section" data-skill="STATUS_APP">
+                    <h3>Skill configuration: STATUS_APP</h3>
+                    <p>Status checks are driven by the <code>STATUS_APP</code> agent skill, which inspects an application's runtime state, resolves its ports, and reports its status as JSON.</p>
+                    <details class="skill-prompt">
+                        <summary>View the STATUS_APP skill prompt (SKILL.md)</summary>
+                        <pre><code>You are an autonomous IT Operater agent with access to execute shell commands on a Linux server.
+Check the status of the application and return detailed information in JSON format.
+
+#### 1. Resolve {{APPLICATION_FOLDER}}, {{USER_NAME}}, {{NAME_OF_APPLICATION}}, {{USER_ID}}
+# from ~/deployments/<USER_NAME>/<NAME_OF_APPLICATION>; fetch USER_ID via the platform API if unset.
+#### 2. Calculate HTTP Ports (same logic as START_APP).
+#### 3. Check the status via docker container ls, matching ${NAME_OF_APPLICATION}-.*-${USER_ID}-.*
+# -> docker_status = IS_RUNNING | IS_NOT_RUNNING, and collect the published ports.
+#### 4. Get git remotes for the application.
+#### 5. Output a JSON object with environment_vars, docker_compose_ps, docker_ports, and git_remotes.</code></pre>
+                    </details>
+                </section>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>Installation, registration, start, stop, backup/restore, modification, and agent governance form one continuous operations lifecycle on OPCP-EXPLORER.</li>
+                    <li>Each operation is automated by a named agent skill (START_APP, STOP_APP, BACKUP_DATABASE, RESTORE_DATABASE, CLEAN_DATABASE, MODIFY_CODE/KILL, AGENTS_CONTROL, STATUS_APP) with a fixed, auditable prompt.</li>
+                    <li>Mutating actions — start, stop, kill, clean, lifecycle control — require confirmation and sit behind approval gates; destructive ones stay human-in-the-loop.</li>
+                    <li>Guardrails (permissions, validation, limits/timeouts, observability, kill switch) wrap every action regardless of autonomy level.</li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <strong>Lab Available:</strong> A hands-on lab module accompanies this lab. Start the lab to practice in an isolated environment.
+                </div>
+            </div>
+
+            <button class="btn btn-success btn-mark-complete" data-lesson-id="running-applications-lab">
+                Mark as Complete
+            </button>
+        </div>
+    </main>
+
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" defer src="../assets/js/diagrams.js"></script>
+</body>
+</html>

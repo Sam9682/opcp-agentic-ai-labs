@@ -45,14 +45,18 @@ const LOCALES = ['fr', 'en'];
  * the skillhub root. The exploration test asserts the observed corrupted set
  * equals this set exactly (no more, no fewer).
  */
+//
+// NOTE (quiz & sandbox restructure): the two formerly-affected
+// `install-bare-metal.html` pages were deleted when the seven retired sandbox
+// lessons were consolidated into `running-applications-lab.html`, so they are
+// dropped from this documented set. The remaining six previously-corrupted
+// pages all survive the restructure and are still verified clean post-fix.
 const EXPECTED_AFFECTED = [
   'fr/agent-anatomy-7-components.html',
   'fr/assistant-vs-agent.html',
-  'fr/install-bare-metal.html',
   'fr/guardrails-5-layers.html',
   'en/agent-anatomy-7-components.html',
   'en/assistant-vs-agent.html',
-  'en/install-bare-metal.html',
   'en/guardrails-5-layers.html',
 ].sort();
 
@@ -111,14 +115,15 @@ function enumerateOccurrences(text) {
 const CORPUS = collectCorpus();
 
 describe('Property 1: Bug Condition - enumeration of the defect set', () => {
-  it('discovers all 36 lesson files across skillhub/fr/ and skillhub/en/', () => {
-    // Sanity: the corpus is the expected 18-per-locale, 36-total set. If this
-    // drifts, the scoped enumeration below would be checking the wrong inputs.
-    expect(CORPUS.length).toBe(36);
+  it('discovers all 30 lesson files across skillhub/fr/ and skillhub/en/', () => {
+    // Sanity: after the quiz & sandbox restructure the corpus is 15-per-locale,
+    // 30-total. If this drifts, the scoped enumeration below would be checking
+    // the wrong inputs.
+    expect(CORPUS.length).toBe(30);
     const frCount = CORPUS.filter((f) => f.rel.startsWith('fr/')).length;
     const enCount = CORPUS.filter((f) => f.rel.startsWith('en/')).length;
-    expect(frCount).toBe(18);
-    expect(enCount).toBe(18);
+    expect(frCount).toBe(15);
+    expect(enCount).toBe(15);
   });
 
   it('the set of files with >=1 U+FFFD is empty post-fix (EXPECTED_AFFECTED documents the files corrupted pre-fix)', () => {
@@ -166,9 +171,9 @@ describe('Property 1: Bug Condition - enumeration of the defect set', () => {
 
 describe('Property 1: Bug Condition - zero U+FFFD across the corpus (fails on unfixed code)', () => {
   // Scoped PBT: the property "every page decodes with zero U+FFFD" is asserted
-  // over the concrete 36-file corpus. fast-check drives one case per file so a
-  // failure reports the offending file as the shrunk counterexample. On unfixed
-  // code the 8 affected files fail here; after the fix all 36 pass.
+  // over the concrete 30-file corpus. fast-check drives one case per file so a
+  // failure reports the offending file as the shrunk counterexample. After the
+  // fix (and the later restructure) all 30 surviving pages pass here.
   it('for every HTML file under skillhub/fr/ and skillhub/en/, the decoded page contains zero U+FFFD', () => {
     fc.assert(
       fc.property(

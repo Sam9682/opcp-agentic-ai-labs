@@ -9,17 +9,30 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
  * authoring tasks and the verification tests.
  *
  * Both locales (`skillhub/en/` and `skillhub/fr/`) use identical filenames, so
- * the map is keyed by basename only. `install-bare-metal.html` maps to an empty
- * list: it receives zero Skill_Sections (Requirement 1.7).
+ * the map is keyed by basename only.
+ *
+ * NOTE (quiz & sandbox restructure): the seven former sandbox pages
+ * (install-bare-metal, starting/stopping-applications, making-backups,
+ * modifying-applications, adding-applications, agent-control) were consolidated
+ * into the single `running-applications-lab.html` lab. All Skill_Sections that
+ * previously lived across those pages now live, in the same relative order, on
+ * that one page. `SPECIFY_FEATURE` (formerly on adding-applications) and the
+ * duplicate `MODIFY_CODE` embed were dropped in the consolidation, so each
+ * skill now appears exactly once.
  */
 export const PAGE_SKILL_MAP = {
-  'starting-applications.html': ['START_APP'],
-  'stopping-applications.html': ['STOP_APP'],
-  'making-backups.html': ['BACKUP_DATABASE', 'RESTORE_DATABASE', 'CLEAN_DATABASE'],
-  'modifying-applications.html': ['MODIFY_CODE', 'VERIFY_APP_COMPLIANCE', 'MAKE_APP_COMPLIANT'],
-  'adding-applications.html': ['SPECIFY_FEATURE', 'MODIFY_CODE'],
-  'agent-control.html': ['AGENTS_CONTROL', 'STATUS_APP'],
-  'install-bare-metal.html': [],
+  'running-applications-lab.html': [
+    'START_APP',
+    'STOP_APP',
+    'BACKUP_DATABASE',
+    'RESTORE_DATABASE',
+    'CLEAN_DATABASE',
+    'MODIFY_CODE',
+    'VERIFY_APP_COMPLIANCE',
+    'MAKE_APP_COMPLIANT',
+    'AGENTS_CONTROL',
+    'STATUS_APP',
+  ],
 };
 
 /** The two SkillHub locales. Pages exist under `skillhub/<locale>/`. */
