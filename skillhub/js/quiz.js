@@ -36,6 +36,21 @@ export const QUIZ_PASS_THRESHOLD = 12;
 export const QUIZ_TOTAL = 15;
 
 /**
+ * State class applied to a question block the learner answered correctly.
+ *
+ * @type {'quiz-question--correct'}
+ */
+const CORRECT_CLASS = 'quiz-question--correct';
+
+/**
+ * State class applied to a question block the learner answered incorrectly or
+ * left unanswered.
+ *
+ * @type {'quiz-question--incorrect'}
+ */
+const INCORRECT_CLASS = 'quiz-question--incorrect';
+
+/**
  * Score an answer vector against the question bank.
  *
  * Pure and locale-independent: an answer counts as correct only when its value
@@ -81,6 +96,42 @@ export function scoreQuiz(questions, answers) {
     total,
     passed: score >= QUIZ_PASS_THRESHOLD,
   };
+}
+
+/**
+ * Evaluate per-question correctness for an answer vector against the bank.
+ *
+ * Pure companion to {@link scoreQuiz} that reports the verdict for each
+ * question instead of a count. A position is `true` only when its answer is a
+ * number strictly equal to the question's `correctIndex` — the exact same
+ * index predicate {@link scoreQuiz} applies — so it is locale-independent by
+ * construction. Any `null`, `undefined`, non-integer, or out-of-range value is
+ * `false`. The result is positionally aligned with `questions` and its length
+ * always equals `questions.length`, regardless of how many answers are
+ * supplied. By reusing the same predicate, the invariant
+ * `evaluateQuestions(bank, answers).filter(Boolean).length === scoreQuiz(bank, answers).score`
+ * holds.
+ *
+ * @param {import('./quiz-questions.js').QuizQuestion[]} questions - The question
+ *   bank; each entry supplies the authoritative `correctIndex`.
+ * @param {Array<number|null|undefined>} answers - Selected option index per
+ *   question, positionally aligned with `questions`.
+ * @returns {boolean[]} One verdict per question, in order; `true` where the
+ *   answer equals the question's `correctIndex`, `false` otherwise.
+ */
+export function evaluateQuestions(questions, answers) {
+  const bank = Array.isArray(questions) ? questions : [];
+  const picks = Array.isArray(answers) ? answers : [];
+
+  return bank.map((question, i) => {
+    if (!question) return false;
+    const answer = picks[i];
+    return (
+      typeof answer === 'number' &&
+      Number.isInteger(answer) &&
+      answer === question.correctIndex
+    );
+  });
 }
 
 /**
@@ -224,6 +275,42 @@ function cssEscape(value) {
   return str.replace(/[^a-zA-Z0-9_-]/g, (ch) => `\\${ch}`);
 }
 
+/**
+ * Apply exactly one state class per question block, in document order.
+ *
+ * Selects every `<li class="quiz-question">` in the form (document order, which
+ * matches the question-bank order the pure helpers operate on) and, for each
+ * block, first removes both state classes so a resubmission never leaves stale
+ * feedback (Requirement 3.1), then adds exactly one class for every block it
+ * can pair with the `correctness` array. Pairing is limited to the overlapping
+ * prefix via `Math.min`, so a block/bank count mismatch is handled defensively:
+ * unpaired extra blocks are still cleared but left unmarked rather than
+ * receiving a misleading class. Guards on `querySelectorAll` and each block's
+ * `classList` so a non-standard container degrades to a no-op instead of
+ * throwing.
+ *
+ * @param {ParentNode} form - The quiz form (or any container exposing
+ *   `querySelectorAll`).
+ * @param {boolean[]} correctness - Per-question correctness, aligned with the
+ *   question bank, as returned by {@link evaluateQuestions}.
+ * @returns {void}
+ */
+function applyQuestionFeedback(form, correctness) {
+  if (!form || typeof form.querySelectorAll !== 'function') return;
+
+  const blocks = form.querySelectorAll('li.quiz-question');
+  const n = Math.min(blocks.length, correctness.length);
+
+  for (let i = 0; i < blocks.length; i++) {
+    const block = blocks[i];
+    if (!block || !block.classList) continue;
+    block.classList.remove(CORRECT_CLASS, INCORRECT_CLASS);
+    if (i < n) {
+      block.classList.add(correctness[i] ? CORRECT_CLASS : INCORRECT_CLASS);
+    }
+  }
+}
+
 import { QUIZ_QUESTIONS } from './quiz-questions.js';
 
 /**
@@ -281,6 +368,12 @@ export function initQuiz({ form, questions, resultEl, completeEl, locale, slug }
     if (completeEl && typeof completeEl.setAttribute === 'function') {
       completeEl.setAttribute('data-quiz-passed', passed ? 'true' : 'false');
     }
+
+    // Mark each question block green/red for the answers just submitted. Runs
+    // after the result message and data-quiz-passed are written and before the
+    // completion-on-pass return, so existing behavior is preserved and feedback
+    // lands regardless of the progress outcome.
+    applyQuestionFeedback(form, evaluateQuestions(bank, answers));
 
     // Record completion on a pass only; never on a fail. Best-effort: a
     // throwing or unavailable localStorage must never surface an error.

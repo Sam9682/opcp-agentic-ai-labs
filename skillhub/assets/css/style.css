@@ -995,3 +995,29 @@ pre code {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
+/* --------------------------------------------------------------------------
+   Quiz — one answer option per line
+   -------------------------------------------------------------------------- */
+.quiz-option {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Quiz — submit-time per-question feedback */
+.quiz-question--correct > fieldset {
+    border-left: 4px solid var(--ovh-green);
+    background-color: rgba(70, 185, 84, 0.08);
+}
+.quiz-question--incorrect > fieldset {
+    border-left: 4px solid var(--ovh-red);
+    background-color: rgba(228, 66, 88, 0.08);
+}
+.quiz-question--correct > fieldset > legend::before {
+    content: "\2713\00a0";
+    color: #2d7a37;
+}
+.quiz-question--incorrect > fieldset > legend::before {
+    content: "\2717\00a0";
+    color: #9b2d3d;
+}

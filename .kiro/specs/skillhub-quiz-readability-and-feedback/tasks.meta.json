@@ -1,0 +1,145 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Add one-option-per-line layout for `.quiz-option`": [
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793354970862
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793354981869
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355048949
+      }
+    ],
+    "1.2 Add green/red question state visuals with non-color cues": [
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793354971038
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793354983285
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355050512
+      }
+    ],
+    "2.1 Add `evaluateQuestions(questions, answers)` to `skillhub/js/quiz.js`": [
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793354971258
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793354984519
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355051711
+      }
+    ],
+    "3. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793354971395
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355062981
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355120000
+      }
+    ],
+    "4.1 Add `applyQuestionFeedback` and wire it into the submit handler": [
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793354971585
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355123083
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355200490
+      }
+    ],
+    "5. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793354971763
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355203912
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355242520
+      }
+    ],
+    "7. Final checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793354971956
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355252225
+      },
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355306301
+      }
+    ],
+    "1. Add quiz readability and feedback CSS": [
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355050878
+      }
+    ],
+    "2. Implement the `evaluateQuestions` pure helper": [
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355052058
+      }
+    ],
+    "4. Extend `initQuiz` to apply per-question feedback": [
+      {
+        "executionId": "4dca6a30-a642-485e-875c-64851ec7e27f",
+        "chatSessionId": "sess_a6af8ac3-33b7-485e-a587-c5f2393b0cd6",
+        "timestamp": 1793355200636
+      }
+    ]
+  }
+}
